@@ -5,7 +5,7 @@ create table exams
     EX_PERCENT     int  not null,
     TP_ID          int  not null,
     EX_QUESTION_NO int  null,
-    EX_TIME        date null
+    EX_TIME        datetime null
 );
 
 create table topics
@@ -59,7 +59,7 @@ create table users
     US_ADDRESS       varchar(45)  null,
     US_MOBILE_NUMBER varchar(10)  null,
     US_EMAIL         varchar(45)  null,
-    US_CREATED_DATE  date         null,
+    US_CREATED_datetime  datetime         null,
     US_STATUS        int(1)       null,
     US_GROUP         int          null,
     constraint US_EMAIL
@@ -76,7 +76,7 @@ create table logs
         primary key,
     LG_NAME     varchar(120) not null,
     LG_STATUS   int(1)       null,
-    LG_DATETIME date         null,
+    LG_datetimeTIME datetime         null,
     US_ID       int          null,
     constraint logs_users_US_ID_fk
         foreign key (US_ID) references users (us_id)
@@ -87,7 +87,7 @@ create table results
     RS_ID    int auto_increment
         primary key,
     RS_SCORE int  not null,
-    RS_TIME  date null,
+    RS_TIME  datetime null,
     US_ID    int  not null,
     EX_ID    int  not null,
     constraint results_exams_EX_ID_fk
