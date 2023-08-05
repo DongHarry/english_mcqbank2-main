@@ -9,6 +9,7 @@
     <form:form action="${pageContext.request.contextPath}/admin/addExam" method="post">
         <label for="examName">Exam name:</label>
         <input type="text" name="examName" id="examName">
+        <br>
         <label for="questionNo">QuestionNo:</label>
         <input type="text" name="questionNo" id="questionNo">
         <br>
