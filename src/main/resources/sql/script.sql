@@ -68,8 +68,8 @@ create table users
         unique (US_MOBILE_NUMBER),
     constraint US_USERNAME
         unique (US_USERNAME)
-)
-;
+);
+
 create table logs
 (
     LG_ID       int auto_increment
