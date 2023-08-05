@@ -11,10 +11,6 @@
 
 </head>
 <body>
-<%--<h1>Welcome!</h1>--%>
-<%--<p><a href="${pageContext.request.contextPath}/login-page">login</a></p>--%>
-<%--<br>--%>
-<%--<p><a href="${pageContext.request.contextPath}/register">register</a></p>--%>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
