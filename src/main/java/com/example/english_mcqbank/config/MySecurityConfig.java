@@ -26,8 +26,8 @@ public class MySecurityConfig {
     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     private CustomAuthenticationFailureHandler authenticationFailureHandler;
-    @Autowired
-    private CustomLogoutSuccessHandler logoutSuccessHandler;
+    //@Autowired
+    //private CustomLogoutSuccessHandler logoutSuccessHandler;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -59,7 +59,7 @@ public class MySecurityConfig {
                 .permitAll() // Tất cả đều được truy cập vào địa chỉ này
                 .and()
                 .logout() // Cho phép logout
-                .logoutSuccessHandler(logoutSuccessHandler)
+                //.logoutSuccessHandler(logoutSuccessHandler)
                 //.logoutSuccessUrl("/login-page")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
