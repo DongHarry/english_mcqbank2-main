@@ -79,7 +79,9 @@
         <h3><a href="${pageContext.request.contextPath}/admin/exams/new">Add Exam</a> </h3>
         <a href="${pageContext.request.contextPath}/admin">Back to Admin Panel</a>
     </sec:authorize>
-
+    <sec:authorize access="hasRole('USER')">
+        <a href="${pageContext.request.contextPath}/user">Back to User Panel</a>
+    </sec:authorize>
 </table>
 </body>
 </html>
