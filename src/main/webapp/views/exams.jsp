@@ -13,7 +13,7 @@
         <th>Exam Id</th>
         <th>Exam Topics</th>
         <th>Topics </th>
-        <th>Percent</th>
+        <th>Exam name</th>
         <th>Question No</th>
         <th>Time</th>
         <th>Action</th>
@@ -36,7 +36,7 @@
                 <ul>
                     <c:forEach var="exam_topic" items="${exam.examTopicList}">
                         <c:if test="${not empty exam_topic}">
-                            <li>${exam_topic.id}</li>
+                            <li>${exam_topic.id}: ${exam_topic.percent}%</li>
                         </c:if>
                     </c:forEach>
                 </ul>
@@ -50,7 +50,7 @@
                     </c:forEach>
                 </ul>
             </td>
-            <td>${exam.percent}</td>
+            <td>${exam.name}</td>
             <td>${exam.questionNo}</td>
             <td>${exam.time}</td>
             <td>
@@ -77,6 +77,7 @@
     <hr>
     <sec:authorize access="hasRole('ADMIN')">
         <h3><a href="${pageContext.request.contextPath}/admin/exams/new">Add Exam</a> </h3>
+        <a href="${pageContext.request.contextPath}/admin">Back to Admin Panel</a>
     </sec:authorize>
 
 </table>

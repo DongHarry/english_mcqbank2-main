@@ -24,11 +24,11 @@ public class Exam {
     @Column(name = "ex_id")
     private Integer id;
 
-    @Column(name = "ex_percent")
-    private Integer percent;
+    @Column(name = "ex_name")
+    private String name;
 
-    @Column(name = "tp_id")
-    private Integer topicId;
+//    @Column(name = "tp_id")
+//    private Integer topicId;
 
     @Column(name = "ex_question_no")
     private Integer questionNo;
