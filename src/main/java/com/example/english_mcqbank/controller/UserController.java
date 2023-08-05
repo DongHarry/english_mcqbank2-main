@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -175,11 +172,17 @@ public class UserController {
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
-        int topicId = exam.getTopicId();
+        //int topicId = exam.getTopicId();
         int questionCount = exam.getQuestionNo();
         List<ExamTopic> examTopics = exam.getExamTopicList();
 
-        List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
+        //List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
+        List<Question> questions = new ArrayList<>();
+        for (ExamTopic examTopic: examTopics) {
+            List<Question> questions1 = questionService.getRandom(examTopic.getTopic().getId(), 0,
+                                                                (int) Math.round(questionCount * examTopic.getPercent() / 100.0));
+            questions.addAll(questions1);
+        }
         questionMap = new HashMap<>();
         for (Question question : questions) {
             questionMap.put(question.getId(), question);
