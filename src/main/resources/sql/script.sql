@@ -1,7 +1,3 @@
-drop database if exists english_exam;
-create database english_exam;
-use english_exam;
-
 create table exams
 (
     EX_ID          int auto_increment
