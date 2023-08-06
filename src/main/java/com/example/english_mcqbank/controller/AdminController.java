@@ -238,10 +238,15 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/exams", method = RequestMethod.GET)
-    public ModelAndView exams() {
+    public ModelAndView exams(@RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "5") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
-        List<Exam> exams = examService.getAllExams();
+        List<Exam> exams = examService.getAllExams(page, size);
         modelAndView.addObject("exams", exams);
+        modelAndView.addObject("currentPage", page);
+        assert exams != null;
+        boolean hasNext = exams.size() >= size;
+        modelAndView.addObject("hasNext", hasNext);
         return modelAndView;
     }
 

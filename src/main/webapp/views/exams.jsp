@@ -74,14 +74,21 @@
         </tr>
     </c:forEach>
     </tbody>
-    <hr>
-    <sec:authorize access="hasRole('ADMIN')">
-        <h3><a href="${pageContext.request.contextPath}/admin/exams/new">Add Exam</a> </h3>
-        <a href="${pageContext.request.contextPath}/admin">Back to Admin Panel</a>
-    </sec:authorize>
-    <sec:authorize access="hasRole('USER')">
-        <a href="${pageContext.request.contextPath}/user">Back to User Panel</a>
-    </sec:authorize>
+
 </table>
+<c:if test="${currentPage > 0}">
+    <a href="?page=${currentPage - 1}">Prev</a>
+</c:if>
+<c:if test="${hasNext}">
+    <a href="?page=${currentPage + 1}">Next</a>
+</c:if>
+<hr>
+<sec:authorize access="hasRole('ADMIN')">
+    <h3><a href="${pageContext.request.contextPath}/admin/exams/new">Add Exam</a> </h3>
+    <a href="${pageContext.request.contextPath}/admin">Back to Admin Panel</a>
+</sec:authorize>
+<sec:authorize access="hasRole('USER')">
+    <a href="${pageContext.request.contextPath}/user">Back to User Panel</a>
+</sec:authorize>
 </body>
 </html>
