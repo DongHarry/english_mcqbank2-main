@@ -74,10 +74,11 @@ public class WebController {
 
         String subject = "Contact from " + name;
 
-        String content = "";
-        content += " - " + company;
-        content += " - " + phone;
-        content += " - " + message;
+        String content = "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phone + "\n" +
+                "Company: " + company + "\n" +
+                "Message: " + message + "\n";
 
         emailSender.sendEmail("luongdinhduc0000@gmail.com", email, subject, content);
         //return new ModelAndView("redirect:/#");
