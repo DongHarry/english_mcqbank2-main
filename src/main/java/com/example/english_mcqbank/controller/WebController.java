@@ -62,13 +62,6 @@ public class WebController {
     }
 
 
-    @RequestMapping("/test")
-    public ModelAndView test() {
-        ModelAndView testModelAndView = new ModelAndView("test");
-        testModelAndView.addObject("test", "test");
-        return testModelAndView; // Trả về test.jsp
-    }
-
 
     @RequestMapping(value = "/sendContactMail", method = RequestMethod.POST)
     public String sendContactMail(@RequestParam("name") String name,
