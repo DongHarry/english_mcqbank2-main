@@ -17,6 +17,7 @@
 <h1>Bài thi</h1>
 <div id="timer">Thời gian còn lại: </div>
 <div id="question-count">Số câu hỏi: ${questions.size()}</div>
+<button id="start-btn">Bắt đầu bài thi</button>
 <hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
 <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" onsubmit="return validateQuiz()">
@@ -94,39 +95,45 @@
 
 
   <script>
-    $(document).ready(function() {
-      // Số câu hỏi trong bài thi (lấy từ biểu thức EL)
-      var questionCount = <c:out value="${questions.size()}" />;
-      var timePerQuestion = 60; // Thời gian cho mỗi câu hỏi (tính theo giây)
-      var totalTime = questionCount * timePerQuestion; // Tổng thời gian cho bài thi (tính theo giây)
-      var timerInterval; // Biến để lưu đối tượng setInterval
+      $(document).ready(function() {
+          // Số câu hỏi trong bài thi (lấy từ biểu thức EL)
+          var questionCount = <c:out value="${questions.size()}" />;
+          var timePerQuestion = 60; // Thời gian cho mỗi câu hỏi (tính theo giây)
+          var totalTime = questionCount * timePerQuestion; // Tổng thời gian cho bài thi (tính theo giây)
+          var maxTime = Math.floor(totalTime / 60); // Thời gian tối đa (tính theo phút)
 
-      // Hàm để cập nhật thời gian còn lại và kiểm tra nếu đã hết thời gian
-      function updateTimer() {
-        if (totalTime > 0) {
-          var minutes = Math.floor(totalTime / 60);
-          var seconds = totalTime % 60;
-          $("#timer").text("Thời gian còn lại: " + minutes + " phút " + seconds + " giây");
-          totalTime--;
-        } else {
-          clearInterval(timerInterval);
-          $("#timer").text("Hết thời gian!");
-          submitExam();
-        }
-      }
+          // Biến để lưu thời gian kết thúc đếm ngược
+          var countDownDate;
 
-      // Hàm để nộp bài tự động
-      function submitExam() {
-        alert("Đã hết thời gian, bài thi đã được nộp tự động!");
-      }
+          // Hàm để cập nhật thời gian còn lại và kiểm tra nếu đã hết thời gian
+          function updateTimer() {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              $("#time").text("Time remaining: " + minutes + ":" + seconds);
+              if (distance < 0) {
+                  clearInterval(timerInterval);
+                  $('#submit-btn').click(); // Nếu hết thời gian, tự động nhấn nút Nộp bài
+              }
+          }
 
-      // Xử lý sự kiện khi nút "Bắt đầu bài thi" được nhấn
-      $("#start-btn").click(function() {
-        // Bắt đầu đếm ngược thời gian với mỗi giây cập nhật một lần
-        timerInterval = setInterval(updateTimer, 1000);
-        document.getElementById("start-btn").style.display = "none";
+          // Hàm được gọi khi bắt đầu bài thi
+          function startExam() {
+              countDownDate = new Date().getTime() + maxTime * 60 * 1000; // Thời gian kết thúc đếm ngược là ${maxTime} phút sau thời điểm hiện tại
+              timerInterval = setInterval(updateTimer, 1000); // Bắt đầu đếm ngược thời gian với mỗi giây cập nhật một lần
+              $("#start-btn").prop("disabled", true); // Ẩn nút "Bắt đầu bài thi" sau khi bấm
+          }
+
+          // Xử lý sự kiện khi nút "Bắt đầu bài thi" được nhấn
+          $("#start-btn").click(function() {
+              startExam();
+          });
+
+          // Tự động bắt đầu đếm ngược khi trang tải xong
+          startExam();
       });
-    });
+
   </script>
 </body>
 </html>
