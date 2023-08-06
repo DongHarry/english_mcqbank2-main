@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -84,7 +85,6 @@
                 <li><a class="page-scroll" href="#faqs">Faq</a></li>
                 <li><a class="page-scroll" href="#news">News</a></li>
                 <li><a class="page-scroll" href="#contact">Contact</a></li>
-                <li><a class="page-scroll" href="/login-page">Login</a></li>
               </ul>
             </div>
 
@@ -327,7 +327,7 @@
 
     <!--start app video section-->
     <div id="video-app" class="video-app-1"
-         style="background: url('../resource/img/video-play.jpg')no-repeat center center / cover">
+         style="background: url('img/video-play.jpg')no-repeat center center / cover">
       <div class="overlay-1">
         <div class="container">
           <div class="row">
@@ -799,7 +799,7 @@
               </div>
             </div>
             <div class="col-md-7">
-              <form action="php/mail.php" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
+              <form:form action="${pageContext.request.contextPath}/sendContactMail" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
                 <h6>Đừng bỏ lỡ cơ hội</h6>
                 <div class="row">
                   <div class="col-sm-6 col-xs-12">
@@ -845,7 +845,7 @@
                     </button>
                   </div>
                 </div>
-              </form>
+              </form:form>
               <p class="form-message"></p>
             </div>
           </div>

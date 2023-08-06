@@ -1,8 +1,8 @@
 package com.example.english_mcqbank.controller;
 
 
-import com.example.english_mcqbank.model.Log;
 import com.example.english_mcqbank.model.UserEntity;
+import com.example.english_mcqbank.service.EmailSender;
 import com.example.english_mcqbank.service.ExamService;
 import com.example.english_mcqbank.service.LogService;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
@@ -22,6 +22,7 @@ public class WebController {
     final LogService logService;
     final ExamService examService;
     final PasswordEncoder passwordEncoder;
+    final EmailSender emailSender;
 
     @RequestMapping(value = {"/", "/home", "/index"})
     public ModelAndView homepage(Authentication authentication) {
@@ -61,12 +62,33 @@ public class WebController {
     }
 
 
+    @RequestMapping("/test")
+    public ModelAndView test() {
+        ModelAndView testModelAndView = new ModelAndView("test");
+        testModelAndView.addObject("test", "test");
+        return testModelAndView; // Trả về test.jsp
+    }
 
-    @RequestMapping("/main")
-    public ModelAndView hello(Authentication authentication) {
-        ModelAndView helloModelAndView = new ModelAndView("main");
-        helloModelAndView.addObject("username", authentication.getName());
-        return helloModelAndView; // Trả về
+
+    @RequestMapping(value = "/sendContactMail", method = RequestMethod.POST)
+    public String sendContactMail(@RequestParam("name") String name,
+                                        @RequestParam("email") String email,
+                                        @RequestParam("phone") String phone,
+                                        @RequestParam("company") String company,
+                                        @RequestParam("message") String message) {
+
+
+
+        String subject = "Contact from " + name;
+
+        String content = "";
+        content += " - " + company;
+        content += " - " + phone;
+        content += " - " + message;
+
+        emailSender.sendEmail("luongdinhduc0000@gmail.com", email, subject, content);
+        //return new ModelAndView("redirect:/#");
+        return "home";
     }
 
 
