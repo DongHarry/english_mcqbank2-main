@@ -82,7 +82,7 @@ public class WebController {
 
         emailSender.sendEmail("luongdinhduc0000@gmail.com", email, subject, content);
         //return new ModelAndView("redirect:/#");
-        return null;
+        return new ModelAndView("test");
     }
 
 
