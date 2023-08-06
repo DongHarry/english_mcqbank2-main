@@ -172,6 +172,17 @@ public class UserController {
 
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id) {
+        ModelAndView userExamModelAndView = new ModelAndView("exam");
+        Exam exam = examService.getExamById(id);
+        if (exam == null) {
+            return new ModelAndView("redirect:/user/exams");
+        }
+        userExamModelAndView.addObject("exam", exam);
+        return userExamModelAndView; // Trả về user.jsp
+    }
+
+    @RequestMapping("/user/exams/{id}/do")
+    public ModelAndView doExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("questionList");
         Exam exam = examService.getExamById(id);
         if (exam == null) {

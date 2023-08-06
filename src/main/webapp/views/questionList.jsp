@@ -14,7 +14,10 @@
     <title>Questions</title>
 </head>
 <body>
-<h1>Questions</h1>
+<h1>Bài thi</h1>
+<div id="timer">Thời gian còn lại: </div>
+<div id="question-count">Số câu hỏi: ${questions.size()}</div>
+<hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
 <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" onsubmit="return validateQuiz()">
     <c:forEach var="question" items="${questions}">
@@ -88,10 +91,7 @@
 <%--    <input type="submit" value="Submit">--%>
 <%--</form:form>--%>
 
-<h1>Bài thi</h1>
-  <div id="timer">Thời gian còn lại: </div>
-  <div id="question-count">Số câu hỏi: ${questions.size()}</div>
-  <button id="start-btn">Bắt đầu bài thi</button>
+
 
   <script>
     $(document).ready(function() {
