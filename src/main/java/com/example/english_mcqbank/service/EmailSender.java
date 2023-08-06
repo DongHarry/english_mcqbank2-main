@@ -41,7 +41,7 @@ public class EmailSender {
 
     }
 
-    public void sendEmailWithCCAndBCC(String to, String cc, String bcc, String subject, String content) {
+    public void sendEmail(String to, String cc, String subject, String content) {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper;
         try {
@@ -52,10 +52,6 @@ public class EmailSender {
 
             if (cc != null && !cc.isEmpty()) {
                 helper.setCc(cc);
-            }
-
-            if (bcc != null && !bcc.isEmpty()) {
-                helper.setBcc(bcc);
             }
 
             javaMailSender.send(message);
