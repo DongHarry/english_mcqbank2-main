@@ -45,7 +45,7 @@
                 <ul>
                     <c:forEach var="exam_topic" items="${exam.examTopicList}">
                         <c:if test="${not empty exam_topic}">
-                            <li>${exam_topic.topic.id}</li>
+                            <li>${exam_topic.topic.id}: ${exam_topic.topic.name}</li>
                         </c:if>
                     </c:forEach>
                 </ul>
