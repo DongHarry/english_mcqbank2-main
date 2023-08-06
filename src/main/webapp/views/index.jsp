@@ -327,7 +327,7 @@
 
     <!--start app video section-->
     <div id="video-app" class="video-app-1"
-         style="background: url('img/video-play.jpg')no-repeat center center / cover">
+         style="background: url('../resource/img/video-play.jpg')no-repeat center center / cover">
       <div class="overlay-1">
         <div class="container">
           <div class="row">
