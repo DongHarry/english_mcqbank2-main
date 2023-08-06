@@ -77,14 +77,14 @@
     </div><!-- col -->
     <div class="col-md-6 bg-br-primary d-flex align-items-center justify-content-center">
         <div class="wd-250 wd-xl-450 mg-y-30">
-            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> english <span class="tx-info">hus</span> <span class="tx-normal">]</span></div>
+            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> apelish <span class="tx-info">hus</span> <span class="tx-normal">]</span></div>
             <div class="tx-white mg-b-60">Đào tạo uy tín - chất lượng</div>
 
-            <h5 class="tx-white">Tại sao chọn English Hus?</h5>
-            <p class="tx-white-6">English Hus là một trung tâm đào tạo tiếng Anh uy tín, nơi học viên được trải nghiệm môi
+            <h5 class="tx-white">Tại sao chọn Apelish?</h5>
+            <p class="tx-white-6">Apelish là một trung tâm đào tạo tiếng Anh uy tín, nơi học viên được trải nghiệm môi
                 trường học tập thân thiện và chất lượng. Với đội ngũ giáo viên nhiệt tình, phương pháp giảng dạy hiện đại,
-                English Hus cam kết mang đến cho học viên sự tiến bộ vượt bậc trong việc sử dụng tiếng Anh. Không chỉ tập
-                trung vào ngữ pháp và từ vựng, English Hus còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
+                Apelish cam kết mang đến cho học viên sự tiến bộ vượt bậc trong việc sử dụng tiếng Anh. Không chỉ tập
+                trung vào ngữ pháp và từ vựng, Apelish còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
             <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ hội
                 mới trong tương lai.</p>
             <a href="/home" class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>

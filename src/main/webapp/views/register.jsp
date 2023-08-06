@@ -2,65 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Add User</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>REGISTER</h1>--%>
 
-<%--<form:form action="${pageContext.request.contextPath}/register" method="post">--%>
-<%--    <div>--%>
-<%--        <label for="username">Username:</label>--%>
-<%--        <input type="text" id="username" name="username" value="${user.username}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="fullName">Full Name:</label>--%>
-<%--        <input type="text" id="fullName" name="fullName" value="${user.fullName}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="address">Address:</label>--%>
-<%--        <input type="text" id="address" name="address" required value="${user.address}">  <br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="phone">Phone:</label>--%>
-<%--        <input type="text" id="phone" name="phone" required value="${user.phone}"><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="email">Email:</label>--%>
-<%--        <input type="email" id="email" name="email" required value="${user.email}"><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="password">Password:</label>--%>
-<%--        <input type="password" id="password" name="password" required value="${user.password}"><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="confirmPassword">Confirm Password:</label>--%>
-<%--        <input type="password" id="confirmPassword" name="confirmPassword" required value="${confirmPassword}">--%>
-<%--    </div>--%>
-
-<%--    <br>--%>
-<%--    <div>--%>
-<%--        <button type="submit"> REGISTER </button>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <c:if test="${not empty successMessage}">--%>
-<%--            <div class="error"> <strong>${successMessage}</strong> </div>--%>
-<%--        </c:if>--%>
-<%--        <c:if test="${not empty errorMessage}">--%>
-<%--            <div class="error"> <strong>${errorMessage}</strong> </div>--%>
-<%--        </c:if>--%>
-<%--    </div>--%>
-
-<%--</form:form>--%>
-<%--<hr>--%>
-<%--<a href="/home">Back</a> or <a href="/login-page">Login</a>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -143,14 +85,14 @@
     </div><!-- col -->
     <div class="col-md-6 bg-br-primary d-flex align-items-center justify-content-center">
         <div class="wd-250 wd-xl-450 mg-y-30">
-            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> english <span class="tx-info">hus</span> <span class="tx-normal">]</span></div>
-            <div class="tx-white-7 mg-b-60">The Admin Template For Perfectionist</div>
+            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> apelish <span class="tx-info">hus</span> <span class="tx-normal">]</span></div>
+            <div class="tx-white-7 mg-b-60">Đào tạo uy tín - chất lượng</div>
 
-            <h5 class="tx-white">Tại sao chọn English Hus?</h5>
-            <p class="tx-white-6">English Hus là một trung tâm đào tạo tiếng Anh uy tín, nơi học viên được trải nghiệm môi
+            <h5 class="tx-white">Tại sao chọn Apelish?</h5>
+            <p class="tx-white-6">Apelish là một trung tâm đào tạo tiếng Anh uy tín, nơi học viên được trải nghiệm môi
                 trường học tập thân thiện và chất lượng. Với đội ngũ giáo viên nhiệt tình, phương pháp giảng dạy hiện đại,
-                English Hus cam kết mang đến cho học viên sự tiến bộ vượt bậc trong việc sử dụng tiếng Anh. Không chỉ tập
-                trung vào ngữ pháp và từ vựng, English Hus còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
+                Apelish cam kết mang đến cho học viên sự tiến bộ vượt bậc trong việc sử dụng tiếng Anh. Không chỉ tập
+                trung vào ngữ pháp và từ vựng, Apelish còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
             <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ hội
                 mới trong tương lai.</p>
             <a href="/home" class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
