@@ -34,7 +34,7 @@
 
             <form:form action="${pageContext.request.contextPath}/login-processing" method="post" class="login-form" id="loginForm">
 
-                <div class="form-group">
+                <div class="">
                     <div class="w-100">
                         <c:if test="${param.error != null}">
                             <div class="alert alert-danger col-xs-offset-1 col-xs-10">
