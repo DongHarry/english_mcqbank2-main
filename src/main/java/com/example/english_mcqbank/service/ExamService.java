@@ -19,8 +19,9 @@ public class ExamService {
     @Autowired
     private ExamRepository examRepository;
 
-    public List<Exam> getAllExams() {
-        return examRepository.findAll();
+    public List<Exam> getAllExams(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return examRepository.findAll(pageable).getContent();
     }
 
     public void saveExam(Exam exam) {

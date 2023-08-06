@@ -14,7 +14,10 @@
     <title>Questions</title>
 </head>
 <body>
-<h1>Questions</h1>
+<h1>Bài thi</h1>
+<div id="timer">Thời gian còn lại: </div>
+<div id="question-count">Số câu hỏi: ${questions.size()}</div>
+<hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
 <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" onsubmit="return validateQuiz()">
     <c:forEach var="question" items="${questions}">
@@ -87,5 +90,43 @@
 <%--    </c:forEach>--%>
 <%--    <input type="submit" value="Submit">--%>
 <%--</form:form>--%>
+
+
+
+  <script>
+    $(document).ready(function() {
+      // Số câu hỏi trong bài thi (lấy từ biểu thức EL)
+      var questionCount = <c:out value="${questions.size()}" />;
+      var timePerQuestion = 60; // Thời gian cho mỗi câu hỏi (tính theo giây)
+      var totalTime = questionCount * timePerQuestion; // Tổng thời gian cho bài thi (tính theo giây)
+      var timerInterval; // Biến để lưu đối tượng setInterval
+
+      // Hàm để cập nhật thời gian còn lại và kiểm tra nếu đã hết thời gian
+      function updateTimer() {
+        if (totalTime > 0) {
+          var minutes = Math.floor(totalTime / 60);
+          var seconds = totalTime % 60;
+          $("#timer").text("Thời gian còn lại: " + minutes + " phút " + seconds + " giây");
+          totalTime--;
+        } else {
+          clearInterval(timerInterval);
+          $("#timer").text("Hết thời gian!");
+          submitExam();
+        }
+      }
+
+      // Hàm để nộp bài tự động
+      function submitExam() {
+        alert("Đã hết thời gian, bài thi đã được nộp tự động!");
+      }
+
+      // Xử lý sự kiện khi nút "Bắt đầu bài thi" được nhấn
+      $("#start-btn").click(function() {
+        // Bắt đầu đếm ngược thời gian với mỗi giây cập nhật một lần
+        timerInterval = setInterval(updateTimer, 1000);
+        document.getElementById("start-btn").style.display = "none";
+      });
+    });
+  </script>
 </body>
 </html>

@@ -158,15 +158,31 @@ public class UserController {
     }
 
     @RequestMapping("/user/exams")
-    public ModelAndView userExams() {
-        List<Exam> exams = examService.getAllExams();
+    public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "20") int size) {
+        List<Exam> exams = examService.getAllExams(page, size);
         ModelAndView userExamsModelAndView = new ModelAndView("exams");
         userExamsModelAndView.addObject("exams", exams);
+        userExamsModelAndView.addObject("currentPage", page);
+        assert exams != null;
+        boolean hasNext = exams.size() >= size;
+        userExamsModelAndView.addObject("hasNext", hasNext);
         return userExamsModelAndView; // Trả về user.jsp
     }
 
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id) {
+        ModelAndView userExamModelAndView = new ModelAndView("exam");
+        Exam exam = examService.getExamById(id);
+        if (exam == null) {
+            return new ModelAndView("redirect:/user/exams");
+        }
+        userExamModelAndView.addObject("exam", exam);
+        return userExamModelAndView; // Trả về user.jsp
+    }
+
+    @RequestMapping("/user/exams/{id}/do")
+    public ModelAndView doExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("questionList");
         Exam exam = examService.getExamById(id);
         if (exam == null) {
