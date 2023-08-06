@@ -85,6 +85,7 @@
                 <li><a class="page-scroll" href="#faqs">Faq</a></li>
                 <li><a class="page-scroll" href="#news">News</a></li>
                 <li><a class="page-scroll" href="#contact">Contact</a></li>
+                <li><a class="page-scroll" href="/login-page">Login</a></li>
               </ul>
             </div>
 
