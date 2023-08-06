@@ -213,7 +213,8 @@ public class UserController {
                                       @RequestParam("examId") int examId) {
         // Process the submitted form data
         Integer score = 0;
-        int totalQuestions = 0;
+        Exam exam = examService.getExamById(examId);
+        int totalQuestions = exam.getQuestionNo();
         // sort question by id
 
         for (String paramName : params.keySet()) {
@@ -227,7 +228,6 @@ public class UserController {
                     score++;
                 }
                 //System.out.println("Question " + questionId + ": Selected Option: " + selectedOption);
-                totalQuestions++;
             }
 
         }
@@ -244,7 +244,7 @@ public class UserController {
         result.setScore(score);
         result.setTime(new Date());
         //result.setExamId(examId);
-        result.setExam(examService.getExamById(examId));
+        result.setExam(exam);
         user.addResult(result);
         userService.saveUser(user);
         return modelAndView;
