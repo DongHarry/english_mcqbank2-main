@@ -64,7 +64,7 @@ public class WebController {
 
 
     @RequestMapping(value = "/sendContactMail", method = RequestMethod.POST)
-    public String sendContactMail(@RequestParam("name") String name,
+    public ModelAndView sendContactMail(@RequestParam("name") String name,
                                         @RequestParam("email") String email,
                                         @RequestParam("phone") String phone,
                                         @RequestParam("company") String company,
@@ -82,7 +82,7 @@ public class WebController {
 
         emailSender.sendEmail("luongdinhduc0000@gmail.com", email, subject, content);
         //return new ModelAndView("redirect:/#");
-        return "home";
+        return null;
     }
 
 
