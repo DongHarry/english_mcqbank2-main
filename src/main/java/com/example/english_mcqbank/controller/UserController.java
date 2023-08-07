@@ -91,7 +91,8 @@ public class UserController {
         boolean check = passwordEncoder.matches(oldPassword, user.getPassword());
         if (!check) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Incorrect password!");
-            ModelAndView view = new ModelAndView("change-password");
+            ModelAndView view = new ModelAndView("redirect:/user/profile/change-password");
+            redirectAttributes.addFlashAttribute("errorMessage", "Incorrect password!");
             view.addObject("errorMessage", "Incorrect password!");
             //return new ModelAndView("redirect:/user/profile/change-password");
             return view;
@@ -102,6 +103,7 @@ public class UserController {
             userService.saveUser(user);
             //redirectAttributes.addFlashAttribute("successMessage", "Update Password successfully!");
             ModelAndView view = new ModelAndView("redirect:/user/profile");
+            redirectAttributes.addFlashAttribute("successMessage", "Update Password successfully!");
             view.addObject("successMessage", "Update Password successfully!");
             return view;
         }
@@ -109,7 +111,8 @@ public class UserController {
 //        redirectAttributes.addFlashAttribute("errorMessage", "Password and Confirm Password do not match!");
 //
 //        return new ModelAndView("redirect:/user/profile/change-password");
-        ModelAndView view = new ModelAndView("change-password");
+        ModelAndView view = new ModelAndView("redirect:/user/profile/change-password");
+        redirectAttributes.addFlashAttribute("errorMessage", "Password and Confirm Password do not match!");
         view.addObject("errorMessage", "Password and Confirm Password do not match!");
         return view;
     }
@@ -118,12 +121,13 @@ public class UserController {
     public ModelAndView editUserProfile(Authentication authentication,
                                         @ModelAttribute("currentUser") UserEntity user,
                                         RedirectAttributes redirectAttributes) {
-        ModelAndView editUserModelAndView = new ModelAndView("editUser");
+        ModelAndView editUserModelAndView = new ModelAndView("redirect:/user/profile/edit");
         String username = authentication.getName();
         UserEntity userEntity = userService.getUserByUsername(username);
         //UserEntity userEntity = loggedInUserService.getLoggedInUser();
         if (userEntity == null) {
-            ModelAndView view = new ModelAndView("profile");
+            ModelAndView view = new ModelAndView("redirect:/user/profile/edit");
+            redirectAttributes.addFlashAttribute("errorMessage", "User not found!");
             view.addObject("errorMessage", "User not found!");
             return view;
         }
@@ -132,6 +136,7 @@ public class UserController {
         if (!user.getEmail().equals(userEntity.getEmail()) && userService.isEmailPresent(user.getEmail())) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Email is already in use!");
             editUserModelAndView.addObject("errorMessage", "Email is already in use!");
+            redirectAttributes.addFlashAttribute("errorMessage", "Email is already in use!");
             return editUserModelAndView;
         } else {
             userEntity.setEmail(user.getEmail());
@@ -139,10 +144,12 @@ public class UserController {
         if (!user.getPhone().equals(userEntity.getPhone()) && userService.isPhonePresent(user.getPhone())) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Phone is already in use!");
             editUserModelAndView.addObject("errorMessage", "Phone is already in use!");
+            redirectAttributes.addFlashAttribute("errorMessage", "Phone is already in use!");
             return editUserModelAndView;
         } else {
             userEntity.setPhone(user.getPhone());
         }
+
         userEntity.setAddress(user.getAddress());
 
         try {
@@ -150,6 +157,7 @@ public class UserController {
             //redirectAttributes.addFlashAttribute("successMessage", "Update profile successfully!");
             ModelAndView view = new ModelAndView("redirect:/user/profile");
             //redirectAttributes.addFlashAttribute("user", userEntity);
+            redirectAttributes.addFlashAttribute("successMessage", "Update profile successfully!");
             view.addObject("successMessage", "Update profile successfully!");
             return view;
             //return new ModelAndView("redirect:/user/profile");
