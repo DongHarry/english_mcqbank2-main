@@ -12,7 +12,7 @@
     <tr>
         <th>Result ID</th>
         <th>User Name</th>
-        <th>Exam Id</th>
+        <th>Exam name</th>
         <th>Score</th>
         <th>Date</th>
     </tr>
@@ -20,7 +20,7 @@
         <tr>
             <td>${result.id}</td>
             <td>${result.user.username}</td>
-            <td>${result.exam.id}</td>
+            <td>${result.exam.name}</td>
             <td>${result.score}/${result.exam.questionNo}</td>
             <td>${result.time}</td>
         </tr>
