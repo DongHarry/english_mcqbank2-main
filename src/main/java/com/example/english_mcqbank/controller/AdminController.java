@@ -35,6 +35,9 @@ public class AdminController {
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         view.addObject("user", user);
+        view.addObject("successMessage", null);
+        view.addObject("errorMessage", null);
+        view.addObject("type", 1);
         return view; // Trả về admin.jsp
     }
 
@@ -43,6 +46,7 @@ public class AdminController {
         ModelAndView view = new ModelAndView("profile");
         UserEntity user = userService.getUserByUserid(id);
         view.addObject("user", user);
+        view.addObject("type", 2);
         return view; // Trả về admin.jsp
     }
 

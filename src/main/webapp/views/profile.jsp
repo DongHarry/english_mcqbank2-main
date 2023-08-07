@@ -23,12 +23,21 @@
     <li>Created Date: ${user.createdDate}</li>
     <li>
         User logs:
-            <sec:authorize access="hasRole('USER')"><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a> </sec:authorize>
-            <sec:authorize access="hasRole('ADMIN')"><a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a> </sec:authorize>
+            <c:if test="${type == 1}">
+                <a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a>
+            </c:if>
+
+            <c:if test="${type == 2}">
+                <sec:authorize access="hasRole('ADMIN')"><a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a> </sec:authorize>
+            </c:if>
 
     </li>
 </ul>
 <hr>
+
+<sec:authorize access="hasRole('ADMIN')">
+    <a href="${pageContext.request.contextPath}/admin/users">Back</a>
+</sec:authorize>
 
 <sec:authorize access="hasRole('USER')">
     <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>

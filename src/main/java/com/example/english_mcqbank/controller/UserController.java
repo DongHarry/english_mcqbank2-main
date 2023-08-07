@@ -34,7 +34,7 @@ public class UserController {
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
-
+        userProfileModelAndView.addObject("type", 1);
         return userProfileModelAndView; // Trả về user.jsp
     }
 
