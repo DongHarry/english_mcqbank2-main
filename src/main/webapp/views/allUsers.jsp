@@ -109,7 +109,7 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="#" class="sub-link">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/questions" class="sub-link">Tất cả câu hỏi</a></li>
                 <li class="sub-item"><a href="#" class="sub-link">Thêm câu hỏi</a></li>
 
             </ul>
@@ -129,6 +129,12 @@
             </ul>
         </li><!-- br-menu-item -->
 
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý topic</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">

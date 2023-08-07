@@ -93,19 +93,35 @@
             </ul>
         </li><!-- br-menu-item -->
 
+        <c:if test="${type == 1}">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                    <span class="menu-item-label">Quản lý tài khoản</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
+                        Tài khoản người dùng</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
+                        Thêm tài khoản</a></li>
+                </ul>
+            </li><!-- br-menu-item -->
+        </c:if>
+            <c:if test="${type == 2}">
+                <li class="br-menu-item">
+                    <a href="#" class="br-menu-link with-sub active show-sub">
+                        <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                        <span class="menu-item-label">Quản lý tài khoản</span>
+                    </a><!-- br-menu-link -->
+                    <ul class="br-menu-sub">
+                        <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link active">
+                            Tài khoản người dùng</a></li>
+                        <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
+                            Thêm tài khoản</a></li>
+                    </ul>
+                </li><!-- br-menu-item -->
+            </c:if>
 
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý tài khoản</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
-                    Tài khoản người dùng</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                    Thêm tài khoản</a></li>
-            </ul>
-        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
@@ -113,13 +129,24 @@
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
+            <c:if test="${type == 1}">
+                <li class="br-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link active show-sub">
+                        <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                        <span class="menu-item-label">Tài khoản admin</span>
+                    </a><!-- br-menu-link -->
+                </li><!-- br-menu-item -->
+            </c:if>
+        <c:if test="${type == 2}">
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Tài khoản admin</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+        </c:if>
 
-        <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link active show-sub">
-                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
-                <span class="menu-item-label">Tài khoản admin</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+
         </sec:authorize>
         <sec:authorize access="hasRole('USER')">
         <li class="br-menu-item">
