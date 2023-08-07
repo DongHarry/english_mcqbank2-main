@@ -67,6 +67,8 @@
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
+        <sec:authorize access="hasRole('ADMIN')">
+
 
         <li class="br-menu-item">
             <a href="#" class="br-menu-link with-sub">
@@ -85,7 +87,7 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="#" class="sub-link">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
                 <li class="sub-item"><a href="#" class="sub-link">Thêm câu hỏi</a></li>
 
             </ul>
@@ -105,6 +107,12 @@
             </ul>
         </li><!-- br-menu-item -->
 
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý topic</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link active show-sub">
@@ -112,6 +120,27 @@
                 <span class="menu-item-label">Tài khoản admin</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
+        </sec:authorize>
+        <sec:authorize access="hasRole('USER')">
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/user/exams" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Bài thi của tôi</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Kết quả</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Thông tin tài khoản</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+        </sec:authorize>
     </ul><!-- br-sideleft-menu -->
 
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
@@ -136,15 +165,15 @@
 
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            <span class="logged-name hidden-md-down">${user.fullName}</span>
+            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
             <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
                 <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
-                <h6 class="logged-fullname">${user.fullName}</h6>
-                <p>${user.email}</p>
+                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
+                <p>${loggedInUser.email}</p>
             </div>
             <hr>
             <div class="tx-center">
@@ -168,22 +197,22 @@
 <div class="br-mainpanel">
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="#">Admin</a>
-            <span class="breadcrumb-item active">Tài khoản admin</span>
+            <a class="breadcrumb-item" href="#">${user.role}</a>
+            <span class="breadcrumb-item active">Tài khoản ${user.role}</span>
         </nav>
     </div><!-- br-pageheader -->
     <div class="br-pagetitle">
         <i class="icon ion-ios-person-outline"></i>
         <div>
-            <h4>Tài khoản admin</h4>
+            <h4>Tài khoản ${user.role}</h4>
         </div>
     </div><!-- d-flex -->
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-            <h6 class="br-section-label">Tài khoản admin </h6>
+            <h6 class="br-section-label">Tài khoản ${user.role} </h6>
 
-            <p>Thông tin tài khoản admin</p>
+            <p>Thông tin tài khoản ${user.role}</p>
             <div class="editable tx-16 bd pd-30 tx-inverse">
                 <p><b>Tên tài khoản:</b> ${user.username}</p>
                 <p><b>Tên đầy đủ:</b> ${user.fullName}</p>

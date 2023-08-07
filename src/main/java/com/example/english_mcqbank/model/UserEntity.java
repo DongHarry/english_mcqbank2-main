@@ -80,6 +80,13 @@ public class UserEntity {
         return new String[]{"ROLE_USER"};
     }
 
+    public String getRole() {
+        if (this.groupId == 0) {
+            return "Admin";
+        }
+        return "User";
+    }
+
     public boolean isEnabled() {
         return this.status == 1;
     }

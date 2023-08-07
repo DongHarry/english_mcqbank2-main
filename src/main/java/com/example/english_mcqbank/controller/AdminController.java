@@ -29,7 +29,7 @@ public class AdminController {
 
     @RequestMapping("/admin/profile")
     public ModelAndView adminProfile(Authentication authentication) {
-        ModelAndView view = new ModelAndView("adminprofile");
+        ModelAndView view = new ModelAndView("profile");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         view.addObject("user", user);
@@ -40,10 +40,11 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/users/{id}")
-    public ModelAndView viewUser(@PathVariable Integer id) {
+    public ModelAndView viewUser(@PathVariable Integer id, Authentication authentication) {
         ModelAndView view = new ModelAndView("profile");
         UserEntity user = userService.getUserByUserid(id);
         view.addObject("user", user);
+        view.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
         view.addObject("type", 2);
         return view; // Trả về admin.jsp
     }
