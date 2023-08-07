@@ -47,11 +47,13 @@ public class WebController {
 
 
     @RequestMapping("/admin")
-    public ModelAndView admin() {
+    public ModelAndView admin(Authentication authentication) {
         ModelAndView adminModelAndView = new ModelAndView("admin");
         adminModelAndView.addObject("admin", "admin");
-        List<UserEntity> users = userService.getAllUsers();
-        adminModelAndView.addObject("users", users);
+        //List<UserEntity> users = userService.getAllUsers();
+        //adminModelAndView.addObject("users", users);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        adminModelAndView.addObject("user", user);
         adminModelAndView.addObject("nullValue", null);
         return adminModelAndView; // Trả về admin.jsp
     }
