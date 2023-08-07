@@ -19,7 +19,7 @@
         <tr>
             <th>Question id</th>
             <th>Question content</th>
-            <th>Topic id</th>
+            <th>Topic</th>
             <th>Correct answer</th>
             <th>Answer</th>
             <th>Level</th>
@@ -30,7 +30,7 @@
             <tr>
                 <td>${question.id}</td>
                 <td>${question.content}</td>
-                <td>${question.topicId}</td>
+                <td>${question.topic.name}</td>
                 <td>${question.correctAnswer}</td>
                 <td>${question.answer}</td>
                 <td>${question.level}</td>

@@ -43,11 +43,12 @@ public class Question {
     @Column(name = "qu_type")
     private Integer type;
 
-    @Column(name = "tp_id")
-    private Integer topicId;
+//    @Column(name = "tp_id")
+//    private Integer topicId;
 
-//    @JoinColumn(name = "tp_id")
-//    private Topic topic;
+    @JoinColumn(name = "tp_id")
+    @ManyToOne
+    private Topic topic;
 
     @Column(name = "DIFFICULT_LEVEL")
     private Integer level;

@@ -212,6 +212,7 @@ public class UserController {
         for (Question question : questions) {
             questionMap.put(question.getId(), question);
         }
+        Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
         userExamModelAndView.addObject("examId", exam.getId());
         return userExamModelAndView; // Trả về user.jsp
