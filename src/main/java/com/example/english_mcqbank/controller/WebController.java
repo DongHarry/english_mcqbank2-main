@@ -54,7 +54,6 @@ public class WebController {
         //adminModelAndView.addObject("users", users);
         UserEntity user = userService.getUserByUsername(authentication.getName());
         adminModelAndView.addObject("user", user);
-        adminModelAndView.addObject("nullValue", null);
         return adminModelAndView; // Trả về admin.jsp
     }
 
@@ -66,6 +65,8 @@ public class WebController {
         userModelAndView.addObject("user", userService.getUserByUsername(authentication.getName()));
         return userModelAndView; // Trả về user.jsp
     }
+
+
 
 
 

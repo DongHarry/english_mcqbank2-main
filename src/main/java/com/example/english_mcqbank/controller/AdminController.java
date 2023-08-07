@@ -29,7 +29,7 @@ public class AdminController {
 
     @RequestMapping("/admin/profile")
     public ModelAndView adminProfile(Authentication authentication) {
-        ModelAndView view = new ModelAndView("profile");
+        ModelAndView view = new ModelAndView("adminprofile");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         view.addObject("user", user);
