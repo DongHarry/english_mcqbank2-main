@@ -25,13 +25,13 @@
         <div class="question-container">
             <h3>${question.content}</h3>
             <div>
-                <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}" class="radio-option" required>
+                <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}" class="radio-option">
                 <label for="question_${question.id}_option1" class="label-option">${question.option1}</label><br>
-                <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}" class="radio-option" required>
+                <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}" class="radio-option">
                 <label for="question_${question.id}_option2" class="label-option">${question.option2}</label><br>
-                <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}" class="radio-option" required>
+                <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}" class="radio-option">
                 <label for="question_${question.id}_option3" class="label-option">${question.option3}</label><br>
-                <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}" class="radio-option" required>
+                <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}" class="radio-option">
                 <label for="question_${question.id}_option4" class="label-option">${question.option4}</label><br>
             </div>
             <br><br>
