@@ -63,7 +63,7 @@ public class WebController {
     @RequestMapping("/user")
     public ModelAndView user(Authentication authentication) {
         ModelAndView userModelAndView = new ModelAndView("user");
-        userModelAndView.addObject("username", authentication.getName());
+        userModelAndView.addObject("user", userService.getUserByUsername(authentication.getName()));
         return userModelAndView; // Trả về user.jsp
     }
 
