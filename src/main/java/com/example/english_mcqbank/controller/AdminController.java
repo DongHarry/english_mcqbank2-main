@@ -33,6 +33,7 @@ public class AdminController {
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         view.addObject("user", user);
+        view.addObject("loggedInUser", user);
         view.addObject("successMessage", null);
         view.addObject("errorMessage", null);
         view.addObject("type", 1);
@@ -65,9 +66,15 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String users(Model model) {
-        List<UserEntity> users = userService.getAllUsers();
+    public String users(Model model,
+                        @RequestParam(defaultValue = "0") int page,
+                        @RequestParam(defaultValue = "10") int size) {
+        List<UserEntity> users = userService.getAllUsers(page, size);
         model.addAttribute("users", users);
+        model.addAttribute("currentPage", page);
+        assert users != null;
+        boolean hasNext = users.size() >= size;
+        model.addAttribute("hasNext", hasNext);
         return "allUsers"; // Trả về admin.jsp
     }
 
@@ -86,12 +93,16 @@ public class AdminController {
                 || userService.isEmailPresent(user.getEmail())
                 || userService.isPhonePresent(user.getPhone())) {
             redirectAttributes.addFlashAttribute("message", "User already exists");
-            return new ModelAndView("redirect:/admin");
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/users/new");
+            //modelAndView.addObject("message", "User already exists");
+            return modelAndView;
         }
 
         if (!user.getPassword().equals(confirmPassword)) {
-            redirectAttributes.addFlashAttribute("message", "Password and confirm password do not match");
-            return new ModelAndView("redirect:/admin");
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/users/new");
+            redirectAttributes.addFlashAttribute("message", "Password does not match");
+            //modelAndView.addObject("message", "Password does not match");
+            return modelAndView;
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -115,34 +126,40 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("message", "Error adding user");
         }
 
-        return new ModelAndView("redirect:/admin");
+        return new ModelAndView("redirect:/admin/users");
     }
 
 
     @RequestMapping(value = "/admin/delete")
     public ModelAndView deleteUser(@RequestParam("username") String username, RedirectAttributes redirectAttributes) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/users");
         try {
             UserEntity user = userService.findByUsername(username);
             if (user == null) {
-                redirectAttributes.addFlashAttribute("message", "User does not exist");
-                return new ModelAndView("redirect:/admin");
+//                redirectAttributes.addFlashAttribute("message", "User does not exist");
+//                return new ModelAndView("allUsers");
+                modelAndView.addObject("message", "User does not exist");
+                return modelAndView;
             }
             if (user.getGroupId() == 0) {
-                redirectAttributes.addFlashAttribute("message", "Cannot delete admin");
-                return new ModelAndView("redirect:/admin");
+//                redirectAttributes.addFlashAttribute("message", "Cannot delete admin");
+//                return new ModelAndView("allUsers");
+                modelAndView.addObject("message", "Cannot delete admin");
+                return modelAndView;
             }
             List<Log> logs = logService.getLogsByUser(user);
             if (logs != null) {
                 logService.deleteAllLog(logs);
             }
             userService.deleteUser(user);
-            redirectAttributes.addFlashAttribute("message", "User deleted successfully");
+            modelAndView.addObject("message", "User deleted successfully");
+            //redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Error deleting user");
         }
 
-        return new ModelAndView("redirect:/admin");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin/allLogs")
@@ -299,7 +316,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/deleteExam", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/Exam", method = RequestMethod.GET)
     public ModelAndView deleteExam(@RequestParam("examId") int id, RedirectAttributes redirectAttributes) {
         try {
             Exam exam = examService.getExamById(id);

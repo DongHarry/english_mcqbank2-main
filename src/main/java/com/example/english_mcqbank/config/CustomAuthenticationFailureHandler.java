@@ -61,7 +61,10 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 //        System.out.println("request.getServletPath(): " + request.getServletPath());
 //        String url = request.getRequestURL().toString().substring(0, request.getRequestURL().toString().length() - request.getRequestURI().length()) + request.getContextPath();
         //System.out.println("url: " + url);
+        //request.setAttribute("errorMessage3", "Invalid username or password");
 
+        // Chuyển hướng (forward) về trang đăng nhập
+        //request.getRequestDispatcher("/login-page").forward(request, response);
         request.getRequestDispatcher("/login-page?error").forward(request, response);
     }
 

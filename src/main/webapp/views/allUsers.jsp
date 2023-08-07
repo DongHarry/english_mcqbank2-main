@@ -215,6 +215,12 @@
             <h6 class="br-section-label">Danh sách tài khoản</h6>
             <p class="br-section-text">Danh sách tài khoản người dùng và người quản lý</p>
             <div class="table-wrapper">
+                <c:if test="${not empty message}">
+                    <div class="alert alert-success" id="message1">${message}</div>
+                </c:if>
+                <c:if test="${param.message}">
+                    <div class="alert alert-success" id="message2">${param.message}</div>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap">
                     <thead>
                     <tr>
@@ -244,10 +250,13 @@
                                         <a href="${pageContext.request.contextPath}/admin/users/${user.id}">View</a>
                                     </li>
                                     <li style="list-style: none; margin-left: -40px;">
-                                        <a onclick="if (!confirm('Are you sure to delete this user?')) return false"
-                                           href="${pageContext.request.contextPath}/admin/delete?username=${user.username}">
-                                            Delete
-                                        </a>
+                                        <c:if test="${user.groupId == 1}">
+                                            <a onclick="if (!confirm('Are you sure to delete this user?')) return false"
+                                               href="${pageContext.request.contextPath}/admin/delete?username=${user.username}">
+                                                Delete
+                                            </a>
+                                        </c:if>
+
                                     </li>
                                 </ul>
                             </td>
@@ -256,7 +265,13 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
+                <c:if test="${currentPage > 0}">
+                    <a href="?page=${currentPage - 1}">Prev</a>
+                </c:if>
+                <c:if test="${hasNext}">
+                    <a href="?page=${currentPage + 1}">Next</a>
+                </c:if>
+                <br>
                 <a href="${pageContext.request.contextPath}/admin/users/new">Create new user</a>
 
             </div><!-- table-wrapper -->
@@ -298,6 +313,14 @@
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
+<script>
+    $(document).ready(function() {
+        var errorMessage = $("#message2").text().trim();
+        if (errorMessage !== '') {
+            alert(errorMessage);
+        }
+    });
+</script>
 <script>
     $(function(){
         'use strict'

@@ -51,9 +51,15 @@
                             </div>
                         </c:if>
 
-                        <c:if test="${logoutMessage != null}">
+                        <c:if test="${successMessage2 != null}">
                             <div class="alert alert-success col-xs-offset-1 col-xs-10">
-                                ${logoutMessage}
+                                ${successMessage2}
+                            </div>
+                        </c:if>
+
+                        <c:if test="${errorMessage3 != null}">
+                            <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+                                ${errorMessage3}
                             </div>
                         </c:if>
                     </div>

@@ -4,6 +4,8 @@ import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -87,5 +89,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional
     public void deleteUser(UserEntity user) {
         userRepository.delete(user);
+    }
+
+    public List<UserEntity> getAllUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return userRepository.findAll(pageable).getContent();
     }
 }

@@ -214,7 +214,11 @@
     <div class="br-pagebody">
         <div class="br-section-wrapper">
         <h6 class="br-section-label">Thêm tài khoản mới</h6>
-
+            <c:if test="${not empty message}">
+                <div class="alert alert-danger">
+                    <strong>${message}</strong>
+                </div>
+            </c:if>
         <form:form action="/admin/addUser" method="post">
 
             <div class="row">
@@ -311,12 +315,9 @@
 
             <div class="row pd-t-20">
                 <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <select class="form-control select2" data-placeholder="Role">
-
-                        <option name="role" value="admin">ROLE_ADMIN</option>
-                        <option name="role" value="user">ROLE_USER</option>
-
-                    </select>
+                    Role:
+                    <input type="radio" name="role" value="admin"> Admin
+                    <input type="radio" name="role" value="user"> User
                 </div><!-- col-4 -->
             </div>
 

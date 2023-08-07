@@ -62,8 +62,27 @@ public class LoginAndRegisterController {
                                         Model model, RedirectAttributes redirectAttributes) {
         ModelAndView registerModelAndView = new ModelAndView("register");
         //System.out.println(user);
-        if (userService.isUserPresent(user.getUsername()) || userService.isEmailPresent(user.getEmail()) || userService.isPhonePresent(user.getPhone())) {
-            model.addAttribute("errorMessage", "Username or email/phone already exists!");
+        String errorMessage = "";
+        if (userService.isUserPresent(user.getUsername())) {
+            errorMessage += "Username already exists! ";
+        }
+        if (userService.isEmailPresent(user.getEmail())) {
+            if (errorMessage.equals("")) {
+                errorMessage += "Email already exists! ";
+            } else {
+                errorMessage += ", Email already exists! ";
+            }
+        }
+        if (userService.isPhonePresent(user.getPhone())) {
+            if (errorMessage.equals("")) {
+                errorMessage += "Phone already exists! ";
+            } else {
+                errorMessage += ", Phone already exists! ";
+            }
+        }
+
+        if (!errorMessage.equals("")) {
+            model.addAttribute("errorMessage", errorMessage);
             Log log = new Log();
             log.setName("User " + user.getUsername() + " register failed");
             log.setDatetime(new Date());
@@ -71,6 +90,7 @@ public class LoginAndRegisterController {
             logService.saveLog(log);
             return registerModelAndView;
         }
+
         if (user.getPassword().equals(confirmPassword)) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setCreatedDate(new Date());
@@ -93,6 +113,8 @@ public class LoginAndRegisterController {
             return registerModelAndView;
         }
         redirectAttributes.addFlashAttribute("successMessage", "User registered successfully!");
-        return new ModelAndView("redirect:/login-page");
+        ModelAndView modelAndView = new ModelAndView("login-page");
+        modelAndView.addObject("successMessage2", "User registered successfully!");
+        return modelAndView;
     }
 }
