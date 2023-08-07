@@ -11,3 +11,88 @@ QU_ID,QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAI
 11,What gas do plants absorb from the atmosphere for photosynthesis?,Carbon dioxide,Oxygen,Nitrogen,Hydrogen,1,Plants absorb carbon dioxide for photosynthesis.,1,2,3
 12,Who painted the Mona Lisa?,Leonardo da Vinci,Pablo Picasso,Vincent van Gogh,Michelangelo,1,Leonardo da Vinci painted the Mona Lisa.,1,1,2
 13,What is the largest organ in the human body?,Skin,Heart,Liver,Lungs,1,The skin is the largest organ in the human body.,1,1,3
+14,Thailand .......... by some of the worst flooding in decades late last year.,was hit , was hitting , was being hit , hit ,1,giải thích,1,4,1
+15,"In January 2012 Yahoo ........ Scott Thompson, the president of online payments firm Paypal, as its new head.
+",was naming  , named ,name , has named ,2,giải thích,1,4,1
+16,Before ....... Yahoo Mr Thompson served as president of online payments firm PayPal from 2008.,joined ,being joined, joining ,was joined ,3,giải thích,1,5,1
+17,"Yahoo's stock ........ since it passed up a $44bn takeover bid from Microsoft in 2008.
+",was languished ," have languished 
+", languished ," has languished 
+",4,giải thích,1,4,1
+18,"Last year, the Chinese government stopped ........ nationwide home price statistics, and now only reports data on specific cities.",providing,to provide, provide , provides,2,giải thích,1,4,1
+19,"At the same time, the recent drop in oil prices ......... to keep consumer price growth in check.", has also helped ,have also helped , also helps , also help ,3,giải thích,1,4,1
+20,During the first quarter of 2012 the Chinese economy ....... at a pace of 8.1%., grown, grew ,grows ,has grown ,1,giải thích,1,5,1
+21,"For its part, the EU welcomed the G8 communiqué with its dual emphasis on ....... growth and jobs.
+",to boost , boosting , boost ,boosts ,1,giải thích,1,4,1
+22,The worry is that if property prices ......... further then it will hurt growth in the world's second-largest economy., falls , fell , fall ,"have fallen 
+",4,giải thích,1,5,1
+23,"It has been noticeable that since last Wednesday, Number 10 .......... towards more evidence-based policy.",have been moving , have moved , has been moving , moved ,2,giải thích,1,5,1
+24,"Yahoo ........ that Mr Thompson, who took up his post in January, does not have a computer science degree.",already acknowledging , already acknowledged , have already acknowledged ," has already acknowledged 
+",3,giải thích,1,4,1
+25,"Investment firm Third Point discovered that Mr Thompson did not hold a degree in computer science as ..........
+",had been claimed , has been claimed ,been claimed , being claimed ,4,giải thích,1,5,1
+26,"On Monday the Wall Street Journal reported that Mr Thompson, 54, told Yahoo's board late last week he ........... with thyroid cancer. ", had been diagnosed,has been diagnosed , was diagnosed ,is diagnosed ,4,giải thích,1,5,1
+27,"President Obama said leaders ......... good progress on a range of issues.
+", having made ,had made ,have made ,was made ,1,giải thích,1,5,1
+28,"Leaders ........ the summit addressed a number of issues, including energy security, climate change and the situation in Iran, Afghanistan and North Korea.
+", attended , attending , attend ,attends ,2,giải thích,1,4,1
+29,"He will also be able .......... two other new directors, while Yahoo has named Fred Amoroso as the new chairman of its board.
+",appoint ,to appoint , appointing , appoints ,4,giải thích,1,4,1
+30,"Third Point believes that Yahoo shareholders and employees will be best served if the board .......... responsibility quickly for this latest debacle.
+",accepting, accepts , accepted,is accepting ,3,giải thích,1,4,1
+31,"In an earlier communiqué, G8 leaders committed themselves to promoting growth alongside fiscal responsibility and affirmed that they wanted Greece ........... in the eurozone.
+",stayed , to stay , stay , staying ,2,giải thích,1,4,1
+32,"If it falls below that figure, they argue, the country may find it more difficult ........ domestic demand, boost infrastructure investment and accelerate job creation.", maintain ,maintaining , to maintaining , to maintain ,4,giải thích,1,4,1
+33,China has been trying to boost domestic demand in an attempt ......... the fall in global demand for its exports.,to offset , to offset  offset , offsetting , offsets ,1,giải thích,1,4,1
+34,"A lack of exercise is now causing as many ...(1).... as smoking across the world, a study suggests.",deaden ,deaths ,dead ,deadly ,1,giải thích,1,4,1
+35,"The report, published in the Lancet to coincide with the build-up to the Olympics, estimates that about a third of adults are not doing enough ...(2)... activity, causing 5.3m deaths a year.",physical ,physically ,physics ,physicality ,2,giải thích,1,4,1
+36,"That ...(3)... to about one in 10 deaths from diseases such as heart disease, diabetes and breast and colon cancer.",equates ,equalize ,equal ,equalization ,1,giải thích,1,5,1
+37,"Researchers said the problem was now so bad it should be treated as a pandemic. And they said tackling it required a new way of thinking, suggesting the public needed to be warned about the dangers of inactivity rather than just reminded of the benefits of it. The team of 33 researchers drawn from centres across the world also said governments needed to look at ways to make physical activity more convenient,...(4)... and safer.",afford ,affordably ,afforded ,affordable ,4,giải thích,1,5,1
+38,"Pregnant women exposed to ...(5)... solvents at work have a slightly higher chance of having a baby with a heart defect, a study shows.",organs ,organic ,organism ,organization ,2,giải thích,1,4,1
+39,"The risk applied to hairdressers, nail bar workers plus women working in factories that make these chemicals, US researchers found. But experts say the real risk in ...(6)... terms is still very small.",absolutely ,absolution ,absolute ,absolutism ,3,giải thích,1,4,1
+40,"Another study in the same Occupational and Environmental Medicine journal shows a dad's job also has an impact. For men, working as a photographer, a gardener or landscaper or a gas worker, among other occupations, appears to increase the odds of various birth ...(7)... , according to the study of nearly 5,000 fathers.",abnormalities ,abnormal ,abnormally ,abnormacy ,4,giải thích,1,5,1
+41,"Again, the researchers say exposure to chemicals in the workplace may be to blame, but this particular study did not look at this directly. The research in ...(8)... mothers looked at organic solvents which are used for dissolving or dispersing substances and are found in paints, varnishes, adhesives and dyes.",expect ,expectation,expectantly ,expectant ,1,giải thích,1,4,1
+42,"People living on the English coast are more ...(9)... than those living inland to say they are fit and well, an analysis of census data suggests.",likewise ,likable ,likelihood ,likely ,2,giải thích,1,5,1
+43,Lower stress and more opportunities to exercise were suggested as possible ...(11)....,explanatory ,explain ,explanations ,explaining ,3,giải thích,1,4,1
+44,Employees who have not yet registered on the new company website must do so ------,nearly,immediately,precisely,significantly,2,giải thích,1,5,1
+45,Rosewater Medical Center employs healthcare -------- affiliated with Huron University.,professional,profession,professionals,professionally,3,giải thích,1,5,1
+46,"Once you have detected a fatal virus on your computer, common sense -------- that you should have your hard drive reformatted by skilled professionals.",indicates,commands,notices ,distributes,1,giải thích,1,4,1
+47,The webpage for each course must be -------- before the students start their classes on January 7th.,total,absolute,ready,actual,3,giải thích,1,4,1
+48,The decline in sales was -------- due to the lack of innovation in the ideas of the marketing team.,probably,nearly,useful,safely,1,giải thích,1,4,1
+49,Ms. Fenwick not only composed the report -------- produced the visual aids which were so useful during then meeting.,but,however,also,and,1,giải thích,1,5,1
+50,"In a television interview, the Traxton Ltd. CEO said that -------- of the merger with Bell Corporation would be announced soon.",detail,details,detailed,detailing,2,giải thích,1,4,1
+51,All future team meetings will be -------- in room 414 at noon on the first Wednesday of every month.,sustained,held,supported,meet,2,giải thích,1,4,1
+52,Andrew Hartwell is -------- regarded by his employees because of his dedication and experience.,highly,high,highest,higher,1,giải thích,1,4,1
+53,…...Mr. Fowler or Ms. Bloch will have to travel to London for the symposium on textile manufacturing.,Both,None,Each,Neither,3,giải thích,1,5,1
+54,The use of the -------- possible lighting in the laboratory has been beneficial to the research conducted by the botanists employed there.,bright,brightest,brightens,brightness,2,giải thích,1,4,1
+55,Any concerns regarding your natural gas appliances should be directed to the manufacturer-retailer -------- which you purchased the natural gas appliance,on,for,from,in,3,giải thích,1,5,1
+56,"Unless specified --------, contractors will be responsible for obtaining all necessary safety certification and permits applicable to their scope of work.",therefore,consequently,otherwise,yet,3,giải thích,1,4,1
+57,The invoice -------- was received two days ago is inaccurate and a new one must be requested.,that,there ,any ,how,1,giải thích,1,5,1
+58,The research teams of Tyrell Telecommunications Inc. possess -------- knowledge of many of the products put forth by the competition,extend,extends,extensive,extent,3,giải thích,1,4,1
+59,"Even though construction -------- by unexpected electrical storms, the new office building was still finished in a timely manner.",interrupts,to interrupt,was interrupted,be interrupted,3,giải thích,1,5,1
+60,Employees who meet their quotas -------- the last week of the month can expect bonuses.,against,between,by,under,3,giải thích,1,5,1
+61,"Because of the increase in tourism during the winter months, the Ebony Palms Hotel and Resort plans to -------- additional staff for the next three months.",expand,recruit,revise,converse,2,giải thích,1,4,1
+62,The overall satisfaction of participants with the workshop is often based on -------- unimportant details such as the ability to park close to the training facility.,seems,seeming,seemingly,seemed,3,giải thích,1,4,1
+63,"The main artists -------- paintings are being sold at the Garrett Gallery are Elaine Crick, Jason Chambers and Sylvia Webb.",who,whose,their,they,2,giải thích,1,5,1
+64,Everett-Buchanan Industries’ research -------- on the newest drug to combat stomach infections recently received a grant from the National Gastrointestinal Medical Research Foundation.,project,scheme,method,format,1,giải thích,1,4,1
+65,Much of this year’s profits will be used -------- renovation of the textile plant.,along,for,to,while,2,giải thích,1,4,1
+66,Arcadia Homes -------- for its commitment to provide customers with quality furniture at competitive prices.,is known,will know,to know,has known,1,giải thích,1,5,1
+67,"When oil -------- do occur as a result of accidents, a single incident has the potential to affect very large areas of sea and lengths of coast.",spill,spills,spilled,spilling,2,giải thích,1,4,1
+68,The journal is published every four months and -------- available to other member societies under agreement of payment and publication.,official,officials,officially,officialize,3,giải thích,1,5,1
+69,"Because of their size, few of our plumbing fixtures are -------- for indoor use.",suiting,suits,suitable,suitability,3,giải thích,1,5,1
+70,Our marketing teams attend -------- regularly to learn new methods and strategies in their field.,conferences,contributions,agendas,prescriptions,1,giải thích,1,4,1
+71,"After twenty-three years of --------, Jeffrey Bartlett is retiring from his position as chief accounting officer.",service,serving,server,serves,1,giải thích,1,5,1
+72,You can reach us either by phone or e-mail when you need technical -------- or have any questions about the product you purchased.,supported,supporter,supporting,support,4,giải thích,1,5,1
+73,"If you plan to rent equipment, delivery and collection times, plus insurance coverage for any damage should all be dealt with -------- advance.",in,of,at,for,1,giải thích,1,4,1
+74,"We are -------- considering a wide variety of potential applicants, so please fill out your background information accurately.",ordinarily,currently,commonly,lately,2,giải thích,1,4,1
+75,"If you send the -------- information, I’ll drop by your area to look for suitable housing",enthusiastic,serious,pertinent,appreciative,3,giải thích,1,4,1
+76,"As a financial planner, Mr. Martin has a comprehensive -------- of the legal process, as well as financial and tax issues.",knowledge,opinion,ability,collector,1,giải thích,1,5,1
+77,It looks like directors of the corporate finance division -------- the details of managerial compensation contracts,regulate,regulating,regulates,is regulated,1,giải thích,1,5,1
+78,All the forms you submit must be postmarked no later than the specified date -------- they will be considered untimely.,or else,besides,on account of,either,1,giải thích,1,4,1
+79,"Over the past three months, employees have been working -------- with support staff to accomplish their goals, working an average of eight hours per day.",initially,originally,primarily,numerically,3,giải thích,1,4,1
+80,People are aware of the importance of -------- physical activities which have a significant impact on reducing childhood obesity and chronic disease.,promotes,promote,promoting,promoted,3,giải thích,1,5,1
+81,The ideal candidate should not only perform well under tight deadline pressure but also have a -------- familiarity with technical standards,broad,high,proud,round,1,giải thích,1,5,1
+82,"Thank you for offering me a position with the company I wish to work for, and I really appreciate the efforts you’ve made on -------- behalf.",I,my,me,mine,2,giải thích,1,4,1
+83,Make sure you provide the requested -------- when submitting advertising proposals since incomplete ones will not be accepted,information,inform,informing,informed,1,giải thích,1,5,1
+84,"The company announced plans to -------- its corporate name to BATEL, Inc. for marketing and commercial purposes.",use,add,change,differ,3,giải thích,1,4,1
+85,You can -------- rebuild your credit by taking steps to repair your credit rating as soon as possible.,easy,easier,easily,easiness,3,giải thích,1,4,1

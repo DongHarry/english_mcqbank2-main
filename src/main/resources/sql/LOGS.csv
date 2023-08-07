@@ -1,6 +1,5 @@
 LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 1,ADMIN: root logged in,1,2023-08-03 00:00:00,1
-2,USER: user2 logged in,1,2023-07-17 00:00:00,3
 3,NOT FOUND: luongdinhduc0001@gmail.com tried to log in ,0,2023-07-17 00:00:00,
 4,UNAUTHORIZED: user1 tried to log in ,0,2023-07-17 00:00:00,2
 5,UNAUTHORIZED: user1 tried to log in ,0,2023-07-17 00:00:00,2
@@ -31,8 +30,6 @@ LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 37,USER: user1 logged in,1,2023-07-18 00:00:00,2
 38,User user1 register failed,0,2023-07-18 00:00:00,
 39,USER: user1 logged in,1,2023-07-18 00:00:00,2
-40,USER: user2 logged in,1,2023-07-18 00:00:00,3
-41,USER: user2 logged in,1,2023-07-18 00:00:00,3
 42,ADMIN: root logged in,1,2023-07-18 00:00:00,1
 43,USER: user1 logged in,1,2023-07-18 00:00:00,2
 44,USER: user1 logged in,1,2023-07-18 00:00:00,2
@@ -90,7 +87,6 @@ LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 114,USER: user1 logged in,1,2023-07-24 00:00:00,2
 115,USER: user1 logged in,1,2023-07-24 00:00:00,2
 116,USER: user1 logged in,1,2023-07-24 00:00:00,2
-117,USER: user2 logged in,1,2023-07-24 00:00:00,3
 118,USER: user1 logged in,1,2023-07-24 00:00:00,2
 119,USER: user1 logged in,1,2023-07-24 00:00:00,2
 120,USER: user1 logged in,1,2023-07-24 00:00:00,2
@@ -114,7 +110,6 @@ LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 148,USER: user1 logged in,1,2023-07-26 00:00:00,2
 149,USER: user1 logged in,1,2023-07-26 00:00:00,2
 150,USER: user1 logged in,1,2023-07-26 00:00:00,2
-151,UNAUTHORIZED: user2 tried to log in ,0,2023-07-26 00:00:00,3
 152,UNAUTHORIZED: user1 tried to log in ,0,2023-07-26 00:00:00,2
 153,USER: user1 logged in,1,2023-07-26 00:00:00,2
 154,UNAUTHORIZED: user1 tried to log in ,0,2023-07-26 00:00:00,2
@@ -166,19 +161,13 @@ LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 200,USER: user1 logged in,1,2023-07-26 00:00:00,2
 201,ADMIN: root logged in,1,2023-07-26 00:00:00,1
 202,USER: user1 logged in,1,2023-07-26 00:00:00,2
-203,UNAUTHORIZED: user2 tried to log in ,0,2023-07-26 00:00:00,3
-204,USER: user2 logged in,1,2023-07-26 00:00:00,3
 205,USER: user1 logged in,1,2023-07-26 00:00:00,2
-206,USER: user2 logged in,1,2023-07-26 00:00:00,3
 207,USER: user1 logged in,1,2023-07-26 00:00:00,2
 208,USER: user1 logged in,1,2023-07-26 00:00:00,2
-209,USER: user2 logged in,1,2023-07-26 00:00:00,3
-210,USER: user2 logged in,1,2023-07-26 00:00:00,3
 211,USER: user1 logged in,1,2023-07-26 00:00:00,2
 212,USER: user1 logged in,1,2023-07-26 00:00:00,2
 213,USER: user1 logged in,1,2023-07-26 00:00:00,2
 214,USER: user1 logged in,1,2023-07-26 00:00:00,2
-215,USER: user2 logged in,1,2023-07-26 00:00:00,3
 216,UNAUTHORIZED: user1 tried to log in ,0,2023-07-26 00:00:00,2
 217,USER: user1 logged in,1,2023-07-26 00:00:00,2
 218,UNAUTHORIZED: user1 tried to log in ,0,2023-07-26 00:00:00,2
@@ -224,3 +213,136 @@ LG_ID,LG_NAME,LG_STATUS,LG_DATETIME,US_ID
 278,USER: user1 logged in,1,2023-08-05 00:00:00,2
 279,USER: user1 logged in,1,2023-08-05 00:00:00,2
 280,USER: user1 logged in,1,2023-08-05 21:50:05,2
+281,USER: user1 logged in,1,2023-08-06 00:24:29,2
+282,USER: user1 logged in,1,2023-08-06 12:06:29,2
+283,USER: user1 logged in,1,2023-08-06 15:43:29,2
+284,USER: user1 logged in,1,2023-08-06 16:03:04,2
+285,USER: user1 logged in,1,2023-08-06 16:04:11,2
+286,USER: user1 logged in,1,2023-08-06 16:09:50,2
+287,ADMIN: root logged in,1,2023-08-06 17:18:21,1
+288,User loda registered,1,2023-08-06 17:19:16,
+289,ADMIN: user3 logged in,1,2023-08-06 17:19:37,31
+290,USER: user1 logged in,1,2023-08-06 17:20:23,2
+291,UNAUTHORIZED: user3 tried to log in ,0,2023-08-06 17:20:32,31
+292,ADMIN: user3 logged in,1,2023-08-06 17:20:38,31
+298,USER: user1 logged in,1,2023-08-06 17:24:40,2
+299,USER: user1 logged in,1,2023-08-06 17:55:18,2
+300,USER: user1 logged in,1,2023-08-06 21:01:37,2
+301,NOT FOUND:  tried to log in ,0,2023-08-06 21:06:11,
+302,USER: user1 logged in,1,2023-08-06 21:06:23,2
+303,USER: user1 logged in,1,2023-08-07 00:56:55,2
+304,USER: user1 logged in,1,2023-08-07 10:01:11,2
+305,USER: user1 logged in,1,2023-08-07 10:03:52,2
+306,USER: user1 logged in,1,2023-08-07 10:08:24,2
+307,USER: user1 logged in,1,2023-08-07 10:11:41,2
+308,USER: user1 logged in,1,2023-08-07 10:16:03,2
+309,ADMIN: root logged in,1,2023-08-07 15:57:52,1
+310,ADMIN: root logged in,1,2023-08-07 15:59:05,1
+311,ADMIN: root logged in,1,2023-08-07 16:08:02,1
+312,ADMIN: root logged in,1,2023-08-07 16:21:44,1
+313,USER: user1 logged in,1,2023-08-07 16:22:00,2
+314,ADMIN: root logged in,1,2023-08-07 16:24:53,1
+315,USER: user1 logged in,1,2023-08-07 16:25:28,2
+316,USER: user1 logged in,1,2023-08-07 16:28:40,2
+317,ADMIN: root logged in,1,2023-08-07 16:28:46,1
+318,ADMIN: root logged in,1,2023-08-07 16:30:16,1
+319,ADMIN: root logged in,1,2023-08-07 16:33:29,1
+320,ADMIN: root logged in,1,2023-08-07 16:42:37,1
+321,ADMIN: root logged in,1,2023-08-07 16:50:35,1
+322,ADMIN: root logged in,1,2023-08-07 16:52:25,1
+323,USER: user1 logged in,1,2023-08-07 16:55:40,2
+324,ADMIN: root logged in,1,2023-08-07 17:33:46,1
+325,ADMIN: root logged in,1,2023-08-07 17:35:39,1
+326,USER: user1 logged in,1,2023-08-07 17:36:00,2
+327,ADMIN: root logged in,1,2023-08-07 17:46:38,1
+328,USER: user1 logged in,1,2023-08-07 17:46:51,2
+329,ADMIN: root logged in,1,2023-08-07 17:47:37,1
+330,ADMIN: root logged in,1,2023-08-07 17:51:45,1
+331,ADMIN: root logged in,1,2023-08-07 17:57:00,1
+332,ADMIN: root logged in,1,2023-08-07 18:00:30,1
+333,ADMIN: root logged in,1,2023-08-07 18:05:59,1
+334,ADMIN: root logged in,1,2023-08-07 18:09:08,1
+335,ADMIN: root logged in,1,2023-08-07 18:14:42,1
+336,ADMIN: root logged in,1,2023-08-07 18:19:02,1
+337,UNAUTHORIZED: root tried to log in ,0,2023-08-07 18:37:42,1
+338,UNAUTHORIZED: root tried to log in ,0,2023-08-07 18:38:33,1
+339,UNAUTHORIZED: root tried to log in ,0,2023-08-07 18:38:36,1
+340,UNAUTHORIZED: root tried to log in ,0,2023-08-07 18:38:56,1
+341,UNAUTHORIZED: root tried to log in ,0,2023-08-07 18:39:01,1
+342,User root register failed,0,2023-08-07 18:43:51,
+343,User root register failed,0,2023-08-07 18:48:32,
+344,ADMIN: root logged in,1,2023-08-07 18:49:07,1
+345,User root register failed,0,2023-08-07 18:49:21,
+346,User root register failed,0,2023-08-07 18:49:28,
+347,User root register failed,0,2023-08-07 18:49:45,
+348,ADMIN: root logged in,1,2023-08-07 18:56:09,1
+349,ADMIN: root logged in,1,2023-08-07 18:58:01,1
+350,User user2 registered,1,2023-08-07 19:01:01,
+352,ADMIN: root logged in,1,2023-08-07 19:01:30,1
+353,User user2 registered,1,2023-08-07 19:05:18,
+354,USER: user1 logged in,1,2023-08-07 19:05:25,2
+355,ADMIN: root logged in,1,2023-08-07 19:05:29,1
+356,User user5 registered,1,2023-08-07 19:08:32,
+357,User user5 register failed,0,2023-08-07 19:08:35,
+358,User user31 register failed,0,2023-08-07 19:08:57,
+359,User user31 registered,1,2023-08-07 19:09:05,
+360,ADMIN: root logged in,1,2023-08-07 19:09:09,1
+361,ADMIN: root logged in,1,2023-08-07 19:10:08,1
+362,User user2 registered,1,2023-08-07 19:17:56,
+363,ADMIN: root logged in,1,2023-08-07 19:17:58,1
+364,ADMIN: root logged in,1,2023-08-07 19:21:45,1
+365,ADMIN: root logged in,1,2023-08-07 19:23:11,1
+366,ADMIN: root logged in,1,2023-08-07 19:29:41,1
+367,ADMIN: root logged in,1,2023-08-07 19:31:16,1
+368,ADMIN: root logged in,1,2023-08-07 19:31:45,1
+369,User added successfully!,0,2023-08-07 19:32:30,48
+370,User added successfully!,0,2023-08-07 19:33:06,49
+371,ADMIN: root logged in,1,2023-08-07 19:36:46,1
+372,ADMIN: root logged in,1,2023-08-07 19:37:59,1
+373,User added successfully!,0,2023-08-07 19:39:31,50
+374,ADMIN: root logged in,1,2023-08-07 19:40:15,1
+375,User added successfully!,0,2023-08-07 19:40:37,51
+376,ADMIN: root logged in,1,2023-08-07 19:42:51,1
+377,USER: user1 logged in,1,2023-08-07 19:43:15,2
+378,ADMIN: root logged in,1,2023-08-07 19:43:29,1
+379,ADMIN: root logged in,1,2023-08-07 19:44:10,1
+380,ADMIN: root logged in,1,2023-08-07 19:47:09,1
+381,User added successfully!,0,2023-08-07 19:47:43,52
+382,User added successfully!,0,2023-08-07 19:48:06,53
+383,ADMIN: root logged in,1,2023-08-07 19:48:33,1
+384,ADMIN: root logged in,1,2023-08-07 20:54:01,1
+385,ADMIN: root logged in,1,2023-08-07 20:57:46,1
+386,ADMIN: root logged in,1,2023-08-07 20:59:01,1
+387,ADMIN: root logged in,1,2023-08-07 20:59:37,1
+388,ADMIN: root logged in,1,2023-08-07 21:00:14,1
+389,ADMIN: root logged in,1,2023-08-07 21:01:59,1
+390,UNAUTHORIZED: user1 tried to log in ,0,2023-08-07 21:02:33,2
+391,USER: user1 logged in,1,2023-08-07 21:02:38,2
+392,ADMIN: root logged in,1,2023-08-07 21:04:07,1
+393,USER: user1 logged in,1,2023-08-07 21:04:19,2
+394,ADMIN: root logged in,1,2023-08-07 21:10:13,1
+395,ADMIN: root logged in,1,2023-08-07 21:11:00,1
+396,ADMIN: root logged in,1,2023-08-07 21:12:41,1
+397,ADMIN: root logged in,1,2023-08-07 21:12:51,1
+398,ADMIN: root logged in,1,2023-08-07 21:14:24,1
+399,ADMIN: root logged in,1,2023-08-07 21:17:36,1
+400,ADMIN: root logged in,1,2023-08-07 21:18:26,1
+401,ADMIN: root logged in,1,2023-08-07 21:19:16,1
+402,ADMIN: root logged in,1,2023-08-07 21:22:19,1
+403,ADMIN: root logged in,1,2023-08-07 21:23:09,1
+404,ADMIN: root logged in,1,2023-08-07 21:23:38,1
+405,ADMIN: root logged in,1,2023-08-07 21:24:37,1
+406,ADMIN: root logged in,1,2023-08-07 21:26:06,1
+407,ADMIN: root logged in,1,2023-08-07 21:27:08,1
+408,USER: user1 logged in,1,2023-08-07 21:28:47,2
+409,ADMIN: root logged in,1,2023-08-07 21:29:21,1
+410,ADMIN: root logged in,1,2023-08-07 21:32:22,1
+411,ADMIN: root logged in,1,2023-08-07 21:34:45,1
+412,ADMIN: root logged in,1,2023-08-07 21:37:20,1
+413,ADMIN: root logged in,1,2023-08-07 21:38:26,1
+414,ADMIN: root logged in,1,2023-08-08 00:16:26,1
+415,ADMIN: root logged in,1,2023-08-08 00:18:08,1
+416,ADMIN: root logged in,1,2023-08-08 00:21:34,1
+417,USER: user1 logged in,1,2023-08-08 00:22:16,2
+418,ADMIN: root logged in,1,2023-08-08 00:26:39,1
+419,USER: user1 logged in,1,2023-08-08 00:27:07,2
