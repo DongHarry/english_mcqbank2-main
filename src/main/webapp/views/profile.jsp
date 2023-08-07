@@ -22,35 +22,7 @@
 <%--</ul>--%>
 <%--<hr>--%>
 
-        User logs:
-        <c:if test="${type == 1}">
-            <a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a>
-        </c:if>
-        <c:if test="${type == 2}">
-            <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a>
-        </c:if>
 
-<sec:authorize access="hasRole('ADMIN')">
-    <a href="${pageContext.request.contextPath}/admin/users">Back</a>
-</sec:authorize>
-
-<sec:authorize access="hasRole('USER')">
-    <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>
-    <a href="${pageContext.request.contextPath}/user/profile/change-password">Change Password</a>
-    <div>
-        <c:if test="${successMessage != null}">
-            <div class="error"> <strong>${successMessage}</strong> </div>
-        </c:if>
-        <c:if test="${param.successMessage != null}">
-            <div class="error"> <strong>${param.successMessage}</strong> </div>
-        </c:if>
-        <c:if test="${not empty errorMessage}">
-            <div class="error"> <strong>${errorMessage}</strong> </div>
-        </c:if>
-    </div>
-</sec:authorize>
-
-<a href="${pageContext.request.contextPath}/index">Back to the home page</a>
 <%--</body>--%>
 <%--</html>--%>
 
@@ -218,7 +190,15 @@
                 <p><b>Điện thoại:</b> ${user.phone}</p>
                 <p><b>Địa chỉ:</b> ${user.address}</p>
                 <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
-
+                <p>
+                    <b>User logs:</b>
+                    <c:if test="${type == 1}">
+                        <a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a>
+                    </c:if>
+                    <c:if test="${type == 2}">
+                        <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a>
+                    </c:if>
+                </p>
             </div>
 
         </div><!-- br-section-wrapper -->
@@ -238,6 +218,41 @@
 </div><!-- br-mainpanel -->
 
 <!-- ########## END: noidung ########## --->
+<%--
+<sec:authorize access="hasRole('USER')">
+    <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>
+    <a href="${pageContext.request.contextPath}/user/profile/change-password">Change Password</a>
+    <div>
+        <c:if test="${successMessage != null}">
+            <div class="error"> <strong>${successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${param.successMessage != null}">
+            <div class="error"> <strong>${param.successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+            <div class="error"> <strong>${errorMessage}</strong> </div>
+        </c:if>
+    </div>
+</sec:authorize>
+
+<a href="${pageContext.request.contextPath}/index">Back to the home page</a>
+
+<sec:authorize access="hasRole('USER')">
+    <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>
+    <a href="${pageContext.request.contextPath}/user/profile/change-password">Change Password</a>
+    <div>
+        <c:if test="${successMessage != null}">
+            <div class="error"> <strong>${successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${param.successMessage != null}">
+            <div class="error"> <strong>${param.successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+            <div class="error"> <strong>${errorMessage}</strong> </div>
+        </c:if>
+    </div>
+</sec:authorize>--%>
+
 
 
 
