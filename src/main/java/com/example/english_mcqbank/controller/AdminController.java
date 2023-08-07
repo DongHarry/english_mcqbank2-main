@@ -71,6 +71,7 @@ public class AdminController {
                         @RequestParam(defaultValue = "10") int size) {
         List<UserEntity> users = userService.getAllUsers(page, size);
         model.addAttribute("users", users);
+        model.addAttribute("type", 2);
         model.addAttribute("currentPage", page);
         assert users != null;
         boolean hasNext = users.size() >= size;
@@ -79,9 +80,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/users/new", method = RequestMethod.GET)
-    public String addUser(Model model) {
+    public ModelAndView addUser(Model model) {
         model.addAttribute("user", new UserEntity());
-        return "addUser"; // Trả về admin.jsp
+        ModelAndView modelAndView = new ModelAndView("addUser");
+        modelAndView.addObject("type", 3);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)

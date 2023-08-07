@@ -54,6 +54,7 @@ public class WebController {
         //adminModelAndView.addObject("users", users);
         UserEntity user = userService.getUserByUsername(authentication.getName());
         adminModelAndView.addObject("user", user);
+        adminModelAndView.addObject("type", 1);
         return adminModelAndView; // Trả về admin.jsp
     }
 

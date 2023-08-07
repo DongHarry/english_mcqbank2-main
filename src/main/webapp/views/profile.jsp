@@ -125,7 +125,7 @@
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
@@ -151,13 +151,13 @@
         <sec:authorize access="hasRole('USER')">
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/user/exams" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <i class="menu-item-icon icon ion-ios-book tx-22"></i>
                 <span class="menu-item-label">Bài thi của tôi</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
             <li class="br-menu-item">
                 <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
-                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
                     <span class="menu-item-label">Kết quả</span>
                 </a><!-- br-menu-link -->
             </li><!-- br-menu-item -->
@@ -176,7 +176,9 @@
 
     <br>
 </div><!-- br-sideleft -->
-<!-- ########## END: LEFT PANEL ########## -->
+<%--<jsp:include page="include/left-panel.jsp"></jsp:include>--%>
+<%--<!-- ########## END: LEFT PANEL ########## -->--%>
+
 
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
