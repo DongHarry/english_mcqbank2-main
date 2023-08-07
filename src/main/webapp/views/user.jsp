@@ -112,7 +112,11 @@
                                     <ul class="dropdown-menu" >
                                         <li><a href="/user/profile">User Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/logout">Sign out</a></li>
+                                        <li>
+                                            <form:form action="${pageContext.request.contextPath}/logout" method="post">
+                                                <button type="submit">Sign out</button>
+                                            </form:form>
+                                        </li>
                                     </ul>
                                 </li>
 
