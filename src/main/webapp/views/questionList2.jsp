@@ -15,26 +15,37 @@
 </head>
 <body>
 <h1>Questions</h1>
-<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">
-    <c:forEach var="question" items="${questionMap}">
-        <div>
-            <h3>${question.value.content}</h3>
-            <div>
-                <input type="radio" name="question_${question.value.id}" id="question_${question.value.id}_option1" value="${question.value.option1}">
-                <label for="question_${question.value.id}_option1">${question.value.option1}</label><br>
-                <input type="radio" name="question_${question.value.id}" id="question_${question.value.id}_option2" value="${question.value.option2}">
-                <label for="question_${question.value.id}_option2">${question.value.option2}</label><br>
-                <input type="radio" name="question_${question.value.id}" id="question_${question.value.id}_option3" value="${question.value.option3}">
-                <label for="question_${question.value.id}_option3">${question.value.option3}</label><br>
-                <input type="radio" name="question_${question.value.id}" id="question_${question.value.id}_option4" value="${question.value.option4}">
-                <label for="question_${question.value.id}_option4">${question.value.option4}</label><br>
+    <table>
+        <tr>
+            <th>Question id</th>
+            <th>Question content</th>
+            <th>Topic id</th>
+            <th>Correct answer</th>
+            <th>Answer</th>
+            <th>Level</th>
+            <th>Type</th>
 
-
-            </div>
-            <br><br>
-        </div>
-    </c:forEach>
-    <input type="submit" value="Submit">
-</form:form>
+        </tr>
+        <c:forEach items="${questions}" var="question">
+            <tr>
+                <td>${question.id}</td>
+                <td>${question.content}</td>
+                <td>${question.topicId}</td>
+                <td>${question.correctAnswer}</td>
+                <td>${question.answer}</td>
+                <td>${question.level}</td>
+                <td>${question.type}</td>
+            </tr>
+        </c:forEach>
+    </table>
+<c:if test="${currentPage > 0}">
+    <a href="?page=${currentPage - 1}">Prev</a>
+</c:if>
+<c:if test="${hasNext}">
+    <a href="?page=${currentPage + 1}">Next</a>
+</c:if>
+<hr>
+    <a href="#">Create new question</a> <br>
+    <a href="${pageContext.request.contextPath}/admin">Back to admin page</a>
 </body>
 </html>

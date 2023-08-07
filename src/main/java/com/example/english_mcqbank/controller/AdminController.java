@@ -2,10 +2,7 @@ package com.example.english_mcqbank.controller;
 
 
 import com.example.english_mcqbank.model.*;
-import com.example.english_mcqbank.service.ExamService;
-import com.example.english_mcqbank.service.LogService;
-import com.example.english_mcqbank.service.TopicService;
-import com.example.english_mcqbank.service.UserDetailsServiceImpl;
+import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +23,7 @@ public class AdminController {
     final UserDetailsServiceImpl userService;
     final LogService logService;
     final TopicService topicService;
+    final QuestionService questionService;
     final PasswordEncoder passwordEncoder;
     final ExamService examService;
 
@@ -165,6 +163,52 @@ public class AdminController {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addExam");
         modelAndView.addObject("topics", topics);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
+    public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "20") int size) {
+        List<Question> questions = questionService.getAllQuestions(page, size);
+        ModelAndView modelAndView = new ModelAndView("questionList2");
+        modelAndView.addObject("questions", questions);
+        modelAndView.addObject("currentPage", page);
+        assert questions != null;
+        boolean hasNext = questions.size() >= size;
+        modelAndView.addObject("hasNext", hasNext);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/new", method = RequestMethod.GET)
+    public ModelAndView addQuestion() {
+        List<Topic> topics = topicService.getAllTopics();
+        ModelAndView modelAndView = new ModelAndView("addQuestion");
+        modelAndView.addObject("topics", topics);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/addQuestion", method = RequestMethod.POST)
+    public ModelAndView addQuestion(@RequestParam("question") String question,
+                                    @RequestParam("answer1") String answer1,
+                                    @RequestParam("answer2") String answer2,
+                                    @RequestParam("answer3") String answer3,
+                                    @RequestParam("answer4") String answer4,
+                                    @RequestParam("correctAnswer") String correctAnswer,
+                                    @RequestParam("topicId") int topicId,
+                                    RedirectAttributes redirectAttributes) {
+        return new ModelAndView("redirect:/admin");
+    }
+
+    @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
+    public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "20") int size) {
+        List<Topic> topics = topicService.getAllTopics(page, size);
+        ModelAndView modelAndView = new ModelAndView("topics");
+        modelAndView.addObject("topics", topics);
+        modelAndView.addObject("currentPage", page);
+        assert topics != null;
+        boolean hasNext = topics.size() >= size;
+        modelAndView.addObject("hasNext", hasNext);
         return modelAndView;
     }
 

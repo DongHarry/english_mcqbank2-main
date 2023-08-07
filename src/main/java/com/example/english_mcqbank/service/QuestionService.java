@@ -3,6 +3,8 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,4 +50,8 @@ public class QuestionService {
         return questionRepository.findRandomQuestions(topicId, level, number);
     }
 
+    public List<Question> getAllQuestions(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return questionRepository.findAll(pageable).getContent();
+    }
 }
