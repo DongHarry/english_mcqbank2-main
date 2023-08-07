@@ -16,33 +16,41 @@
 <%--    <li>Address: ${user.address}</li>--%>
 <%--    <li>Created Date: ${user.createdDate}</li>--%>
 <%--    <li>--%>
-<%--        User logs:--%>
-<%--            <sec:authorize access="hasRole('USER')"><a href="${pageContext.request.contextPath}/user/profile/logs">--%>
-<%--                Logs</a> </sec:authorize>--%>
-<%--            <sec:authorize access="hasRole('ADMIN')"><a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">--%>
-<%--                Logs</a> </sec:authorize>--%>
+
 
 <%--    </li>--%>
 <%--</ul>--%>
 <%--<hr>--%>
 
-<%--<sec:authorize access="hasRole('USER')">--%>
-<%--    <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>--%>
-<%--    <a href="${pageContext.request.contextPath}/user/profile/change-password">Change Password</a>--%>
-<%--    <div>--%>
-<%--        <c:if test="${successMessage != null}">--%>
-<%--            <div class="error"> <strong>${successMessage}</strong> </div>--%>
-<%--        </c:if>--%>
-<%--        <c:if test="${param.successMessage != null}">--%>
-<%--            <div class="error"> <strong>${param.successMessage}</strong> </div>--%>
-<%--        </c:if>--%>
-<%--        <c:if test="${not empty errorMessage}">--%>
-<%--            <div class="error"> <strong>${errorMessage}</strong> </div>--%>
-<%--        </c:if>--%>
-<%--    </div>--%>
-<%--</sec:authorize>--%>
+        User logs:
+        <c:if test="${type == 1}">
+            <a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a>
+        </c:if>
+        <c:if test="${type == 2}">
+            <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a>
+        </c:if>
 
-<%--<a href="${pageContext.request.contextPath}/index">Back to the home page</a>--%>
+<sec:authorize access="hasRole('ADMIN')">
+    <a href="${pageContext.request.contextPath}/admin/users">Back</a>
+</sec:authorize>
+
+<sec:authorize access="hasRole('USER')">
+    <a href="${pageContext.request.contextPath}/user/profile/edit">Edit</a>
+    <a href="${pageContext.request.contextPath}/user/profile/change-password">Change Password</a>
+    <div>
+        <c:if test="${successMessage != null}">
+            <div class="error"> <strong>${successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${param.successMessage != null}">
+            <div class="error"> <strong>${param.successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+            <div class="error"> <strong>${errorMessage}</strong> </div>
+        </c:if>
+    </div>
+</sec:authorize>
+
+<a href="${pageContext.request.contextPath}/index">Back to the home page</a>
 <%--</body>--%>
 <%--</html>--%>
 
