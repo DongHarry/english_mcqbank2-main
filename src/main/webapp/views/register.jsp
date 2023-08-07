@@ -13,7 +13,10 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Đăng ký - English Hus</title>
+    <title>Đăng ký tài khoản</title>
+
+    <!--favicon icon-->
+    <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
 
     <!-- vendor css -->
     <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
