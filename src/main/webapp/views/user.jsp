@@ -108,7 +108,7 @@
                                 <li><a class="page-scroll" href="#news">News</a></li>
                                 <li><a class="page-scroll" href="#contact">Contact</a></li>
                                 <li class="dropdown">
-                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">Account<b class="caret"></b> </a>
+                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">${username}<b class="caret"></b> </a>
                                     <ul class="dropdown-menu" >
                                         <li><a href="/user/profile">User Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>

@@ -59,9 +59,9 @@ public class WebController {
 
 
     @RequestMapping("/user")
-    public ModelAndView user() {
+    public ModelAndView user(Authentication authentication) {
         ModelAndView userModelAndView = new ModelAndView("user");
-        userModelAndView.addObject("user", "user");
+        userModelAndView.addObject("username", authentication.getName());
         return userModelAndView; // Trả về user.jsp
     }
 
@@ -90,7 +90,7 @@ public class WebController {
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
