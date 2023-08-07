@@ -26,6 +26,7 @@ public class AdminController {
     final QuestionService questionService;
     final PasswordEncoder passwordEncoder;
     final ExamService examService;
+    final ResultService resultService;
 
     @RequestMapping("/admin/profile")
     public ModelAndView adminProfile(Authentication authentication) {
@@ -300,7 +301,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/Exam", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/exam", method = RequestMethod.GET)
     public ModelAndView deleteExam(@RequestParam("examId") int id, RedirectAttributes redirectAttributes) {
         try {
             Exam exam = examService.getExamById(id);
@@ -328,6 +329,23 @@ public class AdminController {
         assert results != null;
         boolean hasNext = results.size() >= size;
         modelAndView.addObject("hasNext", hasNext);
+        //modelAndView.addObject("examId", examId);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/users/{userId}/results", method = RequestMethod.GET)
+    public ModelAndView userResults(@RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "10") int size,
+                                    @PathVariable("userId") int userId) {
+        ModelAndView modelAndView = new ModelAndView("userResult");
+        UserEntity user = userService.getUserByUserid(userId);
+        List<Result> results = resultService.getResultsByUser(user, page, size);
+        modelAndView.addObject("results", results);
+        modelAndView.addObject("currentPage", page);
+        assert results != null;
+        boolean hasNext = results.size() >= size;
+        modelAndView.addObject("hasNext", hasNext);
+        modelAndView.addObject("title", "All results for user " + user.getFullName());
         //modelAndView.addObject("examId", examId);
         return modelAndView;
     }

@@ -249,15 +249,17 @@
                 <p><b>Điện thoại:</b> ${user.phone}</p>
                 <p><b>Địa chỉ:</b> ${user.address}</p>
                 <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
-                <p>
-                    <b>User logs:</b>
+
                     <c:if test="${type == 1}">
-                        <a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a>
+                        <p><b>User logs:</b><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a></p>
                     </c:if>
                     <c:if test="${type == 2}">
-                        <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a>
+                        <p><b>User logs:</b> <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a></p>
+                        <c:if test="${user.groupId == 1}">
+                            <p><b>Kết quả thi: </b><a href="${pageContext.request.contextPath}/admin/users/${user.id}/results">Results</a></p>
+                        </c:if>
                     </c:if>
-                </p>
+
             </div>
 
         </div><!-- br-section-wrapper -->

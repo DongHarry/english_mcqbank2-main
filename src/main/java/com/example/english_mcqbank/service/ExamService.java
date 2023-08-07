@@ -3,6 +3,7 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Result;
+import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.repository.ExamRepository;
 import com.example.english_mcqbank.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +94,10 @@ public class ExamService {
 
         }
         return score;
+    }
+
+    public List<Result> getResultsByUser(UserEntity user, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return resultService.findAllByUser(user, pageable);
     }
 }

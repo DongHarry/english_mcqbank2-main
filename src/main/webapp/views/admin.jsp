@@ -165,7 +165,7 @@
                 <p><b>Điện thoại:</b> ${user.phone}</p>
                 <p><b>Địa chỉ:</b> ${user.address}</p>
                 <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
-
+                <p><b>User logs:</b><a href="${pageContext.request.contextPath}/user/profile/logs"> Logs</a></p>
             </div>
 
         </div><!-- br-section-wrapper -->

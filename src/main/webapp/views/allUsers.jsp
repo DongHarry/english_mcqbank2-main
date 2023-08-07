@@ -266,13 +266,14 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <hr>
                 <c:if test="${currentPage > 0}">
                     <a href="?page=${currentPage - 1}">Prev</a>
                 </c:if>
                 <c:if test="${hasNext}">
                     <a href="?page=${currentPage + 1}">Next</a>
                 </c:if>
-                <br>
+                <hr>
                 <a href="${pageContext.request.contextPath}/admin/users/new">Create new user</a>
 
             </div><!-- table-wrapper -->

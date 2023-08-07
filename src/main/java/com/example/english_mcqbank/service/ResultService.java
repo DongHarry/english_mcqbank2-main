@@ -34,4 +34,10 @@ public class ResultService {
     public void deleteResultByExam(Exam exam) {
         resultRepository.deleteAllByExam(exam);
     }
+
+    public List<Result> getResultsByUser(UserEntity user, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        return resultRepository.findAllByUser(user, pageable);
+    }
 }
