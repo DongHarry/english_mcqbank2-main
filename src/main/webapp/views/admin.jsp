@@ -70,7 +70,7 @@
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
                     Tài khoản người dùng</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                    Thêm người dùng</a></li>
+                    Thêm tài khoản</a></li>
             </ul>
         </li><!-- br-menu-item -->
 
@@ -138,6 +138,51 @@
 
 
 <!-- ########## START: noidung ########## -->
+
+<div class="br-mainpanel">
+    <div class="br-pageheader">
+        <nav class="breadcrumb pd-0 mg-0 tx-12">
+            <a class="breadcrumb-item" href="#">Admin</a>
+            <span class="breadcrumb-item active">Tài khoản admin</span>
+        </nav>
+    </div><!-- br-pageheader -->
+    <div class="br-pagetitle">
+        <i class="icon ion-ios-person-outline"></i>
+        <div>
+            <h4>Tài khoản admin</h4>
+        </div>
+    </div><!-- d-flex -->
+
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+            <h6 class="br-section-label">Tài khoản admin </h6>
+
+            <p>Thông tin tài khoản admin</p>
+            <div class="editable tx-16 bd pd-30 tx-inverse">
+                <p><b>Tên tài khoản:</b> ${user.username}</p>
+                <p><b>Tên đầy đủ:</b> ${user.fullName}</p>
+                <p><b>Địa chỉ hòm thư điện tử:</b> ${user.email}</p>
+                <p><b>Điện thoại:</b> ${user.phone}</p>
+                <p><b>Địa chỉ:</b> ${user.address}</p>
+                <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
+
+            </div>
+
+        </div><!-- br-section-wrapper -->
+    </div><!-- br-pagebody -->
+
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
+            <div>HA NOI UNIVERSITY OF SCIENCE</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+            <span class="tx-uppercase mg-r-10">Share:</span>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+    </footer>
+</div><!-- br-mainpanel -->
 
 <!-- ########## END: noidung ########## --->
 

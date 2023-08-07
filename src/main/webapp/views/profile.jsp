@@ -101,13 +101,13 @@
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
                     Tài khoản người dùng</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                    Thêm người dùng</a></li>
+                    Thêm tài khoản</a></li>
             </ul>
         </li><!-- br-menu-item -->
 
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+            <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link active show-sub">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Tài khoản admin</span>
             </a><!-- br-menu-link -->
@@ -125,6 +125,7 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
+
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
 
