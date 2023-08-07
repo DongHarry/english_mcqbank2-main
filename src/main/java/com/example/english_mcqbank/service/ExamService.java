@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Exam;
+import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Result;
 import com.example.english_mcqbank.repository.ExamRepository;
 import com.example.english_mcqbank.repository.ResultRepository;
@@ -9,7 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExamService {
@@ -46,5 +49,49 @@ public class ExamService {
         Pageable pageable = PageRequest.of(page, size);
 
         return resultService.findAllByExam(exam, pageable);
+    }
+
+    public Map<Long, Integer> getTopicNumOfQuMap(Map<String, String> requestParams) {
+        Map<Long, Integer> topicNumOfQuMap = new HashMap<>();
+        for (Map.Entry<String, String> entry : requestParams.entrySet()) {
+            String paramName = entry.getKey();
+            String paramValue = entry.getValue();
+
+            // Kiểm tra các paramName để xác định danh sách topic và numQu
+            // Ví dụ: paramName có dạng "topic1", "numQu.OfTopic1", ...
+            if (paramName.startsWith("topic")) {
+                // Xử lý danh sách topic được chọn (paramValue chứa giá trị của topic.id)
+                Long topicId = Long.parseLong(paramValue);
+                // Tạo tên tham số numOfQu tương ứng
+                String numOfQuParamName = "numQu.OfTopic" + topicId;
+                // Lấy giá trị numOfQu từ requestParams dựa vào tên tham số numOfQu tương ứng
+                String numOfQuValue = requestParams.get(numOfQuParamName);
+                // Chuyển đổi giá trị numOfQu từ String sang Integer (hoặc bạn có thể sử dụng parseInt)
+                Integer numOfQu = Integer.valueOf(numOfQuValue);
+
+                // Đưa cặp topicId và numOfQu vào Map
+                topicNumOfQuMap.put(topicId, numOfQu);
+            }
+        }
+        return topicNumOfQuMap;
+    }
+
+    public int calculateScore(Map<String, String> params, Map<Integer, Question> questionMap) {
+        int score = 0;
+        for (String paramName : params.keySet()) {
+            if (paramName.startsWith("question_")) {
+                int questionId = Integer.parseInt(paramName.substring("question_".length()));
+                //Question question = questionService.get(questionId);
+                Question question = questionMap.get(questionId);
+                String selectedOption = params.get(paramName);
+                // Do something with the selected option for each question (e.g., save to database)
+                if (selectedOption.equals(question.getCorrectAnswer())) {
+                    score++;
+                }
+                //System.out.println("Question " + questionId + ": Selected Option: " + selectedOption);
+            }
+
+        }
+        return score;
     }
 }

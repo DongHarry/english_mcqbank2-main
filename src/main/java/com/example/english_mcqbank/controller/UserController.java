@@ -204,8 +204,9 @@ public class UserController {
         //List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
         List<Question> questions = new ArrayList<>();
         for (ExamTopic examTopic: examTopics) {
-            List<Question> questions1 = questionService.getRandom(examTopic.getTopic().getId(), 0,
-                                                                (int) Math.round(questionCount * examTopic.getPercent() / 100.0));
+            List<Question> questions1 =
+                    questionService.getRandom(examTopic.getTopic().getId(), 0,
+                                               (int) Math.round(questionCount * examTopic.getPercent() / 100.0));
             questions.addAll(questions1);
         }
         questionMap = new HashMap<>();
@@ -222,31 +223,18 @@ public class UserController {
     public ModelAndView submitAnswers(@RequestParam Map<String, String> params, Authentication authentication,
                                       @RequestParam("examId") int examId) {
         // Process the submitted form data
-        Integer score = 0;
+
         Exam exam = examService.getExamById(examId);
         int totalQuestions = exam.getQuestionNo();
         // sort question by id
-
-        for (String paramName : params.keySet()) {
-            if (paramName.startsWith("question_")) {
-                int questionId = Integer.parseInt(paramName.substring("question_".length()));
-                //Question question = questionService.get(questionId);
-                Question question = questionMap.get(questionId);
-                String selectedOption = params.get(paramName);
-                // Do something with the selected option for each question (e.g., save to database)
-                if (selectedOption.equals(question.getCorrectAnswer())) {
-                    score++;
-                }
-                //System.out.println("Question " + questionId + ": Selected Option: " + selectedOption);
-            }
-
-        }
+        int score = examService.calculateScore(params, questionMap);
+        questionMap.clear();
 
         // Redirect or return a response as needed
         ModelAndView modelAndView = new ModelAndView("resultPage");
         modelAndView.addObject("score", score);
         modelAndView.addObject("totalQuestions", totalQuestions);
-        questionMap.clear();
+
 
         UserEntity user = userService.getUserByUsername(authentication.getName());
 

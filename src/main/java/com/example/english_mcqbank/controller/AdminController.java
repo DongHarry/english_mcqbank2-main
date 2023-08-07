@@ -259,29 +259,10 @@ public class AdminController {
                           @RequestParam Map<String, String> requestParams) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
-        Map<Long, Integer> topicNumOfQuMap = new HashMap<>();
-
+        Map<Long, Integer> topicNumOfQuMap = examService.getTopicNumOfQuMap(requestParams);
         // Duyệt qua các tham số trong requestParams để tách giá trị numOfQu tương ứng với từng topicId
-        for (Map.Entry<String, String> entry : requestParams.entrySet()) {
-            String paramName = entry.getKey();
-            String paramValue = entry.getValue();
 
-            // Kiểm tra các paramName để xác định danh sách topic và numQu
-            // Ví dụ: paramName có dạng "topic1", "numQu.OfTopic1", ...
-            if (paramName.startsWith("topic")) {
-                // Xử lý danh sách topic được chọn (paramValue chứa giá trị của topic.id)
-                Long topicId = Long.parseLong(paramValue);
-                // Tạo tên tham số numOfQu tương ứng
-                String numOfQuParamName = "numQu.OfTopic" + topicId;
-                // Lấy giá trị numOfQu từ requestParams dựa vào tên tham số numOfQu tương ứng
-                String numOfQuValue = requestParams.get(numOfQuParamName);
-                // Chuyển đổi giá trị numOfQu từ String sang Integer (hoặc bạn có thể sử dụng parseInt)
-                Integer numOfQu = Integer.valueOf(numOfQuValue);
 
-                // Đưa cặp topicId và numOfQu vào Map
-                topicNumOfQuMap.put(topicId, numOfQu);
-            }
-        }
 
         // Sau khi có Map mới tương ứng <topicId, numOfQu>, bạn có thể thực hiện các thao tác cần thiết với dữ liệu này.
         Exam exam = new Exam();
@@ -297,7 +278,7 @@ public class AdminController {
             examTopic.setPercent(numOfQu);
             exam.addExamTopic(examTopic);
 
-            System.out.println("topicId: " + topicId + ", numOfQu: " + numOfQu);
+            //System.out.println("topicId: " + topicId + ", numOfQu: " + numOfQu);
         }
 
         examService.saveExam(exam);
