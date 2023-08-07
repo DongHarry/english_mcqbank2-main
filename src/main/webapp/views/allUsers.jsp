@@ -125,7 +125,7 @@
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link active">
                     Tài khoản người dùng</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                    Thêm người dùng</a></li>
+                    Thêm tài khoản</a></li>
             </ul>
         </li><!-- br-menu-item -->
 
