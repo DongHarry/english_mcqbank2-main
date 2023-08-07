@@ -3473,3 +3473,29 @@ p.form-message.error{
     -moz-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+
+/*dropdown-menu
+==========*/
+.dropdown-menu{
+    border: none;
+    border-radius: 5px;
+    background: rgba(103, 20, 224, 0.83);
+    -webkit-box-shadow: 0 1px 2px rgba(212, 212, 212, 0.35);
+    box-shadow: 0 1px 2px rgba(212, 212, 212, 0.35);
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    margin: 0px -67px 0px;
+}
+
+.dropdown-menu li a{
+    color: #333;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: all 0.5s ease-in;
+}
+
+.dropdown-menu li:hover{
+    color: #676666;
+    background: rgb(105, 105, 204);
+}

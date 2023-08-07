@@ -107,7 +107,14 @@
                                 <li><a class="page-scroll" href="#faqs">Faq</a></li>
                                 <li><a class="page-scroll" href="#news">News</a></li>
                                 <li><a class="page-scroll" href="#contact">Contact</a></li>
-                                <li><a class="page-scroll" href="/user/profile">Account</a></li>
+                                <li class="dropdown">
+                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">Account<b class="caret"></b> </a>
+                                    <ul class="dropdown-menu" >
+                                        <li><a href="/user/profile">User Information</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/logout">Sign out</a></li>
+                                    </ul>
+                                </li>
 
                             </ul>
                         </div>
