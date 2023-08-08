@@ -301,7 +301,8 @@
                             <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
                         </div>
                         <input type="password" id="password" name="password" value="${user.password}" required
-                               class="form-control" placeholder="Password">
+                               class="form-control" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
                     </div><!-- input-group -->
                 </div><!-- col-4 -->
             </div>
@@ -314,7 +315,8 @@
                             <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
                         </div>
                         <input type="password" id="confirmPassword" name="confirmPassword" value="" required
-                               class="form-control" placeholder="Confirm Password">
+                               class="form-control" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
                     </div><!-- input-group -->
                 </div><!-- col-4 -->
             </div>
@@ -419,10 +421,10 @@
 
     $('#password,#confirmPassword').on('keyup', function() {
         if ($('#password').val() == $('#confirmPassword').val()) {
-            $('#mess').html('Matching').css('color', 'green');
+            $('#mess').html('').css('color', 'green');
         }
         else {
-            $('#mess').html('No Matching').css('color', 'red');
+            $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
         }
     });
 </script>

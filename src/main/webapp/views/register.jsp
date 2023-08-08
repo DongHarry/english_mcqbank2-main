@@ -25,6 +25,21 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var message = document.getElementById("message");
+
+            if (password !== confirmPassword) {
+                message.style.color = "red";
+                message.textContent = "Passwords do not match.";
+            } else {
+                message.style.color = "green";
+                message.textContent = "Passwords match.";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -59,11 +74,13 @@
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Enter your password" id="password"
-                    name="password" required value="${user.password}">
+                    name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required value="${user.password}">
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Confirm your password" id="confirmPassword"
-                    name="confirmPassword" required value="${confirmPassword}">
+                    name="confirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required value="${confirmPassword}">
 
                 </div> <!-- form-group -->
                 <span id="mess"></span>
@@ -119,9 +136,9 @@
 
     $('#password,#confirmPassword').on('keyup', function () {
         if ($('#password').val() == $('#confirmPassword').val()) {
-            $('#mess').html('Matching').css('color', 'green');
+            $('#mess').html('').css('color', 'green');
         } else
-            $('#mess').html('Not Matching').css('color', 'red');
+            $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
     });
 </script>
 
