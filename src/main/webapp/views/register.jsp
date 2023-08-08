@@ -38,7 +38,7 @@
 
             <form:form action="${pageContext.request.contextPath}/register" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter your username" id="username"
+                    <input type="text" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your username" id="username"
                     name="username" value="${user.username}" required>
                 </div>
                 <div class="form-group">

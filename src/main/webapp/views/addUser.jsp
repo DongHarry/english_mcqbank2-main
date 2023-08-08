@@ -233,7 +233,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
                         </div>
-                        <input type="text" id="username" name="username" value="${user.username}" required
+                        <input type="text" id="username" pattern="[a-zA-Z0-9._]+" name="username" value="${user.username}" required
                                class="form-control" placeholder="Username">
                     </div><!-- input-group -->
                 </div><!-- col-4 -->
