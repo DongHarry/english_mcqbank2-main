@@ -167,7 +167,7 @@
                 </a><!-- br-menu-link -->
             </li><!-- br-menu-item -->
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link active show-sub">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Thông tin tài khoản</span>
             </a><!-- br-menu-link -->
@@ -256,10 +256,10 @@
                 <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
 
                     <c:if test="${type == 1}">
-                        <p><b>User logs:</b><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a></p>
+                        <p><b>User logs: </b><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a></p>
                     </c:if>
                     <c:if test="${type == 2}">
-                        <p><b>User logs:</b> <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a></p>
+                        <p><b>User logs: </b> <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a></p>
                         <c:if test="${user.groupId == 1}">
                             <p><b>Kết quả thi: </b><a href="${pageContext.request.contextPath}/admin/users/${user.id}/results">Results</a></p>
                         </c:if>

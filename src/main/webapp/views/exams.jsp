@@ -323,7 +323,7 @@
                                     <ul style="margin-left: -40px">
                                         <sec:authorize access="hasRole('USER')">
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}" class="btn btn-primary">Take Exam</a>
+                                               Take exam: <a href="${pageContext.request.contextPath}/user/exams/${exam.id}" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i class="fas fa-play"></i></a>
                                             </li>
                                         </sec:authorize>
                                         <sec:authorize access="hasRole('ADMIN')">
@@ -336,7 +336,7 @@
                                             </li>
 
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/admin/results/${exam.id}" class="btn btn-primary">All Result</a>
+                                                All results: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results" class="btn btn-outline-info btn-icon mg-r-5 mg-b-10" title="All results"><i class="fas fa-list"></i></a>
                                             </li>
                                         </sec:authorize>
                                     </ul>
