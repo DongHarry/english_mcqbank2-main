@@ -87,6 +87,11 @@
             padding: 8px;
         }
 
+        /*chỉnh sửa độ rộng của cột question content*/
+        .table22 td:nth-child(2) {
+            width: 60%;
+        }
+
         .table22 p {
             white-space: pre-line;
             max-width: 500px; /* Số ký tự tối đa trước khi tự động xuống dòng */
@@ -225,11 +230,11 @@
             <h6 class="br-section-label">Danh sách câu hỏi</h6>
             <div class="table-wrapper">
 
-                <table id="datatable2" class="table display responsive nowrap table22" width="200px">
+                <table id="datatable2" class="table display responsive nowrap table22">
                     <thead>
                     <tr>
                         <th class="wd-15p">Question ID</th>
-                        <th class="wd-15p">Question Content</th>
+                        <th class="wd-15p" style="width: auto">Question Content</th>
                         <th class="wd-15p">Topic</th>
                         <th class="wd-15p">Correct Answer</th>
 <%--                        <th class="wd-15p">Answer</th>--%>
