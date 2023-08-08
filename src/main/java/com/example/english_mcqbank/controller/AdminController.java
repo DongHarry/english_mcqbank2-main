@@ -293,9 +293,10 @@ public class AdminController {
         }
 
         examService.saveExam(exam);
-
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
+        modelAndView.addObject("message", "Exam added successfully");
         // Redirect hoặc trả về view (tùy vào logic của ứng dụng)
-        return new ModelAndView("redirect:/admin/exams"); // Thay thế "path-to-some-page" bằng đường dẫn mong muốn
+        return modelAndView; // Thay thế "path-to-some-page" bằng đường dẫn mong muốn
     }
 
     @RequestMapping(value = "/admin/exams", method = RequestMethod.GET)
