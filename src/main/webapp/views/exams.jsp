@@ -335,7 +335,7 @@
                                                    href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}">Delete</a>
                                             </li>
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/admin/results/${exam.id}/delete">All Result</a>
+                                                <a href="${pageContext.request.contextPath}/admin/results/${exam.id}">All Result</a>
                                             </li>
                                         </sec:authorize>
                                     </ul>
