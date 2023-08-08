@@ -46,7 +46,7 @@
     <a href="${pageContext.request.contextPath}/admin/exams">Back</a>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_USER')">
-    <a href="${pageContext.request.contextPath}/user">Back</a>
+    <a href="${pageContext.request.contextPath}/user">Homepage</a>
 </sec:authorize>
 
 

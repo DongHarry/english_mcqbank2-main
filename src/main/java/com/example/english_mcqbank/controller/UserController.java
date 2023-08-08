@@ -212,10 +212,10 @@ public class UserController {
                                                (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
             questions.addAll(questions1);
         }
-        questionMap = new HashMap<>();
-        for (Question question : questions) {
-            questionMap.put(question.getId(), question);
-        }
+//        questionMap = new HashMap<>();
+//        for (Question question : questions) {
+//            questionMap.put(question.getId(), question);
+//        }
         Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
         userExamModelAndView.addObject("examId", exam.getId());
@@ -230,8 +230,8 @@ public class UserController {
         Exam exam = examService.getExamById(examId);
         int totalQuestions = exam.getQuestionNo();
         // sort question by id
-        int score = examService.calculateScore(params, questionMap);
-        questionMap.clear();
+        int score = examService.calculateScore(params);
+        //questionMap.clear();
 
         // Redirect or return a response as needed
         ModelAndView modelAndView = new ModelAndView("resultPage");

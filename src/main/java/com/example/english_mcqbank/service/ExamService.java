@@ -19,6 +19,9 @@ import java.util.Map;
 public class ExamService {
     @Autowired
     private ResultRepository resultService;
+    @Autowired
+    private QuestionService questionService;
+
 
     @Autowired
     private ExamRepository examRepository;
@@ -77,13 +80,13 @@ public class ExamService {
         return topicNumOfQuMap;
     }
 
-    public int calculateScore(Map<String, String> params, Map<Integer, Question> questionMap) {
+    public int calculateScore(Map<String, String> params) {
         int score = 0;
         for (String paramName : params.keySet()) {
             if (paramName.startsWith("question_")) {
                 int questionId = Integer.parseInt(paramName.substring("question_".length()));
-                //Question question = questionService.get(questionId);
-                Question question = questionMap.get(questionId);
+                Question question = questionService.get(questionId);
+                //Question question = questionMap.get(questionId);
                 String selectedOption = params.get(paramName);
                 // Do something with the selected option for each question (e.g., save to database)
                 if (selectedOption.equals(question.getCorrectAnswer())) {
