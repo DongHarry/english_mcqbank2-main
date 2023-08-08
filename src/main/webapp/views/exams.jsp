@@ -277,6 +277,11 @@
             <p class="br-section-text">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
             <div class="table-wrapper">
+                <c:if test="${not empty message}">
+                    <div class="alert alert-success">
+                        <strong>${message}</strong>
+                    </div>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap">
                     <thead>
                     <tr>
@@ -323,7 +328,7 @@
                                         </sec:authorize>
                                         <sec:authorize access="hasRole('ADMIN')">
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/edit">Edit exam</a>
+                                                <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}">Edit exam</a>
                                             </li>
                                             <li style="list-style: none">
                                                 <a onclick="if (!confirm('Are you sure to delete this exam?')) return false"

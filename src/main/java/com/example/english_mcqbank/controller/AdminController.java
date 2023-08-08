@@ -300,7 +300,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/exams", method = RequestMethod.GET)
     public ModelAndView exams(Authentication authentication,
                                 @RequestParam(defaultValue = "0") int page,
-                                @RequestParam(defaultValue = "5") int size) {
+                                @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
@@ -315,7 +315,32 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/exam", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/exams/{examId}", method = RequestMethod.GET)
+    public ModelAndView exam(@PathVariable("examId") int examId, Model model) {
+        ModelAndView modelAndView = new ModelAndView("editExam");
+        Exam exam = examService.getExamById(examId);
+        modelAndView.addObject("c_exam", exam);
+        model.addAttribute("c_exam", exam);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/exams/{examId}/edit", method = RequestMethod.POST)
+    public ModelAndView editExam(@PathVariable("examId") int examId,
+                                 @ModelAttribute("c_exam") Exam c_exam, Model model,
+                                 RedirectAttributes redirectAttributes) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
+        Exam exam = examService.getExamById(examId);
+        if (c_exam != null) {
+            exam.setName(c_exam.getName());
+            exam.setQuestionNo(c_exam.getQuestionNo());
+            exam.setType(c_exam.getType());
+            redirectAttributes.addFlashAttribute("message", "Exam: " +c_exam.getName()+ " updated successfully");
+        }
+        examService.saveExam(exam);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/deleteExam", method = RequestMethod.GET)
     public ModelAndView deleteExam(@RequestParam("examId") int id, RedirectAttributes redirectAttributes) {
         try {
             Exam exam = examService.getExamById(id);
