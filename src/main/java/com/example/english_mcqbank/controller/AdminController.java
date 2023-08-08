@@ -370,10 +370,10 @@ public class AdminController {
         List<Result> results = examService.getResultsByExamId(examId);
         modelAndView.addObject("results", results);
         modelAndView.addObject("title", "All Users results for exam " + examId);
-        modelAndView.addObject("currentPage", page);
-        assert results != null;
-        boolean hasNext = results.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert results != null;
+//        boolean hasNext = results.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         //modelAndView.addObject("examId", examId);
         return modelAndView;
     }
@@ -386,10 +386,10 @@ public class AdminController {
         UserEntity user = userService.getUserByUserid(userId);
         List<Result> results = resultService.findAllByUser(user);
         modelAndView.addObject("results", results);
-        modelAndView.addObject("currentPage", page);
-        assert results != null;
-        boolean hasNext = results.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert results != null;
+//        boolean hasNext = results.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         modelAndView.addObject("title", "All results for user " + user.getFullName());
         //modelAndView.addObject("examId", examId);
         return modelAndView;

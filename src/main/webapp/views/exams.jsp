@@ -311,10 +311,10 @@
                                 <td>${exam.name}</td>
                                 <td>
                                     <c:if test="${exam.type == 1}">
-                                        Reading
+                                        <span class="badge badge-success">Reading</span>
                                     </c:if>
                                     <c:if test="${exam.type == 2}">
-                                        Listening
+                                        <span class="badge badge-info">Listening</span>
                                     </c:if>
                                 </td>
                                 <td>${exam.questionNo}</td>
@@ -323,19 +323,20 @@
                                     <ul style="margin-left: -40px">
                                         <sec:authorize access="hasRole('USER')">
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}">Take Exam</a>
+                                                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}" class="btn btn-primary">Take Exam</a>
                                             </li>
                                         </sec:authorize>
                                         <sec:authorize access="hasRole('ADMIN')">
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}">Edit exam</a>
+                                                Edit: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                             </li>
                                             <li style="list-style: none">
-                                                <a onclick="if (!confirm('Are you sure to delete this exam?')) return false"
-                                                   href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}">Delete</a>
+                                                Delete: <a onclick="if (!confirm('Are you sure to delete this exam?')) return false"
+                                                   href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
                                             </li>
+
                                             <li style="list-style: none">
-                                                <a href="${pageContext.request.contextPath}/admin/results/${exam.id}">All Result</a>
+                                                <a href="${pageContext.request.contextPath}/admin/results/${exam.id}" class="btn btn-primary">All Result</a>
                                             </li>
                                         </sec:authorize>
                                     </ul>
