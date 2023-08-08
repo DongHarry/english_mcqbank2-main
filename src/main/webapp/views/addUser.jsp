@@ -214,11 +214,17 @@
     <div class="br-pagebody">
         <div class="br-section-wrapper">
         <h6 class="br-section-label">Thêm tài khoản mới</h6>
-            <c:if test="${not empty message}">
-                <div class="alert alert-danger">
-                    <strong>${message}</strong>
-                </div>
-            </c:if>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <c:if test="${not empty message}">
+                    <div class="alert alert-danger">
+                        <strong>${message}</strong>
+                    </div>
+                </c:if>
+            </div>
+        </div>
+
         <form:form action="/admin/addUser" method="post">
 
             <div class="row">
@@ -307,24 +313,38 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
                         </div>
-                        <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required
+                        <input type="password" id="confirmPassword" name="confirmPassword" value="" required
                                class="form-control" placeholder="Confirm Password">
                     </div><!-- input-group -->
                 </div><!-- col-4 -->
             </div>
-
+            <span id="mess"></span>
             <div class="row pd-t-20">
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    Role:
-                    <input type="radio" name="role" value="admin"> Admin
-                    <input type="radio" name="role" value="user"> User
-                </div><!-- col-4 -->
+<%--                <div class="col-lg-4 mg-t-20 mg-lg-t-0">--%>
+<%--                    Role:--%>
+<%--                    <input type="radio" name="role" value="admin"> Admin--%>
+<%--                    <input type="radio" name="role" value="user"> User--%>
+<%--                </div><!-- col-4 -->--%>
+                <p style="margin-left: 15px">Role: </p>
+                <div class="col-lg-2">
+                    <label class="rdiobox">
+                        <input name="role" value="admin" type="radio">
+                        <span>Admin</span>
+                    </label>
+                </div><!-- col-3 -->
+                <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                    <label class="rdiobox">
+                        <input name="role" value="user" type="radio" checked>
+                        <span>User</span>
+                    </label>
+                </div><!-- col-3 -->
+
             </div>
 
             <%--        button addUser--%>
             <div class="form-layout-footer mg-t-30">
-                <button class="btn btn-info mg-r-5">Thêm</button>
-                <button class="btn btn-secondary">Hủy</button>
+                <button type="submit" class="btn btn-info mg-r-5">Thêm</button>
+<%--                <button class="btn btn-secondary">Hủy</button>--%>
             </div>
 
         </form:form>
@@ -394,6 +414,15 @@
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
             }
+        }
+    });
+
+    $('#password,#confirmPassword').on('keyup', function() {
+        if ($('#password').val() == $('#confirmPassword').val()) {
+            $('#mess').html('Matching').css('color', 'green');
+        }
+        else {
+            $('#mess').html('No Matching').css('color', 'red');
         }
     });
 </script>

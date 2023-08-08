@@ -262,6 +262,27 @@
 
             </div>
 
+            <sec:authorize access="hasRole('ADMIN')">
+                <div class="form-layout-footer mg-t-30">
+                    <a href="${pageContext.request.contextPath}/user/profile/edit" class="btn btn-info">Chỉnh sửa</a>
+<%--                </div><!-- form-layout-footer -->--%>
+<%--                <div class="form-layout-footer mg-t-30">--%>
+                    <a href="${pageContext.request.contextPath}/user/profile/change-password" class="btn btn-info">Đổi mật khẩu</a>
+                </div><!-- form-layout-footer -->
+
+                <div>
+                    <c:if test="${successMessage != null}">
+                        <div class="error"> <strong>${successMessage}</strong> </div>
+                    </c:if>
+                    <c:if test="${param.successMessage != null}">
+                        <div class="error"> <strong>${param.successMessage}</strong> </div>
+                    </c:if>
+                    <c:if test="${not empty errorMessage}">
+                        <div class="error"> <strong>${errorMessage}</strong> </div>
+                    </c:if>
+                </div>
+            </sec:authorize>
+
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->
 

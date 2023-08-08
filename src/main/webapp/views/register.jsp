@@ -64,9 +64,10 @@
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Confirm your password" id="confirmPassword"
                     name="confirmPassword" required value="${confirmPassword}">
-                </div> <!-- form-group -->
 
-                <div>
+                </div> <!-- form-group -->
+                <span id="mess"></span>
+                <div style="color: rgba(255,0,0,0.87)">
                     <c:if test="${not empty successMessage}">
                         <div class="error"> <strong>${successMessage}</strong> </div>
                     </c:if>
@@ -114,6 +115,13 @@
         $('.select2').select2({
             minimumResultsForSearch: Infinity
         });
+    });
+
+    $('#password,#confirmPassword').on('keyup', function () {
+        if ($('#password').val() == $('#confirmPassword').val()) {
+            $('#mess').html('Matching').css('color', 'green');
+        } else
+            $('#mess').html('Not Matching').css('color', 'red');
     });
 </script>
 
