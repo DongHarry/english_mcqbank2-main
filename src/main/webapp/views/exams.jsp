@@ -127,6 +127,7 @@
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
 
+        <sec:authorize access="hasRole('ADMIN')">
         <li class="br-menu-item">
             <a href="#" class="br-menu-link with-sub active show-sub">
                 <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
@@ -178,7 +179,32 @@
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
     </ul><!-- br-sideleft-menu -->
+    </sec:authorize>
+<sec:authorize access="hasRole('USER')">
+    <li class="br-menu-item">
+    <a href="#" class="br-menu-link with-sub active show-sub">
+    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+    <span class="menu-item-label">Bài thi của tôi</span>
+    </a><!-- br-menu-link -->
+    <ul class="br-menu-sub">
+    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link active">
+    Tất cả bài thi</a></li>
 
+    </ul>
+    </li>
+    <li class="br-menu-item">
+        <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
+            <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+            <span class="menu-item-label">Kết quả</span>
+        </a><!-- br-menu-link -->
+    </li><!-- br-menu-item -->
+    <li class="br-menu-item">
+        <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+            <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+            <span class="menu-item-label">Thông tin tài khoản</span>
+        </a><!-- br-menu-link -->
+    </li><!-- br-menu-item -->
+</sec:authorize>
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
@@ -200,15 +226,15 @@
 
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            <span class="logged-name hidden-md-down">${user.fullName}</span>
+            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
             <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
                 <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
-                <h6 class="logged-fullname">${user.fullName}</h6>
-                <p>${user.email}</p>
+                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
+                <p>${loggedInUser.email}</p>
             </div>
             <hr>
             <div class="tx-center">

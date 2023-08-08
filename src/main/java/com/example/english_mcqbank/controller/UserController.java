@@ -168,9 +168,12 @@ public class UserController {
 
     @RequestMapping("/user/exams")
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "20") int size) {
+                                  @RequestParam(defaultValue = "20") int size,
+                                  Authentication authentication) {
         List<Exam> exams = examService.getAllExams(page, size);
         ModelAndView userExamsModelAndView = new ModelAndView("exams");
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        userExamsModelAndView.addObject("loggedInUser", user);
         userExamsModelAndView.addObject("exams", exams);
         userExamsModelAndView.addObject("currentPage", page);
         assert exams != null;

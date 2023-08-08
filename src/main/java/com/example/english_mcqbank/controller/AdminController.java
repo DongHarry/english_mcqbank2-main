@@ -67,24 +67,31 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String users(Model model,
+    public ModelAndView users(Model model,
                         @RequestParam(defaultValue = "0") int page,
-                        @RequestParam(defaultValue = "10") int size) {
+                        @RequestParam(defaultValue = "10") int size,
+                        Authentication authentication) {
+        ModelAndView usersModelAndView = new ModelAndView("allUsers");
         List<UserEntity> users = userService.getAllUsers(page, size);
-        model.addAttribute("users", users);
-        model.addAttribute("type", 2);
-        model.addAttribute("currentPage", page);
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        usersModelAndView.addObject("loggedInUser", loggedInUser);
+        usersModelAndView.addObject("users", users);
+        usersModelAndView.addObject("currentPage", page);
+        usersModelAndView.addObject("type", 2);
         assert users != null;
         boolean hasNext = users.size() >= size;
-        model.addAttribute("hasNext", hasNext);
-        return "allUsers"; // Trả về admin.jsp
+        usersModelAndView.addObject("hasNext", hasNext);
+        return usersModelAndView; // Trả về admin.jsp
     }
 
     @RequestMapping(value = "/admin/users/new", method = RequestMethod.GET)
-    public ModelAndView addUser(Model model) {
+    public ModelAndView addUser(Model model, Authentication authentication) {
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+
         model.addAttribute("user", new UserEntity());
         ModelAndView modelAndView = new ModelAndView("addUser");
         modelAndView.addObject("type", 3);
+        modelAndView.addObject("loggedInUser", loggedInUser);
         return modelAndView;
     }
 
@@ -289,9 +296,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/exams", method = RequestMethod.GET)
-    public ModelAndView exams(@RequestParam(defaultValue = "0") int page,
-                              @RequestParam(defaultValue = "5") int size) {
+    public ModelAndView exams(Authentication authentication,
+                                @RequestParam(defaultValue = "0") int page,
+                                @RequestParam(defaultValue = "5") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
+        String username = authentication.getName();
+        UserEntity user = userService.getUserByUsername(username);
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("loggedInUser", user);
         List<Exam> exams = examService.getAllExams(page, size);
         modelAndView.addObject("exams", exams);
         modelAndView.addObject("currentPage", page);
