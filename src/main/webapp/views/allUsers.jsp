@@ -262,17 +262,15 @@
                             <td>
                                 <ul>
                                     <li style="list-style: none; margin-left: -40px;">
-                                        <a href="${pageContext.request.contextPath}/admin/users/${user.id}">View</a>
+                                        View: <a href="${pageContext.request.contextPath}/admin/users/${user.id}" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="View"><i class="fas fa-eye"></i></a>
                                     </li>
                                     <li style="list-style: none; margin-left: -40px;">
                                         <c:if test="${user.groupId == 1}">
-                                            <a onclick="if (!confirm('Are you sure to delete this user?')) return false"
-                                               href="${pageContext.request.contextPath}/admin/delete?username=${user.username}">
-                                                Delete
-                                            </a>
+                                            Delete: <a onclick="if (!confirm('Are you sure to delete this user?')) return false" href="${pageContext.request.contextPath}/admin/delete?username=${user.username}" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
                                         </c:if>
 
                                     </li>
+
                                 </ul>
                             </td>
 
