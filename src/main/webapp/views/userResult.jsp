@@ -13,6 +13,7 @@
         <th>Result ID</th>
         <th>User Name</th>
         <th>Exam name</th>
+        <th>Exam type</th>
         <th>Score</th>
         <th>Date</th>
     </tr>
@@ -21,6 +22,14 @@
             <td>${result.id}</td>
             <td>${result.user.username}</td>
             <td>${result.exam.name}</td>
+            <td>
+                <c:if test="${result.exam.type == 1}">
+                    Reading
+                </c:if>
+                <c:if test="${result.exam.type == 2}">
+                    Listening
+                </c:if>
+            </td>
             <td>${result.score}/${result.exam.questionNo}</td>
             <td>${result.time}</td>
         </tr>

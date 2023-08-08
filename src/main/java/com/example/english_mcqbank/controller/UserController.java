@@ -254,7 +254,7 @@ public class UserController {
     @RequestMapping("/user/results")
     public ModelAndView userResult(Authentication authentication,
                                    @RequestParam(defaultValue = "0") int page,
-                                   @RequestParam(defaultValue = "5") int size) {
+                                   @RequestParam(defaultValue = "15") int size) {
         ModelAndView userResultModelAndView = new ModelAndView("userResult");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);

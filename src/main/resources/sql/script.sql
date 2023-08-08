@@ -4,7 +4,8 @@ create table exams
         primary key,
     EX_NAME        varchar(100) not null,
     EX_QUESTION_NO int          null,
-    EX_TIME        datetime     null
+    EX_TIME        datetime     null,
+    EX_TYPE        int          null
 );
 
 create table topics
@@ -94,4 +95,3 @@ create table results
     constraint results_users_US_ID_fk
         foreign key (US_ID) references users (us_id)
 );
-
