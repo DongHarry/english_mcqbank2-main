@@ -79,6 +79,8 @@
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
@@ -266,14 +268,29 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <hr>
-                <c:if test="${currentPage > 0}">
-                    <a href="?page=${currentPage - 1}">Prev</a>
-                </c:if>
-                <c:if test="${hasNext}">
-                    <a href="?page=${currentPage + 1}">Next</a>
-                </c:if>
-                <hr>
+<%--                <hr>--%>
+<%--                <c:if test="${currentPage > 0}">--%>
+<%--                    <a href="?page=${currentPage - 1}">Prev</a>--%>
+<%--                </c:if>--%>
+<%--                <c:if test="${hasNext}">--%>
+<%--                    <a href="?page=${currentPage + 1}">Next</a>--%>
+<%--                </c:if>--%>
+<%--                <hr>--%>
+
+                <%--<div class="dataTables_paginate paging_simple_numbers" id="datatable2_paginate">
+                    <c:if test="${currentPage > 0}">
+                        <a href="?page=${currentPage - 1}" class="paginate_button previous" aria-controls="datatable2"
+                           data-dt-idx="0" tabindex="0" id="datatable2_previous">Previous</a>
+                    </c:if>
+                    <span>
+
+                    </span>
+                    <c:if test="${hasNext}">
+                        <a href="?page=${currentPage + 1}" class="paginate_button next" aria-controls="datatable2"
+                           data-dt-idx="7" tabindex="0" id="datatable2_next">Next</a>
+                    </c:if>
+                </div>--%>
+
                 <a href="${pageContext.request.contextPath}/admin/users/new">Create new user</a>
 
             </div><!-- table-wrapper -->
@@ -310,11 +327,16 @@
 <script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
 <script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
+
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
-<%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
 <script>
     $(document).ready(function() {
         var errorMessage = $("#message2").text().trim();
@@ -349,6 +371,20 @@
                 $('.show-sub + .br-menu-sub').slideDown();
             }
         }
+    });
+
+    $(function(){
+        'use strict';
+
+        $('#datatable2').DataTable({
+            bLengthChange: false,
+            searching: false,
+            responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
     });
 </script>
 </body>
