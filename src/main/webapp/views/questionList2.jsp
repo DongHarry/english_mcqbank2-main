@@ -76,6 +76,22 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
+    <style>
+        .table22 {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table22 td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        .table22 p {
+            white-space: pre-line;
+            max-width: 500px; /* Số ký tự tối đa trước khi tự động xuống dòng */
+        }
+    </style>
 </head>
 
 <body>
@@ -159,15 +175,15 @@
 
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            <span class="logged-name hidden-md-down">${user.fullName}</span>
+            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
             <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
                 <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
-                <h6 class="logged-fullname">${user.fullName}</h6>
-                <p>${user.email}</p>
+                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
+                <p>${loggedInUser.email}</p>
             </div>
             <hr>
             <div class="tx-center">
@@ -209,15 +225,15 @@
             <h6 class="br-section-label">Danh sách câu hỏi</h6>
             <div class="table-wrapper">
 
-                <table id="datatable2" class="table display responsive nowrap" width="200px">
+                <table id="datatable2" class="table display responsive nowrap table22" width="200px">
                     <thead>
                     <tr>
                         <th class="wd-15p">Question ID</th>
                         <th class="wd-15p">Question Content</th>
                         <th class="wd-15p">Topic</th>
                         <th class="wd-15p">Correct Answer</th>
-                        <th class="wd-15p">Answer</th>
-                        <th class="wd-15p">Level</th>
+<%--                        <th class="wd-15p">Answer</th>--%>
+<%--                        <th class="wd-15p">Level</th>--%>
                         <th class="wd-15p">Type</th>
 
 
@@ -229,12 +245,24 @@
                         <c:forEach items="${questions}" var="question">
                         <tr>
                             <td>${question.id}</td>
-                            <td>${question.content}</td>
+                            <td>
+                                <p>
+                                        ${question.content}
+                                </p>
+
+                            </td>
                             <td>${question.topic.name}</td>
                             <td>${question.correctAnswer}</td>
-                            <td>${question.answer}</td>
-                            <td>${question.level}</td>
-                            <td>${question.type}</td>
+<%--                            <td>${question.answer}</td>--%>
+<%--                            <td>${question.level}</td>--%>
+                            <td>
+                                    <c:if test="${question.type == 1}">
+                                        <span class="badge badge-success">Reading</span>
+                                    </c:if>
+                                    <c:if test="${question.type == 2}">
+                                        <span class="badge badge-info">Listening</span>
+                                    </c:if>
+                            </td>
                         </tr>
                         </c:forEach>
                     </tbody>

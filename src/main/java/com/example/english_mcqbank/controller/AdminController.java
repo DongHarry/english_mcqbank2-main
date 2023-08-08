@@ -198,9 +198,12 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "20") int size) {
+                                     @RequestParam(defaultValue = "20") int size,
+                                     Authentication authentication) {
         List<Question> questions = questionService.getAllQuestions();
         ModelAndView modelAndView = new ModelAndView("questionList2");
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("questions", questions);
         modelAndView.addObject("currentPage", page);
         assert questions != null;
