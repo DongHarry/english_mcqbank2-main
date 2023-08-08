@@ -262,7 +262,8 @@
 
             </div>
 
-            <sec:authorize access="hasRole('ADMIN')">
+            <%--<sec:authorize access="hasRole('ADMIN')">--%>
+            <c:if test="${type == 1}">
                 <div class="form-layout-footer mg-t-30">
                     <a href="${pageContext.request.contextPath}/user/profile/edit" class="btn btn-info">Chỉnh sửa</a>
 <%--                </div><!-- form-layout-footer -->--%>
@@ -281,7 +282,8 @@
                         <div class="error"> <strong>${errorMessage}</strong> </div>
                     </c:if>
                 </div>
-            </sec:authorize>
+            </c:if>
+            <%--</sec:authorize>--%>
 
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->

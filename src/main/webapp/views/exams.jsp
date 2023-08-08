@@ -323,6 +323,9 @@
                                         </sec:authorize>
                                         <sec:authorize access="hasRole('ADMIN')">
                                             <li style="list-style: none">
+                                                <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/edit">Edit exam</a>
+                                            </li>
+                                            <li style="list-style: none">
                                                 <a onclick="if (!confirm('Are you sure to delete this exam?')) return false"
                                                    href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}">Delete</a>
                                             </li>

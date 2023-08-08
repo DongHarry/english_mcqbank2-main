@@ -264,6 +264,7 @@ public class AdminController {
     @PostMapping("/admin/addExam")
     public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
                           @RequestParam("examName") String examName,
+                          @RequestParam("examType") int examType,
                           @RequestParam Map<String, String> requestParams) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
@@ -277,6 +278,7 @@ public class AdminController {
         exam.setQuestionNo(Integer.parseInt(questionNo));
         exam.setTime(new Date());
         exam.setName(examName);
+        exam.setType(examType);
         //exam.setTopicId(1);
         for (Map.Entry<Long, Integer> entry : topicNumOfQuMap.entrySet()) {
             Long topicId = entry.getKey();

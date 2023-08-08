@@ -13,6 +13,9 @@
         <label for="questionNo">QuestionNo:</label>
         <input type="text" name="questionNo" id="questionNo">
         <br>
+        <label for="examType">Exam type(1:reading, 2:listening):</label>
+        <input type="text" name="examType" id="examType">
+        <br>
         <label for="topic">Topic:</label>
         <c:forEach items="${topics}" var="topic">
             <input type="checkbox" name="topic${topic.id}" id="topic" value="${topic.id}"> ${topic.name}:
