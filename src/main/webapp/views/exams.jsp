@@ -255,7 +255,6 @@
                     <thead>
                     <tr>
                         <th class="wd-15p">Exam Id</th>
-                        <th class="wd-15p">Exam Topics</th>
                         <th class="wd-20p">Topics</th>
                         <th class="wd-15p">Exam name</th>
                         <th class="wd-10p">Question No</th>
@@ -272,16 +271,7 @@
                                     <ul style="margin-left: -40px">
                                         <c:forEach var="exam_topic" items="${exam.examTopicList}">
                                             <c:if test="${not empty exam_topic}">
-                                                <li style="list-style: none">${exam_topic.id}: ${exam_topic.percent}%</li>
-                                            </c:if>
-                                        </c:forEach>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul style="margin-left: -40px">
-                                        <c:forEach var="exam_topic" items="${exam.examTopicList}">
-                                            <c:if test="${not empty exam_topic}">
-                                                <li style="list-style: none">${exam_topic.topic.id}: ${exam_topic.topic.name}</li>
+                                                <li style="list-style: none">${exam_topic.topic.name} (${exam_topic.percent}%)</li>
                                             </c:if>
                                         </c:forEach>
                                     </ul>
