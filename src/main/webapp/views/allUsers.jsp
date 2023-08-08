@@ -228,6 +228,12 @@
                     <thead>
                     <tr>
                         <th class="wd-15p">Username</th>
+
+                        <th class="wd-15p">FullName</th>
+                        <th class="wd-15p">Address</th>
+                        <th class="wd-15p">Phone</th>
+                        <th class="wd-15p">Email</th>
+
                         <th class="wd-15p">Enable</th>
                         <th class="wd-20p">Role</th>
                         <th class="wd-15p">Action</th>
@@ -239,6 +245,12 @@
                     <c:forEach var="user" items="${users}">
                         <tr>
                             <td>${user.username}</td>
+
+                            <td>${user.fullName}</td>
+                            <td>${user.address}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.email}</td>
+
                             <td>${user.enabled}</td>
                             <td>
                                 <ul>
@@ -377,9 +389,12 @@
         'use strict';
 
         $('#datatable2').DataTable({
-            bLengthChange: false,
-            searching: false,
-            responsive: true
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
         });
 
         // Select2
