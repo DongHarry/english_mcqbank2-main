@@ -78,4 +78,8 @@ public class QuestionService {
 
         return questionRepository.findRandomQuestions2(topicId, level, number);
     }
+
+    public List<Question> getAllQuestions() {
+        return questionRepository.findAll();
+    }
 }

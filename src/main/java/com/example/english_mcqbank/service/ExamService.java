@@ -55,6 +55,16 @@ public class ExamService {
         return resultService.findAllByExam(exam, pageable);
     }
 
+    public List<Result> getResultsByExamId(int examId) {
+        Exam exam = examRepository.findById(examId).orElse(null);
+
+        if (exam == null) {
+            return null;
+        }
+
+        return resultService.findAllByExam(exam);
+    }
+
     public Map<Long, Integer> getTopicNumOfQuMap(Map<String, String> requestParams) {
         Map<Long, Integer> topicNumOfQuMap = new HashMap<>();
         for (Map.Entry<String, String> entry : requestParams.entrySet()) {
@@ -99,8 +109,8 @@ public class ExamService {
         return score;
     }
 
-    public List<Result> getResultsByUser(UserEntity user, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return resultService.findAllByUser(user, pageable);
+
+    public List<Exam> getAllExams() {
+        return examRepository.findAll();
     }
 }

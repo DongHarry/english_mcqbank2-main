@@ -72,15 +72,16 @@ public class AdminController {
                         @RequestParam(defaultValue = "10") int size,
                         Authentication authentication) {
         ModelAndView usersModelAndView = new ModelAndView("allUsers");
-        List<UserEntity> users = userService.getAllUsers(page, size);
+        //List<UserEntity> users = userService.getAllUsers(page, size);
+        List<UserEntity> users = userService.getAllUsers();
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         usersModelAndView.addObject("loggedInUser", loggedInUser);
         usersModelAndView.addObject("users", users);
-        usersModelAndView.addObject("currentPage", page);
+        //usersModelAndView.addObject("currentPage", page);
         usersModelAndView.addObject("type", 2);
-        assert users != null;
-        boolean hasNext = users.size() >= size;
-        usersModelAndView.addObject("hasNext", hasNext);
+        //assert users != null;
+        //boolean hasNext = users.size() >= size;
+        //usersModelAndView.addObject("hasNext", hasNext);
         return usersModelAndView; // Trả về admin.jsp
     }
 
@@ -198,7 +199,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "20") int size) {
-        List<Question> questions = questionService.getAllQuestions(page, size);
+        List<Question> questions = questionService.getAllQuestions();
         ModelAndView modelAndView = new ModelAndView("questionList2");
         modelAndView.addObject("questions", questions);
         modelAndView.addObject("currentPage", page);
@@ -306,12 +307,13 @@ public class AdminController {
         UserEntity user = userService.getUserByUsername(username);
         modelAndView.addObject("user", user);
         modelAndView.addObject("loggedInUser", user);
-        List<Exam> exams = examService.getAllExams(page, size);
-        modelAndView.addObject("exams", exams);
-        modelAndView.addObject("currentPage", page);
-        assert exams != null;
-        boolean hasNext = exams.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+        List<Exam> exams = examService.getAllExams();
+//        List<Exam> exams = examService.getAllExams(page, size);
+//        modelAndView.addObject("exams", exams);
+//        modelAndView.addObject("currentPage", page);
+//        assert exams != null;
+//        boolean hasNext = exams.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         return modelAndView;
     }
 

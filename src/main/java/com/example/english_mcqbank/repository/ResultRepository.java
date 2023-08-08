@@ -14,4 +14,6 @@ public interface ResultRepository extends JpaRepository<Result, Integer> {
     void deleteAllByExam(Exam exam);
 
     List<Result> findAllByExam(Exam exam, Pageable pageable);
+
+    List<Result> findAllByExam(Exam exam);
 }
