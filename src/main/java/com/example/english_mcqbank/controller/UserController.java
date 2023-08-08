@@ -51,7 +51,7 @@ public class UserController {
             return new ModelAndView("redirect:/user/profile");
         }
 
-        List<Log> logs = logService.getLogsByUser(user, page, size);
+        List<Log> logs = logService.getLogsByUser(user);
         userLogsModelAndView.addObject("logs", logs);
         userLogsModelAndView.addObject("currentPage", page);
         assert logs != null;
@@ -170,7 +170,7 @@ public class UserController {
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   Authentication authentication) {
-        List<Exam> exams = examService.getAllExams(page, size);
+        List<Exam> exams = examService.getAllExams();
         ModelAndView userExamsModelAndView = new ModelAndView("exams");
         UserEntity user = userService.getUserByUsername(authentication.getName());
         userExamsModelAndView.addObject("loggedInUser", user);
@@ -263,7 +263,7 @@ public class UserController {
             return new ModelAndView("redirect:/user/profile");
         }
         //List<Result> results = user.getResults();
-        List<Result> results = resultService.findAllByUser(user, page, size);
+        List<Result> results = resultService.findAllByUser(user);
         userResultModelAndView.addObject("results", results);
         userResultModelAndView.addObject("currentPage", page);
         assert results != null;

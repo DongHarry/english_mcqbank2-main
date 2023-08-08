@@ -40,4 +40,12 @@ public class ResultService {
 
         return resultRepository.findAllByUser(user, pageable);
     }
+
+    public List<Result> findAllByUser(UserEntity user) {
+        return resultRepository.findAllByUser(user);
+    }
+
+    public List<Result> getResultsByUser(UserEntity user) {
+        return resultRepository.findAllByUser(user);
+    }
 }

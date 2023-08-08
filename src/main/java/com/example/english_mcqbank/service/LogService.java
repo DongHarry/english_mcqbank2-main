@@ -47,4 +47,8 @@ public class LogService {
         Page<Log> logPage = logRepository.findAllByUser(user, pageable);
         return logPage.getContent();
     }
+
+    public List<Log> findAllLogs() {
+        return logRepository.findAll();
+    }
 }

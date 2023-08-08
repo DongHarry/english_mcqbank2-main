@@ -13,8 +13,12 @@
         <label for="questionNo">QuestionNo:</label>
         <input type="text" name="questionNo" id="questionNo">
         <br>
-        <label for="examType">Exam type(1:reading, 2:listening):</label>
-        <input type="text" name="examType" id="examType">
+
+                        <div>
+                            <label for="examType">Exam type(1:reading, 2:listening):</label>
+                            <input type="radio" name="examType" value="1" id="examType"> Reading
+                            <input type="radio" name="examType" value="2" id="examType"> Listening
+                        </div><!-- col-4 -->
         <br>
         <label for="topic">Topic:</label>
         <c:forEach items="${topics}" var="topic">

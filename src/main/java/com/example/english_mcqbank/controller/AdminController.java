@@ -57,7 +57,7 @@ public class AdminController {
                                      @RequestParam(defaultValue = "20") int size) {
         ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
-        List<Log> logs = logService.getLogsByUser(user, page, size);
+        List<Log> logs = logService.getLogsByUser(user);
         logsModelAndView.addObject("logs", logs);
         logsModelAndView.addObject("currentPage", page);
         assert logs != null;
@@ -178,12 +178,12 @@ public class AdminController {
     public ModelAndView allLogs(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "20") int size) {
         ModelAndView modelAndView = new ModelAndView("allLogs");
-        List<Log> logs = logService.findAllLogs(page, size);
+        List<Log> logs = logService.findAllLogs();
         modelAndView.addObject("logs", logs);
-        modelAndView.addObject("currentPage", page);
-        assert logs != null;
-        boolean hasNext = logs.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert logs != null;
+//        boolean hasNext = logs.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
 
         return modelAndView;
     }
@@ -232,7 +232,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size) {
-        List<Topic> topics = topicService.getAllTopics(page, size);
+        List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
         modelAndView.addObject("currentPage", page);
@@ -309,7 +309,7 @@ public class AdminController {
         modelAndView.addObject("loggedInUser", user);
         List<Exam> exams = examService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);
-//        modelAndView.addObject("exams", exams);
+        modelAndView.addObject("exams", exams);
 //        modelAndView.addObject("currentPage", page);
 //        assert exams != null;
 //        boolean hasNext = exams.size() >= size;
@@ -363,7 +363,7 @@ public class AdminController {
                                 @RequestParam(defaultValue = "10") int size,
                                 @PathVariable("examId") int examId) {
         ModelAndView modelAndView = new ModelAndView("userResult");
-        List<Result> results = examService.getResultsByExamId(examId, page, size);
+        List<Result> results = examService.getResultsByExamId(examId);
         modelAndView.addObject("results", results);
         modelAndView.addObject("title", "All Users results for exam " + examId);
         modelAndView.addObject("currentPage", page);
@@ -380,7 +380,7 @@ public class AdminController {
                                     @PathVariable("userId") int userId) {
         ModelAndView modelAndView = new ModelAndView("userResult");
         UserEntity user = userService.getUserByUserid(userId);
-        List<Result> results = resultService.getResultsByUser(user, page, size);
+        List<Result> results = resultService.findAllByUser(user);
         modelAndView.addObject("results", results);
         modelAndView.addObject("currentPage", page);
         assert results != null;

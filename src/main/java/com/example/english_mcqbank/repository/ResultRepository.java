@@ -16,4 +16,6 @@ public interface ResultRepository extends JpaRepository<Result, Integer> {
     List<Result> findAllByExam(Exam exam, Pageable pageable);
 
     List<Result> findAllByExam(Exam exam);
+
+    List<Result> findAllByUser(UserEntity user);
 }
