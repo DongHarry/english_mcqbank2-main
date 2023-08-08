@@ -362,7 +362,7 @@
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
-<%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
+
 <script>
     $(function(){
         'use strict'

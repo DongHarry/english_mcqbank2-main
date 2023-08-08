@@ -391,6 +391,7 @@
 <script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
@@ -426,19 +427,13 @@
     $(function(){
         'use strict';
 
-        // $('#datatable1').DataTable({
-        //     responsive: true,
-        //     language: {
-        //         searchPlaceholder: 'Search...',
-        //         sSearch: '',
-        //         lengthMenu: '_MENU_ items/page',
-        //     }
-        // });
-
         $('#datatable2').DataTable({
-            bLengthChange: false,
-            searching: false,
-            responsive: true
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
         });
 
         // Select2
