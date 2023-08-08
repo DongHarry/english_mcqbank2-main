@@ -95,4 +95,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Pageable pageable = PageRequest.of(page, size);
         return userRepository.findAll(pageable).getContent();
     }
+
+    public UserEntity getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
 }

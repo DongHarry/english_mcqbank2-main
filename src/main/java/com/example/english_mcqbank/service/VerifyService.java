@@ -1,5 +1,6 @@
 package com.example.english_mcqbank.service;
 
+import com.example.english_mcqbank.model.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -34,5 +35,20 @@ public class VerifyService {
         secureRandom.nextBytes(randomBytes);
 
         return Base64.getUrlEncoder().withoutPadding().encodeToString(randomBytes).toUpperCase();
+    }
+
+    public String generateVerifyCode(UserEntity user) {
+        String verifyCode = generateVerifyCode();
+        addVerify((long) user.getId(), verifyCode);
+        return verifyCode;
+    }
+
+    public int getUserIdByVerifyToken(String token) {
+        for (Map.Entry<Long, String> entry : verifyMap.entrySet()) {
+            if (entry.getValue().equals(token)) {
+                return entry.getKey().intValue();
+            }
+        }
+        return -1;
     }
 }

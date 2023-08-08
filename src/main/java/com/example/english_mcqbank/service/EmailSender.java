@@ -1,5 +1,6 @@
 package com.example.english_mcqbank.service;
 
+import com.example.english_mcqbank.model.UserEntity;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class EmailSender {
 
     @Autowired
     private JavaMailSender javaMailSender;
+
+    @Autowired
+    private VerifyService verifyService;
 
     @Autowired
     public EmailSender(Environment env) {
@@ -59,5 +63,16 @@ public class EmailSender {
             // Xử lý ngoại lệ khi gửi email
             e.printStackTrace();
         }
+    }
+
+    public void sendResetPasswordEmail(UserEntity user, String url) {
+        String subject = "Reset password";
+        String content = "Hi " + user.getUsername() + "\n" +
+                "Please click the link below to reset your password: \n" +
+                url +"/reset-password?token=" + verifyService.generateVerifyCode(user) + "\n" +
+                "If you did not request to reset your password, please ignore this email. \n" +
+                "Thank you!";
+
+        sendEmail(user.getEmail(), subject, content);
     }
 }

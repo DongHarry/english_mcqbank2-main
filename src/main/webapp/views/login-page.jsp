@@ -56,7 +56,11 @@
                                 ${successMessage2}
                             </div>
                         </c:if>
-
+                        <c:if test="${message3 != null}">
+                            <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                                    ${message3}
+                            </div>
+                        </c:if>
                         <c:if test="${errorMessage3 != null}">
                             <div class="alert alert-danger col-xs-offset-1 col-xs-10">
                                 ${errorMessage3}
@@ -70,7 +74,7 @@
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
-                    <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+                    <a href="${pageContext.request.contextPath}/forgot-password" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
                 </div><!-- form-group -->
                 <%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
                 <button type="submit" class="btn btn-info btn-block">Sign In</button>
