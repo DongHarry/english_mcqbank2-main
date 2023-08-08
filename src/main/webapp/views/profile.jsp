@@ -149,12 +149,17 @@
 
         </sec:authorize>
         <sec:authorize access="hasRole('USER')">
-        <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/user/exams" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-book tx-22"></i>
-                <span class="menu-item-label">Bài thi của tôi</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                    <span class="menu-item-label">Làm bài thi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link">
+                        Tất cả bài thi</a></li>
+
+                </ul>
+            </li>
             <li class="br-menu-item">
                 <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
