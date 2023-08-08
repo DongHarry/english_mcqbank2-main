@@ -265,10 +265,10 @@
 
                             <td>
                                     <c:if test="${question.type == 1}">
-                                        <span class="badge badge-success">Reading</span>
+                                        <span class="badge badge-success" style="font-size: 14px"> Reading </span>
                                     </c:if>
                                     <c:if test="${question.type == 2}">
-                                        <span class="badge badge-info">Listening</span>
+                                        <span class="badge badge-info" style="font-size: 14px">Listening</span>
                                     </c:if>
                             </td>
 <%--                            <td>${question.level}</td>--%>
