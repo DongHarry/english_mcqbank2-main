@@ -36,6 +36,9 @@ public class Exam {
     @Column(name = "ex_time")
     private Date time;
 
+    @Column(name = "ex_type")
+    private Integer type;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam")
     //@Fetch(value = FetchMode.SUBSELECT)
     //@JoinColumn(name = "ex_id")

@@ -54,4 +54,28 @@ public class QuestionService {
         Pageable pageable = PageRequest.of(page, size);
         return questionRepository.findAll(pageable).getContent();
     }
+
+    public List<Question> getRandom(Integer topicId, int level, int number, int examType) {
+        if (examType == 1) {
+            if (topicId <= 0) {
+                return questionRepository.findRandomQuestions1(number);
+            }
+
+            if (level <= 0) {
+                return questionRepository.findRandomQuestions1(topicId, number);
+            }
+
+            return questionRepository.findRandomQuestions1(topicId, level, number);
+        }
+
+        if (topicId <= 0) {
+            return questionRepository.findRandomQuestions2(number);
+        }
+
+        if (level <= 0) {
+            return questionRepository.findRandomQuestions2(topicId, number);
+        }
+
+        return questionRepository.findRandomQuestions2(topicId, level, number);
+    }
 }

@@ -203,13 +203,13 @@ public class UserController {
         //int topicId = exam.getTopicId();
         int questionCount = exam.getQuestionNo();
         List<ExamTopic> examTopics = exam.getExamTopicList();
-
+        int examType = exam.getType();
         //List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
         List<Question> questions = new ArrayList<>();
         for (ExamTopic examTopic: examTopics) {
             List<Question> questions1 =
                     questionService.getRandom(examTopic.getTopic().getId(), 0,
-                                               (int) Math.round(questionCount * examTopic.getPercent() / 100.0));
+                                               (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
             questions.addAll(questions1);
         }
         questionMap = new HashMap<>();

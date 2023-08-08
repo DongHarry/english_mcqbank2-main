@@ -22,6 +22,32 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
     List<Question> findRandomQuestions(int sampleSize);
 
+    //
+    @Query(value = "SELECT * FROM questions q WHERE q.TP_ID = :topicId AND q.DIFFICULT_LEVEL = :level AND q.qu_type = 1 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+    List<Question> findRandomQuestions1(int topicId, int level, int sampleSize);
+
+
+    @Query(value = "SELECT * FROM questions q WHERE q.TP_ID = :topicId AND q.qu_type = 1 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+
+    List<Question> findRandomQuestions1(int topicId, int sampleSize);
+
+    @Query(value = "SELECT * FROM questions q WHERE q.qu_type = 1 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+
+    List<Question> findRandomQuestions1(int sampleSize);
+
+    //
+    @Query(value = "SELECT * FROM questions q WHERE q.TP_ID = :topicId AND q.DIFFICULT_LEVEL = :level AND q.qu_type = 2 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+    List<Question> findRandomQuestions2(int topicId, int level, int sampleSize);
+
+
+    @Query(value = "SELECT * FROM questions q WHERE q.TP_ID = :topicId AND q.qu_type = 2 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+
+    List<Question> findRandomQuestions2(int topicId, int sampleSize);
+
+    @Query(value = "SELECT * FROM questions q where q.qu_type = 2 ORDER BY RAND() LIMIT :sampleSize", nativeQuery = true)
+
+    List<Question> findRandomQuestions2(int sampleSize);
+
     List<Question> findByTopicId(int topicId);
 
     List<Question> findByTopicIdAndLevel(int topicId, int level);

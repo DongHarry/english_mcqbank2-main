@@ -17,13 +17,18 @@
 <h1>Bài thi</h1>
 <div id="timer">Thời gian còn lại: </div>
 <div id="question-count">Số câu hỏi: ${questions.size()}</div>
-<button id="start-btn">Bắt đầu bài thi</button>
 <hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
 <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" onsubmit="return validateQuiz()">
     <c:forEach var="question" items="${questions}">
         <div class="question-container">
             <h3>${question.content}</h3>
+            <c:if test="${question.type == 2}">
+                Audio: <audio controls>
+                <source src="${pageContext.request.contextPath}/resource/audio/${question.option4}.mp3" type="audio/mpeg">
+            </audio>
+                <br>
+            </c:if>
             <div>
                 <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}" class="radio-option">
                 <label for="question_${question.id}_option1" class="label-option">${question.option1}</label><br>
@@ -31,8 +36,10 @@
                 <label for="question_${question.id}_option2" class="label-option">${question.option2}</label><br>
                 <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}" class="radio-option">
                 <label for="question_${question.id}_option3" class="label-option">${question.option3}</label><br>
+                <c:if test="${question.type == 1}">
                 <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}" class="radio-option">
                 <label for="question_${question.id}_option4" class="label-option">${question.option4}</label><br>
+                </c:if>
             </div>
             <br><br>
         </div>

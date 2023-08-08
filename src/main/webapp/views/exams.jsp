@@ -283,6 +283,7 @@
                         <th class="wd-15p">Exam Id</th>
                         <th class="wd-20p">Topics</th>
                         <th class="wd-15p">Exam name</th>
+                        <th class="wd-15p">Exam type</th>
                         <th class="wd-10p">Question No</th>
                         <th class="wd-25p">Time</th>
                         <th class="wd-25p">Action</th>
@@ -303,6 +304,14 @@
                                     </ul>
                                 </td>
                                 <td>${exam.name}</td>
+                                <td>
+                                    <c:if test="${exam.type == 1}">
+                                        Reading
+                                    </c:if>
+                                    <c:if test="${exam.type == 2}">
+                                        Listening
+                                    </c:if>
+                                </td>
                                 <td>${exam.questionNo}</td>
                                 <td>${exam.time}</td>
                                 <td>
