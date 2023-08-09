@@ -85,6 +85,13 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý logs</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Tài khoản admin</span>
@@ -146,7 +153,7 @@
 <div class="br-mainpanel">
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="#">Admin</a>
+            <a class="breadcrumb-item" href="/admin">Admin</a>
             <a class="breadcrumb-item" href="#">Quản lý tài khoản</a>
             <span class="breadcrumb-item active">Tài khoản người dùng</span>
         </nav>

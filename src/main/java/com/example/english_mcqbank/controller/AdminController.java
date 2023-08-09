@@ -32,11 +32,13 @@ public class AdminController {
         ModelAndView view = new ModelAndView("profile");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
+
         view.addObject("user", user);
         view.addObject("loggedInUser", user);
         view.addObject("successMessage", null);
         view.addObject("errorMessage", null);
         view.addObject("type", 1);
+
         return view; // Trả về admin.jsp
     }
 
@@ -53,15 +55,27 @@ public class AdminController {
     @RequestMapping("/admin/users/{id}/logs")
     public ModelAndView viewUserLogs(@PathVariable Integer id,
                                      @RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "20") int size) {
+                                     @RequestParam(defaultValue = "20") int size,
+                                     Authentication authentication,
+                                     RedirectAttributes redirectAttributes) {
         ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
         List<Log> logs = logService.getLogsByUser(user);
         logsModelAndView.addObject("logs", logs);
-        logsModelAndView.addObject("currentPage", page);
-        assert logs != null;
-        boolean hasNext = logs.size() >= size;
-        logsModelAndView.addObject("hasNext", hasNext);
+
+        if (logs == null || logs.isEmpty()) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/users/" + id);
+            redirectAttributes.addFlashAttribute("errorMessage", "No logs found");
+            return modelAndView;
+
+        }
+
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        logsModelAndView.addObject("loggedInUser", loggedInUser);
+//        logsModelAndView.addObject("currentPage", page);
+//        assert logs != null;
+//        boolean hasNext = logs.size() >= size;
+//        logsModelAndView.addObject("hasNext", hasNext);
         return logsModelAndView; // Trả về admin.jsp
     }
 
@@ -81,6 +95,7 @@ public class AdminController {
         //assert users != null;
         //boolean hasNext = users.size() >= size;
         //usersModelAndView.addObject("hasNext", hasNext);
+
         return usersModelAndView; // Trả về admin.jsp
     }
 
@@ -127,9 +142,10 @@ public class AdminController {
 
         try {
             userService.saveUser(user);
-            redirectAttributes.addFlashAttribute("message", "User added successfully!");
+            redirectAttributes.addFlashAttribute("message", "User " + user.getUsername() + " added successfully!");
             Log log = new Log();
             log.setUser(user);
+            log.setStatus(1);
             log.setDatetime(new Date());
             log.setName("User added successfully!");
             logService.saveLog(log);
@@ -200,7 +216,7 @@ public class AdminController {
                                      @RequestParam(defaultValue = "20") int size,
                                      Authentication authentication) {
         List<Question> questions = questionService.getAllQuestions();
-        ModelAndView modelAndView = new ModelAndView("questionList2");
+        ModelAndView modelAndView = new ModelAndView("questionList");
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("questions", questions);
@@ -233,10 +249,13 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "20") int size) {
+                                  @RequestParam(defaultValue = "20") int size,
+                                  Authentication authentication) {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", loggedInUser);
 //        modelAndView.addObject("currentPage", page);
 //        assert topics != null;
 //        boolean hasNext = topics.size() >= size;
@@ -245,8 +264,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/topics/new", method = RequestMethod.GET)
-    public ModelAndView addTopic() {
+    public ModelAndView addTopic(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("addTopic");
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", loggedInUser);
         return modelAndView;
     }
 
@@ -294,11 +315,13 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/topics/{id}", method = RequestMethod.GET)
-    public ModelAndView editTopic(@PathVariable int id, Model model) {
+    public ModelAndView editTopic(@PathVariable int id, Model model, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("editTopic");
         Topic topic = topicService.getTopicById(id);
         modelAndView.addObject("c_topic", topic);
         model.addAttribute("c_topic", topic);
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", loggedInUser);
         return modelAndView;
     }
 
@@ -315,7 +338,8 @@ public class AdminController {
         }
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
-        Topic topic = topicService.getTopicById(id);
+        Topic topic = new Topic();
+        topic.setId(id);
         topic.setName(topicName);
         topic.setDescription(topicDescription);
         topicService.save(topic);
@@ -438,9 +462,18 @@ public class AdminController {
     @RequestMapping(value = "/admin/exams/{examId}/results", method = RequestMethod.GET)
     public ModelAndView results(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size,
-                                @PathVariable("examId") int examId) {
+                                @PathVariable("examId") int examId,
+                                RedirectAttributes redirectAttributes) {
+        Exam exam = examService.getExamById(examId);
+        List<Result> results = resultService.findAllByExam(exam);
+
+        if (results == null || results.isEmpty()) {
+            ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/exams");
+            redirectAttributes.addFlashAttribute("e_message", "No results found for exam: " + examId);
+            return modelAndView1;
+        }
+
         ModelAndView modelAndView = new ModelAndView("userResult");
-        List<Result> results = examService.getResultsByExamId(examId);
         modelAndView.addObject("results", results);
         modelAndView.addObject("title", "All Users results for exam " + examId);
 //        modelAndView.addObject("currentPage", page);
@@ -454,10 +487,19 @@ public class AdminController {
     @RequestMapping(value = "/admin/users/{userId}/results", method = RequestMethod.GET)
     public ModelAndView userResults(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size,
-                                    @PathVariable("userId") int userId) {
-        ModelAndView modelAndView = new ModelAndView("userResult");
+                                    @PathVariable("userId") int userId,
+                                    RedirectAttributes redirectAttributes) {
+
         UserEntity user = userService.getUserByUserid(userId);
         List<Result> results = resultService.findAllByUser(user);
+
+        if (results == null || results.isEmpty()) {
+            ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/users/" + userId);
+            redirectAttributes.addFlashAttribute("errorMessage", "No results found for user: " + user.getUsername());
+            return modelAndView1;
+        }
+
+        ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
 //        modelAndView.addObject("currentPage", page);
 //        assert results != null;
@@ -470,11 +512,13 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
     public ModelAndView editQuestion(@PathVariable("id") int id, Model model, Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView("editQuestion");
         Question question = questionService.getQuestionById(id);
+
+        ModelAndView modelAndView = new ModelAndView("editQuestion");
         modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);
+
         return modelAndView;
     }
 
@@ -498,5 +542,45 @@ public class AdminController {
         }
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/logs", method = RequestMethod.GET)
+    public ModelAndView logs(Authentication authentication,
+                                @RequestParam(defaultValue = "0") int page,
+                                @RequestParam(defaultValue = "10") int size) {
+        ModelAndView modelAndView = new ModelAndView("allLogs");
+        String username = authentication.getName();
+        UserEntity user = userService.getUserByUsername(username);
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("loggedInUser", user);
+
+        List<Log> logs = logService.findAllLogs();
+        modelAndView.addObject("logs", logs);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/logs/{logId}/delete", method = RequestMethod.GET)
+    public ModelAndView deleteLog(@PathVariable int logId, RedirectAttributes redirectAttributes,
+                                  @RequestParam(defaultValue = "0") Integer userId) {
+        try {
+            Log log = logService.findLogById(logId);
+            if (log == null) {
+                redirectAttributes.addFlashAttribute("message", "Log does not exist");
+                if (userId != 0) {
+                    return new ModelAndView("redirect:/admin/users/" + userId + "/logs");
+                }
+                return new ModelAndView("redirect:/admin/logs");
+            }
+            logService.deleteLog(log);
+            redirectAttributes.addFlashAttribute("message", "Log deleted successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("e_message", "Error deleting log");
+        }
+
+        if (userId != 0) {
+            return new ModelAndView("redirect:/admin/users/" + userId + "/logs");
+        }
+        return new ModelAndView("redirect:/admin/logs");
     }
 }

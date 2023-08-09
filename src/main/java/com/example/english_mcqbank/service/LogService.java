@@ -51,4 +51,12 @@ public class LogService {
     public List<Log> findAllLogs() {
         return logRepository.findAll();
     }
+
+    public Log findLogById(int logId) {
+        return logRepository.findById(logId).orElse(null);
+    }
+
+    public void deleteLog(Log log) {
+        logRepository.delete(log);
+    }
 }

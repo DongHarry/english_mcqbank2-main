@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class ExamService {
     @Autowired
-    private ResultRepository resultService;
+    private ResultService resultService;
     @Autowired
     private QuestionService questionService;
     @Autowired

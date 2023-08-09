@@ -48,4 +48,16 @@ public class ResultService {
     public List<Result> getResultsByUser(UserEntity user) {
         return resultRepository.findAllByUser(user);
     }
+
+    public List<Result> findAllByExam(Exam exam) {
+        return resultRepository.findAllByExam(exam);
+    }
+
+    public void deleteAllByExam(Exam exam) {
+        resultRepository.deleteAllByExam(exam);
+    }
+
+    public List<Result> findAllByExam(Exam exam, Pageable pageable) {
+        return resultRepository.findAllByExam(exam, pageable);
+    }
 }

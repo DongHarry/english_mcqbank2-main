@@ -146,6 +146,13 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý logs</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Tài khoản admin</span>
@@ -176,12 +183,12 @@
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <img src="/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -207,8 +214,8 @@
 <div class="br-mainpanel">
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="#">Admin</a>
-            <a class="breadcrumb-item" href="#">Quản lí câu hỏi</a>
+            <a class="breadcrumb-item" href="/admin">Admin</a>
+            <a class="breadcrumb-item" href="/admin/questions">Quản lí câu hỏi</a>
             <span class="breadcrumb-item active">Tất cả câu hỏi</span>
         </nav>
     </div><!-- br-pageheader -->

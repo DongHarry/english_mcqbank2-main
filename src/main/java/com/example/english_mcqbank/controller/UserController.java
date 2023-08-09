@@ -44,16 +44,19 @@ public class UserController {
     @RequestMapping("/user/profile/logs")
     public ModelAndView userLogs(Authentication authentication,
                                  @RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "20") int size) {
-        ModelAndView userLogsModelAndView = new ModelAndView("logs");
+                                 @RequestParam(defaultValue = "20") int size
+                                 ) {
+
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
         }
-
+        ModelAndView userLogsModelAndView = new ModelAndView("logs");
+        userLogsModelAndView.addObject("loggedInUser", user);
         List<Log> logs = logService.getLogsByUser(user);
+
         userLogsModelAndView.addObject("logs", logs);
 //        userLogsModelAndView.addObject("currentPage", page);
 //        assert logs != null;
@@ -209,7 +212,7 @@ public class UserController {
 
     @RequestMapping("/user/exams/{id}/do")
     public ModelAndView doExam(@PathVariable int id) {
-        ModelAndView userExamModelAndView = new ModelAndView("questionList");
+        ModelAndView userExamModelAndView = new ModelAndView("doExam");
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");

@@ -18,7 +18,7 @@ public class Log {
     @Id
     @Column(name = "lg_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     @Column(name = "lg_name")
     private String name;

@@ -89,6 +89,7 @@
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 
         <li class="br-menu-item">
             <a href="#" class="br-menu-link with-sub">
@@ -133,6 +134,12 @@
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
+    <li class="br-menu-item">
+        <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
+            <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
+            <span class="menu-item-label">Quản lý logs</span>
+        </a><!-- br-menu-link -->
+    </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
@@ -140,6 +147,33 @@
                 <span class="menu-item-label">Tài khoản admin</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
+</sec:authorize>
+
+        <sec:authorize access="hasRole('ROLE_USER')">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                    <span class="menu-item-label">Làm bài thi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link">
+                        Tất cả bài thi</a></li>
+
+                </ul>
+            </li>
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                    <span class="menu-item-label">Kết quả</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link show-sub active">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Thông tin tài khoản</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+        </sec:authorize>
     </ul><!-- br-sideleft-menu -->
 
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
@@ -165,12 +199,12 @@
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <img src="/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -214,17 +248,26 @@
             <h6 class="br-section-label">${logs.get(0).user.fullName}'s log</h6>
             <p class="br-section-text">Danh sách phiên đăng nhập</p>
             <div class="table-wrapper">
-
+                <c:if test="${not empty message}">
+                    <div class="alert alert-success">
+                        <strong>${message}</strong>
+                    </div>
+                </c:if>
+                <c:if test="${not empty e_message}">
+                    <div class="alert alert-danger">
+                        <strong>${e_message}</strong>
+                    </div>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap">
                     <thead>
                     <tr>
                         <th class="wd-15p">Log ID</th>
-
+                        <th class="wd-15p">User</th>
                         <th class="wd-15p">Log Name</th>
                         <th class="wd-15p">Log Status</th>
                         <th class="wd-15p">Log Date</th>
-                        <th class="wd-15p">User</th>
 
+                        <th class="wd-15p">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -233,7 +276,7 @@
                     <c:forEach var="log" items="${logs}">
                         <tr>
                             <td>${log.id}</td>
-
+                            <td>${log.user.username}</td>
                             <td>${log.name}</td>
                             <td>
                                 <c:if test="${log.status == 1}">
@@ -244,7 +287,16 @@
                                 </c:if>
                             </td>
                             <td>${log.datetime}</td>
-                            <td>${log.user.username}</td>
+                            <td>
+                                <ul style="margin-left: -40px">
+                                    <li style="list-style: none">
+                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            Delete: <a onclick="if (!confirm('Are you sure to delete this logs?')) return false"
+                                                       href="${pageContext.request.contextPath}/admin/logs/${log.id}/delete?userId=${log.user.id}" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
+                                        </sec:authorize>
+                                    </li>
+                                </ul>
+                            </td>
 
                         </tr>
                     </c:forEach>
