@@ -816,26 +816,26 @@
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="name"
-                                                   placeholder="Họ và tên" required="required">
+                                                   placeholder="Họ và tên" value="${user.fullName}" required="required">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
-                                                   placeholder="Địa chỉ email" required="required">
+                                                   placeholder="Địa chỉ email" required="required" value="${user.email}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="phone" value="" class="form-control"
+                                            <input type="text" name="phone" value="${user.phone}" class="form-control"
                                                    id="phone" placeholder="Số điện thoại">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="company" value="" size="40"
+                                            <input type="text" name="company" value="${user.address}" size="40"
                                                    class="form-control" id="company" placeholder="Địa chỉ">
                                         </div>
                                     </div>
