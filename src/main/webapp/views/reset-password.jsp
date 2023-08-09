@@ -81,11 +81,6 @@
 
                 <button type="submit" class="btn btn-info btn-block">Reset</button>
             </form:form>
-
-
-
-
-            <div class="mg-t-60 tx-center">Not yet a member? <a href="/register" class="tx-info">Sign Up</a></div>
         </div><!-- login-wrapper -->
 
 
