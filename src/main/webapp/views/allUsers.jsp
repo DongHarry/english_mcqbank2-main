@@ -1,57 +1,3 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>All User</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-
-<%--<h1>All User</h1>--%>
-<%--<table border="1">--%>
-<%--    <thead>--%>
-<%--    <tr>--%>
-<%--        <th>Username</th>--%>
-<%--        <th>Enabled</th>--%>
-<%--        <th>Role</th>--%>
-<%--        <th>Action</th>--%>
-<%--    </tr>--%>
-<%--    </thead>--%>
-<%--    <tbody>--%>
-<%--    <c:forEach var="user" items="${users}">--%>
-<%--        <tr>--%>
-<%--            <td>${user.username}</td>--%>
-<%--            <td>${user.enabled}</td>--%>
-<%--            <td>--%>
-<%--                <ul>--%>
-<%--                    <c:forEach var="role" items="${user.roles}">--%>
-<%--                        <li>${role}</li>--%>
-<%--                    </c:forEach>--%>
-<%--                </ul>--%>
-<%--            </td>--%>
-<%--            <td>--%>
-<%--                <ul>--%>
-<%--                    <li>--%>
-<%--                        <a href="${pageContext.request.contextPath}/admin/users/${user.id}">View </a>--%>
-<%--                    <li>--%>
-<%--                        <a onclick="if (!confirm('Are you sure to delete this user?')) return false" --%>
-<%--                           href="${pageContext.request.contextPath}/admin/delete?username=${user.username}">Delete</a>--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--            </td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-<%--    </tbody>--%>
-<%--</table>--%>
-
-<%--<hr>--%>
-<%--<a href="${pageContext.request.contextPath}/admin/users/new">Create new user</a>--%>
-<%--<hr>--%>
-<%--<a href="${pageContext.request.contextPath}/admin">Back</a>--%>
-
-<%--</body>--%>
-<%--</html>--%>
-
-
 
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -278,28 +224,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-<%--                <hr>--%>
-<%--                <c:if test="${currentPage > 0}">--%>
-<%--                    <a href="?page=${currentPage - 1}">Prev</a>--%>
-<%--                </c:if>--%>
-<%--                <c:if test="${hasNext}">--%>
-<%--                    <a href="?page=${currentPage + 1}">Next</a>--%>
-<%--                </c:if>--%>
-<%--                <hr>--%>
 
-                <%--<div class="dataTables_paginate paging_simple_numbers" id="datatable2_paginate">
-                    <c:if test="${currentPage > 0}">
-                        <a href="?page=${currentPage - 1}" class="paginate_button previous" aria-controls="datatable2"
-                           data-dt-idx="0" tabindex="0" id="datatable2_previous">Previous</a>
-                    </c:if>
-                    <span>
-
-                    </span>
-                    <c:if test="${hasNext}">
-                        <a href="?page=${currentPage + 1}" class="paginate_button next" aria-controls="datatable2"
-                           data-dt-idx="7" tabindex="0" id="datatable2_next">Next</a>
-                    </c:if>
-                </div>--%>
 
                 <a href="${pageContext.request.contextPath}/admin/users/new">Create new user</a>
 
