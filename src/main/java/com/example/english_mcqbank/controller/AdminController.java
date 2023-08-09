@@ -440,7 +440,7 @@ public class AdminController {
         return new ModelAndView("redirect:/admin/exams");
     }
 
-    @RequestMapping(value = "/admin/results/{examId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/exams/{examId}/results", method = RequestMethod.GET)
     public ModelAndView results(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size,
                                 @PathVariable("examId") int examId) {
