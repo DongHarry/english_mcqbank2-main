@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -245,6 +244,59 @@ public class AdminController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/admin/topics/new", method = RequestMethod.GET)
+    public ModelAndView addTopic() {
+        ModelAndView modelAndView = new ModelAndView("addTopic");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/addTopic", method = RequestMethod.POST)
+    public ModelAndView addTopic(@RequestParam("topicName") String topicName,
+                                 RedirectAttributes redirectAttributes) {
+        try {
+            Topic topic = new Topic();
+            topic.setName(topicName);
+            topicService.save(topic);
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", "Error adding topic");
+            return new ModelAndView("redirect:/admin");
+        }
+        ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/topics");
+        redirectAttributes.addFlashAttribute("message", "Topic added successfully");
+        return modelAndView1;
+    }
+
+    @RequestMapping(value = "/admin/topics/{id}/delete", method = RequestMethod.GET)
+    public ModelAndView deleteTopic(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        Topic topic = topicService.getTopicById(id);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
+        redirectAttributes.addFlashAttribute("message", "Topic deleted successfully");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/topics/{id}", method = RequestMethod.GET)
+    public ModelAndView editTopic(@PathVariable int id, Model model) {
+        ModelAndView modelAndView = new ModelAndView("editTopic");
+        Topic topic = topicService.getTopicById(id);
+        modelAndView.addObject("c_topic", topic);
+        model.addAttribute("c_topic", topic);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/topics/{id}/edit", method = RequestMethod.POST)
+    public ModelAndView editTopic(@PathVariable int id,
+                                  @RequestParam("name") String topicName,
+                                  @RequestParam("description") String topicDescription,
+                                  RedirectAttributes redirectAttributes) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
+        Topic topic = topicService.getTopicById(id);
+        topic.setName(topicName);
+        topic.setDescription(topicDescription);
+        topicService.save(topic);
+        redirectAttributes.addFlashAttribute("message", "Topic edited successfully");
+        return modelAndView;
+    }
+
 //    @RequestMapping(value = "/admin/addExam", method = RequestMethod.POST)
 //    public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
 //                                @RequestParam("topicId") int topicId,
@@ -385,6 +437,36 @@ public class AdminController {
 //        modelAndView.addObject("hasNext", hasNext);
         modelAndView.addObject("title", "All results for user " + user.getFullName());
         //modelAndView.addObject("examId", examId);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
+    public ModelAndView editQuestion(@PathVariable("id") int id, Model model) {
+        ModelAndView modelAndView = new ModelAndView("editQuestion");
+        Exam exam = examService.getExamById(id);
+        Question question = questionService.getQuestionById(id);
+        modelAndView.addObject("c_question", question);
+        model.addAttribute("c_question", question);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/{id}/edit", method = RequestMethod.POST)
+    public ModelAndView editQuestionHandle(@ModelAttribute("c_question") Question c_question,
+                                          RedirectAttributes redirectAttributes) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
+        Question question = questionService.getQuestionById(c_question.getId());
+        if (question != null) {
+            question.setContent(c_question.getContent());
+            question.setAnswer(c_question.getAnswer());
+            question.setOption1(c_question.getOption1());
+            question.setOption2(c_question.getOption2());
+            question.setOption3(c_question.getOption3());
+            question.setOption4(c_question.getOption4());
+            question.setExplain(c_question.getExplain());
+            question.setLevel(c_question.getLevel());
+            questionService.save(question);
+            redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " updated successfully");
+        }
         return modelAndView;
     }
 }

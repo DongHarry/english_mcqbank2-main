@@ -15,7 +15,7 @@
 <form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
     <div>
         <label for="name">Exam name:</label>
-        <input type="text" id="name" name="name" value="${c_exam.name}" readonly><br>
+        <input type="text" id="name" name="name" value="${c_exam.name}"><br>
     </div>
     <div>
         <label for="questionNo">Question No:</label>

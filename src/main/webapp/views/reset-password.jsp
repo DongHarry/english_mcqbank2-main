@@ -60,7 +60,7 @@
             <h4 class="tx-inverse tx-center">Rest Password</h4>
             <p class="tx-center mg-b-60">Welcome back my friend! Please fill in the information.</p>
 
-            <form:form action="${pageContext.request.contextPath}/forgot-password" method="post" class="login-form" id="loginForm">
+            <form:form action="${pageContext.request.contextPath}/reset-password" method="post" class="login-form" id="loginForm">
 
 
                 <div class="form-group">
@@ -81,11 +81,6 @@
 
                 <button type="submit" class="btn btn-info btn-block">Reset</button>
             </form:form>
-
-
-
-
-            <div class="mg-t-60 tx-center">Not yet a member? <a href="/register" class="tx-info">Sign Up</a></div>
         </div><!-- login-wrapper -->
 
 

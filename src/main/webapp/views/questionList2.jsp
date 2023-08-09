@@ -233,7 +233,11 @@
 
             <h6 class="br-section-label">Danh sách câu hỏi</h6>
             <div class="table-wrapper">
-
+                <c:if test="${not empty message}">
+                    <div class="alert alert-success">
+                        <strong>${message}</strong>
+                    </div>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap table22">
                     <thead>
                     <tr>
@@ -275,7 +279,7 @@
                             <td>
                                 <ul>
                                     <li>
-                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}/edit" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                     </li>
                                     <li>
                                         Delete: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
