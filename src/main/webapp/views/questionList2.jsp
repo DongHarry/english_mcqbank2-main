@@ -84,15 +84,19 @@
 
         .table22 td {
             border: 1px solid #ccc;
-            padding: 8px;
+            padding: 3px;
         }
 
         /*chỉnh sửa độ rộng của cột question content*/
         .table22 td:nth-child(2) {
-            width: 60%;
+            width: 50%;
         }
 
-        .table22 p {
+        .table22 td:nth-child(4) {
+            width: 5%;
+        }
+
+        .table22 p.abcd {
             white-space: pre-line;
             max-width: 500px; /* Số ký tự tối đa trước khi tự động xuống dòng */
         }
@@ -235,13 +239,12 @@
                     <tr>
                         <th class="wd-15p">Question ID</th>
                         <th class="wd-15p" style="width: auto">Question Content</th>
-                        <th class="wd-15p">Topic</th>
-                        <th class="wd-15p">Correct Answer</th>
+                        <th class="wd-15p" style="width: auto">Topic</th>
+                        <th class="wd-15p" style="width: auto">Correct Answer</th>
 <%--                        <th class="wd-15p">Answer</th>--%>
-<%--                        <th class="wd-15p">Level</th>--%>
                         <th class="wd-15p">Type</th>
-
-
+<%--                        <th class="wd-15p">Level</th>--%>
+                        <th class="wd-15p">Action</th>
 
                     </tr>
                     </thead>
@@ -251,7 +254,7 @@
                         <tr>
                             <td>${question.id}</td>
                             <td>
-                                <p>
+                                <p class="abcd">
                                         ${question.content}
                                 </p>
 
@@ -259,14 +262,25 @@
                             <td>${question.topic.name}</td>
                             <td>${question.correctAnswer}</td>
 <%--                            <td>${question.answer}</td>--%>
-<%--                            <td>${question.level}</td>--%>
+
                             <td>
                                     <c:if test="${question.type == 1}">
-                                        <span class="badge badge-success">Reading</span>
+                                        <span class="badge badge-success" style="font-size: 14px"> Reading </span>
                                     </c:if>
                                     <c:if test="${question.type == 2}">
-                                        <span class="badge badge-info">Listening</span>
+                                        <span class="badge badge-info" style="font-size: 14px">Listening</span>
                                     </c:if>
+                            </td>
+<%--                            <td>${question.level}</td>--%>
+                            <td>
+                                <ul>
+                                    <li>
+                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}/edit" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                    </li>
+                                    <li>
+                                        Delete: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
+                                    </li>
+                                </ul>
                             </td>
                         </tr>
                         </c:forEach>

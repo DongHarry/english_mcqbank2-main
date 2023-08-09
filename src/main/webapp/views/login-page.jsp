@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username">
+                    <input type="text" name="username" id="username" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your username">
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">

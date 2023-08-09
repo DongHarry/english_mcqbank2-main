@@ -53,10 +53,10 @@ public class UserController {
 
         List<Log> logs = logService.getLogsByUser(user);
         userLogsModelAndView.addObject("logs", logs);
-        userLogsModelAndView.addObject("currentPage", page);
-        assert logs != null;
-        boolean hasNext = logs.size() >= size;
-        userLogsModelAndView.addObject("hasNext", hasNext);
+//        userLogsModelAndView.addObject("currentPage", page);
+//        assert logs != null;
+//        boolean hasNext = logs.size() >= size;
+//        userLogsModelAndView.addObject("hasNext", hasNext);
         return userLogsModelAndView; // Trả về user.jsp
     }
 
@@ -175,10 +175,10 @@ public class UserController {
         UserEntity user = userService.getUserByUsername(authentication.getName());
         userExamsModelAndView.addObject("loggedInUser", user);
         userExamsModelAndView.addObject("exams", exams);
-        userExamsModelAndView.addObject("currentPage", page);
-        assert exams != null;
-        boolean hasNext = exams.size() >= size;
-        userExamsModelAndView.addObject("hasNext", hasNext);
+//        userExamsModelAndView.addObject("currentPage", page);
+//        assert exams != null;
+//        boolean hasNext = exams.size() >= size;
+//        userExamsModelAndView.addObject("hasNext", hasNext);
         return userExamsModelAndView; // Trả về user.jsp
     }
 
@@ -265,10 +265,10 @@ public class UserController {
         //List<Result> results = user.getResults();
         List<Result> results = resultService.findAllByUser(user);
         userResultModelAndView.addObject("results", results);
-        userResultModelAndView.addObject("currentPage", page);
-        assert results != null;
-        boolean hasNext = results.size() >= size;
-        userResultModelAndView.addObject("hasNext", hasNext);
+//        userResultModelAndView.addObject("currentPage", page);
+//        assert results != null;
+//        boolean hasNext = results.size() >= size;
+//        userResultModelAndView.addObject("hasNext", hasNext);
         //userResultModelAndView.addObject("user", user);
         userResultModelAndView.addObject("title", "Results of " + user.getFullName());
         return userResultModelAndView; // Trả về user.jsp

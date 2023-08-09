@@ -1,9 +1,6 @@
 package com.example.english_mcqbank.service;
 
-import com.example.english_mcqbank.model.Exam;
-import com.example.english_mcqbank.model.Question;
-import com.example.english_mcqbank.model.Result;
-import com.example.english_mcqbank.model.UserEntity;
+import com.example.english_mcqbank.model.*;
 import com.example.english_mcqbank.repository.ExamRepository;
 import com.example.english_mcqbank.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +18,8 @@ public class ExamService {
     private ResultRepository resultService;
     @Autowired
     private QuestionService questionService;
-
+    @Autowired
+    private TopicService topicService;
 
     @Autowired
     private ExamRepository examRepository;
@@ -112,5 +110,18 @@ public class ExamService {
 
     public List<Exam> getAllExams() {
         return examRepository.findAll();
+    }
+
+    public void addExamTopic(Exam exam, Map<Long, Integer> topicNumOfQuMap) {
+        for (Map.Entry<Long, Integer> entry : topicNumOfQuMap.entrySet()) {
+            Long topicId = entry.getKey();
+            Integer numOfQu = entry.getValue();
+            ExamTopic examTopic = new ExamTopic();
+            examTopic.setTopic(topicService.getTopicById(topicId.intValue()));
+            examTopic.setPercent(numOfQu);
+            exam.addExamTopic(examTopic);
+
+            //System.out.println("topicId: " + topicId + ", numOfQu: " + numOfQu);
+        }
     }
 }

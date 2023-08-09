@@ -148,15 +148,15 @@ public class AdminController {
         try {
             UserEntity user = userService.findByUsername(username);
             if (user == null) {
-//                redirectAttributes.addFlashAttribute("message", "User does not exist");
+                redirectAttributes.addFlashAttribute("message", "User does not exist");
 //                return new ModelAndView("allUsers");
-                modelAndView.addObject("message", "User does not exist");
+//                modelAndView.addObject("message", "User does not exist");
                 return modelAndView;
             }
             if (user.getGroupId() == 0) {
-//                redirectAttributes.addFlashAttribute("message", "Cannot delete admin");
+                redirectAttributes.addFlashAttribute("message", "Cannot delete admin");
 //                return new ModelAndView("allUsers");
-                modelAndView.addObject("message", "Cannot delete admin");
+//                modelAndView.addObject("message", "Cannot delete admin");
                 return modelAndView;
             }
             List<Log> logs = logService.getLogsByUser(user);
@@ -164,8 +164,8 @@ public class AdminController {
                 logService.deleteAllLog(logs);
             }
             userService.deleteUser(user);
-            modelAndView.addObject("message", "User deleted successfully");
-            //redirectAttributes.addFlashAttribute("message", "User deleted successfully");
+            //modelAndView.addObject("message", "User deleted successfully");
+            redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Error deleting user");
@@ -205,10 +205,10 @@ public class AdminController {
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("questions", questions);
-        modelAndView.addObject("currentPage", page);
-        assert questions != null;
-        boolean hasNext = questions.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert questions != null;
+//        boolean hasNext = questions.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         return modelAndView;
     }
 
@@ -238,10 +238,10 @@ public class AdminController {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
-        modelAndView.addObject("currentPage", page);
-        assert topics != null;
-        boolean hasNext = topics.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert topics != null;
+//        boolean hasNext = topics.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         return modelAndView;
     }
 
@@ -269,7 +269,8 @@ public class AdminController {
     public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
                           @RequestParam("examName") String examName,
                           @RequestParam("examType") int examType,
-                          @RequestParam Map<String, String> requestParams) {
+                          @RequestParam Map<String, String> requestParams,
+                                RedirectAttributes redirectAttributes) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
         Map<Long, Integer> topicNumOfQuMap = examService.getTopicNumOfQuMap(requestParams);
@@ -284,20 +285,12 @@ public class AdminController {
         exam.setName(examName);
         exam.setType(examType);
         //exam.setTopicId(1);
-        for (Map.Entry<Long, Integer> entry : topicNumOfQuMap.entrySet()) {
-            Long topicId = entry.getKey();
-            Integer numOfQu = entry.getValue();
-            ExamTopic examTopic = new ExamTopic();
-            examTopic.setTopic(topicService.getTopicById(topicId.intValue()));
-            examTopic.setPercent(numOfQu);
-            exam.addExamTopic(examTopic);
-
-            //System.out.println("topicId: " + topicId + ", numOfQu: " + numOfQu);
-        }
-
+        examService.addExamTopic(exam, topicNumOfQuMap);
         examService.saveExam(exam);
+
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
-        modelAndView.addObject("message", "Exam added successfully");
+        //modelAndView.addObject("message", "Exam added successfully");
+        redirectAttributes.addFlashAttribute("message", "Exam added successfully");
         // Redirect hoặc trả về view (tùy vào logic của ứng dụng)
         return modelAndView; // Thay thế "path-to-some-page" bằng đường dẫn mong muốn
     }
@@ -370,10 +363,10 @@ public class AdminController {
         List<Result> results = examService.getResultsByExamId(examId);
         modelAndView.addObject("results", results);
         modelAndView.addObject("title", "All Users results for exam " + examId);
-        modelAndView.addObject("currentPage", page);
-        assert results != null;
-        boolean hasNext = results.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert results != null;
+//        boolean hasNext = results.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         //modelAndView.addObject("examId", examId);
         return modelAndView;
     }
@@ -386,10 +379,10 @@ public class AdminController {
         UserEntity user = userService.getUserByUserid(userId);
         List<Result> results = resultService.findAllByUser(user);
         modelAndView.addObject("results", results);
-        modelAndView.addObject("currentPage", page);
-        assert results != null;
-        boolean hasNext = results.size() >= size;
-        modelAndView.addObject("hasNext", hasNext);
+//        modelAndView.addObject("currentPage", page);
+//        assert results != null;
+//        boolean hasNext = results.size() >= size;
+//        modelAndView.addObject("hasNext", hasNext);
         modelAndView.addObject("title", "All results for user " + user.getFullName());
         //modelAndView.addObject("examId", examId);
         return modelAndView;
