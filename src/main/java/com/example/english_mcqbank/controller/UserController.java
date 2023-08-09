@@ -203,7 +203,7 @@ public class UserController {
 
     @RequestMapping("/user/exams/{id}/do")
     public ModelAndView doExam(@PathVariable int id) {
-        ModelAndView userExamModelAndView = new ModelAndView("questionList");
+        ModelAndView userExamModelAndView = new ModelAndView("doExam");
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");

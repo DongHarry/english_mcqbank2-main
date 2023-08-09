@@ -200,7 +200,7 @@ public class AdminController {
                                      @RequestParam(defaultValue = "20") int size,
                                      Authentication authentication) {
         List<Question> questions = questionService.getAllQuestions();
-        ModelAndView modelAndView = new ModelAndView("questionList2");
+        ModelAndView modelAndView = new ModelAndView("questionList");
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("questions", questions);
