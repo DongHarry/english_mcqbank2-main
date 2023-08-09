@@ -56,7 +56,7 @@
   <title>Edit profile</title>
 
   <!--favicon icon-->
-  <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/resource/img/favicon.png" type="image/png" sizes="16x16">
 
   <!-- vendor css -->
   <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -213,7 +213,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-header wd-250">
       <div class="tx-center">
-        <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+        <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
         <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
         <p>${loggedInUser.email}</p>
       </div>
@@ -292,7 +292,7 @@
               <div class="col-lg-4">
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon ion-information tx-16 lh-0 op-6"></i></span>
+                    <span class="input-group-text"><i class="icon ion- tx-16 lh-0 op-6"></i></span>
                   </div>
                   <input type="text" id="fullName" name="fullName" value="${currentUser.fullName}" required
                          class="form-control" placeholder="FullName">
