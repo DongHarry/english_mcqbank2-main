@@ -246,7 +246,7 @@
                 <div class="col-lg-4">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
+                            <span class="input-group-text"><i class="icon ion-information-circled tx-16 lh-0 op-6"></i></span>
                         </div>
                         <input type="text" id="fullName" name="fullName" value="${user.fullName}" required
                                class="form-control" placeholder="FullName">
