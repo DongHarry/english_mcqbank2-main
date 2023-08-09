@@ -810,7 +810,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <form action="php/mail.php" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
+                            <form:form action="${pageContext.request.contextPath}/sendContactMail" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
                                 <h6>Đừng bỏ lỡ cơ hội</h6>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
@@ -856,7 +856,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </form:form>
                             <p class="form-message"></p>
                         </div>
                     </div>
