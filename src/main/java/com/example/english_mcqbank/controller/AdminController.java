@@ -268,6 +268,7 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("e_message", "Error adding topic");
             return new ModelAndView("redirect:/admin/topics");
         }
+
         ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/topics");
         redirectAttributes.addFlashAttribute("message", "Topic added successfully");
         return modelAndView1;
@@ -280,10 +281,12 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("e_message", "Topic does not exist");
             return new ModelAndView("redirect:/admin/topics");
         }
+
         if (questionService.countAllByTopic(topic) > 0) {
             redirectAttributes.addFlashAttribute("e_message", "Topic has questions");
             return new ModelAndView("redirect:/admin/topics");
         }
+
         topicService.deleteTopic(topic);
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
         redirectAttributes.addFlashAttribute("message", "Topic deleted successfully");
@@ -310,11 +313,13 @@ public class AdminController {
             ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/topics/" + id);
             return modelAndView1;
         }
+
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
         Topic topic = topicService.getTopicById(id);
         topic.setName(topicName);
         topic.setDescription(topicDescription);
         topicService.save(topic);
+
         redirectAttributes.addFlashAttribute("message", "Topic edited successfully");
         return modelAndView;
     }
@@ -340,7 +345,7 @@ public class AdminController {
 //        return modelAndView1;
 //    }
 
-    @PostMapping("/admin/addExam")
+    @RequestMapping(value = "/admin/addExam", method = RequestMethod.POST)
     public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
                           @RequestParam("examName") String examName,
                           @RequestParam("examType") int examType,
@@ -348,19 +353,15 @@ public class AdminController {
                                 RedirectAttributes redirectAttributes) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
-        Map<Long, Integer> topicNumOfQuMap = examService.getTopicNumOfQuMap(requestParams);
+        Map<Long, Integer> examTopicPercentageMap = examService.getExamTopicPercentageMap(requestParams);
         // Duyệt qua các tham số trong requestParams để tách giá trị numOfQu tương ứng với từng topicId
-
-
-
         // Sau khi có Map mới tương ứng <topicId, numOfQu>, bạn có thể thực hiện các thao tác cần thiết với dữ liệu này.
         Exam exam = new Exam();
         exam.setQuestionNo(Integer.parseInt(questionNo));
         exam.setTime(new Date());
         exam.setName(examName);
         exam.setType(examType);
-        //exam.setTopicId(1);
-        examService.addExamTopic(exam, topicNumOfQuMap);
+        examService.addExamTopic(exam, examTopicPercentageMap);
         examService.saveExam(exam);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
@@ -379,6 +380,7 @@ public class AdminController {
         UserEntity user = userService.getUserByUsername(username);
         modelAndView.addObject("user", user);
         modelAndView.addObject("loggedInUser", user);
+
         List<Exam> exams = examService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);
         modelAndView.addObject("exams", exams);
@@ -404,12 +406,14 @@ public class AdminController {
                                  RedirectAttributes redirectAttributes) {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
         Exam exam = examService.getExamById(examId);
+
         if (c_exam != null) {
             exam.setName(c_exam.getName());
             exam.setQuestionNo(c_exam.getQuestionNo());
             exam.setType(c_exam.getType());
             redirectAttributes.addFlashAttribute("message", "Exam: " +c_exam.getName()+ " updated successfully");
         }
+
         examService.saveExam(exam);
         return modelAndView;
     }
@@ -427,10 +431,11 @@ public class AdminController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Error deleting exam");
         }
+
         return new ModelAndView("redirect:/admin/exams");
     }
 
-    @RequestMapping(value = "/admin/results/{examId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/exams/{examId}/results", method = RequestMethod.GET)
     public ModelAndView results(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size,
                                 @PathVariable("examId") int examId) {
@@ -477,6 +482,7 @@ public class AdminController {
                                           RedirectAttributes redirectAttributes) {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
         Question question = questionService.getQuestionById(c_question.getId());
+
         if (question != null) {
             question.setContent(c_question.getContent());
             question.setAnswer(c_question.getAnswer());
@@ -489,6 +495,7 @@ public class AdminController {
             questionService.save(question);
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " updated successfully");
         }
+
         return modelAndView;
     }
 }

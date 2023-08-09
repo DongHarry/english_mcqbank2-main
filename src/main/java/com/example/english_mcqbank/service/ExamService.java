@@ -63,8 +63,8 @@ public class ExamService {
         return resultService.findAllByExam(exam);
     }
 
-    public Map<Long, Integer> getTopicNumOfQuMap(Map<String, String> requestParams) {
-        Map<Long, Integer> topicNumOfQuMap = new HashMap<>();
+    public Map<Long, Integer> getExamTopicPercentageMap(Map<String, String> requestParams) {
+        Map<Long, Integer> examTopicPercentageMap = new HashMap<>();
         for (Map.Entry<String, String> entry : requestParams.entrySet()) {
             String paramName = entry.getKey();
             String paramValue = entry.getValue();
@@ -77,15 +77,15 @@ public class ExamService {
                 // Tạo tên tham số numOfQu tương ứng
                 String numOfQuParamName = "numQu.OfTopic" + topicId;
                 // Lấy giá trị numOfQu từ requestParams dựa vào tên tham số numOfQu tương ứng
-                String numOfQuValue = requestParams.get(numOfQuParamName);
+                String percentValue = requestParams.get(numOfQuParamName);
                 // Chuyển đổi giá trị numOfQu từ String sang Integer (hoặc bạn có thể sử dụng parseInt)
-                Integer numOfQu = Integer.valueOf(numOfQuValue);
+                Integer percent = Integer.valueOf(percentValue);
 
                 // Đưa cặp topicId và numOfQu vào Map
-                topicNumOfQuMap.put(topicId, numOfQu);
+                examTopicPercentageMap.put(topicId, percent);
             }
         }
-        return topicNumOfQuMap;
+        return examTopicPercentageMap;
     }
 
     public int calculateScore(Map<String, String> params) {
@@ -112,15 +112,14 @@ public class ExamService {
         return examRepository.findAll();
     }
 
-    public void addExamTopic(Exam exam, Map<Long, Integer> topicNumOfQuMap) {
-        for (Map.Entry<Long, Integer> entry : topicNumOfQuMap.entrySet()) {
+    public void addExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
+        for (Map.Entry<Long, Integer> entry : examTopicPercentageMap.entrySet()) {
             Long topicId = entry.getKey();
-            Integer numOfQu = entry.getValue();
+            Integer percent = entry.getValue();
             ExamTopic examTopic = new ExamTopic();
             examTopic.setTopic(topicService.getTopicById(topicId.intValue()));
-            examTopic.setPercent(numOfQu);
+            examTopic.setPercent(percent);
             exam.addExamTopic(examTopic);
-
             //System.out.println("topicId: " + topicId + ", numOfQu: " + numOfQu);
         }
     }
