@@ -233,10 +233,12 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "20") int size) {
+                                  @RequestParam(defaultValue = "20") int size,
+                                  Authentication authentication) {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
+        modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
 //        modelAndView.addObject("currentPage", page);
 //        assert topics != null;
 //        boolean hasNext = topics.size() >= size;

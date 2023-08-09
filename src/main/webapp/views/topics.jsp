@@ -250,7 +250,7 @@
 <%--                <a href="#">Edit Topic</a>--%>
 <%--                <a href="#">Delete Topic</a>--%>
                 <div class="form-layout-footer mg-t-30">
-                    <button class="btn btn-info mg-r-5"><a href="${pageContext.request.contextPath}/topics/new">New Topic</a></button>
+                    <button class="btn btn-info mg-r-5"><a href="${pageContext.request.contextPath}/admin/topics/new">New Topic</a></button>
 
                 </div>
 
