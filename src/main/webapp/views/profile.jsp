@@ -249,10 +249,10 @@
             <p>Thông tin tài khoản ${user.role}</p>
             <div>
                 <c:if test="${successMessage != null}">
-                    <div class="text-success"> <strong>${successMessage}</strong> </div>
+                    <div> <strong>${successMessage}</strong> </div>
                 </c:if>
                 <c:if test="${param.successMessage != null}">
-                    <div class="text-success"> <strong>${param.successMessage}</strong> </div>
+                    <div> <strong>${param.successMessage}</strong> </div>
                 </c:if>
                 <c:if test="${not empty errorMessage}">
                     <div class="error"> <strong>${errorMessage}</strong> </div>

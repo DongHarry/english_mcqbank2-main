@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Controller
 @RequiredArgsConstructor
@@ -41,6 +42,11 @@ public class WebController {
         }
 
         return new ModelAndView("index"); // Trả về index.jsp
+    }
+
+    @RequestMapping(value = "/index.html", method = RequestMethod.GET)
+    public ModelAndView index() {
+        return new ModelAndView("index");
     }
 
 
@@ -75,7 +81,8 @@ public class WebController {
                                         @RequestParam("email") String email,
                                         @RequestParam("phone") String phone,
                                         @RequestParam("company") String company,
-                                        @RequestParam("message") String message) {
+                                        @RequestParam("message") String message,
+                                        RedirectAttributes redirectAttributes) {
 
 
 
@@ -87,8 +94,10 @@ public class WebController {
                 "Company: " + company + "\n" +
                 "Message: " + message + "\n";
 
-        emailSender.sendEmail("luongdinhduc0000@gmail.com", email, subject, content);
+        CompletableFuture<Void> completableFuture = emailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
         //return new ModelAndView("redirect:/#");
+        //ModelAndView view = new ModelAndView("redirect:/home");
+        //redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");
         return new ModelAndView("test");
     }
 
@@ -145,17 +154,19 @@ public class WebController {
     }
 
     @RequestMapping(value = "/reset-password", method = RequestMethod.GET)
-    public ModelAndView resetPassword(@RequestParam("token") String token) {
+    public ModelAndView resetPassword(@RequestParam("token") String token, RedirectAttributes redirectAttributes) {
         int userId = verifyService.getUserIdByVerifyToken(token);
         if (userId == -1) {
             ModelAndView modelAndView = new ModelAndView("redirect:/login-page");
-            modelAndView.addObject("message3", "Token not found!");
+            //modelAndView.addObject("errorMessage3", "Token not found!");
+            redirectAttributes.addFlashAttribute("errorMessage3", "Token not found!");
             return modelAndView;
         }
         UserEntity user = userService.getUserByUserid(userId);
         if (user == null) {
             ModelAndView modelAndView = new ModelAndView("redirect:/login-page");
-            modelAndView.addObject("message3", "Token not found!");
+            //modelAndView.addObject("errorMessage3", "Token not found!");
+            redirectAttributes.addFlashAttribute("errorMessage3", "Token not found!");
             return modelAndView;
         }
         ModelAndView modelAndView = new ModelAndView("reset-password");
@@ -173,14 +184,14 @@ public class WebController {
         if (userId == -1) {
             ModelAndView modelAndView = new ModelAndView("redirect:/login-page");
             //modelAndView.addObject("message3", "Token not found!");
-            redirectAttributes.addFlashAttribute("message3", "Token not found!");
+            redirectAttributes.addFlashAttribute("errorMessage3", "Token not found!");
             return modelAndView;
         }
         UserEntity user = userService.getUserByUserid(userId);
         if (user == null) {
             ModelAndView modelAndView = new ModelAndView("redirect:/login-page");
             //modelAndView.addObject("message3", "Token not found!");
-            redirectAttributes.addFlashAttribute("message3", "Token not found!");
+            redirectAttributes.addFlashAttribute("errorMessage3", "Token not found!");
             System.out.println("Token not found!");
             return modelAndView;
         }

@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -848,6 +849,11 @@
                 </div>
               </form:form>
               <p class="form-message"></p>
+<%--              <c:if test="${not empty message5}">--%>
+<%--                <div class="alert alert-success">--%>
+<%--                  <strong>${message5}</strong>--%>
+<%--                </div>--%>
+<%--                </c:if>--%>
             </div>
           </div>
         </div>

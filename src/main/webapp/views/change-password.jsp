@@ -280,41 +280,51 @@
   <div class="br-pagebody">
     <div class="br-section-wrapper">
       <h6 class="br-section-label">Đổi mật khẩu</h6>
-
+      <div>
+        <c:if test="${successMessage != null}">
+          <div class="text-success"> <strong>${successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${param.successMessage != null}">
+          <div class="text-success"> <strong>${param.successMessage}</strong> </div>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+          <div class="error"> <strong>${errorMessage}</strong> </div>
+        </c:if>
+      </div>
       <%--<sec:authorize access="hasRole('ADMIN')">--%>
         <div class="form-layout-footer mg-t-30">
 
           <div class="tab-pane" id="changePass">
             <form:form class="formDoiMatKhau" action="${pageContext.request.contextPath}/user/profile/change-password" method="post">
               <div class="form-group">
-                <label>Mật khẩu cũ</label> <input type="password"
-                                                  class="form-control" name="oldPassword" required="required" />
+                <label>Mật khẩu cũ</label>
+                <input type="password" class="form-control" name="oldPassword" required="required" />
               </div>
               <div class="form-group">
-                <label>Mật khẩu mới</label> <input type="password"
-                                                   class="form-control" name="newPassword" required="required" />
+                <label>Mật khẩu mới</label>
+                <input type="password" class="form-control" id="password" name="newPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                       title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required="required" />
               </div>
               <div class="form-group">
-                <label>Nhắc lại mật khẩu mới</label> <input type="password"
-                                                            class="form-control" name="confirmNewPassword" required="required" />
+                <label>Nhắc lại mật khẩu mới</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmNewPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                       title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required="required" />
+              </div>
+
+              <div>
+                <span id="mess"></span>
               </div>
               <input class="btn btn-primary" type="submit" id="btnXacNhanDoiMK"
                      value="Xác nhận" />
             </form:form>
           </div>
+          <div class="form-layout-footer mg-t-30">
+            <a href="${pageContext.request.contextPath}/user/profile" class="btn btn-secondary">Quay lại</a>
+
+          </div>
         </div><!-- form-layout-footer -->
 
-        <div>
-          <c:if test="${successMessage != null}">
-            <div class="text-success"> <strong>${successMessage}</strong> </div>
-          </c:if>
-          <c:if test="${param.successMessage != null}">
-            <div class="text-success"> <strong>${param.successMessage}</strong> </div>
-          </c:if>
-          <c:if test="${not empty errorMessage}">
-            <div class="error"> <strong>${errorMessage}</strong> </div>
-          </c:if>
-        </div>
+
       <%--</sec:authorize>--%>
 
     </div><!-- br-section-wrapper -->
@@ -389,34 +399,49 @@
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
-
 <script>
   $(function(){
-    'use strict'
+    'use strict';
 
-    // FOR DEMO ONLY
-    // menu collapsed by default during first page load or refresh with screen
-    // having a size between 992px and 1299px. This is intended on this page only
-    // for better viewing of widgets demo.
-    $(window).resize(function(){
-      minimizeMenu();
+    $('.select2').select2({
+      minimumResultsForSearch: Infinity
     });
+  });
 
-    minimizeMenu();
-
-    function minimizeMenu() {
-      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
-        // show only the icons and hide left menu label by default
-        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
-        $('body').addClass('collapsed-menu');
-        $('.show-sub + .br-menu-sub').slideUp();
-      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
-        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
-        $('body').removeClass('collapsed-menu');
-        $('.show-sub + .br-menu-sub').slideDown();
-      }
-    }
+  $('#password,#confirmPassword').on('keyup', function () {
+    if ($('#password').val() == $('#confirmPassword').val()) {
+      $('#mess').html('').css('color', 'green');
+    } else
+      $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
   });
 </script>
+<%--<script>--%>
+<%--  $(function(){--%>
+<%--    'use strict'--%>
+
+<%--    // FOR DEMO ONLY--%>
+<%--    // menu collapsed by default during first page load or refresh with screen--%>
+<%--    // having a size between 992px and 1299px. This is intended on this page only--%>
+<%--    // for better viewing of widgets demo.--%>
+<%--    $(window).resize(function(){--%>
+<%--      minimizeMenu();--%>
+<%--    });--%>
+
+<%--    minimizeMenu();--%>
+
+<%--    function minimizeMenu() {--%>
+<%--      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {--%>
+<%--        // show only the icons and hide left menu label by default--%>
+<%--        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');--%>
+<%--        $('body').addClass('collapsed-menu');--%>
+<%--        $('.show-sub + .br-menu-sub').slideUp();--%>
+<%--      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {--%>
+<%--        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');--%>
+<%--        $('body').removeClass('collapsed-menu');--%>
+<%--        $('.show-sub + .br-menu-sub').slideDown();--%>
+<%--      }--%>
+<%--    }--%>
+<%--  });--%>
+<%--</script>--%>
 </body>
 </html>

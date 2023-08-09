@@ -94,7 +94,7 @@ public class UserController {
             //redirectAttributes.addFlashAttribute("errorMessage", "Incorrect password!");
             ModelAndView view = new ModelAndView("redirect:/user/profile/change-password");
             redirectAttributes.addFlashAttribute("errorMessage", "Incorrect password!");
-            view.addObject("errorMessage", "Incorrect password!");
+            //view.addObject("errorMessage", "Incorrect password!");
             //return new ModelAndView("redirect:/user/profile/change-password");
             return view;
         }
@@ -114,7 +114,7 @@ public class UserController {
 //        return new ModelAndView("redirect:/user/profile/change-password");
         ModelAndView view = new ModelAndView("redirect:/user/profile/change-password");
         redirectAttributes.addFlashAttribute("errorMessage", "Password and Confirm Password do not match!");
-        view.addObject("errorMessage", "Password and Confirm Password do not match!");
+        //view.addObject("errorMessage", "Password and Confirm Password do not match!");
         return view;
     }
 

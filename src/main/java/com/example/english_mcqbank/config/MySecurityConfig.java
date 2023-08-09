@@ -44,7 +44,7 @@ public class MySecurityConfig {
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/questions/**").hasRole("USER")
                 .antMatchers("/admin/**", "/api/**").hasRole("ADMIN")
-                .antMatchers("/", "/home", "/login", "/register","/forgot-password","/reset-password","/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers("/", "/home", "/index","/login", "/register","/forgot-password","/reset-password","/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
                 .antMatchers("test","/css/**","/images/**","/font-awesome/**","/fonts/**","/js/**", "/abc", "/lib/**","/resource/**", "/sendContactMail/**", "/send-email").permitAll() // make user cant access to /css, /js by spring security but web app still can access
                 .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
                 .and()
