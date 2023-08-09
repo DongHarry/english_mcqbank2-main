@@ -28,8 +28,7 @@ public class VerifyService {
         return verifyMap.get(id).equals(verifyCode);
     }
 
-    public String generateVerifyCode() {
-        int length = 6;
+    public String generateVerifyCode(int length) {
         byte[] randomBytes = new byte[length];
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.nextBytes(randomBytes);
@@ -38,7 +37,7 @@ public class VerifyService {
     }
 
     public String generateVerifyCode(UserEntity user) {
-        String verifyCode = generateVerifyCode();
+        String verifyCode = generateVerifyCode(12);
         addVerify((long) user.getId(), verifyCode);
         return verifyCode;
     }

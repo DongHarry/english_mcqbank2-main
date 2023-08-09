@@ -65,6 +65,11 @@
                     </c:if>
                 </div>
                 <div class="form-group">
+                    <c:if test="${not empty errorMessage3}">
+                        <div class="error">${errorMessage3}</div>
+                    </c:if>
+                </div>
+                <div class="form-group">
                     <input type="text" name="name" class="form-control" placeholder="Enter your Email or Username">
                 </div><!-- form-group -->
 <%--                <div class="form-group">--%>

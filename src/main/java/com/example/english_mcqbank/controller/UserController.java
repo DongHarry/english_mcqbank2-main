@@ -30,12 +30,14 @@ public class UserController {
         ModelAndView userProfileModelAndView = new ModelAndView("profile");
         userProfileModelAndView.addObject("successMessage", null);
         userProfileModelAndView.addObject("errorMessage", null);
+
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
         userProfileModelAndView.addObject("loggedInUser", user);
         userProfileModelAndView.addObject("type", 1);
+
         return userProfileModelAndView; // Trả về user.jsp
     }
 
@@ -68,9 +70,11 @@ public class UserController {
         editUserModelAndView.addObject("loggedInUser", user);
         editUserModelAndView.addObject("type", 1);
         //UserEntity user = loggedInUserService.getLoggedInUser();
+
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
         }
+
         //editUserModelAndView.addObject("user", user);
         model.addAttribute("currentUser", user);
         return editUserModelAndView; // Trả về user.jsp
@@ -93,6 +97,7 @@ public class UserController {
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
         boolean check = passwordEncoder.matches(oldPassword, user.getPassword());
+
         if (!check) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Incorrect password!");
             ModelAndView view = new ModelAndView("redirect:/user/profile/change-password");
@@ -147,6 +152,7 @@ public class UserController {
         } else {
             userEntity.setEmail(user.getEmail());
         }
+
         if (!user.getPhone().equals(userEntity.getPhone()) && userService.isPhonePresent(user.getPhone())) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Phone is already in use!");
             //editUserModelAndView.addObject("errorMessage", "Phone is already in use!");
@@ -234,13 +240,9 @@ public class UserController {
     public ModelAndView submitAnswers(@RequestParam Map<String, String> params, Authentication authentication,
                                       @RequestParam("examId") int examId) {
         // Process the submitted form data
-
         Exam exam = examService.getExamById(examId);
         int totalQuestions = exam.getQuestionNo();
-        // sort question by id
         int score = examService.calculateScore(params);
-        //questionMap.clear();
-
         // Redirect or return a response as needed
         ModelAndView modelAndView = new ModelAndView("resultPage");
         modelAndView.addObject("score", score);
@@ -267,9 +269,11 @@ public class UserController {
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
+
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
         }
+
         //List<Result> results = user.getResults();
         List<Result> results = resultService.findAllByUser(user);
         userResultModelAndView.addObject("results", results);
