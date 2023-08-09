@@ -65,7 +65,7 @@
                     </c:if>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="name" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your Email or Username">
+                    <input type="text" name="name" class="form-control" placeholder="Enter your Email or Username">
                 </div><!-- form-group -->
 <%--                <div class="form-group">--%>
 <%--                    <input type="text" name="username" id="email" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your Email">--%>
