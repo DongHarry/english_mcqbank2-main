@@ -84,10 +84,7 @@ public class WebController {
                                         @RequestParam("message") String message,
                                         RedirectAttributes redirectAttributes) {
 
-
-
         String subject = "Contact from " + name;
-
         String content = "Name: " + name + "\n" +
                 "Email: " + email + "\n" +
                 "Phone: " + phone + "\n" +
@@ -97,7 +94,7 @@ public class WebController {
         CompletableFuture<Void> completableFuture = emailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
         //return new ModelAndView("redirect:/#");
         //ModelAndView view = new ModelAndView("redirect:/home");
-        //redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");
+        redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");
         return new ModelAndView("test");
     }
 
