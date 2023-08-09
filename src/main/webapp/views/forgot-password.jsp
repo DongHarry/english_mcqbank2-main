@@ -75,7 +75,8 @@
             </form:form>
 
             <div class="mg-t-60 tx-center">Have an account already? <a href="/login-page" class="tx-info">Sign In</a></div>
-            <div class="mg-t-60 tx-center">Not yet a member? <a href="/register" class="tx-info">Sign Up</a></div>
+            <div class="mg-t-10 tx-center">OR</div>
+            <div class="mg-t-10 tx-center">Not yet a member? <a href="/register" class="tx-info">Sign Up</a></div>
         </div><!-- login-wrapper -->
 
 

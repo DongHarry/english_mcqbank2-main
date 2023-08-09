@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Question;
+import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -85,5 +86,9 @@ public class QuestionService {
 
     public Question getQuestionById(int id) {
         return questionRepository.findById(id).orElse(null);
+    }
+
+    public int countAllByTopic(Topic topic) {
+        return questionRepository.countAllByTopic(topic);
     }
 }

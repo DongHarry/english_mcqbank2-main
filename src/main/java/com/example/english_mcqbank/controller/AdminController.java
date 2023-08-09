@@ -251,15 +251,22 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/addTopic", method = RequestMethod.POST)
-    public ModelAndView addTopic(@RequestParam("topicName") String topicName,
+    public ModelAndView addTopic(@RequestParam("name") String name,
+                                 @RequestParam("description") String description,
                                  RedirectAttributes redirectAttributes) {
+        if (topicService.existsByName(name)) {
+            redirectAttributes.addFlashAttribute("e_message", "Topic " + name + " already exists");
+            return new ModelAndView("redirect:/admin/topics/new");
+        }
+
         try {
             Topic topic = new Topic();
-            topic.setName(topicName);
+            topic.setName(name);
+            topic.setDescription(description);
             topicService.save(topic);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "Error adding topic");
-            return new ModelAndView("redirect:/admin");
+            redirectAttributes.addFlashAttribute("e_message", "Error adding topic");
+            return new ModelAndView("redirect:/admin/topics");
         }
         ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/topics");
         redirectAttributes.addFlashAttribute("message", "Topic added successfully");
@@ -269,6 +276,15 @@ public class AdminController {
     @RequestMapping(value = "/admin/topics/{id}/delete", method = RequestMethod.GET)
     public ModelAndView deleteTopic(@PathVariable int id, RedirectAttributes redirectAttributes) {
         Topic topic = topicService.getTopicById(id);
+        if (topic == null) {
+            redirectAttributes.addFlashAttribute("e_message", "Topic does not exist");
+            return new ModelAndView("redirect:/admin/topics");
+        }
+        if (questionService.countAllByTopic(topic) > 0) {
+            redirectAttributes.addFlashAttribute("e_message", "Topic has questions");
+            return new ModelAndView("redirect:/admin/topics");
+        }
+        topicService.deleteTopic(topic);
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
         redirectAttributes.addFlashAttribute("message", "Topic deleted successfully");
         return modelAndView;
@@ -286,8 +302,14 @@ public class AdminController {
     @RequestMapping(value = "/admin/topics/{id}/edit", method = RequestMethod.POST)
     public ModelAndView editTopic(@PathVariable int id,
                                   @RequestParam("name") String topicName,
+                                  @RequestParam("name2") String originalTopicName,
                                   @RequestParam("description") String topicDescription,
                                   RedirectAttributes redirectAttributes) {
+        if (topicService.existsByName(topicName) && !topicName.equals(originalTopicName)) {
+            redirectAttributes.addFlashAttribute("e_message", "Topic " + topicName + " already exists");
+            ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/topics/" + id);
+            return modelAndView1;
+        }
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
         Topic topic = topicService.getTopicById(id);
         topic.setName(topicName);
@@ -296,6 +318,7 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "Topic edited successfully");
         return modelAndView;
     }
+
 
 //    @RequestMapping(value = "/admin/addExam", method = RequestMethod.POST)
 //    public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
@@ -443,7 +466,6 @@ public class AdminController {
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
     public ModelAndView editQuestion(@PathVariable("id") int id, Model model) {
         ModelAndView modelAndView = new ModelAndView("editQuestion");
-        Exam exam = examService.getExamById(id);
         Question question = questionService.getQuestionById(id);
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);

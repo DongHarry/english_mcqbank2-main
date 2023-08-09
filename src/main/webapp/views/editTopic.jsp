@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Duc
@@ -12,7 +13,12 @@
     <title>Edit topic</title>
 </head>
 <body>
+
+
     <h1>Edit topic</h1>
+    <c:if test="${not empty e_message}">
+        <div class="error">${e_message}</div>
+    </c:if>
     <form:form action="${pageContext.request.contextPath}/admin/topics/${c_topic.id}/edit" method="post">
         <div>
             <label for="name">Topic name:</label>
@@ -22,6 +28,7 @@
             <label for="description">Topic description:</label>
             <input type="text" id="description" name="description" value="${c_topic.description}" required><br>
         </div>
+        <input type="hidden" name="name2" value="${c_topic.name}">
         <div>
             <button type="submit"> SAVE </button>
         </div>
