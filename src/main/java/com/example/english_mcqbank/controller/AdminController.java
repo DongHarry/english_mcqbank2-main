@@ -347,7 +347,7 @@ public class AdminController {
 //        return modelAndView1;
 //    }
 
-    @PostMapping("/admin/addExam")
+    @RequestMapping(value = "/admin/addExam", method = RequestMethod.POST)
     public ModelAndView addExam(@RequestParam("questionNo") String questionNo,
                           @RequestParam("examName") String examName,
                           @RequestParam("examType") int examType,
@@ -355,7 +355,7 @@ public class AdminController {
                                 RedirectAttributes redirectAttributes) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
-        Map<Long, Integer> topicNumOfQuMap = examService.getTopicNumOfQuMap(requestParams);
+        Map<Long, Integer> examTopicPercentageMap = examService.getExamTopicPercentageMap(requestParams);
         // Duyệt qua các tham số trong requestParams để tách giá trị numOfQu tương ứng với từng topicId
         // Sau khi có Map mới tương ứng <topicId, numOfQu>, bạn có thể thực hiện các thao tác cần thiết với dữ liệu này.
         Exam exam = new Exam();
@@ -363,7 +363,7 @@ public class AdminController {
         exam.setTime(new Date());
         exam.setName(examName);
         exam.setType(examType);
-        examService.addExamTopic(exam, topicNumOfQuMap);
+        examService.addExamTopic(exam, examTopicPercentageMap);
         examService.saveExam(exam);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
