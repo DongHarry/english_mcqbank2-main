@@ -390,11 +390,12 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/exams/{examId}", method = RequestMethod.GET)
-    public ModelAndView exam(@PathVariable("examId") int examId, Model model) {
+    public ModelAndView exam(@PathVariable("examId") int examId, Model model, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("editExam");
         Exam exam = examService.getExamById(examId);
         modelAndView.addObject("c_exam", exam);
         model.addAttribute("c_exam", exam);
+        modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
         return modelAndView;
     }
 
@@ -406,7 +407,9 @@ public class AdminController {
         Exam exam = examService.getExamById(examId);
         if (c_exam != null) {
             exam.setName(c_exam.getName());
-            exam.setQuestionNo(c_exam.getQuestionNo());
+            if (c_exam.getQuestionNo() != null) {
+                exam.setQuestionNo(c_exam.getQuestionNo());
+            }
             exam.setType(c_exam.getType());
             redirectAttributes.addFlashAttribute("message", "Exam: " +c_exam.getName()+ " updated successfully");
         }

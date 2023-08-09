@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<html>--%>
 <%--<head>--%>
 <%--    <title>edit exam</title>--%>
@@ -30,9 +32,6 @@
 
 
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -209,8 +208,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Question No</span>
                             </div>
-                            <input type="text" name="questionNo" id="questionNo"
-                                   class="form-control" value="${c_exam.questionNo}" required>
+<%--                            <input type="text" name="questionNo" id="questionNo"--%>
+<%--                                   class="form-control" value="${c_exam.questionNo}" required>--%>
+                            <input type="radio" name="questionNo" value="10" <c:if test="${c_exam.questionNo==10}">checked</c:if>> 10
+                            <input type="radio" name="questionNo" value="20" <c:if test="${c_exam.questionNo==20}">checked</c:if>> 20
+                            <input type="radio" name="questionNo" value="30" <c:if test="${c_exam.questionNo==30}">checked</c:if>> 30
+                            <input type="radio" name="questionNo" value="40" <c:if test="${c_exam.questionNo==40}">checked</c:if>> 40
+                            <input type="radio" name="questionNo" value="50" <c:if test="${c_exam.questionNo==50}">checked</c:if>> 50
                         </div>
                     </div>
                 </div>
@@ -221,7 +225,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Exam Type</span>
                             </div>
-                            <input type="text" name="type" id="type" class="form-control" value="${c_exam.type}" required>
+<%--                            <input type="text" name="type" id="type" class="form-control" value="${c_exam.type}" required>--%>
+                            <input type="radio" name="type" value="1" <c:if test="${c_exam.type==1}">checked</c:if>> Reading
+                            <input type="radio" name="type" value="2" <c:if test="${c_exam.type==2}">checked</c:if>> Listening
                         </div>
                     </div>
                 </div>
