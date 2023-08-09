@@ -810,7 +810,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <form:form action="${pageContext.request.contextPath}/sendContactMail" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
+                            <form:form action="/sendContactMail" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
                                 <h6>Đừng bỏ lỡ cơ hội</h6>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">

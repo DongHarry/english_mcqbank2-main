@@ -24,6 +24,11 @@ public class MyController {
         return "Hello world";
     }
 
+    @RequestMapping("/test")
+    public String test() {
+        return "Test";
+    }
+
     @RequestMapping("/send-email")
     public ResponseEntity<String> sendEmail() {
         emailSender.sendEmail("luongdinhduc0000@Gmail.com", "Test", "Test");
