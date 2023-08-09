@@ -322,11 +322,7 @@
             </div>
             <span id="mess"></span>
             <div class="row pd-t-20">
-<%--                <div class="col-lg-4 mg-t-20 mg-lg-t-0">--%>
-<%--                    Role:--%>
-<%--                    <input type="radio" name="role" value="admin"> Admin--%>
-<%--                    <input type="radio" name="role" value="user"> User--%>
-<%--                </div><!-- col-4 -->--%>
+
                 <p style="margin-left: 15px">Role: </p>
                 <div class="col-lg-2">
                     <label class="rdiobox">

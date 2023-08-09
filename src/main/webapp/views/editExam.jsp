@@ -1,34 +1,3 @@
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>edit exam</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">--%>
-<%--    <div>--%>
-<%--        <label for="name">Exam name:</label>--%>
-<%--        <input type="text" id="name" name="name" value="${c_exam.name}"><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="questionNo">Question No:</label>--%>
-<%--        <input type="text" id="questionNo" name="questionNo" value="${c_exam.questionNo}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="type">Exam type:</label>--%>
-<%--        <input type="text" id="type" name="type" required value="${c_exam.type}">  <br>--%>
-<%--    </div>--%>
-
-<%--    <br>--%>
-<%--    <div>--%>
-<%--        <button type="submit"> SAVE </button>--%>
-<%--    </div>--%>
-
-<%--</form:form>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -260,7 +229,7 @@
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
-<%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
+
 <script>
     $(function(){
         'use strict'
