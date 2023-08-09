@@ -26,4 +26,8 @@ public class TopicService {
         Pageable pageable = PageRequest.of(page, size);
         return topicRepository.findAll(pageable).getContent();
     }
+
+    public void save(Topic topic) {
+        topicRepository.save(topic);
+    }
 }

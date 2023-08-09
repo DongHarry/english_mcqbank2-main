@@ -204,8 +204,13 @@
         <div class="br-section-wrapper">
 
             <h6 class="br-section-label">Danh sách topic</h6>
-
+            <c:if test="${not empty message}">
+                <div class="alert alert-success">
+                    <strong>${message}</strong>
+                </div>
+            </c:if>
             <div class="table-wrapper">
+
                 <table id="datatable2" class="table display responsive nowrap">
                     <thead>
                     <tr>
@@ -225,7 +230,7 @@
                                 <td>
                                     <ul>
                                         <li>
-                                            Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}/edit" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                            Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                         </li>
                                         <li>
                                             Delete: <a onclick="if (!confirm('Are you sure to delete this topic?')) return false" href="${pageContext.request.contextPath}/admin/topics/${topic.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
