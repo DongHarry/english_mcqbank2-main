@@ -247,15 +247,26 @@
             <h6 class="br-section-label">Tài khoản ${user.role} </h6>
 
             <p>Thông tin tài khoản ${user.role}</p>
-            <div>
-                <c:if test="${successMessage != null}">
-                    <div> <strong>${successMessage}</strong> </div>
+            <div class="">
+                <c:if test="${not empty successMessage}">
+                    <div class="alert alert-success">
+                        <strong>${successMessage}</strong>
+                    </div>
                 </c:if>
-                <c:if test="${param.successMessage != null}">
-                    <div> <strong>${param.successMessage}</strong> </div>
+                <c:if test="${not empty successMessage2}">
+                    <div class="alert alert-success">
+                        <strong>${successMessage2}</strong>
+                    </div>
+                </c:if>
+                <c:if test="${not empty param.successMessage}">
+                    <div class="alert alert-success">
+                        <strong>${param.successMessage}</strong>
+                    </div>
                 </c:if>
                 <c:if test="${not empty errorMessage}">
-                    <div class="error"> <strong>${errorMessage}</strong> </div>
+                    <div class="alert alert-success">
+                        <strong>${errorMessage}</strong>
+                    </div>
                 </c:if>
             </div>
             <div class="editable tx-16 bd pd-30 tx-inverse">

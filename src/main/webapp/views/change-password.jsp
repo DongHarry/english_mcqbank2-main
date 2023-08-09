@@ -282,13 +282,13 @@
       <h6 class="br-section-label">Đổi mật khẩu</h6>
       <div>
         <c:if test="${successMessage != null}">
-          <div class="text-success"> <strong>${successMessage}</strong> </div>
+          <div class="alert alert-success"> <strong>${successMessage}</strong> </div>
         </c:if>
         <c:if test="${param.successMessage != null}">
-          <div class="text-success"> <strong>${param.successMessage}</strong> </div>
+          <div class="alert alert-success"> <strong>${param.successMessage}</strong> </div>
         </c:if>
         <c:if test="${not empty errorMessage}">
-          <div class="error"> <strong>${errorMessage}</strong> </div>
+          <div class="alert alert-danger"> <strong>${errorMessage}</strong> </div>
         </c:if>
       </div>
       <%--<sec:authorize access="hasRole('ADMIN')">--%>
