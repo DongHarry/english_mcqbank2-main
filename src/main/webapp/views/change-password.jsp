@@ -239,12 +239,12 @@
   <div class="dropdown">
     <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
       <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-      <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+      <img src="/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
       <span class="square-10 bg-success"></span>
     </a>
     <div class="dropdown-menu dropdown-menu-header wd-250">
       <div class="tx-center">
-        <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+        <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
         <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
         <p>${loggedInUser.email}</p>
       </div>
@@ -282,13 +282,13 @@
       <h6 class="br-section-label">Đổi mật khẩu</h6>
       <div>
         <c:if test="${successMessage != null}">
-          <div class="text-success"> <strong>${successMessage}</strong> </div>
+          <div class="alert alert-success"> <strong>${successMessage}</strong> </div>
         </c:if>
         <c:if test="${param.successMessage != null}">
-          <div class="text-success"> <strong>${param.successMessage}</strong> </div>
+          <div class="alert alert-success"> <strong>${param.successMessage}</strong> </div>
         </c:if>
         <c:if test="${not empty errorMessage}">
-          <div class="error"> <strong>${errorMessage}</strong> </div>
+          <div class="alert alert-danger"> <strong>${errorMessage}</strong> </div>
         </c:if>
       </div>
       <%--<sec:authorize access="hasRole('ADMIN')">--%>

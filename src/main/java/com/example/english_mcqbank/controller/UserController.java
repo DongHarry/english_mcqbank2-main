@@ -65,6 +65,8 @@ public class UserController {
         ModelAndView editUserModelAndView = new ModelAndView("editUser");
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
+        editUserModelAndView.addObject("loggedInUser", user);
+        editUserModelAndView.addObject("type", 1);
         //UserEntity user = loggedInUserService.getLoggedInUser();
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
@@ -79,6 +81,7 @@ public class UserController {
         ModelAndView changePasswordModelAndView = new ModelAndView("change-password");
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         changePasswordModelAndView.addObject("loggedInUser", loggedInUser);
+        changePasswordModelAndView.addObject("type", 1);
         return changePasswordModelAndView; // Trả về user.jsp
     }
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.POST)
@@ -122,9 +125,10 @@ public class UserController {
     public ModelAndView editUserProfile(Authentication authentication,
                                         @ModelAttribute("currentUser") UserEntity user,
                                         RedirectAttributes redirectAttributes) {
-        ModelAndView editUserModelAndView = new ModelAndView("redirect:/user/profile/edit");
+
         String username = authentication.getName();
         UserEntity userEntity = userService.getUserByUsername(username);
+
         //UserEntity userEntity = loggedInUserService.getLoggedInUser();
         if (userEntity == null) {
             ModelAndView view = new ModelAndView("redirect:/user/profile/edit");
@@ -136,7 +140,8 @@ public class UserController {
         userEntity.setFullName(user.getFullName());
         if (!user.getEmail().equals(userEntity.getEmail()) && userService.isEmailPresent(user.getEmail())) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Email is already in use!");
-            editUserModelAndView.addObject("errorMessage", "Email is already in use!");
+            //editUserModelAndView.addObject("errorMessage", "Email is already in use!");
+            ModelAndView editUserModelAndView = new ModelAndView("redirect:/user/profile/edit");
             redirectAttributes.addFlashAttribute("errorMessage", "Email is already in use!");
             return editUserModelAndView;
         } else {
@@ -144,7 +149,8 @@ public class UserController {
         }
         if (!user.getPhone().equals(userEntity.getPhone()) && userService.isPhonePresent(user.getPhone())) {
             //redirectAttributes.addFlashAttribute("errorMessage", "Phone is already in use!");
-            editUserModelAndView.addObject("errorMessage", "Phone is already in use!");
+            //editUserModelAndView.addObject("errorMessage", "Phone is already in use!");
+            ModelAndView editUserModelAndView = new ModelAndView("redirect:/user/profile/edit");
             redirectAttributes.addFlashAttribute("errorMessage", "Phone is already in use!");
             return editUserModelAndView;
         } else {
@@ -155,14 +161,15 @@ public class UserController {
 
         try {
             userService.saveUser(userEntity);
-            //redirectAttributes.addFlashAttribute("successMessage", "Update profile successfully!");
+            redirectAttributes.addFlashAttribute("successMessage2", "Update profile successfully!");
             ModelAndView view = new ModelAndView("redirect:/user/profile");
             //redirectAttributes.addFlashAttribute("user", userEntity);
-            redirectAttributes.addFlashAttribute("successMessage", "Update profile successfully!");
-            view.addObject("successMessage", "Update profile successfully!");
+            //view.addObject("successMessage", "Update profile successfully!");
             return view;
             //return new ModelAndView("redirect:/user/profile");
         } catch (Exception e) {
+            ModelAndView editUserModelAndView = new ModelAndView("redirect:/user/profile/edit");
+            redirectAttributes.addFlashAttribute("errorMessage", "Update profile failed!");
             return editUserModelAndView;
         }
     }
