@@ -223,7 +223,7 @@
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Chỉnh sửa câu hỏi</h6>
 
-            <form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
+            <form:form action="/admin/questions/${c_question.id}/edit" method="post">
 
                 <div class="row">
                     <div class="col-lg-8">
@@ -295,39 +295,73 @@
                 </div>
 
                 <div class="row pd-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Answer</span>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="1" type="radio" id="answer"
+                                           <c:if test="${c_question.answer == 1}">checked</c:if>>
+                                    <span>1</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="2" type="radio" id="answer"
+                                           <c:if test="${c_question.answer == 2}">checked</c:if>>
+                                    <span>2</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="3" type="radio" id="answer"
+                                           <c:if test="${c_question.answer == 3}">checked</c:if>>
+                                    <span>3</span>
+                                </label>
+                            </div>
 
-                    <p style="margin-left: 15px">Exam type(1. Reading, 2. Listening): </p>
-                    <div class="col-lg-1">
-                        <label class="rdiobox">
-                            <input name="answer" value="1" type="radio" id="answer"
-                            <c:if test="${c_question.answer == 1}">checked</c:if>>
-                            <span>1</span>
-                        </label>
 
-                    </div><!-- col-3 -->
-                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">
-                        <label class="rdiobox">
-                            <input name="answer" value="2" type="radio" id="answer"
-                                   <c:if test="${c_question.answer == 2}">checked</c:if>>
-                            <span>2</span>
-                        </label>
-                    </div><!-- col-3 -->
-                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">
-                        <label class="rdiobox">
-                            <input name="answer" value="3" type="radio" id="answer"
-                                   <c:if test="${c_question.answer == 3}">checked</c:if>>
-                            <span>3</span>
-                        </label>
-                    </div><!-- col-3 -->
-                    <c:if test="${c_question.type == 1}">
-                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">
-                        <label class="rdiobox">
-                            <input name="examType" value="4" type="radio" id="answer"
-                                   <c:if test="${c_question.answer == 4}">checked</c:if>>
-                            <span>4</span>
-                        </label>
-                    </div><!-- col-3 -->
-                    </c:if>
+
+
+                            <c:if test="${c_question.type == 1}">
+                                <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                    <label class="rdiobox">
+                                        <input name="examType" value="4" type="radio" id="answer"
+                                               <c:if test="${c_question.answer == 4}">checked</c:if>>
+                                        <span>4</span>
+                                    </label>
+                                </div><!-- col-3 -->
+                            </c:if>
+                        </div>
+
+
+                    </div>
+
+<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
+<%--                        <label class="rdiobox">--%>
+<%--                            <input name="answer" value="2" type="radio" id="answer"--%>
+<%--                                   <c:if test="${c_question.answer == 2}">checked</c:if>>--%>
+<%--                            <span>2</span>--%>
+<%--                        </label>--%>
+<%--                    </div><!-- col-3 -->--%>
+<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
+<%--                        <label class="rdiobox">--%>
+<%--                            <input name="answer" value="3" type="radio" id="answer"--%>
+<%--                                   <c:if test="${c_question.answer == 3}">checked</c:if>>--%>
+<%--                            <span>3</span>--%>
+<%--                        </label>--%>
+<%--                    </div><!-- col-3 -->--%>
+<%--                    <c:if test="${c_question.type == 1}">--%>
+<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
+<%--                        <label class="rdiobox">--%>
+<%--                            <input name="examType" value="4" type="radio" id="answer"--%>
+<%--                                   <c:if test="${c_question.answer == 4}">checked</c:if>>--%>
+<%--                            <span>4</span>--%>
+<%--                        </label>--%>
+<%--                    </div><!-- col-3 -->--%>
+<%--                    </c:if>--%>
                 </div>
 
 
@@ -348,7 +382,35 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Level</span>
                             </div>
-                            <input type="text" name="level" id="level" class="form-control" value="${c_question.level}" required>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="1" type="radio" id="level"
+                                           <c:if test="${c_question.level == 1}">checked</c:if>>
+                                    <span>1</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="2" type="radio" id="level"
+                                           <c:if test="${c_question.level == 2}">checked</c:if>>
+                                    <span>2</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="3" type="radio" id="level"
+                                           <c:if test="${c_question.level == 3}">checked</c:if>>
+                                    <span>3</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="4" type="radio" id="level"
+                                           <c:if test="${c_question.level == 4}">checked</c:if>>
+                                    <span>4</span>
+                                </label>
+                            </div>
+
                         </div>
                     </div>
                 </div>

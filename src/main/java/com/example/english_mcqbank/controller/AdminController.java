@@ -469,9 +469,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
-    public ModelAndView editQuestion(@PathVariable("id") int id, Model model) {
+    public ModelAndView editQuestion(@PathVariable("id") int id, Model model, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("editQuestion");
         Question question = questionService.getQuestionById(id);
+        modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);
         return modelAndView;
