@@ -45,7 +45,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Trang admin</title>
+    <title>Profile</title>
 
     <!--favicon icon-->
     <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
@@ -167,7 +167,7 @@
                 </a><!-- br-menu-link -->
             </li><!-- br-menu-item -->
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link show-sub active">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Thông tin tài khoản</span>
             </a><!-- br-menu-link -->
@@ -247,6 +247,17 @@
             <h6 class="br-section-label">Tài khoản ${user.role} </h6>
 
             <p>Thông tin tài khoản ${user.role}</p>
+            <div>
+                <c:if test="${successMessage != null}">
+                    <div class="text-success"> <strong>${successMessage}</strong> </div>
+                </c:if>
+                <c:if test="${param.successMessage != null}">
+                    <div class="text-success"> <strong>${param.successMessage}</strong> </div>
+                </c:if>
+                <c:if test="${not empty errorMessage}">
+                    <div class="error"> <strong>${errorMessage}</strong> </div>
+                </c:if>
+            </div>
             <div class="editable tx-16 bd pd-30 tx-inverse">
                 <p><b>Tên tài khoản:</b> ${user.username}</p>
                 <p><b>Tên đầy đủ:</b> ${user.fullName}</p>
@@ -256,10 +267,10 @@
                 <p><b>Ngày tạo tài khoản:</b> ${user.createdDate}</p>
 
                     <c:if test="${type == 1}">
-                        <p><b>User logs:</b><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a></p>
+                        <p><b>User logs: </b><a href="${pageContext.request.contextPath}/user/profile/logs">Logs</a></p>
                     </c:if>
                     <c:if test="${type == 2}">
-                        <p><b>User logs:</b> <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a></p>
+                        <p><b>User logs: </b> <a href="${pageContext.request.contextPath}/admin/users/${user.id}/logs">Logs</a></p>
                         <c:if test="${user.groupId == 1}">
                             <p><b>Kết quả thi: </b><a href="${pageContext.request.contextPath}/admin/users/${user.id}/results">Results</a></p>
                         </c:if>
@@ -271,43 +282,13 @@
             <c:if test="${type == 1}">
                 <div class="form-layout-footer mg-t-30">
                     <a href="${pageContext.request.contextPath}/user/profile/edit" class="btn btn-info">Chỉnh sửa</a>
-<%--                </div><!-- form-layout-footer -->--%>
+                    <a href="${pageContext.request.contextPath}/user/profile/change-password" class="btn btn-info">Đổi mật khẩu</a>
+                        <%--                </div><!-- form-layout-footer -->--%>
 <%--                <div class="form-layout-footer mg-t-30">--%>
-                    <div class="tab-pane" id="changePass">
-                        <form class="formDoiMatKhau">
-                            <div>
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            </div>
 
-                            <div class="form-group">
-                                <label>Mật khẩu cũ</label> <input type="password"
-                                                                  class="form-control" name="oldPassword" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <label>Mật khẩu mới</label> <input type="password"
-                                                                   class="form-control" name="newPassword" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <label>Nhắc lại mật khẩu mới</label> <input type="password"
-                                                                            class="form-control" name="confirmNewPassword" required="required" />
-                            </div>
-                            <input class="btn btn-primary" type="button" id="btnXacNhanDoiMK"
-                                   value="Xác nhận" />
-                        </form>
-                    </div>
                 </div><!-- form-layout-footer -->
 
-                <div>
-                    <c:if test="${successMessage != null}">
-                        <div class="error"> <strong>${successMessage}</strong> </div>
-                    </c:if>
-                    <c:if test="${param.successMessage != null}">
-                        <div class="error"> <strong>${param.successMessage}</strong> </div>
-                    </c:if>
-                    <c:if test="${not empty errorMessage}">
-                        <div class="error"> <strong>${errorMessage}</strong> </div>
-                    </c:if>
-                </div>
+
             </c:if>
             <%--</sec:authorize>--%>
 

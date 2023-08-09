@@ -75,9 +75,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.GET)
-    public ModelAndView changePassword() {
+    public ModelAndView changePassword(Authentication authentication) {
         ModelAndView changePasswordModelAndView = new ModelAndView("change-password");
-
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        changePasswordModelAndView.addObject("loggedInUser", loggedInUser);
         return changePasswordModelAndView; // Trả về user.jsp
     }
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.POST)

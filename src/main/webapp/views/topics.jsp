@@ -212,6 +212,7 @@
                         <th class="wd-15p">Topic Id</th>
                         <th class="wd-15p">Topic Name</th>
                         <th class="wd-15p">Topic Description</th>
+                        <th class="wd-15p">Action</th>
                     </tr>
                     </thead>
 
@@ -221,6 +222,16 @@
                                 <td>${topic.id}</td>
                                 <td>${topic.name}</td>
                                 <td>${topic.description}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}/edit" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                        </li>
+                                        <li>
+                                            Delete: <a onclick="if (!confirm('Are you sure to delete this topic?')) return false" href="${pageContext.request.contextPath}/admin/topics/${topic.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -230,8 +241,7 @@
 <%--                <a href="#">Delete Topic</a>--%>
                 <div class="form-layout-footer mg-t-30">
                     <button class="btn btn-info mg-r-5"><a href="#">New Topic</a></button>
-                    <button class="btn btn-info mg-r-5"><a href="#">Edit Topic</a></button>
-                    <button class="btn btn-info mg-r-5"><a href="#">Delete Topic</a></button>
+
                 </div>
 
             </div>
