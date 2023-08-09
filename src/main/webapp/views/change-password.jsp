@@ -270,20 +270,16 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-      <a class="breadcrumb-item" href="#">${user.role}</a>
-      <span class="breadcrumb-item active">Tài khoản ${user.role}</span>
+      <span class="breadcrumb-item active">Tài khoản ${loggedInUser.username}</span>
     </nav>
   </div><!-- br-pageheader -->
   <div class="br-pagetitle">
     <i class="icon ion-ios-person-outline"></i>
-    <div>
-      <h4>Tài khoản ${user.role}</h4>
-    </div>
   </div><!-- d-flex -->
 
   <div class="br-pagebody">
     <div class="br-section-wrapper">
-      <h6 class="br-section-label">Đổi mật khẩu </h6>
+      <h6 class="br-section-label">Đổi mật khẩu</h6>
 
       <%--<sec:authorize access="hasRole('ADMIN')">--%>
         <div class="form-layout-footer mg-t-30">
