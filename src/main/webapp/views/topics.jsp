@@ -209,6 +209,11 @@
                     <strong>${message}</strong>
                 </div>
             </c:if>
+            <c:if test="${not empty e_message}">
+                <div class="alert alert-danger">
+                    <strong>${e_message}</strong>
+                </div>
+            </c:if>
             <div class="table-wrapper">
 
                 <table id="datatable2" class="table display responsive nowrap">
@@ -245,7 +250,7 @@
 <%--                <a href="#">Edit Topic</a>--%>
 <%--                <a href="#">Delete Topic</a>--%>
                 <div class="form-layout-footer mg-t-30">
-                    <button class="btn btn-info mg-r-5"><a href="#">New Topic</a></button>
+                    <button class="btn btn-info mg-r-5"><a href="${pageContext.request.contextPath}/topics/new">New Topic</a></button>
 
                 </div>
 

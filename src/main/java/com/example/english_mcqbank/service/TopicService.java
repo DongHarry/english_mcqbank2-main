@@ -30,4 +30,12 @@ public class TopicService {
     public void save(Topic topic) {
         topicRepository.save(topic);
     }
+
+    public void deleteTopic(Topic topic) {
+        topicRepository.delete(topic);
+    }
+
+    public boolean existsByName(String name) {
+        return topicRepository.existsByName(name);
+    }
 }

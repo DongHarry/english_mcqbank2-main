@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.repository;
 
 import com.example.english_mcqbank.model.Question;
+import com.example.english_mcqbank.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -51,4 +52,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     List<Question> findByTopicId(int topicId);
 
     List<Question> findByTopicIdAndLevel(int topicId, int level);
+
+    int countAllByTopic(Topic topic);
 }
