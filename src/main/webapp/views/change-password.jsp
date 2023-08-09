@@ -206,7 +206,7 @@
         </a><!-- br-menu-link -->
       </li><!-- br-menu-item -->
       <li class="br-menu-item">
-        <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+        <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link show-sub active">
           <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
           <span class="menu-item-label">Thông tin tài khoản</span>
         </a><!-- br-menu-link -->
