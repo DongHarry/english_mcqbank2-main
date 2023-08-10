@@ -26,8 +26,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     ILogService ILogService;
     @Autowired
     UserDetailsServiceImpl userDetailsService;
-//    @Autowired
-//    LoggedInUserService loggedInUserService;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
