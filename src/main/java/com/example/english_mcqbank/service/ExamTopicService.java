@@ -14,10 +14,12 @@ public class ExamTopicService {
     @Autowired
     private ExamTopicRepository examTopicRepository;
 
+    @Transactional
     public List<ExamTopic> findAllByExam(Exam exam) {
         return examTopicRepository.findAllByExam(exam);
     }
 
+    @Transactional
     public void deleteAllByExamId(int id) {
         examTopicRepository.deleteAllByExamNative(id);
     }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,7 @@ public class ExamService {
         return examRepository.findAll(pageable).getContent();
     }
 
+    @Transactional
     public void saveExam(Exam exam) {
         examRepository.save(exam);
     }
@@ -39,6 +41,7 @@ public class ExamService {
         return examRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void deleteExam(Exam exam) {
         resultService.deleteAllByExam(exam);
         examRepository.delete(exam);
@@ -133,6 +136,7 @@ public class ExamService {
         }
         return result;
     }
+
 
     public void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
         examTopicService.deleteAllByExam(exam);

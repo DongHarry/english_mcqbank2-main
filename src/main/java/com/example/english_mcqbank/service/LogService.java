@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -56,6 +58,7 @@ public class LogService {
         return logRepository.findById(logId).orElse(null);
     }
 
+    @Transactional
     public void deleteLog(Log log) {
         logRepository.delete(log);
     }
