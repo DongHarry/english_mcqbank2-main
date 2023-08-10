@@ -302,7 +302,11 @@
                         <th class="wd-15p">Exam name</th>
                         <th class="wd-15p">Exam type</th>
                         <th class="wd-10p">Question No</th>
-                        <th class="wd-25p">Time</th>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+
+                        <th class="wd-15p">Số người đã làm bài</th>
+                        </sec:authorize>
+                        <th class="wd-25p">Created time</th>
                         <th class="wd-25p">Action</th>
                     </tr>
                     </thead>
@@ -330,7 +334,11 @@
                                     </c:if>
                                 </td>
                                 <td>${exam.questionNo}</td>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <td>${exam.resultList.size()}</td>
+                                </sec:authorize>
                                 <td>${exam.time}</td>
+
                                 <td>
                                     <ul style="margin-left: -40px">
                                         <sec:authorize access="hasRole('USER')">

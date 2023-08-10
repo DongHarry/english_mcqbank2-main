@@ -166,7 +166,7 @@
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Chỉnh sửa bài thi</h6>
 
-            <c action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
+            <form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -285,9 +285,9 @@
 
                     <a href="${pageContext.request.contextPath}/admin/exams" class="btn btn-secondary">Quay lại</a>
                 </div>
-
-
             </form:form>
+
+
         </div>
     </div><!-- br-pagebody -->
     <footer class="br-footer">
