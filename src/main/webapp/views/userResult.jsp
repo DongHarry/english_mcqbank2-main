@@ -271,7 +271,12 @@
         <nav class="breadcrumb pd-0 mg-0 tx-12">
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <a class="breadcrumb-item" href="/admin">Admin</a>
-                <a class="breadcrumb-item" href="#">Quản lý bài thi</a>
+                <c:if test="${type == 2}">
+                    <a class="breadcrumb-item" href="#">Quản lý bài thi</a>
+                </c:if>
+                <c:if test="${type == 1}">
+                    <a class="breadcrumb-item" href="/admin/users">Quản lý người dùng</a>
+                </c:if>
             </sec:authorize>
 
             <span class="breadcrumb-item active">Tổng hợp kết quả</span>
