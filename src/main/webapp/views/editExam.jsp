@@ -166,7 +166,7 @@
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Chỉnh sửa bài thi</h6>
 
-            <form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
+            <c action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -249,6 +249,36 @@
                         </div>
                     </div>
                 </div>
+                <c:if test="${not empty topics}">
+                <c:forEach items="${topics}" var="topic">
+                    <div class="row mg-t-20 mg-lg-t-0">
+                        <div class="col-lg-5">
+                            <label class="ckbox">
+                                <input type="checkbox" name="topic${topic.id}" value="${topic.id}" id="topic">
+                                <span>${topic.name}</span>
+                            </label>
+                        </div>
+                        <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                            <label class="rdiobox">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="20">
+                                <span>20 %</span>
+                            </label>
+                        </div>
+                        <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                            <label class="rdiobox">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="30">
+                                <span>30 %</span>
+                            </label>
+                        </div>
+                        <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                            <label class="rdiobox">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="50">
+                                <span>50 %</span>
+                            </label>
+                        </div>
+                    </div>
+                </c:forEach>
+                </c:if>
 
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Cập nhật</button>

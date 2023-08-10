@@ -124,4 +124,11 @@ public class ExamService {
         }
     }
 
+    public int getTotalPercentage(Map<Long, Integer> examTopicPercentageMap) {
+        int result = 0;
+        for (Map.Entry<Long, Integer> entry : examTopicPercentageMap.entrySet()) {
+            result += entry.getValue();
+        }
+        return result;
+    }
 }

@@ -378,6 +378,13 @@ public class AdminController {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
         Map<Long, Integer> examTopicPercentageMap = examService.getExamTopicPercentageMap(requestParams);
+        int totalPercentage = examService.getTotalPercentage(examTopicPercentageMap);
+        if (totalPercentage != 100) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams/new");
+            redirectAttributes.addFlashAttribute("e_message", "Total percentage must be 100");
+            return modelAndView;
+        }
+
         // Duyệt qua các tham số trong requestParams để tách giá trị numOfQu tương ứng với từng topicId
         // Sau khi có Map mới tương ứng <topicId, numOfQu>, bạn có thể thực hiện các thao tác cần thiết với dữ liệu này.
         Exam exam = new Exam();

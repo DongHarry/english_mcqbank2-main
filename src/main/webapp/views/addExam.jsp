@@ -196,7 +196,12 @@
     </div><!-- d-flex -->
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-            <h6 class="br-section-label">Thêm bài thi</h6>
+            <h6 class="br-section-label">Thêm bài thi mới</h6>
+            <c:if test="${not empty e_message}">
+                <div class="alert alert-danger">
+                    <strong>${e_message}</strong>
+                </div>
+            </c:if>
 
             <form:form action="${pageContext.request.contextPath}/admin/addExam" method="post">
 
@@ -292,23 +297,22 @@
                                 </div>
                                 <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
-                                        <input name="numQu.OfTopic${topic.id}" type="radio">
-                                        <span>20</span>
+                                        <input name="numQu.OfTopic${topic.id}" type="radio" value="20">
+                                        <span>20 %</span>
                                     </label>
                                 </div>
                                 <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
-                                        <input name="numQu.OfTopic${topic.id}" type="radio">
-                                        <span>30</span>
+                                        <input name="numQu.OfTopic${topic.id}" type="radio" value="30">
+                                        <span>30 %</span>
                                     </label>
                                 </div>
                                 <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
-                                        <input name="numQu.OfTopic${topic.id}" type="radio">
-                                        <span>50</span>
+                                        <input name="numQu.OfTopic${topic.id}" type="radio" value="50">
+                                        <span>50 %</span>
                                     </label>
                                 </div>
-
                             </div>
                         </c:forEach>
                     </div>
