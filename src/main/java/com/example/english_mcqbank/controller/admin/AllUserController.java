@@ -178,7 +178,8 @@ public class AllUserController {
     public ModelAndView userResults(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size,
                                     @PathVariable("userId") int userId,
-                                    RedirectAttributes redirectAttributes) {
+                                    RedirectAttributes redirectAttributes,
+                                    Authentication authentication) {
 
         UserEntity user = userService.getUserByUserid(userId);
         List<Result> results = resultService.findAllByUser(user);
@@ -191,6 +192,10 @@ public class AllUserController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
+        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", loggedInUser);
+        modelAndView.addObject("type", 1);
+        modelAndView.addObject("userId", user.getId());
 //        modelAndView.addObject("currentPage", page);
 //        assert results != null;
 //        boolean hasNext = results.size() >= size;

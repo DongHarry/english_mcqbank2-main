@@ -152,7 +152,8 @@ public class ExamController {
     public ModelAndView results(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size,
                                 @PathVariable("examId") int examId,
-                                RedirectAttributes redirectAttributes) {
+                                RedirectAttributes redirectAttributes,
+                                Authentication authentication) {
         Exam exam = examService.getExamById(examId);
         List<Result> results = resultService.findAllByExam(exam);
 
@@ -164,6 +165,9 @@ public class ExamController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", user);
+        modelAndView.addObject("type", 2);
         modelAndView.addObject("title", "All Users results for exam " + examId);
 //        modelAndView.addObject("currentPage", page);
 //        assert results != null;

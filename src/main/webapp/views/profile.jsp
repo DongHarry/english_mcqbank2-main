@@ -270,6 +270,11 @@
                         <strong>${errorMessage}</strong>
                     </div>
                 </c:if>
+                <c:if test="${not empty errorMessage2}">
+                    <div class="alert alert-danger">
+                        <strong>${errorMessage2}</strong>
+                    </div>
+                </c:if>
             </div>
             <div class="editable tx-16 bd pd-30 tx-inverse">
                 <p><b>Tên tài khoản:</b> ${user.username}</p>

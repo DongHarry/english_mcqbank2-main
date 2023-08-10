@@ -74,8 +74,9 @@ public class UserController {
     @RequestMapping("/user/results")
     public ModelAndView userResult(Authentication authentication,
                                    @RequestParam(defaultValue = "0") int page,
-                                   @RequestParam(defaultValue = "15") int size) {
-        ModelAndView userResultModelAndView = new ModelAndView("userResult");
+                                   @RequestParam(defaultValue = "15") int size,
+                                   RedirectAttributes redirectAttributes) {
+
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
         //UserEntity user = loggedInUserService.getLoggedInUser();
@@ -86,13 +87,16 @@ public class UserController {
 
         //List<Result> results = user.getResults();
         List<Result> results = resultService.findAllByUser(user);
+
+        if (results == null || results.isEmpty()) {
+            ModelAndView profileModelAndView = new ModelAndView("redirect:/user/profile");
+            redirectAttributes.addFlashAttribute("errorMessage2", "You have not taken any exam yet!");
+            return profileModelAndView;
+        }
+
+        ModelAndView userResultModelAndView = new ModelAndView("userResult");
         userResultModelAndView.addObject("results", results);
-//        userResultModelAndView.addObject("currentPage", page);
-//        assert results != null;
-//        boolean hasNext = results.size() >= size;
-//        userResultModelAndView.addObject("hasNext", hasNext);
-        //userResultModelAndView.addObject("user", user);
-        userResultModelAndView.addObject("title", "Results of " + user.getFullName());
+        userResultModelAndView.addObject("loggedInUser", user);
         return userResultModelAndView; // Trả về user.jsp
     }
 }
