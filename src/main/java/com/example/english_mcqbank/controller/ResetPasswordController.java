@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class ResetPasswordController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final ExamService examService;
+    final ILogService ILogService;
+    final IExamService IExamService;
     final PasswordEncoder passwordEncoder;
-    final EmailSender emailSender;
+    final IEmailSender IEmailSender;
     final VerifyService verifyService;
     @RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
     public ModelAndView forgotPassword() {
@@ -48,7 +48,7 @@ public class ResetPasswordController {
                 redirectAttributes.addFlashAttribute("message2", "Email not found!");
                 return modelAndView;
             }
-            emailSender.sendResetPasswordEmail(user,url);
+            IEmailSender.sendResetPasswordEmail(user,url);
         } else {
             UserEntity user = userService.getUserByUsername(name);
             if (user == null) {
@@ -57,7 +57,7 @@ public class ResetPasswordController {
                 redirectAttributes.addFlashAttribute("message2", "Username not found!");
                 return modelAndView;
             }
-            emailSender.sendResetPasswordEmail(user,url);
+            IEmailSender.sendResetPasswordEmail(user,url);
         }
 
         ModelAndView modelAndView = new ModelAndView("redirect:/login-page");

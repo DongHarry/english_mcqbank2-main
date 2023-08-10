@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 @Slf4j
 @NoArgsConstructor
-public class EmailSender {
+public class EmailSender implements IEmailSender {
     private Environment env;
     public static final String ADMIN_EMAIL_ADDRESS = "luongdinhduc0000@gmail.com";
 
@@ -34,6 +34,7 @@ public class EmailSender {
         this.env = env;
     }
 
+    @Override
     public CompletableFuture<Void> sendEmail2(String to, String subject, String body) {
         //log.info(this.getClass().getName() + " - sendEmail method invoked");
         //Long start = System.currentTimeMillis();
@@ -52,6 +53,7 @@ public class EmailSender {
 
     }
 
+    @Override
     @Async
     public void sendEmail(String to, String subject, String body) {
         //log.info(this.getClass().getName() + " - sendEmail method invoked");
@@ -72,6 +74,7 @@ public class EmailSender {
 
     }
 
+    @Override
     @Async
     public void sendEmail(String to, String cc, String subject, String content) {
         MimeMessage message = javaMailSender.createMimeMessage();
@@ -93,6 +96,7 @@ public class EmailSender {
         }
     }
 
+    @Override
     public CompletableFuture<Void> sendEmail2(String to, String cc, String subject, String body) {
         //log.info(this.getClass().getName() + " - sendEmail method invoked");
         //Long start = System.currentTimeMillis();
@@ -118,6 +122,7 @@ public class EmailSender {
 
     }
 
+    @Override
     public void sendResetPasswordEmail(UserEntity user, String url) {
         String subject = "Reset password";
         String content = "Hi " + user.getUsername() + "\n" +

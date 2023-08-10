@@ -10,20 +10,23 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ExamTopicService {
+public class ExamTopicService implements IExamTopicService {
     @Autowired
     private ExamTopicRepository examTopicRepository;
 
+    @Override
     @Transactional
     public List<ExamTopic> findAllByExam(Exam exam) {
         return examTopicRepository.findAllByExam(exam);
     }
 
+    @Override
     @Transactional
     public void deleteAllByExamId(int id) {
         examTopicRepository.deleteAllByExamNative(id);
     }
 
+    @Override
     @Transactional
     public void deleteAllByExam(Exam exam) {
         examTopicRepository.deleteAllByExam(exam);

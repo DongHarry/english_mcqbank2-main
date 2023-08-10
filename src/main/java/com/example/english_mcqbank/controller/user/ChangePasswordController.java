@@ -16,10 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class ChangePasswordController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final ExamService examService;
-    final QuestionService questionService;
-    final ResultService resultService;
+    final ILogService ILogService;
+    final IExamService IExamService;
+    final IQuestionService IQuestionService;
+    final IResultService IResultService;
     final PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.GET)

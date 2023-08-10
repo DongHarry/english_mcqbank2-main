@@ -20,12 +20,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AllUserController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final TopicService topicService;
-    final QuestionService questionService;
+    final ILogService ILogService;
+    final ITopicService ITopicService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping("/admin/users/{id}")
     public ModelAndView viewUser(@PathVariable Integer id, Authentication authentication) {
@@ -45,7 +45,7 @@ public class AllUserController {
                                      RedirectAttributes redirectAttributes) {
         ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
-        List<Log> logs = logService.getLogsByUser(user);
+        List<Log> logs = ILogService.getLogsByUser(user);
         logsModelAndView.addObject("logs", logs);
 
         if (logs == null || logs.isEmpty()) {
@@ -133,7 +133,7 @@ public class AllUserController {
             log.setStatus(1);
             log.setDatetime(new Date());
             log.setName("User added successfully!");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Error adding user");
         }
@@ -159,9 +159,9 @@ public class AllUserController {
 //                modelAndView.addObject("message", "Cannot delete admin");
                 return modelAndView;
             }
-            List<Log> logs = logService.getLogsByUser(user);
+            List<Log> logs = ILogService.getLogsByUser(user);
             if (logs != null) {
-                logService.deleteAllLog(logs);
+                ILogService.deleteAllLog(logs);
             }
             userService.deleteUser(user);
             //modelAndView.addObject("message", "User deleted successfully");
@@ -182,7 +182,7 @@ public class AllUserController {
                                     Authentication authentication) {
 
         UserEntity user = userService.getUserByUserid(userId);
-        List<Result> results = resultService.findAllByUser(user);
+        List<Result> results = IResultService.findAllByUser(user);
 
         if (results == null || results.isEmpty()) {
             ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/users/" + userId);
@@ -200,7 +200,7 @@ public class AllUserController {
 //        assert results != null;
 //        boolean hasNext = results.size() >= size;
 //        modelAndView.addObject("hasNext", hasNext);
-        modelAndView.addObject("title", "All results for user " + user.getFullName());
+        modelAndView.addObject("title", "All results for user: " + user.getFullName());
         //modelAndView.addObject("examId", examId);
         return modelAndView;
     }

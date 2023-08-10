@@ -2,18 +2,16 @@ package com.example.english_mcqbank.controller;
 
 import com.example.english_mcqbank.model.Log;
 import com.example.english_mcqbank.model.UserEntity;
-import com.example.english_mcqbank.service.LogService;
+import com.example.english_mcqbank.service.ILogService;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,7 +21,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class LoginAndRegisterController {
     private final UserDetailsServiceImpl userService;
-    private final LogService logService;
+    private final ILogService ILogService;
     private final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/login-page")
@@ -87,7 +85,7 @@ public class LoginAndRegisterController {
             log.setName("User " + user.getUsername() + " register failed");
             log.setDatetime(new Date());
             log.setStatus(0);
-            logService.saveLog(log);
+            ILogService.saveLog(log);
             return registerModelAndView;
         }
 
@@ -102,7 +100,7 @@ public class LoginAndRegisterController {
                 log.setName("User " + user.getUsername() + " registered");
                 log.setDatetime(user.getCreatedDate());
                 log.setStatus(1);
-                logService.saveLog(log);
+                ILogService.saveLog(log);
             } catch (Exception e) {
                 e.printStackTrace();
             }

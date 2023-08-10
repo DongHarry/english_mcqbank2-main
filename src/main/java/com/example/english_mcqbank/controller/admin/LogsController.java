@@ -20,18 +20,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LogsController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final TopicService topicService;
-    final QuestionService questionService;
+    final ILogService ILogService;
+    final ITopicService ITopicService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping(value = "/admin/allLogs")
     public ModelAndView allLogs(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "20") int size) {
         ModelAndView modelAndView = new ModelAndView("allLogs");
-        List<Log> logs = logService.findAllLogs();
+        List<Log> logs = ILogService.findAllLogs();
         modelAndView.addObject("logs", logs);
 //        modelAndView.addObject("currentPage", page);
 //        assert logs != null;
@@ -51,7 +51,7 @@ public class LogsController {
         modelAndView.addObject("user", user);
         modelAndView.addObject("loggedInUser", user);
 
-        List<Log> logs = logService.findAllLogs();
+        List<Log> logs = ILogService.findAllLogs();
         modelAndView.addObject("logs", logs);
         return modelAndView;
     }
@@ -60,7 +60,7 @@ public class LogsController {
     public ModelAndView deleteLog(@PathVariable int logId, RedirectAttributes redirectAttributes,
                                   @RequestParam(defaultValue = "0") Integer userId) {
         try {
-            Log log = logService.findLogById(logId);
+            Log log = ILogService.findLogById(logId);
             if (log == null) {
                 redirectAttributes.addFlashAttribute("message", "Log does not exist");
                 if (userId != 0) {
@@ -68,7 +68,7 @@ public class LogsController {
                 }
                 return new ModelAndView("redirect:/admin/logs");
             }
-            logService.deleteLog(log);
+            ILogService.deleteLog(log);
             redirectAttributes.addFlashAttribute("message", "Log deleted successfully");
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,7 +4,7 @@ import com.example.english_mcqbank.model.Log;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.model.test.Child1;
 import com.example.english_mcqbank.model.test.Parent;
-import com.example.english_mcqbank.service.LogService;
+import com.example.english_mcqbank.service.ILogService;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import java.util.Set;
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
-    LogService logService;
+    ILogService ILogService;
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 //    @Autowired
@@ -39,17 +39,17 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         if (roles.contains("ROLE_ADMIN")) {
             log.setStatus(1);
             log.setName("ADMIN: " + user.getUsername() + " logged in");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
             response.sendRedirect("/admin");
         } else if (roles.contains("ROLE_USER")) {
             log.setStatus(1);
             log.setName("USER: " + user.getUsername() + " logged in");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
             response.sendRedirect("/user");
         } else {
             log.setStatus(0);
             log.setName("UNAUTHORIZED: " + authentication.getName() + " tried to log in");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
             response.sendRedirect("/main");
         }
     }

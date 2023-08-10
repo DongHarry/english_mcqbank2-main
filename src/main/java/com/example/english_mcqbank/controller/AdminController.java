@@ -7,25 +7,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final TopicService topicService;
-    final QuestionService questionService;
+    final ILogService ILogService;
+    final ITopicService ITopicService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping("/admin")
     public ModelAndView admin(Authentication authentication) {

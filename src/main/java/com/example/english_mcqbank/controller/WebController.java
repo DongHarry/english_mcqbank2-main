@@ -15,17 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Controller
 @RequiredArgsConstructor
 public class WebController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final ExamService examService;
+    final ILogService ILogService;
+    final IExamService IExamService;
     final PasswordEncoder passwordEncoder;
-    final EmailSender emailSender;
+    final IEmailSender IEmailSender;
     final VerifyService verifyService;
 
     @RequestMapping(value = {"/", "/home", "/index"})
@@ -64,7 +63,7 @@ public class WebController {
                 "Company: " + company + "\n" +
                 "Message: " + message + "\n";
 
-        CompletableFuture<Void> completableFuture = emailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
+        CompletableFuture<Void> completableFuture = IEmailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
         //return new ModelAndView("redirect:/#");
         //ModelAndView view = new ModelAndView("redirect:/home");
         redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");

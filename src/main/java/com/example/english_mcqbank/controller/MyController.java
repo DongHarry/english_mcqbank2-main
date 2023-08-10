@@ -1,7 +1,7 @@
 package com.example.english_mcqbank.controller;
 
 import com.example.english_mcqbank.model.test.Parent;
-import com.example.english_mcqbank.service.EmailSender;
+import com.example.english_mcqbank.service.IEmailSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.mail.Multipart;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +18,7 @@ import java.io.InputStreamReader;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class MyController {
-    private final EmailSender emailSender;
+    private final IEmailSender IEmailSender;
 
     @Autowired
     Parent test;
@@ -63,7 +62,7 @@ public class MyController {
 
     @RequestMapping("/send-email")
     public ResponseEntity<String> sendEmail() {
-        emailSender.sendEmail("luongdinhduc0000@Gmail.com", "Test", "Test");
+        IEmailSender.sendEmail("luongdinhduc0000@Gmail.com", "Test", "Test");
         return ResponseEntity.ok("Email sent");
     }
 

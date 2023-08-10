@@ -19,18 +19,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuestionController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
+    final ILogService ILogService;
     final TopicService topicService;
-    final QuestionService questionService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "20") int size,
                                      Authentication authentication) {
-        List<Question> questions = questionService.getAllQuestions();
+        List<Question> questions = IQuestionService.getAllQuestions();
         ModelAndView modelAndView = new ModelAndView("questionList");
         UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
         modelAndView.addObject("loggedInUser", loggedInUser);
@@ -63,7 +63,7 @@ public class QuestionController {
                                     @RequestParam("level") int level,
                                     Authentication authentication,
                                     RedirectAttributes redirectAttributes) {
-        if (questionService.existByContent(content)) {
+        if (IQuestionService.existByContent(content)) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/new");
             redirectAttributes.addFlashAttribute("message", "Question already exists");
             return modelAndView;
@@ -84,7 +84,7 @@ public class QuestionController {
         newQuestion.setLevel(level);
         newQuestion.setTopic(topicService.getTopicById(topicId));
         newQuestion.setType(1);
-        questionService.save(newQuestion);
+        IQuestionService.save(newQuestion);
 
         redirectAttributes.addFlashAttribute("message", "Question: " + newQuestion.getId().toString() + " added successfully");
         return modelAndView;
@@ -92,7 +92,7 @@ public class QuestionController {
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
     public ModelAndView editQuestion(@PathVariable("id") int id, Model model, Authentication authentication) {
-        Question question = questionService.getQuestionById(id);
+        Question question = IQuestionService.getQuestionById(id);
 
         ModelAndView modelAndView = new ModelAndView("editQuestion");
         modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
@@ -106,8 +106,8 @@ public class QuestionController {
     public ModelAndView editQuestionHandle(@ModelAttribute("c_question") Question c_question,
                                            RedirectAttributes redirectAttributes) {
 
-        Question question = questionService.getQuestionById(c_question.getId());
-        if (questionService.existByContent(c_question.getContent()) && !question.getContent().equals(c_question.getContent())) {
+        Question question = IQuestionService.getQuestionById(c_question.getId());
+        if (IQuestionService.existByContent(c_question.getContent()) && !question.getContent().equals(c_question.getContent())) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/" + c_question.getId().toString());
             redirectAttributes.addFlashAttribute("e_message", "Question already exists");
             return modelAndView;
@@ -123,7 +123,7 @@ public class QuestionController {
             question.setOption4(c_question.getOption4());
             question.setExplain(c_question.getExplain());
             question.setLevel(c_question.getLevel());
-            questionService.save(question);
+            IQuestionService.save(question);
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " updated successfully");
         }
 
@@ -132,11 +132,11 @@ public class QuestionController {
 
     @RequestMapping(value = "/admin/questions/{id}/delete", method = RequestMethod.GET)
     public ModelAndView deleteQuestion(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
-        Question question = questionService.getQuestionById(id);
+        Question question = IQuestionService.getQuestionById(id);
 
         if (question != null) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
-            questionService.delete(question);
+            IQuestionService.delete(question);
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " deleted successfully");
             return modelAndView;
         }

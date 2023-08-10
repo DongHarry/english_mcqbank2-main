@@ -21,12 +21,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TopicController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
+    final ILogService ILogService;
     final TopicService topicService;
-    final QuestionService questionService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
@@ -84,7 +84,7 @@ public class TopicController {
             return new ModelAndView("redirect:/admin/topics");
         }
 
-        if (questionService.countAllByTopic(topic) > 0) {
+        if (IQuestionService.countAllByTopic(topic) > 0) {
             redirectAttributes.addFlashAttribute("e_message", "Topic has questions");
             return new ModelAndView("redirect:/admin/topics");
         }

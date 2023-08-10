@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -17,10 +16,10 @@ import java.util.*;
 @RequiredArgsConstructor
 public class UserController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final ExamService examService;
-    final QuestionService questionService;
-    final ResultService resultService;
+    final ILogService ILogService;
+    final IExamService IExamService;
+    final IQuestionService IQuestionService;
+    final IResultService IResultService;
     final PasswordEncoder passwordEncoder;
     //final LoggedInUserService loggedInUserService;
 
@@ -61,7 +60,7 @@ public class UserController {
         }
         ModelAndView userLogsModelAndView = new ModelAndView("logs");
         userLogsModelAndView.addObject("loggedInUser", user);
-        List<Log> logs = logService.getLogsByUser(user);
+        List<Log> logs = ILogService.getLogsByUser(user);
 
         userLogsModelAndView.addObject("logs", logs);
 //        userLogsModelAndView.addObject("currentPage", page);
@@ -86,7 +85,7 @@ public class UserController {
         }
 
         //List<Result> results = user.getResults();
-        List<Result> results = resultService.findAllByUser(user);
+        List<Result> results = IResultService.findAllByUser(user);
 
         if (results == null || results.isEmpty()) {
             ModelAndView profileModelAndView = new ModelAndView("redirect:/user/profile");

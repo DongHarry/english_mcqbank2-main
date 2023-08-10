@@ -17,10 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class EditProfileController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
-    final ExamService examService;
-    final QuestionService questionService;
-    final ResultService resultService;
+    final ILogService ILogService;
+    final IExamService IExamService;
+    final IQuestionService IQuestionService;
+    final IResultService IResultService;
     final PasswordEncoder passwordEncoder;
 
 

@@ -2,7 +2,6 @@ package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.*;
 import com.example.english_mcqbank.repository.ExamRepository;
-import com.example.english_mcqbank.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,39 +13,44 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ExamService {
+public class ExamService implements IExamService {
     @Autowired
-    private ResultService resultService;
+    private IResultService IResultService;
     @Autowired
-    private QuestionService questionService;
+    private IQuestionService IQuestionService;
     @Autowired
     private TopicService topicService;
     @Autowired
-    private ExamTopicService examTopicService;
+    private IExamTopicService IExamTopicService;
 
     @Autowired
     private ExamRepository examRepository;
 
+    @Override
     public List<Exam> getAllExams(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return examRepository.findAll(pageable).getContent();
     }
 
+    @Override
     @Transactional
     public void saveExam(Exam exam) {
         examRepository.save(exam);
     }
 
+    @Override
     public Exam getExamById(int id) {
         return examRepository.findById(id).orElse(null);
     }
 
+    @Override
     @Transactional
     public void deleteExam(Exam exam) {
-        resultService.deleteAllByExam(exam);
+        IResultService.deleteAllByExam(exam);
         examRepository.delete(exam);
     }
 
+    @Override
     public List<Result> getResultsByExamId(int examId, int page, int size) {
         Exam exam = examRepository.findById(examId).orElse(null);
 
@@ -55,9 +59,10 @@ public class ExamService {
         }
         Pageable pageable = PageRequest.of(page, size);
 
-        return resultService.findAllByExam(exam, pageable);
+        return IResultService.findAllByExam(exam, pageable);
     }
 
+    @Override
     public List<Result> getResultsByExamId(int examId) {
         Exam exam = examRepository.findById(examId).orElse(null);
 
@@ -65,9 +70,10 @@ public class ExamService {
             return null;
         }
 
-        return resultService.findAllByExam(exam);
+        return IResultService.findAllByExam(exam);
     }
 
+    @Override
     public Map<Long, Integer> getExamTopicPercentageMap(Map<String, String> requestParams) {
         Map<Long, Integer> examTopicPercentageMap = new HashMap<>();
         for (Map.Entry<String, String> entry : requestParams.entrySet()) {
@@ -93,12 +99,13 @@ public class ExamService {
         return examTopicPercentageMap;
     }
 
+    @Override
     public int calculateScore(Map<String, String> params) {
         int score = 0;
         for (String paramName : params.keySet()) {
             if (paramName.startsWith("question_")) {
                 int questionId = Integer.parseInt(paramName.substring("question_".length()));
-                Question question = questionService.get(questionId);
+                Question question = IQuestionService.get(questionId);
                 //Question question = questionMap.get(questionId);
                 String selectedOption = params.get(paramName);
                 // Do something with the selected option for each question (e.g., save to database)
@@ -113,10 +120,12 @@ public class ExamService {
     }
 
 
+    @Override
     public List<Exam> getAllExams() {
         return examRepository.findAll();
     }
 
+    @Override
     public void addExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
         for (Map.Entry<Long, Integer> entry : examTopicPercentageMap.entrySet()) {
             Long topicId = entry.getKey();
@@ -129,6 +138,7 @@ public class ExamService {
         }
     }
 
+    @Override
     public int getTotalPercentage(Map<Long, Integer> examTopicPercentageMap) {
         int result = 0;
         for (Map.Entry<Long, Integer> entry : examTopicPercentageMap.entrySet()) {
@@ -138,8 +148,9 @@ public class ExamService {
     }
 
 
+    @Override
     public void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
-        examTopicService.deleteAllByExam(exam);
+        IExamTopicService.deleteAllByExam(exam);
         //exam.clearExamTopic();
         addExamTopic(exam, examTopicPercentageMap);
         //examRepository.save(exam);

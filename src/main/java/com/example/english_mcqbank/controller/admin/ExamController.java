@@ -22,12 +22,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ExamController {
     final UserDetailsServiceImpl userService;
-    final LogService logService;
+    final ILogService ILogService;
     final TopicService topicService;
-    final QuestionService questionService;
+    final IQuestionService IQuestionService;
     final PasswordEncoder passwordEncoder;
-    final ExamService examService;
-    final ResultService resultService;
+    final IExamService IExamService;
+    final IResultService IResultService;
 
     @RequestMapping(value = "/admin/exams/new", method = RequestMethod.GET)
     public ModelAndView addExam() {
@@ -45,8 +45,8 @@ public class ExamController {
                                 RedirectAttributes redirectAttributes) {
 
         // Tạo một Map để chứa topicId và numOfQu tương ứng
-        Map<Long, Integer> examTopicPercentageMap = examService.getExamTopicPercentageMap(requestParams);
-        int totalPercentage = examService.getTotalPercentage(examTopicPercentageMap);
+        Map<Long, Integer> examTopicPercentageMap = IExamService.getExamTopicPercentageMap(requestParams);
+        int totalPercentage = IExamService.getTotalPercentage(examTopicPercentageMap);
         if (totalPercentage != 100) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams/new");
             redirectAttributes.addFlashAttribute("e_message", "Total percentage must be 100");
@@ -60,8 +60,8 @@ public class ExamController {
         exam.setTime(new Date());
         exam.setName(examName);
         exam.setType(examType);
-        examService.addExamTopic(exam, examTopicPercentageMap);
-        examService.saveExam(exam);
+        IExamService.addExamTopic(exam, examTopicPercentageMap);
+        IExamService.saveExam(exam);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
         //modelAndView.addObject("message", "Exam added successfully");
@@ -80,7 +80,7 @@ public class ExamController {
         modelAndView.addObject("user", user);
         modelAndView.addObject("loggedInUser", user);
 
-        List<Exam> exams = examService.getAllExams();
+        List<Exam> exams = IExamService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);
         modelAndView.addObject("exams", exams);
 //        modelAndView.addObject("currentPage", page);
@@ -93,7 +93,7 @@ public class ExamController {
     @RequestMapping(value = "/admin/exams/{examId}", method = RequestMethod.GET)
     public ModelAndView exam(@PathVariable("examId") int examId, Model model) {
         ModelAndView modelAndView = new ModelAndView("editExam");
-        Exam exam = examService.getExamById(examId);
+        Exam exam = IExamService.getExamById(examId);
         modelAndView.addObject("c_exam", exam);
         model.addAttribute("c_exam", exam);
         List<Topic> topics = topicService.getAllTopics();
@@ -107,9 +107,9 @@ public class ExamController {
                                  @RequestParam Map<String, String> requestParams,
                                  RedirectAttributes redirectAttributes) {
 
-        Exam exam = examService.getExamById(examId);
-        Map<Long, Integer> examTopicPercentageMap = examService.getExamTopicPercentageMap(requestParams);
-        int totalPercentage = examService.getTotalPercentage(examTopicPercentageMap);
+        Exam exam = IExamService.getExamById(examId);
+        Map<Long, Integer> examTopicPercentageMap = IExamService.getExamTopicPercentageMap(requestParams);
+        int totalPercentage = IExamService.getTotalPercentage(examTopicPercentageMap);
 
         if (totalPercentage != 100) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams/" + examId);
@@ -117,7 +117,7 @@ public class ExamController {
             return modelAndView;
         }
 
-        examService.updateExamTopic(exam, examTopicPercentageMap);
+        IExamService.updateExamTopic(exam, examTopicPercentageMap);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
         if (c_exam != null) {
@@ -127,19 +127,19 @@ public class ExamController {
             redirectAttributes.addFlashAttribute("message", "Exam: " +c_exam.getName()+ " updated successfully");
         }
 
-        examService.saveExam(exam);
+        IExamService.saveExam(exam);
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/deleteExam", method = RequestMethod.GET)
     public ModelAndView deleteExam(@RequestParam("examId") int id, RedirectAttributes redirectAttributes) {
         try {
-            Exam exam = examService.getExamById(id);
+            Exam exam = IExamService.getExamById(id);
             if (exam == null) {
                 redirectAttributes.addFlashAttribute("message", "Exam does not exist");
                 return new ModelAndView("redirect:/admin/exams");
             }
-            examService.deleteExam(exam);
+            IExamService.deleteExam(exam);
             redirectAttributes.addFlashAttribute("message", "Exam deleted successfully");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Error deleting exam");
@@ -154,8 +154,8 @@ public class ExamController {
                                 @PathVariable("examId") int examId,
                                 RedirectAttributes redirectAttributes,
                                 Authentication authentication) {
-        Exam exam = examService.getExamById(examId);
-        List<Result> results = resultService.findAllByExam(exam);
+        Exam exam = IExamService.getExamById(examId);
+        List<Result> results = IResultService.findAllByExam(exam);
 
         if (results == null || results.isEmpty()) {
             ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/exams");

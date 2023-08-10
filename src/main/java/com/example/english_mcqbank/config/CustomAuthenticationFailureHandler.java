@@ -2,13 +2,9 @@ package com.example.english_mcqbank.config;
 
 import com.example.english_mcqbank.model.Log;
 import com.example.english_mcqbank.model.UserEntity;
-import com.example.english_mcqbank.model.test.Child1;
-import com.example.english_mcqbank.model.test.Parent;
-import com.example.english_mcqbank.service.LogService;
+import com.example.english_mcqbank.service.ILogService;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -24,7 +20,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
     final
-    LogService logService;
+    ILogService ILogService;
     final
     UserDetailsServiceImpl userDetailsService;
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -41,10 +37,10 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         if (user != null) {
             log.setUser(user);
             log.setName("UNAUTHORIZED: " + user.getUsername() + " tried to log in ");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
         } else {
             log.setName("NOT FOUND: " + username + " tried to log in ");
-            logService.saveLog(log);
+            ILogService.saveLog(log);
         }
 //        System.out.println("Authentication failed for username: " + username);
 //        request.getSession().setAttribute("errorMessage2", "Invalid Username or Password");
