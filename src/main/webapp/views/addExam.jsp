@@ -281,15 +281,15 @@
                 </div>
 
                 <div class="row mg-t-20">
-                    <div class="col-lg-4">
+                    <div class="col-lg-7">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Topic</span>
                             </div>
                         </div>
                         <c:forEach items="${topics}" var="topic">
-                            <div class="row mg-t-20 mg-lg-t-0">
-                                <div class="col-lg-5">
+                            <div class="row mg-t-20 mg-lg-t-0" style="margin: 10px 30px">
+                                <div class="col-lg-3">
                                     <label class="ckbox">
                                         <input type="checkbox" name="topic${topic.id}" value="${topic.id}" id="topic">
                                         <span>${topic.name}</span>
@@ -313,6 +313,13 @@
                                         <span>50 %</span>
                                     </label>
                                 </div>
+                                <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                                    <label class="rdiobox">
+                                        <input name="numQu.OfTopic${topic.id}" type="radio" value="100">
+                                        <span>100 %</span>
+                                    </label>
+                                </div>
+
                             </div>
                         </c:forEach>
                     </div>
