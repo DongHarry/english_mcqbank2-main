@@ -1,72 +1,3 @@
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Change Password</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Change Password</h1>--%>
-<%--  <form:form action="${pageContext.request.contextPath}/user/profile/change-password" method="post">--%>
-<%--    <div>--%>
-<%--      <label for="oldPassword">Old password:</label>--%>
-<%--      <input type="password" id="oldPassword" name="oldPassword" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--      <label for="newPassword">New password:</label>--%>
-<%--      <input type="password" id="newPassword" name="newPassword" required value="${user.password}"><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--      <label for="confirmNewPassword">Confirm new password:</label>--%>
-<%--      <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>--%>
-<%--    </div>--%>
-<%--  <div>--%>
-<%--    <button type="submit"> SAVE </button>--%>
-<%--  </div>--%>
-<%--  <div>--%>
-<%--    <c:if test="${not empty successMessage}">--%>
-<%--      <div class="error"> <strong>${successMessage}</strong> </div>--%>
-<%--    </c:if>--%>
-<%--    <c:if test="${not empty errorMessage}">--%>
-<%--      <div class="error"> <strong>${errorMessage}</strong> </div>--%>
-<%--    </c:if>--%>
-<%--  </div>--%>
-<%--  </form:form>--%>
-<%--<a href="${pageContext.request.contextPath}/user/profile">Back</a>--%>
-
-<%--</body>--%>
-<%--</html>--%>
-
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Profile</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Profile</h1>--%>
-<%--<ul>--%>
-<%--    <li>Username: ${user.username}</li>--%>
-<%--    <li>Fullname: ${user.fullName}</li>--%>
-<%--    <li>Email: ${user.email}</li>--%>
-<%--    <li>Phone: ${user.phone}</li>--%>
-<%--    <li>Address: ${user.address}</li>--%>
-<%--    <li>Created Date: ${user.createdDate}</li>--%>
-<%--    <li>--%>
-
-
-<%--    </li>--%>
-<%--</ul>--%>
-<%--<hr>--%>
-
-
-<%--</body>--%>
-<%--</html>--%>
-
-
-
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -270,11 +201,21 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
+      <sec:authorize access="hasRole('ADMIN')">
+        <a class="breadcrumb-item" href="#">Admin</a>
+      </sec:authorize>
+      <sec:authorize access="hasRole('USER')">
+        <a class="breadcrumb-item" href="#">User</a>
+      </sec:authorize>
+      <a class="breadcrumb-item" href="#">Quản lý tài khoản</a>
       <span class="breadcrumb-item active">Tài khoản ${loggedInUser.username}</span>
     </nav>
   </div><!-- br-pageheader -->
   <div class="br-pagetitle">
     <i class="icon ion-ios-person-outline"></i>
+    <div>
+      <h4>Thay đổi mật khẩu</h4>
+    </div>
   </div><!-- d-flex -->
 
   <div class="br-pagebody">
@@ -316,12 +257,10 @@
               </div>
               <input class="btn btn-primary" type="submit" id="btnXacNhanDoiMK"
                      value="Xác nhận" />
+              <a href="${pageContext.request.contextPath}/user/profile" class="btn btn-secondary">Quay lại</a>
             </form:form>
           </div>
-          <div class="form-layout-footer mg-t-30">
-            <a href="${pageContext.request.contextPath}/user/profile" class="btn btn-secondary">Quay lại</a>
 
-          </div>
         </div><!-- form-layout-footer -->
 
 
@@ -414,34 +353,35 @@
     } else
       $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
   });
-</script>
+
 <%--<script>--%>
-<%--  $(function(){--%>
-<%--    'use strict'--%>
+  $(function(){
+    'use strict'
 
-<%--    // FOR DEMO ONLY--%>
-<%--    // menu collapsed by default during first page load or refresh with screen--%>
-<%--    // having a size between 992px and 1299px. This is intended on this page only--%>
-<%--    // for better viewing of widgets demo.--%>
-<%--    $(window).resize(function(){--%>
-<%--      minimizeMenu();--%>
-<%--    });--%>
+    // FOR DEMO ONLY
+    // menu collapsed by default during first page load or refresh with screen
+    // having a size between 992px and 1299px. This is intended on this page only
+    // for better viewing of widgets demo.
+    $(window).resize(function(){
+      minimizeMenu();
+    });
 
-<%--    minimizeMenu();--%>
+    minimizeMenu();
 
-<%--    function minimizeMenu() {--%>
-<%--      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {--%>
-<%--        // show only the icons and hide left menu label by default--%>
-<%--        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');--%>
-<%--        $('body').addClass('collapsed-menu');--%>
-<%--        $('.show-sub + .br-menu-sub').slideUp();--%>
-<%--      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {--%>
-<%--        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');--%>
-<%--        $('body').removeClass('collapsed-menu');--%>
-<%--        $('.show-sub + .br-menu-sub').slideDown();--%>
-<%--      }--%>
-<%--    }--%>
-<%--  });--%>
+    function minimizeMenu() {
+      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+        // show only the icons and hide left menu label by default
+        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
+        $('body').addClass('collapsed-menu');
+        $('.show-sub + .br-menu-sub').slideUp();
+      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
+        $('body').removeClass('collapsed-menu');
+        $('.show-sub + .br-menu-sub').slideDown();
+      }
+    }
+  });
+</script>
 <%--</script>--%>
 </body>
 </html>

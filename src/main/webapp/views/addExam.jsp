@@ -192,7 +192,6 @@
         <i class="icon ion-ios-book-outline"></i>
         <div>
             <h4>Create Exam</h4>
-
         </div>
     </div><!-- d-flex -->
     <div class="br-pagebody">

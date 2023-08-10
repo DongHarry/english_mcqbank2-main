@@ -3,41 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>EditUser</title>
+    <title>Edit Information</title>
 </head>
 <body>
-<%--<form:form action="${pageContext.request.contextPath}/user/profile/edit" method="post">--%>
-<%--  <div>--%>
-<%--    <label for="username">Username:</label>--%>
-<%--    <input type="text" id="username" name="username" value="${currentUser.username}" readonly><br>--%>
-<%--  </div>--%>
-<%--  <div>--%>
-<%--    <label for="fullName">Full Name:</label>--%>
-<%--    <input type="text" id="fullName" name="fullName" value="${currentUser.fullName}" required><br>--%>
-<%--  </div>--%>
-<%--  <div>--%>
-<%--    <label for="address">Address:</label>--%>
-<%--    <input type="text" id="address" name="address" required value="${currentUser.address}">  <br>--%>
-<%--  </div>--%>
-<%--  <div>--%>
-<%--    <label for="phone">Phone:</label>--%>
-<%--    <input type="text" id="phone" name="phone" required value="${currentUser.phone}"><br>--%>
-<%--  </div>--%>
-<%--  <div>--%>
-<%--    <label for="email">Email:</label>--%>
-<%--    <input type="email" id="email" name="email" required value="${currentUser.email}"><br>--%>
-<%--  </div>--%>
-
-
-<%--  &lt;%&ndash;    <label for="roles" id="roles" name="roles">Roles:</label>&ndash;%&gt;--%>
-<%--  <br>--%>
-<%--  &lt;%&ndash;    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">&ndash;%&gt;--%>
-<%--  <div>--%>
-<%--    <button type="submit"> SAVE </button>--%>
-<%--  </div>--%>
-
-
-<%--</form:form>--%>
 
 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -239,11 +207,22 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
+      <sec:authorize access="hasRole('ADMIN')">
+        <a class="breadcrumb-item" href="#">Admin</a>
+      </sec:authorize>
+      <sec:authorize access="hasRole('USER')">
+        <a class="breadcrumb-item" href="#">User</a>
+      </sec:authorize>
+
+      <a class="breadcrumb-item" href="#">Quản lí tài khoản</a>
       <span class="breadcrumb-item active">Tài khoản ${loggedInUser.username}</span>
     </nav>
   </div><!-- br-pageheader -->
   <div class="br-pagetitle">
     <i class="icon ion-ios-person-outline"></i>
+    <div>
+      <h4>Chỉnh sửa thông tin tài khoản</h4>
+    </div>
   </div><!-- d-flex -->
 
   <div class="br-pagebody">
@@ -344,13 +323,11 @@
             <div class="form-layout-footer mg-t-30">
               <button type="submit" class="btn btn-info mg-r-5">Lưu</button>
                 <%--                <button class="btn btn-secondary">Hủy</button>--%>
+              <a href="${pageContext.request.contextPath}/user/profile" class="btn btn-secondary">Quay lại</a>
+
             </div>
 
           </form:form>
-        </div>
-        <div class="form-layout-footer mg-t-30">
-          <a href="${pageContext.request.contextPath}/user/profile" class="btn btn-secondary">Quay lại</a>
-
         </div>
       </div><!-- form-layout-footer -->
 
@@ -444,34 +421,34 @@
     } else
       $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
   });
+
+  $(function(){
+    'use strict'
+
+    // FOR DEMO ONLY
+    // menu collapsed by default during first page load or refresh with screen
+    // having a size between 992px and 1299px. This is intended on this page only
+    // for better viewing of widgets demo.
+    $(window).resize(function(){
+      minimizeMenu();
+    });
+
+    minimizeMenu();
+
+    function minimizeMenu() {
+      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+        // show only the icons and hide left menu label by default
+        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
+        $('body').addClass('collapsed-menu');
+        $('.show-sub + .br-menu-sub').slideUp();
+      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
+        $('body').removeClass('collapsed-menu');
+        $('.show-sub + .br-menu-sub').slideDown();
+      }
+    }
+  });
+
 </script>
-<%--<script>--%>
-<%--  $(function(){--%>
-<%--    'use strict'--%>
-
-<%--    // FOR DEMO ONLY--%>
-<%--    // menu collapsed by default during first page load or refresh with screen--%>
-<%--    // having a size between 992px and 1299px. This is intended on this page only--%>
-<%--    // for better viewing of widgets demo.--%>
-<%--    $(window).resize(function(){--%>
-<%--      minimizeMenu();--%>
-<%--    });--%>
-
-<%--    minimizeMenu();--%>
-
-<%--    function minimizeMenu() {--%>
-<%--      if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {--%>
-<%--        // show only the icons and hide left menu label by default--%>
-<%--        $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');--%>
-<%--        $('body').addClass('collapsed-menu');--%>
-<%--        $('.show-sub + .br-menu-sub').slideUp();--%>
-<%--      } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {--%>
-<%--        $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');--%>
-<%--        $('body').removeClass('collapsed-menu');--%>
-<%--        $('.show-sub + .br-menu-sub').slideDown();--%>
-<%--      }--%>
-<%--    }--%>
-<%--  });--%>
-<%--</script>--%>
 </body>
 </html>
