@@ -23,7 +23,13 @@ public class UserController {
     final ResultService resultService;
     final PasswordEncoder passwordEncoder;
     //final LoggedInUserService loggedInUserService;
-    private Map<Integer, Question> questionMap;
+
+    @RequestMapping("/user")
+    public ModelAndView user(Authentication authentication) {
+        ModelAndView userModelAndView = new ModelAndView("user");
+        userModelAndView.addObject("user", userService.getUserByUsername(authentication.getName()));
+        return userModelAndView; // Trả về user.jsp
+    }
 
     @RequestMapping("/user/profile")
     public ModelAndView userProfile(Authentication authentication) {

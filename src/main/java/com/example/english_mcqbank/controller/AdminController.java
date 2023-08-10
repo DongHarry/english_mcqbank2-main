@@ -27,6 +27,17 @@ public class AdminController {
     final ExamService examService;
     final ResultService resultService;
 
+    @RequestMapping("/admin")
+    public ModelAndView admin(Authentication authentication) {
+        ModelAndView adminModelAndView = new ModelAndView("admin");
+        adminModelAndView.addObject("admin", "admin");
+        //List<UserEntity> users = userService.getAllUsers();
+        //adminModelAndView.addObject("users", users);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        adminModelAndView.addObject("user", user);
+        adminModelAndView.addObject("type", 1);
+        return adminModelAndView; // Trả về admin.jsp
+    }
     @RequestMapping("/admin/profile")
     public ModelAndView adminProfile(Authentication authentication) {
         ModelAndView view = new ModelAndView("profile");

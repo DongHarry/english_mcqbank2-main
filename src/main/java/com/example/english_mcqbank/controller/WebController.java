@@ -49,33 +49,6 @@ public class WebController {
         return new ModelAndView("index");
     }
 
-
-
-    @RequestMapping("/admin")
-    public ModelAndView admin(Authentication authentication) {
-        ModelAndView adminModelAndView = new ModelAndView("admin");
-        adminModelAndView.addObject("admin", "admin");
-        //List<UserEntity> users = userService.getAllUsers();
-        //adminModelAndView.addObject("users", users);
-        UserEntity user = userService.getUserByUsername(authentication.getName());
-        adminModelAndView.addObject("user", user);
-        adminModelAndView.addObject("type", 1);
-        return adminModelAndView; // Trả về admin.jsp
-    }
-
-
-
-    @RequestMapping("/user")
-    public ModelAndView user(Authentication authentication) {
-        ModelAndView userModelAndView = new ModelAndView("user");
-        userModelAndView.addObject("user", userService.getUserByUsername(authentication.getName()));
-        return userModelAndView; // Trả về user.jsp
-    }
-
-
-
-
-
     @RequestMapping(value = "/sendContactMail", method = RequestMethod.POST)
     public ModelAndView sendContactMail(@RequestParam("name") String name,
                                         @RequestParam("email") String email,
