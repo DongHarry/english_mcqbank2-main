@@ -5,7 +5,6 @@ import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.model.test.Child1;
 import com.example.english_mcqbank.model.test.Parent;
 import com.example.english_mcqbank.service.LogService;
-import com.example.english_mcqbank.service.LoggedInUserService;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

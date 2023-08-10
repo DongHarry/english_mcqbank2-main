@@ -117,7 +117,7 @@ public class ExamController {
             return modelAndView;
         }
 
-
+        examService.updateExamTopic(exam, examTopicPercentageMap);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
         if (c_exam != null) {

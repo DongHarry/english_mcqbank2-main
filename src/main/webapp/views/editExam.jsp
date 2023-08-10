@@ -254,25 +254,25 @@
                     <div class="row mg-t-20 mg-lg-t-0">
                         <div class="col-lg-5">
                             <label class="ckbox">
-                                <input type="checkbox" name="topic${topic.id}" value="${topic.id}" id="topic">
+                                <input type="checkbox" name="topic${topic.id}" value="${topic.id}" id="topic" <c:if test="${c_exam.containsTopic(topic.id)}">checked</c:if>>
                                 <span>${topic.name}</span>
                             </label>
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="20">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="20" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if> >
                                 <span>20 %</span>
                             </label>
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="30">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="30" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if>>
                                 <span>30 %</span>
                             </label>
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="50">
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="50" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if>>
                                 <span>50 %</span>
                             </label>
                         </div>

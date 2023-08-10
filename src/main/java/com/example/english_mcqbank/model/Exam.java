@@ -60,4 +60,22 @@ public class Exam {
         examTopic.setExam(this);
         examTopicList.add(examTopic);
     }
+
+    public boolean containsTopic(int topicId) {
+        for (ExamTopic examTopic : examTopicList) {
+            if (examTopic.getTopic().getId() == topicId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getTopicPercent(int topicId) {
+        for (ExamTopic examTopic : examTopicList) {
+            if (examTopic.getTopic().getId() == topicId) {
+                return examTopic.getPercent();
+            }
+        }
+        return 0;
+    }
 }

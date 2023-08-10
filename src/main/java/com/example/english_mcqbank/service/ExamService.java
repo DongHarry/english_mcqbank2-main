@@ -20,6 +20,8 @@ public class ExamService {
     private QuestionService questionService;
     @Autowired
     private TopicService topicService;
+    @Autowired
+    private ExamTopicService examTopicService;
 
     @Autowired
     private ExamRepository examRepository;
@@ -130,5 +132,10 @@ public class ExamService {
             result += entry.getValue();
         }
         return result;
+    }
+
+    public void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
+        examTopicService.deleteAllByExam(exam);
+        addExamTopic(exam, examTopicPercentageMap);
     }
 }

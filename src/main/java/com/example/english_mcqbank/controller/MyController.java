@@ -1,9 +1,7 @@
 package com.example.english_mcqbank.controller;
 
-import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.model.test.Parent;
 import com.example.english_mcqbank.service.EmailSender;
-import com.example.english_mcqbank.service.LoggedInUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
