@@ -245,6 +245,11 @@
                         <strong>${message}</strong>
                     </div>
                 </c:if>
+                <c:if test="${not empty e_message}">
+                    <div class="alert alert-danger">
+                        <strong>${e_message}</strong>
+                    </div>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap table22">
                     <thead>
                     <tr>
@@ -299,7 +304,7 @@
 
                 </table>
 
-                <a href="#">Create New Question</a>
+                <a href="${pageContext.request.contextPath}/admin/questions/new">Create New Question</a>
             </div><!-- table-wrapper -->
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->

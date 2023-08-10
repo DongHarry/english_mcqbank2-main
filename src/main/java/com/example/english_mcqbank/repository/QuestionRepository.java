@@ -28,4 +28,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     List<Question> findByTopicIdAndLevel(int topicId, int level);
 
     int countAllByTopic(Topic topic);
+
+    boolean existsByContent(String content);
 }

@@ -82,4 +82,12 @@ public class QuestionService {
     public int countAllByTopic(Topic topic) {
         return questionRepository.countAllByTopic(topic);
     }
+
+    public void delete(Question question) {
+        questionRepository.delete(question);
+    }
+
+    public boolean existByContent(String content) {
+        return questionRepository.existsByContent(content);
+    }
 }

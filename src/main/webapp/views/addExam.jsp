@@ -326,7 +326,7 @@
                 </div>
 
                 <div class="form-layout-footer mg-t-30">
-                    <button type="submit" class="btn btn-info mg-r-5">Cập nhật</button>
+                    <button type="submit" class="btn btn-info mg-r-5">Lưu lại</button>
 
                     <a href="${pageContext.request.contextPath}/admin/exams" class="btn btn-secondary">Quay lại</a>
                 </div>
