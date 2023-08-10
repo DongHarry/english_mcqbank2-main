@@ -183,12 +183,12 @@
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -329,9 +329,6 @@
                                 </label>
                             </div>
 
-
-
-
                             <c:if test="${c_question.type == 1}">
                                 <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
@@ -346,29 +343,7 @@
 
                     </div>
 
-<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
-<%--                        <label class="rdiobox">--%>
-<%--                            <input name="answer" value="2" type="radio" id="answer"--%>
-<%--                                   <c:if test="${c_question.answer == 2}">checked</c:if>>--%>
-<%--                            <span>2</span>--%>
-<%--                        </label>--%>
-<%--                    </div><!-- col-3 -->--%>
-<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
-<%--                        <label class="rdiobox">--%>
-<%--                            <input name="answer" value="3" type="radio" id="answer"--%>
-<%--                                   <c:if test="${c_question.answer == 3}">checked</c:if>>--%>
-<%--                            <span>3</span>--%>
-<%--                        </label>--%>
-<%--                    </div><!-- col-3 -->--%>
-<%--                    <c:if test="${c_question.type == 1}">--%>
-<%--                    <div class="col-lg-1 mg-t-20 mg-lg-t-0">--%>
-<%--                        <label class="rdiobox">--%>
-<%--                            <input name="examType" value="4" type="radio" id="answer"--%>
-<%--                                   <c:if test="${c_question.answer == 4}">checked</c:if>>--%>
-<%--                            <span>4</span>--%>
-<%--                        </label>--%>
-<%--                    </div><!-- col-3 -->--%>
-<%--                    </c:if>--%>
+
                 </div>
 
 
@@ -432,7 +407,17 @@
             </form:form>
         </div>
     </div><!-- br-pagebody -->
-
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
+            <div>HA NOI UNIVERSITY OF SCIENCE</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+            <span class="tx-uppercase mg-r-10">Share:</span>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+    </footer>
 </div>
 
 <!-- ########## END: noidung ########## --->

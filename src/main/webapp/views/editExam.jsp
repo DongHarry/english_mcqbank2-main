@@ -185,13 +185,42 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Question No</span>
                             </div>
-<%--                            <input type="text" name="questionNo" id="questionNo"--%>
-<%--                                   class="form-control" value="${c_exam.questionNo}" required>--%>
-                            <input type="radio" name="questionNo" value="10" <c:if test="${c_exam.questionNo==10}">checked</c:if> > 10
-                            <input type="radio" name="questionNo" value="20" <c:if test="${c_exam.questionNo==20}">checked</c:if> > 20
-                            <input type="radio" name="questionNo" value="30" <c:if test="${c_exam.questionNo==30}">checked</c:if> > 30
-                            <input type="radio" name="questionNo" value="40" <c:if test="${c_exam.questionNo==40}">checked</c:if> > 40
-                            <input type="radio" name="questionNo" value="50" <c:if test="${c_exam.questionNo==50}">checked</c:if> > 50
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="questionNo" value="10" type="radio"
+                                           <c:if test="${c_exam.questionNo == 10}">checked</c:if>>
+                                    <span>10</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="questionNo" value="20" type="radio"
+                                           <c:if test="${c_exam.questionNo == 20}">checked</c:if>>
+                                    <span>20</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="questionNo" value="30" type="radio"
+                                           <c:if test="${c_exam.questionNo == 30}">checked</c:if>>
+                                    <span>30</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="questionNo" value="40" type="radio"
+                                           <c:if test="${c_exam.questionNo == 40}">checked</c:if>>
+                                    <span>40</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="questionNo" value="50" type="radio"
+                                           <c:if test="${c_exam.questionNo == 50}">checked</c:if>>
+                                    <span>50</span>
+                                </label>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -202,9 +231,21 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Exam Type</span>
                             </div>
-<%--                            <input type="text" name="type" id="type" class="form-control" value="${c_exam.type}" required>--%>
-                                <input type="radio" name="type" value="1" <c:if test="${c_exam.type==1}">checked</c:if> required> Reading
-                                <input type="radio" name="type" value="2" <c:if test="${c_exam.type==2}">checked</c:if> required> Listening
+                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="type" value="1" type="radio"
+                                           <c:if test="${c_exam.type == 1}">checked</c:if> required>
+                                    <span>Reading</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="type" value="2" type="radio"
+                                           <c:if test="${c_exam.type == 2}">checked</c:if> required>
+                                    <span>Listening</span>
+                                </label>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -219,7 +260,17 @@
             </form:form>
         </div>
     </div><!-- br-pagebody -->
-
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
+            <div>HA NOI UNIVERSITY OF SCIENCE</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+            <span class="tx-uppercase mg-r-10">Share:</span>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+    </footer>
 </div>
 
 <!-- ########## END: noidung ########## --->
