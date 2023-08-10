@@ -3,11 +3,17 @@ package com.example.english_mcqbank.repository;
 import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.ExamTopic;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.*;
 
 import java.util.List;
 
 public interface ExamTopicRepository extends JpaRepository<ExamTopic, Integer> {
     void deleteAllByExam(Exam exam);
+
+    @Query(value = "delete from exam_topic where ex_id = :examId", nativeQuery = true)
+    void deleteAllByExamNative(int examId);
 
     List<ExamTopic> findAllByExam(Exam exam);
 }

@@ -18,6 +18,6 @@ public class ExamTopicService {
     }
 
     public void deleteAllByExam(Exam exam) {
-        examTopicRepository.deleteAllByExam(exam);
+        examTopicRepository.deleteAllByExamNative(exam.getId());
     }
 }

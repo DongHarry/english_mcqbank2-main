@@ -41,14 +41,14 @@ public class QuestionService {
 
     public List<Question> getRandom(int topicId, int level, int number) {
         if (topicId <= 0) {
-            return questionRepository.findRandomQuestions(number);
+            return questionRepository.findRandomQuestions(number,1);
         }
 
         if (level <= 0) {
-            return questionRepository.findRandomQuestions(topicId, number);
+            return questionRepository.findRandomQuestions(topicId, number,1);
         }
 
-        return questionRepository.findRandomQuestions(topicId, level, number);
+        return questionRepository.findRandomQuestions(topicId, level, number, 1);
     }
 
     public List<Question> getAllQuestions(int page, int size) {
@@ -57,27 +57,16 @@ public class QuestionService {
     }
 
     public List<Question> getRandom(Integer topicId, int level, int number, int examType) {
-        if (examType == 1) {
             if (topicId <= 0) {
-                return questionRepository.findRandomQuestions1(number);
+                return questionRepository.findRandomQuestions(number, examType);
             }
 
             if (level <= 0) {
-                return questionRepository.findRandomQuestions1(topicId, number);
+                return questionRepository.findRandomQuestions(topicId, number, examType);
             }
 
-            return questionRepository.findRandomQuestions1(topicId, level, number);
-        }
+            return questionRepository.findRandomQuestions(topicId, level, number, examType);
 
-        if (topicId <= 0) {
-            return questionRepository.findRandomQuestions2(number);
-        }
-
-        if (level <= 0) {
-            return questionRepository.findRandomQuestions2(topicId, number);
-        }
-
-        return questionRepository.findRandomQuestions2(topicId, level, number);
     }
 
     public List<Question> getAllQuestions() {

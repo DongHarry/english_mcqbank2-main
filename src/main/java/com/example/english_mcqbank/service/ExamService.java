@@ -135,8 +135,10 @@ public class ExamService {
     }
 
     public void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
+        //examTopicService.deleteAllByExam(exam);
         exam.clearExamTopic();
         addExamTopic(exam, examTopicPercentageMap);
+        examRepository.save(exam);
 //        List<ExamTopic> examTopics = examTopicService.findAllByExam(exam);
 //        for (ExamTopic examTopic : examTopics) {
 //            System.out.println("examTopic: " + examTopic);
