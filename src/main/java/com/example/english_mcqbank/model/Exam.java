@@ -78,4 +78,8 @@ public class Exam {
         }
         return 0;
     }
+
+    public void clearExamTopic() {
+        examTopicList.clear();
+    }
 }

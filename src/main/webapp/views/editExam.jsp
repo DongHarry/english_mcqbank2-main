@@ -260,19 +260,19 @@
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="20" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if> >
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="20" <c:if test="${c_exam.getTopicPercent(topic.id) == 20}">checked</c:if> >
                                 <span>20 %</span>
                             </label>
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="30" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if>>
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="30" <c:if test="${c_exam.getTopicPercent(topic.id) == 30}">checked</c:if>>
                                 <span>30 %</span>
                             </label>
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                             <label class="rdiobox">
-                                <input name="numQu.OfTopic${topic.id}" type="radio" value="50" <c:if test="${c_exam.getTopicPercent(topic.id)==20}">checked</c:if>>
+                                <input name="numQu.OfTopic${topic.id}" type="radio" value="50" <c:if test="${c_exam.getTopicPercent(topic.id) == 50}">checked</c:if>>
                                 <span>50 %</span>
                             </label>
                         </div>

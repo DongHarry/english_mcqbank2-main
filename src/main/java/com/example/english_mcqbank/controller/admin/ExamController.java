@@ -122,7 +122,7 @@ public class ExamController {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/exams");
         if (c_exam != null) {
             exam.setName(c_exam.getName());
-            exam.setQuestionNo(c_exam.getQuestionNo());
+            if (c_exam.getQuestionNo() != null) exam.setQuestionNo(c_exam.getQuestionNo());
             exam.setType(c_exam.getType());
             redirectAttributes.addFlashAttribute("message", "Exam: " +c_exam.getName()+ " updated successfully");
         }
