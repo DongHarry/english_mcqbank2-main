@@ -25,7 +25,7 @@ public class TopicController {
     final ITopicService topicService;
     final IQuestionService questionService;
     final IExamService examService;
-    final IResultService IResultService;
+    final IResultService resultService;
     final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
