@@ -274,26 +274,26 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="1" type="radio" id="answer">
+                                    <input name="answer" value="1" type="radio">
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="2" type="radio" id="answer">
+                                    <input name="answer" value="2" type="radio">
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="3" type="radio" id="answer">
+                                    <input name="answer" value="3" type="radio">
                                     <span>3</span>
                                 </label>
                             </div>
 
                                 <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
-                                        <input name="answer" value="4" type="radio" id="answer">
+                                        <input name="answer" value="4" type="radio">
                                         <span>4</span>
                                     </label>
                                 </div><!-- col-3 -->
@@ -332,15 +332,10 @@
 <%--                                </div><!-- col-3 -->--%>
 <%--                            <div class="row mg-t-20">--%>
                                 <div class="col-lg-6 mg-t-20 mg-lg-t-0">
-                                    <select class="form-control select2" data-placeholder="Choose Topic" multiple>
+                                    <select class="form-control select2" name="topicId" data-placeholder="Choose Topic">
                                         <c:forEach items="${topics}" var="topic">
-                                            <option value="${topic.id}" name="topicId" id="topic">${topic.name}</option>
+                                            <option value="${topic.id}">${topic.name}</option>
                                         </c:forEach>
-<%--                                        <option value="Firefox">Firefox</option>--%>
-<%--                                        <option value="Chrome selected">Chrome</option>--%>
-<%--                                        <option value="Safari">Safari</option>--%>
-<%--                                        <option value="Opera" selected>Opera</option>--%>
-<%--                                        <option value="Internet Explorer">Internet Explorer</option>--%>
                                     </select>
                                 </div><!-- col-4 -->
 <%--                            </div><!-- row -->--%>
@@ -358,25 +353,25 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="1" type="radio" id="level">
+                                    <input name="level" value="1" type="radio">
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="2" type="radio" id="level">
+                                    <input name="level" value="2" type="radio">
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="3" type="radio" id="level">
+                                    <input name="level" value="3" type="radio">
                                     <span>3</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="4" type="radio" id="level">
+                                    <input name="level" value="4" type="radio">
                                     <span>4</span>
                                 </label>
                             </div>

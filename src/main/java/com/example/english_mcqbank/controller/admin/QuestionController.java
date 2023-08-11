@@ -61,7 +61,6 @@ public class QuestionController {
                                     @RequestParam("explain") String explain,
                                     @RequestParam("topicId") int topicId,
                                     @RequestParam("level") int level,
-                                    Authentication authentication,
                                     RedirectAttributes redirectAttributes) {
         if (IQuestionService.existByContent(content)) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/new");
@@ -70,8 +69,6 @@ public class QuestionController {
         }
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", loggedInUser);
 
         Question newQuestion = new Question();
         newQuestion.setContent(content);
