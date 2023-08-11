@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class MyController {
-    private final IEmailSender IEmailSender;
+    private final IEmailSender emailSender;
 
     @Autowired
     Parent test;
@@ -62,7 +62,7 @@ public class MyController {
 
     @RequestMapping("/send-email")
     public ResponseEntity<String> sendEmail() {
-        IEmailSender.sendEmail("luongdinhduc0000@Gmail.com", "Test", "Test");
+        emailSender.sendEmail("luongdinhduc0000@Gmail.com", "Test", "Test");
         return ResponseEntity.ok("Email sent");
     }
 

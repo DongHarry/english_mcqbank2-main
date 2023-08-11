@@ -10,16 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
     final UserDetailsServiceImpl userService;
-    final ILogService ILogService;
-    final ITopicService ITopicService;
-    final IQuestionService IQuestionService;
+    final ILogService logService;
+    final ITopicService topicService;
+    final IQuestionService questionService;
     final PasswordEncoder passwordEncoder;
-    final IExamService IExamService;
-    final IResultService IResultService;
+    final IExamService examService;
+    final IResultService resultService;
 
     @RequestMapping("/admin")
     public ModelAndView admin(Authentication authentication) {
@@ -44,6 +46,14 @@ public class AdminController {
         view.addObject("errorMessage", null);
         view.addObject("type", 1);
 
+        return view; // Trả về admin.jsp
+    }
+
+    @RequestMapping("/admin/test1")
+    public ModelAndView test1() {
+        ModelAndView view = new ModelAndView("test1");
+        List<Topic> topics = topicService.getAllTopics();
+        view.addObject("topics", topics);
         return view; // Trả về admin.jsp
     }
 }

@@ -21,7 +21,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class LoginAndRegisterController {
     private final UserDetailsServiceImpl userService;
-    private final ILogService ILogService;
+    private final ILogService logService;
     private final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/login-page")
@@ -85,7 +85,7 @@ public class LoginAndRegisterController {
             log.setName("User " + user.getUsername() + " register failed");
             log.setDatetime(new Date());
             log.setStatus(0);
-            ILogService.saveLog(log);
+            logService.saveLog(log);
             return registerModelAndView;
         }
 
@@ -100,7 +100,7 @@ public class LoginAndRegisterController {
                 log.setName("User " + user.getUsername() + " registered");
                 log.setDatetime(user.getCreatedDate());
                 log.setStatus(1);
-                ILogService.saveLog(log);
+                logService.saveLog(log);
             } catch (Exception e) {
                 e.printStackTrace();
             }

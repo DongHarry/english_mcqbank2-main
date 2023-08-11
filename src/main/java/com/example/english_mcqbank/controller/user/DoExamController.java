@@ -18,17 +18,17 @@ import java.util.*;
 @RequiredArgsConstructor
 public class DoExamController {
     final UserDetailsServiceImpl userService;
-    final ILogService ILogService;
-    final IExamService IExamService;
-    final IQuestionService IQuestionService;
-    final IResultService IResultService;
+    final ILogService logService;
+    final IExamService examService;
+    final IQuestionService questionService;
+    final IResultService resultService;
     final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/user/exams")
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   Authentication authentication) {
-        List<Exam> exams = IExamService.getAllExams();
+        List<Exam> exams = examService.getAllExams();
         ModelAndView userExamsModelAndView = new ModelAndView("exams");
         UserEntity user = userService.getUserByUsername(authentication.getName());
         userExamsModelAndView.addObject("loggedInUser", user);
@@ -43,7 +43,7 @@ public class DoExamController {
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("exam");
-        Exam exam = IExamService.getExamById(id);
+        Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
@@ -54,7 +54,7 @@ public class DoExamController {
     @RequestMapping("/user/exams/{id}/do")
     public ModelAndView doExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("doExam");
-        Exam exam = IExamService.getExamById(id);
+        Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
@@ -66,7 +66,7 @@ public class DoExamController {
         List<Question> questions = new ArrayList<>();
         for (ExamTopic examTopic: examTopics) {
             List<Question> questions1 =
-                    IQuestionService.getRandom(examTopic.getTopic().getId(), 0,
+                    questionService.getRandom(examTopic.getTopic().getId(), 0,
                             (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
             questions.addAll(questions1);
         }
@@ -84,9 +84,9 @@ public class DoExamController {
     public ModelAndView submitAnswers(@RequestParam Map<String, String> params, Authentication authentication,
                                       @RequestParam("examId") int examId) {
         // Process the submitted form data
-        Exam exam = IExamService.getExamById(examId);
+        Exam exam = examService.getExamById(examId);
         int totalQuestions = exam.getQuestionNo();
-        int score = IExamService.calculateScore(params);
+        int score = examService.calculateScore(params);
         // Redirect or return a response as needed
         ModelAndView modelAndView = new ModelAndView("resultPage");
         modelAndView.addObject("score", score);
