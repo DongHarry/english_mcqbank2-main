@@ -5,6 +5,7 @@ import com.example.english_mcqbank.model.Result;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -23,16 +25,19 @@ public class AllUserController {
     final ILogService logService;
     final ITopicService topicService;
     final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
     final IExamService examService;
     final IResultService resultService;
+    final ISessionService sessionService;
+    final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/admin/users/{id}")
-    public ModelAndView viewUser(@PathVariable Integer id, Authentication authentication) {
+    public ModelAndView viewUser(@PathVariable Integer id) {
         ModelAndView view = new ModelAndView("profile");
         UserEntity user = userService.getUserByUserid(id);
         view.addObject("user", user);
-        view.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
+
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
+        view.addObject("loggedInUser", loggedInUser);
         view.addObject("type", 2);
         return view; // Trả về admin.jsp
     }
@@ -41,7 +46,6 @@ public class AllUserController {
     public ModelAndView viewUserLogs(@PathVariable Integer id,
                                      @RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "20") int size,
-                                     Authentication authentication,
                                      RedirectAttributes redirectAttributes) {
         ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
@@ -55,7 +59,7 @@ public class AllUserController {
 
         }
 
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
         logsModelAndView.addObject("loggedInUser", loggedInUser);
 //        logsModelAndView.addObject("currentPage", page);
 //        assert logs != null;
@@ -65,14 +69,12 @@ public class AllUserController {
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public ModelAndView users(Model model,
-                              @RequestParam(defaultValue = "0") int page,
-                              @RequestParam(defaultValue = "10") int size,
-                              Authentication authentication) {
+    public ModelAndView users(@RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "10") int size) {
         ModelAndView usersModelAndView = new ModelAndView("allUsers");
         //List<UserEntity> users = userService.getAllUsers(page, size);
         List<UserEntity> users = userService.getAllUsers();
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
         usersModelAndView.addObject("loggedInUser", loggedInUser);
         usersModelAndView.addObject("users", users);
         //usersModelAndView.addObject("currentPage", page);
@@ -85,8 +87,8 @@ public class AllUserController {
     }
 
     @RequestMapping(value = "/admin/users/new", method = RequestMethod.GET)
-    public ModelAndView addUser(Model model, Authentication authentication) {
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+    public ModelAndView addUser(Model model) {
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
 
         model.addAttribute("user", new UserEntity());
         ModelAndView modelAndView = new ModelAndView("addUser");
@@ -178,8 +180,7 @@ public class AllUserController {
     public ModelAndView userResults(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size,
                                     @PathVariable("userId") int userId,
-                                    RedirectAttributes redirectAttributes,
-                                    Authentication authentication) {
+                                    RedirectAttributes redirectAttributes) {
 
         UserEntity user = userService.getUserByUserid(userId);
         List<Result> results = resultService.findAllByUser(user);
@@ -192,7 +193,7 @@ public class AllUserController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
         modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("type", 1);
         modelAndView.addObject("userId", user.getId());

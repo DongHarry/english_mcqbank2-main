@@ -21,14 +21,14 @@ public class EditProfileController {
     final IExamService examService;
     final IQuestionService questionService;
     final IResultService resultService;
+    final ISessionService sessionService;
     final PasswordEncoder passwordEncoder;
 
 
     @RequestMapping(value = "/user/profile/edit", method = RequestMethod.GET)
-    public ModelAndView editUserProfile(Authentication authentication, Model model) {
+    public ModelAndView editUserProfile(Model model) {
         ModelAndView editUserModelAndView = new ModelAndView("editUser");
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
+        UserEntity user = sessionService.getLoggedInUser();
         editUserModelAndView.addObject("loggedInUser", user);
         editUserModelAndView.addObject("type", 1);
         //UserEntity user = loggedInUserService.getLoggedInUser();
@@ -42,12 +42,10 @@ public class EditProfileController {
         return editUserModelAndView; // Trả về user.jsp
     }
     @RequestMapping(value = "/user/profile/edit", method = RequestMethod.POST)
-    public ModelAndView editUserProfile(Authentication authentication,
-                                        @ModelAttribute("currentUser") UserEntity user,
+    public ModelAndView editUserProfile(@ModelAttribute("currentUser") UserEntity user,
                                         RedirectAttributes redirectAttributes) {
 
-        String username = authentication.getName();
-        UserEntity userEntity = userService.getUserByUsername(username);
+        UserEntity userEntity = sessionService.getLoggedInUser();
 
         //UserEntity userEntity = loggedInUserService.getLoggedInUser();
         if (userEntity == null) {

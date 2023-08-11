@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Set;
@@ -29,12 +30,17 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        session.setAttribute("loggedInUser", userDetailsService.getUserByUsername(authentication.getName()));
+
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         Log log = new Log();
         UserEntity user = userDetailsService.getUserByUsername(authentication.getName());
         //loggedInUserService.setLoggedInUser(user);
         log.setUser(user);
         log.setDatetime(new Date());
+
+
         if (roles.contains("ROLE_ADMIN")) {
             log.setStatus(1);
             log.setName("ADMIN: " + user.getUsername() + " logged in");

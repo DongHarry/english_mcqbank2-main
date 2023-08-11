@@ -22,7 +22,7 @@ public class DoExamController {
     final IExamService examService;
     final IQuestionService questionService;
     final IResultService resultService;
-    final PasswordEncoder passwordEncoder;
+    final ISessionService sessionService;
 
     @RequestMapping("/user/exams")
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,

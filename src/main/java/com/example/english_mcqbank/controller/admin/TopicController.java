@@ -24,19 +24,17 @@ public class TopicController {
     final ILogService logService;
     final ITopicService topicService;
     final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
     final IExamService examService;
     final IResultService IResultService;
+    final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "20") int size,
-                                  Authentication authentication) {
+                                  @RequestParam(defaultValue = "20") int size) {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", loggedInUser);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 //        modelAndView.addObject("currentPage", page);
 //        assert topics != null;
 //        boolean hasNext = topics.size() >= size;
@@ -45,10 +43,9 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/admin/topics/new", method = RequestMethod.GET)
-    public ModelAndView addTopic(Authentication authentication) {
+    public ModelAndView addTopic() {
         ModelAndView modelAndView = new ModelAndView("addTopic");
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", loggedInUser);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
@@ -96,13 +93,12 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/admin/topics/{id}", method = RequestMethod.GET)
-    public ModelAndView editTopic(@PathVariable int id, Model model, Authentication authentication) {
+    public ModelAndView editTopic(@PathVariable int id, Model model) {
         ModelAndView modelAndView = new ModelAndView("editTopic");
         Topic topic = topicService.getTopicById(id);
         modelAndView.addObject("c_topic", topic);
         model.addAttribute("c_topic", topic);
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", loggedInUser);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 

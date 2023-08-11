@@ -22,18 +22,17 @@ public class QuestionController {
     final ILogService logService;
     final ITopicService topicService;
     final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
     final IExamService examService;
     final IResultService resultService;
+    final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "20") int size,
-                                     Authentication authentication) {
+                                     @RequestParam(defaultValue = "20") int size) {
         List<Question> questions = questionService.getAllQuestions();
         ModelAndView modelAndView = new ModelAndView("questionList");
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", loggedInUser);
+
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("questions", questions);
 //        modelAndView.addObject("currentPage", page);
 //        assert questions != null;
@@ -43,10 +42,10 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/admin/questions/new", method = RequestMethod.GET)
-    public ModelAndView addQuestion(Authentication authentication) {
+    public ModelAndView addQuestion() {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addQuestion");
-        modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("topics", topics);
         return modelAndView;
     }
@@ -88,11 +87,11 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
-    public ModelAndView editQuestion(@PathVariable("id") int id, Model model, Authentication authentication) {
+    public ModelAndView editQuestion(@PathVariable("id") int id, Model model) {
         Question question = questionService.getQuestionById(id);
 
         ModelAndView modelAndView = new ModelAndView("editQuestion");
-        modelAndView.addObject("loggedInUser", userService.getUserByUsername(authentication.getName()));
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);
 

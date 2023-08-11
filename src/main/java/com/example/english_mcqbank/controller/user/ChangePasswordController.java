@@ -20,13 +20,14 @@ public class ChangePasswordController {
     final IExamService examService;
     final IQuestionService questionService;
     final IResultService resultService;
+    final ISessionService sessionService;
     final PasswordEncoder passwordEncoder;
 
+
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.GET)
-    public ModelAndView changePassword(Authentication authentication) {
+    public ModelAndView changePassword() {
         ModelAndView changePasswordModelAndView = new ModelAndView("change-password");
-        UserEntity loggedInUser = userService.getUserByUsername(authentication.getName());
-        changePasswordModelAndView.addObject("loggedInUser", loggedInUser);
+        changePasswordModelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         changePasswordModelAndView.addObject("type", 1);
         return changePasswordModelAndView; // Trả về user.jsp
     }
@@ -37,7 +38,6 @@ public class ChangePasswordController {
                                        Authentication authentication, RedirectAttributes redirectAttributes) {
         String username = authentication.getName();
         UserEntity user = userService.getUserByUsername(username);
-        //UserEntity user = loggedInUserService.getLoggedInUser();
         boolean check = passwordEncoder.matches(oldPassword, user.getPassword());
 
         if (!check) {

@@ -23,9 +23,9 @@ public class LogsController {
     final ILogService logService;
     final ITopicService topicService;
     final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
     final IExamService examService;
     final IResultService resultService;
+    final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/allLogs")
     public ModelAndView allLogs(@RequestParam(defaultValue = "0") int page,
@@ -42,12 +42,10 @@ public class LogsController {
     }
 
     @RequestMapping(value = "/admin/logs", method = RequestMethod.GET)
-    public ModelAndView logs(Authentication authentication,
-                             @RequestParam(defaultValue = "0") int page,
+    public ModelAndView logs(@RequestParam(defaultValue = "0") int page,
                              @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("allLogs");
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
+        UserEntity user = sessionService.getLoggedInUser();
         modelAndView.addObject("user", user);
         modelAndView.addObject("loggedInUser", user);
 

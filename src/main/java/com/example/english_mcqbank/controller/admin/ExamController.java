@@ -25,17 +25,16 @@ public class ExamController {
     final ILogService logService;
     final ITopicService topicService;
     final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
     final IExamService examService;
     final IResultService resultService;
+    final SessionService sessionService;
 
     @RequestMapping(value = "/admin/exams/new", method = RequestMethod.GET)
-    public ModelAndView addExam(Authentication authentication) {
+    public ModelAndView addExam() {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addExam");
         modelAndView.addObject("topics", topics);
-        UserEntity user = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", user);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
@@ -73,14 +72,11 @@ public class ExamController {
     }
 
     @RequestMapping(value = "/admin/exams", method = RequestMethod.GET)
-    public ModelAndView exams(Authentication authentication,
-                              @RequestParam(defaultValue = "0") int page,
+    public ModelAndView exams(@RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
-        modelAndView.addObject("user", user);
-        modelAndView.addObject("loggedInUser", user);
+
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 
         List<Exam> exams = examService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);
@@ -93,15 +89,14 @@ public class ExamController {
     }
 
     @RequestMapping(value = "/admin/exams/{examId}", method = RequestMethod.GET)
-    public ModelAndView exam(@PathVariable("examId") int examId, Model model, Authentication authentication) {
+    public ModelAndView exam(@PathVariable("examId") int examId, Model model) {
         ModelAndView modelAndView = new ModelAndView("editExam");
         Exam exam = examService.getExamById(examId);
         modelAndView.addObject("c_exam", exam);
         model.addAttribute("c_exam", exam);
         List<Topic> topics = topicService.getAllTopics();
         modelAndView.addObject("topics", topics);
-        UserEntity user = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", user);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 
         return modelAndView;
     }
@@ -157,8 +152,7 @@ public class ExamController {
     public ModelAndView results(@RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size,
                                 @PathVariable("examId") int examId,
-                                RedirectAttributes redirectAttributes,
-                                Authentication authentication) {
+                                RedirectAttributes redirectAttributes) {
         Exam exam = examService.getExamById(examId);
         List<Result> results = resultService.findAllByExam(exam);
 
@@ -170,8 +164,7 @@ public class ExamController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
-        UserEntity user = userService.getUserByUsername(authentication.getName());
-        modelAndView.addObject("loggedInUser", user);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("type", 2);
         modelAndView.addObject("title", "All Users results for exam " + examId);
 //        modelAndView.addObject("currentPage", page);

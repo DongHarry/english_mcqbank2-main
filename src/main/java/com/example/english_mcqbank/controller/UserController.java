@@ -16,28 +16,28 @@ import java.util.*;
 @RequiredArgsConstructor
 public class UserController {
     final UserDetailsServiceImpl userService;
-    final ILogService ILogService;
-    final IExamService IExamService;
-    final IQuestionService IQuestionService;
-    final IResultService IResultService;
+    final ILogService logService;
+    final IExamService examService;
+    final IQuestionService questionService;
+    final IResultService resultService;
+    final ISessionService sessionService;
     final PasswordEncoder passwordEncoder;
     //final LoggedInUserService loggedInUserService;
 
     @RequestMapping("/user")
-    public ModelAndView user(Authentication authentication) {
+    public ModelAndView user() {
         ModelAndView userModelAndView = new ModelAndView("user");
-        userModelAndView.addObject("user", userService.getUserByUsername(authentication.getName()));
+        userModelAndView.addObject("user", sessionService.getLoggedInUser());
         return userModelAndView; // Trả về user.jsp
     }
 
     @RequestMapping("/user/profile")
-    public ModelAndView userProfile(Authentication authentication) {
+    public ModelAndView userProfile() {
         ModelAndView userProfileModelAndView = new ModelAndView("profile");
         userProfileModelAndView.addObject("successMessage", null);
         userProfileModelAndView.addObject("errorMessage", null);
 
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
+        UserEntity user = sessionService.getLoggedInUser();
         //UserEntity user = loggedInUserService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
         userProfileModelAndView.addObject("loggedInUser", user);
@@ -47,20 +47,17 @@ public class UserController {
     }
 
     @RequestMapping("/user/profile/logs")
-    public ModelAndView userLogs(Authentication authentication,
-                                 @RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "20") int size
-                                 ) {
+    public ModelAndView userLogs(@RequestParam(defaultValue = "0") int page,
+                                 @RequestParam(defaultValue = "20") int size) {
 
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
+        UserEntity user = sessionService.getLoggedInUser();
         //UserEntity user = loggedInUserService.getLoggedInUser();
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
         }
         ModelAndView userLogsModelAndView = new ModelAndView("logs");
         userLogsModelAndView.addObject("loggedInUser", user);
-        List<Log> logs = ILogService.getLogsByUser(user);
+        List<Log> logs = logService.getLogsByUser(user);
 
         userLogsModelAndView.addObject("logs", logs);
 //        userLogsModelAndView.addObject("currentPage", page);
@@ -71,13 +68,11 @@ public class UserController {
     }
 
     @RequestMapping("/user/results")
-    public ModelAndView userResult(Authentication authentication,
-                                   @RequestParam(defaultValue = "0") int page,
+    public ModelAndView userResult(@RequestParam(defaultValue = "0") int page,
                                    @RequestParam(defaultValue = "15") int size,
                                    RedirectAttributes redirectAttributes) {
 
-        String username = authentication.getName();
-        UserEntity user = userService.getUserByUsername(username);
+        UserEntity user = sessionService.getLoggedInUser();
         //UserEntity user = loggedInUserService.getLoggedInUser();
 
         if (user == null) {
@@ -85,7 +80,7 @@ public class UserController {
         }
 
         //List<Result> results = user.getResults();
-        List<Result> results = IResultService.findAllByUser(user);
+        List<Result> results = resultService.findAllByUser(user);
 
         if (results == null || results.isEmpty()) {
             ModelAndView profileModelAndView = new ModelAndView("redirect:/user/profile");
