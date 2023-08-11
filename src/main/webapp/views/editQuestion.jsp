@@ -318,21 +318,21 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="1" type="radio" id="answer"
+                                    <input name="answer" value="1" type="radio"
                                            <c:if test="${c_question.answer == 1}">checked</c:if>>
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="2" type="radio" id="answer"
+                                    <input name="answer" value="2" type="radio"
                                            <c:if test="${c_question.answer == 2}">checked</c:if>>
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="3" type="radio" id="answer"
+                                    <input name="answer" value="3" type="radio"
                                            <c:if test="${c_question.answer == 3}">checked</c:if>>
                                     <span>3</span>
                                 </label>
@@ -341,7 +341,7 @@
                             <c:if test="${c_question.type == 1}">
                                 <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                     <label class="rdiobox">
-                                        <input name="examType" value="4" type="radio" id="answer"
+                                        <input name="examType" value="4" type="radio"
                                                <c:if test="${c_question.answer == 4}">checked</c:if>>
                                         <span>4</span>
                                     </label>
@@ -375,28 +375,28 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="1" type="radio" id="level"
+                                    <input name="level" value="1" type="radio"
                                            <c:if test="${c_question.level == 1}">checked</c:if>>
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="2" type="radio" id="level"
+                                    <input name="level" value="2" type="radio"
                                            <c:if test="${c_question.level == 2}">checked</c:if>>
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="3" type="radio" id="level"
+                                    <input name="level" value="3" type="radio"
                                            <c:if test="${c_question.level == 3}">checked</c:if>>
                                     <span>3</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="4" type="radio" id="level"
+                                    <input name="level" value="4" type="radio"
                                            <c:if test="${c_question.level == 4}">checked</c:if>>
                                     <span>4</span>
                                 </label>

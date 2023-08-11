@@ -265,13 +265,13 @@
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="examType" value="1" type="radio" id="examType">
+                                    <input name="examType" value="1" type="radio">
                                     <span>Reading</span>
                                 </label>
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="examType" value="2" type="radio" id="examType">
+                                    <input name="examType" value="2" type="radio">
                                     <span>Listening</span>
                                 </label>
                             </div>

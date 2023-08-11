@@ -1,12 +1,15 @@
 US_ID,US_USERNAME,US_PASSWORD,US_FULLNAME,US_ADDRESS,US_MOBILE_NUMBER,US_EMAIL,US_CREATED_DATE,US_STATUS,US_GROUP
 1,root,$2a$10$w3iJtF51PJWsTW.WR/reKu5d3GSoX6dPBfyE2M7KZVCILJFDxxPDW,My Admin,MyAddress,0123456789,myemail@gmail.com,2023-08-03 00:00:00,1,0
-2,user1,$2a$10$3EkKRtApwWSaKypurgLyW.Qa9Zdz2DqsoRTgdq/WVVKDBmxFFeyMq,My User,my address2,123456798,myuser@gmail.com,2023-07-16 00:00:00,1,1
+2,user1,$2a$10$NnanBOpfhvvub1B7sr4oxewK9hL00oC3SNvKU65KlSz9cnq4OKDLK,My User,my address2,123456798,luongdinhduc0001@gmail.com,2023-07-16 00:00:00,1,1
 29,admin,$2a$10$kkka2zr/jQ5Zp9B5qZNLweEiyAhLPwDFbtrSRQxxISbNQ9iTDYDUm,Luong Dinh Duc,Ha noi,392469680,Luongdinhduc1607@gmail.com,2023-07-17 00:00:00,1,0
 31,user3,$2a$10$7B0IY0iibqJqgp2yNMvFX.vXDr5e0za5id4YkHjoQHimEC.8YvCfi,Luong Dinh Duc,Ha noi,559543386,luongdinhduc00000@gmail.com,2023-07-18 00:00:00,1,0
 41,root2,$2a$10$FmF4KqLQ6J6oXuOqx4G8OeMzfJ2WAAMC/jiCoWe8ExDmOAAzDDiNq,Luong Dinh Duc,Ha noi,559543381,luongdinhduc_t65@hus.edu.vn,2023-07-31 00:00:00,1,0
 48,user5,$2a$10$7VR.hU.sQcj3lL3f2prc5.sUXiva77cW8h1maeUal.y0nUyT6Ar2K,duc luong2,Ha noi,0559549334,luongdinhduc0004@gmail.com,2023-08-07 19:32:30,1,1
 49,root3,$2a$10$i7TIbWnFP9tImZsqpHBa6.PpcjkbZREvZthDn0hrcbIjOzPKlTuHO,duc luong,Ha noi,0559549336,luongdinhduc0006@gmail.com,2023-08-07 19:33:06,1,0
-50,loda,$2a$10$ibBzfd.02MEGTREOytews.b/wpVstu.N/o7BcCbEw3rRylXD4Uz5i,duc luong,Ha noi,0559549335,luongdinhduc0000@gmail.com,2023-08-07 19:39:31,1,1
+50,loda,$2a$10$23d6loa2.qqjxXPMmKH47.Or3CjziJ1wHqVY2X2mmj93L2QmoH7NC,duc luong,Ha noi,0559549335,luongdinhduc0000@gmail.com,2023-08-07 19:39:31,1,1
 51,loda2,$2a$10$5l8icvxrmjzhavVzgi/1be7swo/bq8JBNjNJRp8H0m.Pii/TFmoYy,duc luong,Ha noi,0559549315,luongdinhduc0100@gmail.com,2023-08-07 19:40:37,1,1
 52,loda3,$2a$10$ADvUEhaQamh4ExoqSxyeVeanP2aXcEMXi/JoAfP1LnscIivfiVIQe,duc luong,Ha noi,0559529336,luongdinhduc2006@gmail.com,2023-08-07 19:47:43,1,1
 53,root21,$2a$10$yKNTjijC2NuzthqLOiLYKelJS4w6L95P5ZKYIaRxOVO936CM1XWXe,duc luong,Ha noi,0529549335,luongdinhduc1200@gmail.com,2023-08-07 19:48:06,1,0
+54,user111,$2a$10$OFHuUcQNG6jIoVO3MYRH0e/8oArTQ.lZJjvuyfmE/svUs5a1JBk/6,Luong Dinh Duc,Ha noi,559543382,luongdinhduc16207@gmail.com,2023-08-08 22:16:40,1,1
+58,user11111,$2a$10$PN8XnOxAx78ej1c0G9S6su6m3U0zC2FfCRnUH82wlaYspHj86SroC,Luong Dinh Duc,Ha noi,559543384,luongdinhduc000011@gmail.com,2023-08-10 02:58:27,1,1
+59,user11122,$2a$10$LNrpgVEExKC36rD54oBMue4z574yp6PJRjnrjd1rJc9.3/nJWeoZu,Luong Dinh Duc,Ha noi,559543387,luongdinhduc16077@gmail.com,2023-08-10 17:41:04,1,1
