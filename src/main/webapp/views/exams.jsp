@@ -282,8 +282,7 @@
     <div class="br-pagebody">
         <div class="br-section-wrapper">
 
-            <h6 class="br-section-label">Disabling Search &amp; Items Per Page Menu</h6>
-            <p class="br-section-text">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+            <h6 class="br-section-label">Danh sách các bài thi</h6>
 
             <div class="table-wrapper">
                 <c:if test="${not empty message}">

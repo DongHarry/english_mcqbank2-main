@@ -73,7 +73,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/home">
-                                <img src="../resource/img/logo.png" alt="logo">
+                                <img src="../resource/img/logo_1_pixian.png" alt="logo" style="max-width: 150px; margin-top: -25px">
                             </a>
                         </div>
 
