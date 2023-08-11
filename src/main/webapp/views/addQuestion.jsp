@@ -1,68 +1,6 @@
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>--%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Edit Question</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Edit question</h1>--%>
-<%--<form:form method="post" action="/admin/questions/${c_question.id}/edit">--%>
-<%--    <div>--%>
-<%--        <label for="content">Question content:</label>--%>
-<%--        <input type="text" id="content" name="content" value="${c_question.content}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="option1">Option 1:</label>--%>
-<%--        <input type="text" id="option1" name="option1" value="${c_question.option1}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="option2">Option 2:</label>--%>
-<%--        <input type="text" id="option2" name="option2" value="${c_question.option2}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="option3">Option 3:</label>--%>
-<%--        <input type="text" id="option3" name="option3" value="${c_question.option3}" required><br>--%>
-<%--    </div>--%>
-<%--    <c:if test="${c_question.type == 1}">--%>
-<%--        <div>--%>
-<%--            <label for="option4">Option 4:</label>--%>
-<%--            <input type="text" id="option4" name="option4" value="${c_question.option4}" required><br>--%>
-<%--        </div>--%>
-<%--    </c:if>--%>
-<%--    <c:if test="${c_question.type == 2}">--%>
-<%--        <div>--%>
-<%--            <label for="option4">Audio file name:</label>--%>
-<%--            <input type="text" id="option4" name="option4" value="${c_question.option4}" required><br>--%>
-<%--        </div>--%>
-<%--    </c:if>--%>
-<%--    <div>--%>
-<%--        <div>--%>
-<%--            <label for="answer">Exam type(1:reading, 2:listening):</label>--%>
-<%--            <input type="radio" name="answer" value="1" id="answer" <c:if test="${c_question.answer == 1}">checked</c:if>> 1--%>
-<%--            <input type="radio" name="answer" value="2" id="answer" <c:if test="${c_question.answer == 2}">checked</c:if>> 2--%>
-<%--            <input type="radio" name="answer" value="3" id="answer" <c:if test="${c_question.answer == 3}">checked</c:if>> 3--%>
-<%--            <c:if test="${c_question.type == 1}">--%>
-<%--                <input type="radio" name="examType" value="4" id="answer" <c:if test="${c_question.answer == 4}">checked</c:if>> 4--%>
-<%--            </c:if>--%>
-<%--        </div><!-- col-4 -->--%>
-<%--    </div><!-- col-4 -->--%>
-<%--    <div>--%>
-<%--        <label for="explain">Question content:</label>--%>
-<%--        <input type="text" id="explain" name="explain" value="${c_question.explain}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <label for="level">Level:</label>--%>
-<%--        <input type="text" id="level" name="level" value="${c_question.level}" required><br>--%>
-<%--    </div>--%>
-<%--    <div>--%>
-<%--        <button type="submit"> SAVE </button>--%>
-<%--    </div>--%>
-<%--</form:form>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -86,8 +24,13 @@
     <!-- vendor css -->
     <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+<%--    <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">--%>
+
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/spectrum-colorpicker/spectrum.css" rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
@@ -183,12 +126,12 @@
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <img src="/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -208,6 +151,33 @@
 </div><!-- br-header -->
 <!-- ########## END: HEAD PANEL ########## -->
 
+<!-- ########## START: RIGHT PANEL ########## -->
+<div class="br-sideright">
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane pos-absolute a-0 mg-t-60 contact-scrollbar active" id="contacts" role="tabpanel">
+
+
+        </div><!-- #contacts -->
+
+
+        <div class="tab-pane pos-absolute a-0 mg-t-60 attachment-scrollbar" id="attachments" role="tabpanel">
+
+
+        </div><!-- #history -->
+
+        <div class="tab-pane pos-absolute a-0 mg-t-60 schedule-scrollbar" id="calendar" role="tabpanel">
+
+        </div>
+        <div class="tab-pane pos-absolute a-0 mg-t-60 settings-scrollbar" id="settings" role="tabpanel">
+
+
+        </div>
+    </div><!-- tab-content -->
+
+</div><!-- br-sideright -->
+<!-- ########## END: RIGHT PANEL ########## --->
 
 <!-- ########## START: noidung ########## -->
 
@@ -353,14 +323,28 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Topic</span>
                             </div>
-                            <c:forEach items="${topics}" var="topic">
-                                <div class="col-lg-1 mg-t-20 mg-lg-t-0">
-                                    <label class="rdiobox">
-                                        <input name="topicId" value="${topic.id}" type="radio" id="topic">
-                                        <span>${topic.name}</span>
-                                    </label>
-                                </div><!-- col-3 -->
-                            </c:forEach>
+<%--                            <c:forEach items="${topics}" var="topic">--%>
+<%--                                <div class="col-lg-2 mg-t-20 mg-lg-t-0">--%>
+<%--                                    <label class="rdiobox">--%>
+<%--                                        <input name="topicId" value="${topic.id}" type="radio" id="topic">--%>
+<%--                                        <span>${topic.name}</span>--%>
+<%--                                    </label>--%>
+<%--                                </div><!-- col-3 -->--%>
+<%--                            <div class="row mg-t-20">--%>
+                                <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+                                    <select class="form-control select2" data-placeholder="Choose Topic" multiple>
+                                        <c:forEach items="${topics}" var="topic">
+                                            <option value="${topic.id}" name="topicId" id="topic">${topic.name}</option>
+                                        </c:forEach>
+<%--                                        <option value="Firefox">Firefox</option>--%>
+<%--                                        <option value="Chrome selected">Chrome</option>--%>
+<%--                                        <option value="Safari">Safari</option>--%>
+<%--                                        <option value="Opera" selected>Opera</option>--%>
+<%--                                        <option value="Internet Explorer">Internet Explorer</option>--%>
+                                    </select>
+                                </div><!-- col-4 -->
+<%--                            </div><!-- row -->--%>
+<%--                            </c:forEach>--%>
 
                         </div>
                     </div>
@@ -434,17 +418,22 @@
 <script src="${pageContext.request.contextPath}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/moment/min/moment.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/peity/jquery.peity.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.layout.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
-<script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.layout.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/highlightjs/highlight.pack.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery.maskedinput/jquery.maskedinput.js"></script>
+<script src="${pageContext.request.contextPath}/lib/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/spectrum-colorpicker/spectrum.js"></script>
 
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
-<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>--%>
 
 <script>
     $(function(){
@@ -473,6 +462,11 @@
             }
         }
     });
+
+
 </script>
 </body>
 </html>
+
+
+
