@@ -83,7 +83,7 @@
 
 
 
-            <div class="mg-t-60 tx-center">Not yet a member? <a href="/register" class="tx-info">Sign Up</a></div>
+            <div class="mg-t-60 tx-center">Not yet a member? <a href="${pageContext.request.contextPath}/register" class="tx-info">Sign Up</a></div>
         </div><!-- login-wrapper -->
 
 
@@ -100,7 +100,7 @@
                 trung vào ngữ pháp và từ vựng, Apelish còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
             <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ hội
                 mới trong tương lai.</p>
-            <a href="/home" class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
+            <a href="${pageContext.request.contextPath}/home" class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
         </div><!-- wd-500 -->
     </div>
 </div><!-- row -->

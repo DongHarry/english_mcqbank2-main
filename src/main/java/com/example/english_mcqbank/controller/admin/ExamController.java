@@ -30,10 +30,12 @@ public class ExamController {
     final IResultService IResultService;
 
     @RequestMapping(value = "/admin/exams/new", method = RequestMethod.GET)
-    public ModelAndView addExam() {
+    public ModelAndView addExam(Authentication authentication) {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addExam");
         modelAndView.addObject("topics", topics);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", user);
         return modelAndView;
     }
 
@@ -91,13 +93,16 @@ public class ExamController {
     }
 
     @RequestMapping(value = "/admin/exams/{examId}", method = RequestMethod.GET)
-    public ModelAndView exam(@PathVariable("examId") int examId, Model model) {
+    public ModelAndView exam(@PathVariable("examId") int examId, Model model, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView("editExam");
         Exam exam = IExamService.getExamById(examId);
         modelAndView.addObject("c_exam", exam);
         model.addAttribute("c_exam", exam);
         List<Topic> topics = topicService.getAllTopics();
         modelAndView.addObject("topics", topics);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        modelAndView.addObject("loggedInUser", user);
+
         return modelAndView;
     }
 

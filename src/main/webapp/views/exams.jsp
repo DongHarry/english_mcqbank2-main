@@ -263,13 +263,15 @@
 <!-- ########## START: noidung ########## -->
 
 <div class="br-mainpanel">
+    <sec:authorize access="hasRole('ADMIN')">
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="/admin">Admin</a>
+            <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin">Admin</a>
             <a class="breadcrumb-item" href="#">Quản lí bài thi</a>
             <span class="breadcrumb-item active">Tất cả bài thi</span>
         </nav>
     </div><!-- br-pageheader -->
+    </sec:authorize>
     <div class="br-pagetitle">
         <i class="icon icon ion-ios-book-outline"></i>
         <div>

@@ -72,7 +72,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand page-scroll" href="/home">
+                            <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/home">
                                 <img src="../resource/img/logo.png" alt="logo">
                             </a>
                         </div>
@@ -89,7 +89,7 @@
                                 <li class="dropdown">
                                     <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">${user.fullName}<b class="caret"></b> </a>
                                     <ul class="dropdown-menu" >
-                                        <li><a href="/user/profile">User Information</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/profile">User Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
                                         <li><a href="${pageContext.request.contextPath}/logout">Sign out</a></li>
                                     </ul>

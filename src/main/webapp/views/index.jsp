@@ -72,7 +72,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand page-scroll" href="/home">
+              <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/home">
                 <img src="../resource/img/logo.png" alt="logo">
               </a>
             </div>
@@ -86,7 +86,7 @@
                 <li><a class="page-scroll" href="#faqs">Faq</a></li>
                 <li><a class="page-scroll" href="#news">News</a></li>
                 <li><a class="page-scroll" href="#contact">Contact</a></li>
-                <li><a class="page-scroll" href="/login-page">Login</a></li>
+                <li><a class="page-scroll" href="${pageContext.request.contextPath}/login-page">Login</a></li>
               </ul>
             </div>
 
@@ -121,7 +121,7 @@
                 <h1>Apelish - Luyện thi Tiếng Anh</h1>
                 <p>Cái tên Apelish gắn liền với ‘’hành trình’’ Startup Việt, với những dự án bảo trợ chuyên môn và đồng hành kiến thức học thuật cùng VnExpress, VTV7, VTV2.. </p>
                 <div class="slider-action-btn">
-                  <a href="/register" class="btn softo-solid-btn">Đăng kí ngay để trải nghiệm</a>
+                  <a href="${pageContext.request.contextPath}/register" class="btn softo-solid-btn">Đăng kí ngay để trải nghiệm</a>
                   <a href="#" class="btn btn-icon"><i class="fa fa-android"></i></a>
                   <a href="#" class="btn btn-icon"><i class="fa fa-windows"></i></a>
                 </div>
@@ -329,7 +329,7 @@
 
     <!--start app video section-->
     <div id="video-app" class="video-app-1"
-         style="background: url('img/video-play.jpg')no-repeat center center / cover">
+         style="background: url('/resource/img/video-play.jpg')no-repeat center center / cover">
       <div class="overlay-1">
         <div class="container">
           <div class="row">
