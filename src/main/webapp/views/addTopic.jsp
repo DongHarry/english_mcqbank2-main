@@ -112,10 +112,7 @@
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
 
-
     </div><!-- br-header-left -->
-
-
 
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
@@ -202,7 +199,17 @@
             </form:form>
         </div>
     </div><!-- br-pagebody -->
-
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
+            <div>HA NOI UNIVERSITY OF SCIENCE</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+            <span class="tx-uppercase mg-r-10">Share:</span>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+    </footer>
 </div>
 
 <!-- ########## END: noidung ########## --->
