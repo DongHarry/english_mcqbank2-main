@@ -119,7 +119,7 @@ public class QuestionService implements IQuestionService {
         int count = 0;
         for (Question question : questions) {
             if (!questionRepository.existsByContent(question.getContent())) {
-                questionRepository.save(question);
+                this.save(question);
                 count++;
             }
         }

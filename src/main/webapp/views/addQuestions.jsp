@@ -192,12 +192,12 @@
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="../resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <img src="<c:url value="/resource/img/favicon.png"/>" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="../resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -252,49 +252,65 @@
                 </c:if>
                 <c:set var="count" value="1"/>
                 <form:form action="${pageContext.request.contextPath}/admin/questions/upload/save" method="post">
-                <table id="datatable2" class="table display responsive nowrap table22">
-                    <thead>
-                    <tr>
-                        <th class="wd-15p"></th>
-                        <th>STT</th>
-                        <th class="wd-15p" style="width: auto">Question Content</th>
-                        <th class="wd-15p" style="width: auto">Correct Answer</th>
-                        <th class="wd-15p" style="width: auto">Topic</th>
-                        <%--                        <th class="wd-15p">Answer</th>--%>
-                        <th class="wd-15p">Type</th>
-                        <%--                        <th class="wd-15p">Level</th>--%>
-
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    <c:forEach items="${questions}" var="question">
+                    <table id="datatable2" class="table display responsive nowrap table22">
+                        <thead>
                         <tr>
-                            <td>
-                                <input type="checkbox" name="paramList" value="question.${count}">
-                            </td>
-                            <td>
-                                    ${count}
-                            </td>
-                            <td>
-                                <p class="abcd">${question.content}</p>
-                            </td>
-                            <td>
-                                ${question.correctAnswer}
-                            </td>
-                            <td>
-                                ${question.topic.name}
-                            </td>
-                            <td>
-                                ${question.type}
-                            </td>
+                            <th class="wd-15p" style="width: auto">STT</th>
+                            <th class="wd-15p" style="width: auto">Question Content</th>
+                            <th class="wd-15p" style="width: auto">Correct Answer</th>
+                            <th class="wd-15p" style="width: auto">Topic</th>
+                            <%--                        <th class="wd-15p">Answer</th>--%>
+                            <th class="wd-15p">Type</th>
+                            <th class="wd-15p">Level</th>
+                            <%--                        <th class="wd-15p">Level</th>--%>
+
                         </tr>
-                        <c:set var="count" value="${count + 1}"/>
-                    </c:forEach>
-                    </tbody>
-                    <button type="submit" name="submitButton" value="save">Save</button>
-                    <button type="submit" name="submitButton" value="saveAll">Save All</button>
-                </table>
+                        </thead>
+
+                        <tbody>
+                        <c:forEach items="${questions}" var="question">
+                            <tr>
+                                <td>
+                                            ${count}
+                                    <input type="checkbox" name="paramList" value="question.${count}">
+                                </td>
+                                <td>
+                                    <p class="abcd">${question.content}</p>
+                                </td>
+                                <td>
+                                    ${question.correctAnswer}
+                                </td>
+                                <td>
+                                    ${question.topic.name}
+                                </td>
+                                <td>
+                                    <c:if test="${question.type == 1}">
+                                        <span class="badge badge-success" style="font-size: 14px"> Reading </span>
+                                    </c:if>
+                                    <c:if test="${question.type == 2}">
+                                        <span class="badge badge-info" style="font-size: 14px">Listening</span>
+                                    </c:if>
+                                </td>
+                                <td>
+                                    ${question.level}
+                                    <%--<c:if test="${question.level == 1}">
+                                        <span class="badge badge-success" style="font-size: 14px"> Dễ </span>
+                                    </c:if>
+                                    <c:if test="${question.level == 2}">
+                                        <span class="badge badge-info" style="font-size: 14px">Trung bình</span>
+                                    </c:if>
+                                    <c:if test="${question.level == 3}">
+                                        <span class="badge badge-warning" style="font-size: 14px">Khó</span>
+                                    </c:if>--%>
+                                </td>
+                            </tr>
+                            <c:set var="count" value="${count + 1}"/>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <button type="submit" name="submitButton" value="save" class="btn btn-primary">Lưu những mục đã chọn</button>
+                    hoặc
+                    <button type="submit" name="submitButton" value="saveAll" class="btn btn-outline-primary">Lưu tất cả</button>
                 </form:form>
 <%--                <form:form action="${pageContext.request.contextPath}/admin/questions/upload/save" method="post">--%>
 <%--                        <c:forEach var="question" items="${questions}">--%>
