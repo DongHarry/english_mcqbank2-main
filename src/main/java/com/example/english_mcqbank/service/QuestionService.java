@@ -3,7 +3,8 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.QuestionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.english_mcqbank.util.CsvUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -12,12 +13,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.InputStream;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class QuestionService implements IQuestionService {
-    @Autowired
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
+    private final CsvUtils csvUtils;
 
     @Override
     public List<Question> listAll() {
@@ -112,5 +115,13 @@ public class QuestionService implements IQuestionService {
     @Override
     public boolean existByContent(String content) {
         return questionRepository.existsByContent(content);
+    }
+
+    @Override
+    public List<Question> saveFromCSV(InputStream is) {
+        List<Question> questions = csvUtils.csvToQuestion(is);
+        questionRepository.saveAll(questions);
+
+        return questions;
     }
 }

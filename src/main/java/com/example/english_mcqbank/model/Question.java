@@ -2,6 +2,7 @@ package com.example.english_mcqbank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
+@Builder
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,3 +1,5 @@
+use english_mcq_bank;
+
 create table exams
 (
     EX_ID          int auto_increment

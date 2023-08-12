@@ -1,18 +1,27 @@
 package com.example.english_mcqbank.controller;
 
 
-import com.example.english_mcqbank.model.*;
+import com.example.english_mcqbank.exception.CSVException;
+import com.example.english_mcqbank.model.Question;
+import com.example.english_mcqbank.model.Topic;
+import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
+import com.example.english_mcqbank.util.CsvUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -26,6 +35,7 @@ public class AdminController {
     final IExamService examService;
     final IResultService resultService;
     final ISessionService sessionService;
+    private final CsvUtils csvUtils;
 
     @Autowired
     HttpSession session;
@@ -82,5 +92,21 @@ public class AdminController {
         ModelAndView view = new ModelAndView("test2");
         view.addObject("name", session.getAttribute("username"));
         return view; // Trả về admin.jsp
+    }
+
+    @PostMapping("/csvUpload")
+    public List<Question> csvUploadQuestion(@RequestParam MultipartFile file) {
+        try {
+            if (csvUtils.hasCsvFormat(file)) {
+                InputStream is = file.getInputStream();
+                return questionService.saveFromCSV(is);
+            }
+            else {
+                throw new CSVException("The file is not an .csv file");
+            }
+        }
+        catch (IOException exc) {
+            throw new CSVException("Failed to parse .csv file");
+        }
     }
 }
