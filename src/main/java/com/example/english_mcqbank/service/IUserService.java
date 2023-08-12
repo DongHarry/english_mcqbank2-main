@@ -25,8 +25,6 @@ public interface IUserService {
 
     public UserEntity getUserByUserid(int id);
 
-    public UserEntity findByUsername(String username);
-
     @Transactional
     public void deleteUser(UserEntity user);
 

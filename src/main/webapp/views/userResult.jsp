@@ -295,15 +295,28 @@
             <h6 class="br-section-label">${title}</h6>
 
             <div class="table-wrapper">
-
+                <c:if test="${ranking}">
+                    <c:set var="i" value="1"/>
+                </c:if>
                 <table id="datatable2" class="table display responsive nowrap">
                     <thead>
                     <tr>
-                        <th class="wd-15p">Result Id</th>
+                        <th class="wd-15p">
+                            <c:if test="${ranking}">
+                            Rank
+                            </c:if>
+                            <c:if test="${!ranking}">
+                            Result Id
+                            </c:if>
+                        </th>
+                        <c:if test="${ranking}">
+                            <th class="wd-15p">User Name</th>
+                        </c:if>
+                        <c:if test="${!ranking}">
+                            <th class="wd-15p">Exam Name</th>
+                            <th class="wd-15p">Exam Type</th>
+                        </c:if>
 
-                        <th class="wd-15p">User Name</th>
-                        <th class="wd-15p">Exam Name</th>
-                        <th class="wd-15p">Exam Type</th>
                         <th class="wd-15p">Score</th>
                         <th class="wd-15p">Max Score</th>
                         <th class="wd-15p">Date</th>
@@ -315,19 +328,31 @@
 
                     <c:forEach var="result" items="${results}">
                         <tr>
-                            <td>${result.id}</td>
 
-                            <td>${result.user.username}</td>
-                            <td>${result.exam.name}</td>
                             <td>
-                                <c:if test="${result.exam.type == 1}">
-                                    <span class="badge badge-success">Reading</span>
+                                <c:if test="${ranking}">
+                                    ${i}
+                                    <c:set var="i" value="${i + 1}"/>
                                 </c:if>
-                                <c:if test="${result.exam.type == 2}">
-                                    <span class="badge badge-success">Listening</span>
+                                <c:if test="${!ranking}">
+                                    ${result.id}
                                 </c:if>
-
                             </td>
+                            <c:if test="${ranking}">
+                                <td>${result.user.username}</td>
+                            </c:if>
+                            <c:if test="${!ranking}">
+                                <td>${result.exam.name}</td>
+                                <td>
+                                    <c:if test="${result.exam.type == 1}">
+                                        <span class="badge badge-success">Reading</span>
+                                    </c:if>
+                                    <c:if test="${result.exam.type == 2}">
+                                        <span class="badge badge-success">Listening</span>
+                                    </c:if>
+
+                                </td>
+                            </c:if>
                             <td>${result.score}</td>
                             <td>${result.exam.questionNo}</td>
                             <td>${result.time}</td>

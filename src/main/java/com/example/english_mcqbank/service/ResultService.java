@@ -6,6 +6,7 @@ import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,6 @@ import java.util.List;
 public class ResultService implements IResultService {
     @Autowired
     private ResultRepository resultRepository;
-
-    @Override
-    public List<Result> listAll() {
-        return resultRepository.findAll();
-    }
 
     @Override
     public void save(Result result) {
@@ -47,6 +43,7 @@ public class ResultService implements IResultService {
     }
 
     @Override
+    @Cacheable(value = "resultCache", key = "'resultByUser'+#user.id")
     public List<Result> findAllByUser(UserEntity user) {
         return resultRepository.findAllByUser(user);
     }
@@ -67,7 +64,19 @@ public class ResultService implements IResultService {
     }
 
     @Override
+    @Cacheable(value = "resultCache", key = "'resultByExam'+#exam.id")
     public List<Result> findAllByExam(Exam exam, Pageable pageable) {
         return resultRepository.findAllByExam(exam, pageable);
+    }
+
+    @Override
+    @Cacheable(value = "resultCache", key = "'resultByExam'+#exam.id")
+    public List<Result> findAllByExamAndOrderByScore(Exam exam) {
+        return resultRepository.findAllByExamAndOrderByScore(exam.getId());
+    }
+
+    @Override
+    public Boolean existsByExamAndUser(Exam exam, UserEntity user) {
+        return resultRepository.existsByExamAndUser(exam, user);
     }
 }

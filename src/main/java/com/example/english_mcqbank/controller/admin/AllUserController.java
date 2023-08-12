@@ -148,7 +148,7 @@ public class AllUserController {
     public ModelAndView deleteUser(@RequestParam("username") String username, RedirectAttributes redirectAttributes) {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/users");
         try {
-            UserEntity user = userService.findByUsername(username);
+            UserEntity user = userService.getUserByUsername(username);
             if (user == null) {
                 redirectAttributes.addFlashAttribute("message", "User does not exist");
 //                return new ModelAndView("allUsers");

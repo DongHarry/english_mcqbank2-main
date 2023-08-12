@@ -154,7 +154,7 @@ public class ExamController {
                                 @PathVariable("examId") int examId,
                                 RedirectAttributes redirectAttributes) {
         Exam exam = examService.getExamById(examId);
-        List<Result> results = resultService.findAllByExam(exam);
+        List<Result> results = resultService.findAllByExamAndOrderByScore(exam);
 
         if (results == null || results.isEmpty()) {
             ModelAndView modelAndView1 = new ModelAndView("redirect:/admin/exams");
@@ -164,6 +164,7 @@ public class ExamController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
+        modelAndView.addObject("ranking", true);
         modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("type", 2);
         modelAndView.addObject("title", "All Users results for exam " + examId);

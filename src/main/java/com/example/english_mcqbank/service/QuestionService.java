@@ -4,6 +4,9 @@ import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,17 +25,20 @@ public class QuestionService implements IQuestionService {
     }
 
     @Override
+    @CachePut(value = "questionCache", key = "#question.id")
     public Question save(Question question) {
         return questionRepository.save(question);
     }
 
     @Override
+    @Cacheable(value = "questionCache", key = "#id")
     public Question get(int id) {
         return questionRepository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "questionCache", key = "#id")
     public void delete(int id) {
         questionRepository.deleteById(id);
     }
@@ -81,11 +87,13 @@ public class QuestionService implements IQuestionService {
     }
 
     @Override
+    @Cacheable(value = "questionCache")
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
 
     @Override
+    @Cacheable(value = "questionCache", key = "#id")
     public Question getQuestionById(int id) {
         return questionRepository.findById(id).orElse(null);
     }
@@ -96,6 +104,7 @@ public class QuestionService implements IQuestionService {
     }
 
     @Override
+    @CacheEvict(value = "questionCache", key = "#question.id")
     public void delete(Question question) {
         questionRepository.delete(question);
     }

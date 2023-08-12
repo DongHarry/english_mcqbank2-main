@@ -11,13 +11,7 @@ public interface ILogService {
 
     List<Log> getLogsByUser(UserEntity user);
 
-    List<Log> findAll();
-
-    List<Log> findAllLogs(int page, int size);
-
     void deleteAllLog(List<Log> logs);
-
-    List<Log> getLogsByUser(UserEntity user, int page, int size);
 
     List<Log> findAllLogs();
 

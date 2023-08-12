@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
 
@@ -41,12 +42,22 @@ public class DoExamController {
     }
 
     @RequestMapping("/user/exams/{id}")
-    public ModelAndView userExam(@PathVariable int id) {
-        ModelAndView userExamModelAndView = new ModelAndView("exam");
+    public ModelAndView userExam(@PathVariable int id, RedirectAttributes redirectAttributes) {
+
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
+
+        /*
+        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
+            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
+            return modelAndView;
+        }
+        */
+
+        ModelAndView userExamModelAndView = new ModelAndView("exam");
         userExamModelAndView.addObject("exam", exam);
         return userExamModelAndView; // Trả về user.jsp
     }
@@ -55,9 +66,25 @@ public class DoExamController {
     public ModelAndView doExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("doExam");
         Exam exam = examService.getExamById(id);
+        /*
+        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
+            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
+            return modelAndView;
+        }
+        */
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
+
+        /*
+        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
+            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
+            return modelAndView;
+        }
+        */
+
         //int topicId = exam.getTopicId();
         int questionCount = exam.getQuestionNo();
         List<ExamTopic> examTopics = exam.getExamTopicList();

@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface IExamService {
-    List<Exam> getAllExams(int page, int size);
-
     @Transactional
     void saveExam(Exam exam);
 
@@ -17,10 +15,6 @@ public interface IExamService {
 
     @Transactional
     void deleteExam(Exam exam);
-
-    List<Result> getResultsByExamId(int examId, int page, int size);
-
-    List<Result> getResultsByExamId(int examId);
 
     Map<Long, Integer> getExamTopicPercentageMap(Map<String, String> requestParams);
 

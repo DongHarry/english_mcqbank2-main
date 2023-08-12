@@ -357,7 +357,7 @@
                                             </li>
 
                                             <li style="list-style: none">
-                                                All results: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results" class="btn btn-outline-info btn-icon mg-r-5 mg-b-10" title="All results"><i class="fas fa-list"></i></a>
+                                                Ranking: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results" class="btn btn-outline-info btn-icon mg-r-5 mg-b-10" title="All results"><i class="fas fa-list"></i></a>
                                             </li>
                                         </sec:authorize>
                                     </ul>

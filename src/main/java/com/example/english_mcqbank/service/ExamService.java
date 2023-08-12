@@ -3,6 +3,8 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.*;
 import com.example.english_mcqbank.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,30 +17,26 @@ import java.util.Map;
 @Service
 public class ExamService implements IExamService {
     @Autowired
-    private IResultService IResultService;
+    private IResultService resultService;
     @Autowired
-    private IQuestionService IQuestionService;
+    private IQuestionService questionService;
     @Autowired
-    private TopicService topicService;
+    private ITopicService topicService;
     @Autowired
-    private IExamTopicService IExamTopicService;
+    private IExamTopicService examTopicService;
 
     @Autowired
     private ExamRepository examRepository;
 
     @Override
-    public List<Exam> getAllExams(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return examRepository.findAll(pageable).getContent();
-    }
-
-    @Override
     @Transactional
+    @CachePut(value = "exam", key = "'exam'+#exam.id")
     public void saveExam(Exam exam) {
         examRepository.save(exam);
     }
 
     @Override
+    @Cacheable(value = "exam", key = "'exam'+#id")
     public Exam getExamById(int id) {
         return examRepository.findById(id).orElse(null);
     }
@@ -46,31 +44,8 @@ public class ExamService implements IExamService {
     @Override
     @Transactional
     public void deleteExam(Exam exam) {
-        IResultService.deleteAllByExam(exam);
+        resultService.deleteAllByExam(exam);
         examRepository.delete(exam);
-    }
-
-    @Override
-    public List<Result> getResultsByExamId(int examId, int page, int size) {
-        Exam exam = examRepository.findById(examId).orElse(null);
-
-        if (exam == null) {
-            return null;
-        }
-        Pageable pageable = PageRequest.of(page, size);
-
-        return IResultService.findAllByExam(exam, pageable);
-    }
-
-    @Override
-    public List<Result> getResultsByExamId(int examId) {
-        Exam exam = examRepository.findById(examId).orElse(null);
-
-        if (exam == null) {
-            return null;
-        }
-
-        return IResultService.findAllByExam(exam);
     }
 
     @Override
@@ -105,7 +80,7 @@ public class ExamService implements IExamService {
         for (String paramName : params.keySet()) {
             if (paramName.startsWith("question_")) {
                 int questionId = Integer.parseInt(paramName.substring("question_".length()));
-                Question question = IQuestionService.get(questionId);
+                Question question = questionService.get(questionId);
                 //Question question = questionMap.get(questionId);
                 String selectedOption = params.get(paramName);
                 // Do something with the selected option for each question (e.g., save to database)
@@ -121,6 +96,7 @@ public class ExamService implements IExamService {
 
 
     @Override
+    @Cacheable(value = "examCache")
     public List<Exam> getAllExams() {
         return examRepository.findAll();
     }
@@ -150,7 +126,7 @@ public class ExamService implements IExamService {
 
     @Override
     public void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap) {
-        IExamTopicService.deleteAllByExam(exam);
+        examTopicService.deleteAllByExam(exam);
         //exam.clearExamTopic();
         addExamTopic(exam, examTopicPercentageMap);
         //examRepository.save(exam);

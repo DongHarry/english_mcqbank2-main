@@ -3,6 +3,9 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -21,10 +24,9 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
     final
     UserRepository userRepository;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByUsername(username).orElse(null);
+        UserEntity user = this.getUserByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
@@ -42,10 +44,12 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
                 AuthorityUtils.createAuthorityList(user.getRoles()));
     }
 
+    @CachePut(value = "userCache", key = "'userByName'+#username")
     public UserEntity getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
 
+    @CacheEvict(value = "userCache", allEntries = true)
     public void deleteUserByUsername(String username) {
         UserEntity user = userRepository.findByUsername(username).orElse(null);
         if (user != null) {
@@ -53,6 +57,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
         }
     }
 
+    @Cacheable(value = "userCache")
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
@@ -72,19 +77,19 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
         return existingPhone.isPresent();
     }
 
+    @Transactional
+    @CachePut(value = "userCache", key = "'user'+#user.id")
     public void saveUser(UserEntity user) {
         userRepository.save(user);
     }
 
+    @Cacheable(value = "userCache", key = "'user'+#id")
     public UserEntity getUserByUserid(int id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserEntity findByUsername(String username) {
-        return userRepository.findByUsername(username).orElse(null);
-    }
-
     @Transactional
+    @CacheEvict(value = "userCache", key = "'user'+#user.id")
     public void deleteUser(UserEntity user) {
         userRepository.delete(user);
     }
@@ -94,6 +99,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
         return userRepository.findAll(pageable).getContent();
     }
 
+    @Cacheable(value = "userCache", key = "'userByMail'+#email")
     public UserEntity getUserByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }

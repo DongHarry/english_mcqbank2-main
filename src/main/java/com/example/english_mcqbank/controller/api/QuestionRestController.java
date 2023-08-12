@@ -16,13 +16,19 @@ public class QuestionRestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<Question>> list() {
-        List<Question> questions = IQuestionService.listAll();
+        List<Question> questions = IQuestionService.getAllQuestions().subList(120, 200);
         return ResponseEntity.ok(questions);
     }
 
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Question> get(@PathVariable int id) {
+        Question question = IQuestionService.get(id);
+        return ResponseEntity.ok(question);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Question> delete(@PathVariable int id) {
         Question question = IQuestionService.get(id);
         return ResponseEntity.ok(question);
     }

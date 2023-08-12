@@ -2,6 +2,7 @@ package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.UserEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ public class SessionService implements ISessionService {
     }
 
     @Override
+    @Cacheable(value = "loggedInUserCache")
     public UserEntity getLoggedInUser() {
         return session.getAttribute("loggedInUser") != null ? (UserEntity) session.getAttribute("loggedInUser") : null;
     }
