@@ -15,11 +15,11 @@
 </head>
 <body>
 <h1>Bài thi</h1>
-<div id="timer">Thời gian còn lại: </div>
+<div id="time">Thời gian còn lại: </div>
 <div id="question-count">Số câu hỏi: ${questions.size()}</div>
 <hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
-<form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" onsubmit="return validateQuiz()">
+<form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post">
     <c:forEach var="question" items="${questions}">
         <div class="question-container">
             <h3>${question.content}</h3>
@@ -119,7 +119,7 @@
               var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
               var seconds = Math.floor((distance % (1000 * 60)) / 1000);
               $("#time").text("Time remaining: " + minutes + ":" + seconds);
-              if (distance < 0) {
+              if (distance <= 0) {
                   clearInterval(timerInterval);
                   $('#submit-btn').click(); // Nếu hết thời gian, tự động nhấn nút Nộp bài
               }
@@ -131,11 +131,6 @@
               timerInterval = setInterval(updateTimer, 1000); // Bắt đầu đếm ngược thời gian với mỗi giây cập nhật một lần
               $("#start-btn").prop("disabled", true); // Ẩn nút "Bắt đầu bài thi" sau khi bấm
           }
-
-          // Xử lý sự kiện khi nút "Bắt đầu bài thi" được nhấn
-          $("#start-btn").click(function() {
-              startExam();
-          });
 
           // Tự động bắt đầu đếm ngược khi trang tải xong
           startExam();

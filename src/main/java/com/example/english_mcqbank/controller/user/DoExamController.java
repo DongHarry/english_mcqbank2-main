@@ -154,4 +154,21 @@ public class DoExamController {
         return modelAndView;
     }
 
+    @RequestMapping("/user/exams/{id}/results")
+    public ModelAndView userExamResult(@PathVariable int id, Authentication authentication) {
+        Exam exam = examService.getExamById(id);
+        if (exam == null) {
+            return new ModelAndView("redirect:/user/exams");
+        }
+
+        ModelAndView userExamModelAndView = new ModelAndView("userResult");
+        userExamModelAndView.addObject("exam", exam);
+        UserEntity user = userService.getUserByUsername(authentication.getName());
+        userExamModelAndView.addObject("loggedInUser", user);
+        List<Result> results = resultService.findAllByExamAndOrderByScore(exam);
+        userExamModelAndView.addObject("results", results);
+        userExamModelAndView.addObject("ranking", true);
+
+        return userExamModelAndView; // Trả về user.jsp
+    }
 }

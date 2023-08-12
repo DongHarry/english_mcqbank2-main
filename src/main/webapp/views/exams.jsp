@@ -347,6 +347,9 @@
                                             <li style="list-style: none">
                                                Take exam: <a href="${pageContext.request.contextPath}/user/exams/${exam.id}" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i class="fas fa-play"></i></a>
                                             </li>
+                                            <li style="list-style: none">
+                                                Ranking: <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/results" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i class="fas fa-list"></i></a>
+                                            </li>
                                         </sec:authorize>
                                         <sec:authorize access="hasRole('ADMIN')">
                                             <li style="list-style: none">
