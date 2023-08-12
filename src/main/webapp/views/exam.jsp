@@ -35,8 +35,8 @@
             <p><b>Exam Date:</b> ${exam.time}</p>
             <p><b>Question No:</b> ${exam.questionNo}</p>
             <p><b>Exam Duration:</b> ${exam.questionNo} minutes</p>
-            <li>
-                Exam Topics:
+            <p>
+                <b>Exam Topics:</b>
                 <ol>
                     <c:forEach var="examtopic" items="${exam.examTopicList}">
                         <li>
@@ -45,10 +45,10 @@
                         </li>
                     </c:forEach>
                 </ol>
-            </li>
+            </p>
             <div class="form-layout-footer mg-t-30">
-                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/do" class="btn btn-info">Start</a>
-                <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-info">Back to Exam List</a>
+                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/do" class="btn btn-primary">Start</a>
+                <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Back to Exam List</a>
             </div>
         </div>
 
