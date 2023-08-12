@@ -22,8 +22,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ReadFileService {
+public class ReadFileService implements IReadFileService {
     final ITopicService topicService;
+    @Override
     public List<Question> readCsvData(MultipartFile file) throws IOException, InvalidInputFileException {
         List<String[]> data = readCsvData2(file);
         if (data.get(0).length != 10 && data.get(0).length != 11) {
@@ -68,7 +69,8 @@ public class ReadFileService {
         return questions;
     }
 
-    public List<Question> readExcelData(MultipartFile file) throws IOException {
+    @Override
+    public List<Question> readExcelData(MultipartFile file) throws IOException, InvalidInputFileException {
         List<Question> data = new ArrayList<>();
         try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
             Sheet sheet = workbook.getSheetAt(0);
@@ -99,7 +101,9 @@ public class ReadFileService {
                 data.add(excelData);
             }
         } catch (InvalidInputFileException e) {
-            throw new RuntimeException(e);
+
+        } catch (Exception e) {
+            throw new InvalidInputFileException("Invalid input file");
         }
         return data;
     }

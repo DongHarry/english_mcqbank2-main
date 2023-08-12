@@ -31,7 +31,7 @@ public class QuestionController {
     final IExamService examService;
     final IResultService resultService;
     final ISessionService sessionService;
-    final ReadFileService readFileService;
+    final IReadFileService readFileService;
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
