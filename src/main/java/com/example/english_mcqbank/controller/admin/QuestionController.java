@@ -1,9 +1,13 @@
 package com.example.english_mcqbank.controller.admin;
 
+import com.example.english_mcqbank.exception.InvalidInputFileException;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
+import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +30,7 @@ public class QuestionController {
     final IExamService examService;
     final IResultService resultService;
     final ISessionService sessionService;
+    final ReadFileService readFileService;
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,
@@ -143,25 +149,25 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/admin/questions/upload", method = RequestMethod.GET)
-    public ModelAndView uploadQuestion(@RequestParam("file")MultipartFile file) {
+    public ModelAndView uploadQuestion() {
         // if csv
         // read file
         // save to db
         // return
-        ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
+        ModelAndView modelAndView = new ModelAndView("uploadQuestion");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/questions/upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
-        List<String[]> data = new ArrayList<>();
+        List<Question> data = new ArrayList<>();
 
         if (file != null) {
             try {
                 if (file.getContentType().equals("text/csv")) {
-                    data = readCsvData(file);
+                    data = readFileService.readCsvData(file);
                 } else if (file.getContentType().equals("application/vnd.ms-excel") || file.getContentType().equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
-                    data = readExcelData(file);
+                    data = readFileService.readExcelData(file);
                 } else {
                     model.addAttribute("error", "Invalid file format. Please upload a CSV or Excel file.");
                     return "result";
@@ -170,9 +176,15 @@ public class QuestionController {
                 model.addAttribute("data", data);
             } catch (IOException e) {
                 model.addAttribute("error", "Error reading file: " + e.getMessage());
+            } catch (InvalidInputFileException e) {
+                System.out.println(e.getMessage());
             }
         } else {
             model.addAttribute("error", "Please select a file to upload.");
+        }
+
+        for (Question question : data) {
+            System.out.println(question);
         }
 
         return "result";

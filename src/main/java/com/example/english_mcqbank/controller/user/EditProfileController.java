@@ -3,6 +3,7 @@ package com.example.english_mcqbank.controller.user;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Exam;
+import com.example.english_mcqbank.model.Result;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

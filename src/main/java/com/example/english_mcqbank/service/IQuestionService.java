@@ -4,7 +4,6 @@ import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.InputStream;
 import java.util.List;
 
 public interface IQuestionService {
@@ -36,6 +35,4 @@ public interface IQuestionService {
     void delete(Question question);
 
     boolean existByContent(String content);
-
-    List<Question> saveFromCSV(InputStream is);
 }

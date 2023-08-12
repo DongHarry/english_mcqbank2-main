@@ -1,12 +1,12 @@
 package com.example.english_mcqbank.service;
 
-import com.example.english_mcqbank.model.Exam;
-import com.example.english_mcqbank.model.ExamTopic;
-import com.example.english_mcqbank.model.Question;
+import com.example.english_mcqbank.model.*;
 import com.example.english_mcqbank.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
