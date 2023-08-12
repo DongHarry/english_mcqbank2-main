@@ -251,76 +251,76 @@
                     </div>
                 </c:if>
                 <c:set var="count" value="1"/>
-<%--                <form:form action="${pageContext.request.contextPath}/admin/questions/upload/save" method="post">--%>
-<%--                <table id="datatable2" class="table display responsive nowrap table22">--%>
-<%--                    <thead>--%>
-<%--                    <tr>--%>
-<%--                        <th class="wd-15p"></th>--%>
-<%--                        <th>STT</th>--%>
-<%--                        <th class="wd-15p" style="width: auto">Question Content</th>--%>
-<%--                        <th class="wd-15p" style="width: auto">Correct Answer</th>--%>
-<%--                        <th class="wd-15p" style="width: auto">Topic</th>--%>
-<%--                        &lt;%&ndash;                        <th class="wd-15p">Answer</th>&ndash;%&gt;--%>
-<%--                        <th class="wd-15p">Type</th>--%>
-<%--                        &lt;%&ndash;                        <th class="wd-15p">Level</th>&ndash;%&gt;--%>
-
-<%--                    </tr>--%>
-<%--                    </thead>--%>
-
-<%--                    <tbody>--%>
-<%--                    <c:forEach items="${questions}" var="question">--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                <input type="checkbox" name="paramList" value="question.${count}">--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                    ${count}--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <p class="abcd">${question.content}</p>--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                ${question.correctAnswer}--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                ${question.topic.name}--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                ${question.type}--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                        <c:set var="count" value="${count + 1}"/>--%>
-<%--                    </c:forEach>--%>
-<%--                    </tbody>--%>
-<%--                    <button type="submit" name="submitButton" value="save">Save</button>--%>
-<%--                    <button type="submit" name="submitButton" value="saveAll">Save All</button>--%>
-<%--                </table>--%>
-<%--                </form:form>--%>
                 <form:form action="${pageContext.request.contextPath}/admin/questions/upload/save" method="post">
-                        <c:forEach var="question" items="${questions}">
-                            <ul>
-                                <li>
-                                    <div class="question-container">
-                                        <input type="checkbox" name="paramList" value="question.${count}">
-                                        <p><b>STT: ${count}</b></p>
-                                        <p>Content: ${question.content}</p>
-                                        <p>Option1: ${question.option1}</p>
-                                        <p>Option2: ${question.option2}</p>
-                                        <p>Option3: ${question.option3}</p>
-                                        <p>Option4: ${question.option4}</p>
-                                        <p>Correct Answer: ${question.answer}</p>
-                                        <p>Topic: ${question.topic.name}</p>
-<%--                                        <p>Type: ${question.type}</p>--%>
-<%--                                        <p>Level: ${question.level}</p>--%>
-                                    </div>
-                                </li>
-                            </ul>
-                            <c:set var="count" value="${count + 1}"/>
-                        </c:forEach>
-                        <button type="submit" name="submitButton" value="save" class="btn btn-primary">Save</button>
-                        <button type="submit" name="submitButton" value="saveAll" class="btn btn-primary">Save All</button>
+                <table id="datatable2" class="table display responsive nowrap table22">
+                    <thead>
+                    <tr>
+                        <th class="wd-15p"></th>
+                        <th>STT</th>
+                        <th class="wd-15p" style="width: auto">Question Content</th>
+                        <th class="wd-15p" style="width: auto">Correct Answer</th>
+                        <th class="wd-15p" style="width: auto">Topic</th>
+                        <%--                        <th class="wd-15p">Answer</th>--%>
+                        <th class="wd-15p">Type</th>
+                        <%--                        <th class="wd-15p">Level</th>--%>
 
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <c:forEach items="${questions}" var="question">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="paramList" value="question.${count}">
+                            </td>
+                            <td>
+                                    ${count}
+                            </td>
+                            <td>
+                                <p class="abcd">${question.content}</p>
+                            </td>
+                            <td>
+                                ${question.correctAnswer}
+                            </td>
+                            <td>
+                                ${question.topic.name}
+                            </td>
+                            <td>
+                                ${question.type}
+                            </td>
+                        </tr>
+                        <c:set var="count" value="${count + 1}"/>
+                    </c:forEach>
+                    </tbody>
+                    <button type="submit" name="submitButton" value="save">Save</button>
+                    <button type="submit" name="submitButton" value="saveAll">Save All</button>
+                </table>
                 </form:form>
+<%--                <form:form action="${pageContext.request.contextPath}/admin/questions/upload/save" method="post">--%>
+<%--                        <c:forEach var="question" items="${questions}">--%>
+<%--                            <ul>--%>
+<%--                                <li>--%>
+<%--                                    <div class="question-container">--%>
+<%--                                        <input type="checkbox" name="paramList" value="question.${count}">--%>
+<%--                                        <p><b>STT: ${count}</b></p>--%>
+<%--                                        <p>Content: ${question.content}</p>--%>
+<%--                                        <p>Option1: ${question.option1}</p>--%>
+<%--                                        <p>Option2: ${question.option2}</p>--%>
+<%--                                        <p>Option3: ${question.option3}</p>--%>
+<%--                                        <p>Option4: ${question.option4}</p>--%>
+<%--                                        <p>Correct Answer: ${question.answer}</p>--%>
+<%--                                        <p>Topic: ${question.topic.name}</p>--%>
+<%--&lt;%&ndash;                                        <p>Type: ${question.type}</p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <p>Level: ${question.level}</p>&ndash;%&gt;--%>
+<%--                                    </div>--%>
+<%--                                </li>--%>
+<%--                            </ul>--%>
+<%--                            <c:set var="count" value="${count + 1}"/>--%>
+<%--                        </c:forEach>--%>
+<%--                        <button type="submit" name="submitButton" value="save" class="btn btn-primary">Save</button>--%>
+<%--                        <button type="submit" name="submitButton" value="saveAll" class="btn btn-primary">Save All</button>--%>
+
+<%--                </form:form>--%>
                 <div class="form-layout-footer mg-t-30">
                     <a href="${pageContext.request.contextPath}/admin/questions/upload" class="btn btn-secondary">Quay lại</a>
                 </div>

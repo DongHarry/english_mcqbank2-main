@@ -28,4 +28,9 @@ public class SessionService implements ISessionService {
         return session.getAttribute("loggedInUser") != null ? (UserEntity) session.getAttribute("loggedInUser") : null;
     }
 
+    @Override
+    public void removeAttribute(String name) {
+        session.removeAttribute(name);
+    }
+
 }

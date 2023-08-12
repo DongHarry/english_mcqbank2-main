@@ -230,11 +230,22 @@ public class QuestionController {
         } else {
             questions = new ArrayList<>(map.values());
         }
+        sessionService.removeAttribute("questionMap");
 
+        for (Question question : questions) {
+            System.out.println(question);
+        }
+        int count = questionService.saveAll(questions);
+        if (count == 0) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
+            redirectAttributes.addFlashAttribute("e_message", "Please select at least one question");
+            return modelAndView;
+        }
+//        int count = 0;
 //        for (Question question : questions) {
 //            System.out.println(question);
 //        }
-        int count = questionService.saveAll(questions);
+
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
         redirectAttributes.addFlashAttribute("message", "Saved " + count + " questions successfully");
 

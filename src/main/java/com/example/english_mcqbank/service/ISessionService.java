@@ -6,4 +6,6 @@ public interface ISessionService {
     void setAttribute(String key, Object value);
     Object getAttribute(String key);
     UserEntity getLoggedInUser();
+
+    void removeAttribute(String name);
 }
