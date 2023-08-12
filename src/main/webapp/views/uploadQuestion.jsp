@@ -214,7 +214,6 @@
 <%--                            <label class="custom-file-label">Choose file</label>--%>
 <%--                        </div>--%>
 <%--                    </div><!-- col -->--%>
-
 <%--                </div><!-- row -->--%>
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Upload</button>
