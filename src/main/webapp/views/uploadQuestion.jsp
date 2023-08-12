@@ -191,6 +191,7 @@
     <div class="br-pagebody">
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Thêm câu hỏi bằng file</h6>
+            <p class="br-section-text" style="color: red">*Chú ý: kích thước file tối đa 10MB, định dạng là .csv hoặc .xls hoặc .xlsx</p>
             <c:if test="${not empty e_message}">
                 <div class="alert alert-danger" role="alert">
                     ${e_message}
