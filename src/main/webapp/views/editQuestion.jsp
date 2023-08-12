@@ -113,12 +113,12 @@
             </ul>
         </li>
         <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub active show-sub">
+            <a href="#" class="br-menu-link with-sub <c:if test="${type == 1}">show-sub active</c:if>">
                 <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link active">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link <c:if test="${type == 1}">show-sub active</c:if>">Tất cả câu hỏi</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
                                         class="sub-link">Thêm câu hỏi bằng file</a></li>
 
@@ -140,7 +140,7 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link <c:if test="${type == 2}">show-sub active</c:if>">
                 <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
@@ -241,7 +241,7 @@
                 </div>
             </c:if>
             <form:form action="/admin/questions/${c_question.id}/edit" method="post">
-
+                <input type="hidden" name="type" value="${type}">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="input-group">
@@ -409,8 +409,12 @@
 
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Cập nhật</button>
-
-                    <a href="${pageContext.request.contextPath}/admin/questions" class="btn btn-secondary">Quay lại</a>
+                    <c:if test="${type == 1}">
+                        <a href="${pageContext.request.contextPath}/admin/questions" class="btn btn-secondary">Quay lại</a>
+                    </c:if>
+                    <c:if test="${type == 2}">
+                        <a href="${pageContext.request.contextPath}/admin/topics/${c_question.topic.id}" class="btn btn-secondary">Quay lại</a>
+                    </c:if>
                 </div>
 
 

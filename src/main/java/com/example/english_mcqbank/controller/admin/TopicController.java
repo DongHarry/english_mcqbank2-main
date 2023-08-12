@@ -124,4 +124,21 @@ public class TopicController {
         redirectAttributes.addFlashAttribute("message", "Topic edited successfully");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/admin/topics/{id}/questions", method = RequestMethod.GET)
+    public ModelAndView topicQuestions(@PathVariable int id,
+                                       @RequestParam(defaultValue = "0") int page,
+                                       @RequestParam(defaultValue = "20") int size) {
+        Topic topic = topicService.getTopicById(id);
+        if (topic == null) {
+            return new ModelAndView("redirect:/admin/topics");
+        }
+
+        ModelAndView modelAndView = new ModelAndView("questionList");
+        modelAndView.addObject("topic", topic);
+        modelAndView.addObject("type", 2);
+        modelAndView.addObject("questions", questionService.getAllQuestionsByTopic(topic));
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        return modelAndView;
+    }
 }

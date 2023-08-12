@@ -122,17 +122,32 @@
 
             </ul>
         </li>
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub active show-sub">
-                <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
-                <span class="menu-item-label">Quản lý câu hỏi</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link active">Tất cả câu hỏi</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
+        <c:if test="${type == 1}">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub active show-sub">
+                    <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
+                    <span class="menu-item-label">Quản lý câu hỏi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link active">Tất cả câu hỏi</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
 
-            </ul>
-        </li><!-- br-menu-item -->
+                </ul>
+            </li><!-- br-menu-item -->
+        </c:if>
+        <c:if test="${type == 2}">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
+                    <span class="menu-item-label">Quản lý câu hỏi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
+
+                </ul>
+            </li><!-- br-menu-item -->
+        </c:if>
 
 
         <li class="br-menu-item">
@@ -148,12 +163,23 @@
             </ul>
         </li><!-- br-menu-item -->
 
-        <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý topic</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+
+        <c:if test="${type == 1}">
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
+                    <span class="menu-item-label">Quản lý topic</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+        </c:if>
+        <c:if test="${type == 2}">
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link show-sub active">
+                    <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
+                    <span class="menu-item-label">Quản lý topic</span>
+                </a><!-- br-menu-link -->
+            </li><!-- br-menu-item -->
+        </c:if>
 
         <li class="br-menu-item">
             <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
@@ -291,10 +317,11 @@
                             <td>
                                 <ul>
                                     <li>
-                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                     </li>
+
                                     <li>
-                                        Delete: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
+                                        Delete: <a onclick="if (!confirm('Are you sure to delete this question?')) return false" href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
                                     </li>
                                 </ul>
                             </td>
@@ -303,8 +330,13 @@
                     </tbody>
 
                 </table>
-
-                <a href="${pageContext.request.contextPath}/admin/questions/new">Create New Question</a>
+                <c:if test="${type == 1}">
+                    <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/questions/new">Create New Question</a>
+                </c:if>
+                <c:if test="${type == 2}">
+                    <a class="btn btn-danger" onclick="if (!confirm('Are you sure to delete all question of this topic?')) return false" href="${pageContext.request.contextPath}/admin/questions/deleteTopic?topic=${topic.id}">Delete All Question of topic ${topic.name}</a>
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/admin/topics">Back</a>
+                </c:if>
             </div><!-- table-wrapper -->
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->

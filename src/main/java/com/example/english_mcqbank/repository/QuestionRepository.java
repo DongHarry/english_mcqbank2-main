@@ -30,4 +30,8 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     int countAllByTopic(Topic topic);
 
     boolean existsByContent(String content);
+
+    List<Question> findAllByTopic(Topic topic);
+
+    void deleteAllByTopic(Topic topic);
 }

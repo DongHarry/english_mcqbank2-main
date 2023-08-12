@@ -244,6 +244,9 @@
                                             Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                         </li>
                                         <li>
+                                            All questions: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}/questions" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Questions"><i class="fas fa-list"></i></a>
+                                        </li>
+                                        <li>
                                             Delete: <a onclick="if (!confirm('Are you sure to delete this topic?')) return false" href="${pageContext.request.contextPath}/admin/topics/${topic.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
                                         </li>
                                     </ul>

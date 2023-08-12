@@ -41,6 +41,7 @@ public class QuestionController {
 
         modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("questions", questions);
+        modelAndView.addObject("type", 1);
 //        modelAndView.addObject("currentPage", page);
 //        assert questions != null;
 //        boolean hasNext = questions.size() >= size;
@@ -94,19 +95,21 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
-    public ModelAndView editQuestion(@PathVariable("id") int id, Model model) {
+    public ModelAndView editQuestion(@PathVariable("id") int id, Model model,
+                                    @RequestParam(value = "type", defaultValue = "1") int type) {
         Question question = questionService.getQuestionById(id);
 
         ModelAndView modelAndView = new ModelAndView("editQuestion");
         modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);
-
+        model.addAttribute("type", type);
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/questions/{id}/edit", method = RequestMethod.POST)
     public ModelAndView editQuestionHandle(@ModelAttribute("c_question") Question c_question,
+                                           @RequestParam(value = "type", defaultValue = "1") int type,
                                            RedirectAttributes redirectAttributes) {
 
         Question question = questionService.getQuestionById(c_question.getId());
@@ -127,22 +130,39 @@ public class QuestionController {
             question.setExplain(c_question.getExplain());
             question.setLevel(c_question.getLevel());
             questionService.save(question);
+            if (type == 2) {
+                modelAndView = new ModelAndView("redirect:/admin/topics/" + question.getTopic().getId() + "/questions");
+                redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " updated successfully");
+                return modelAndView;
+            }
+
+
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " updated successfully");
         }
-
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/questions/{id}/delete", method = RequestMethod.GET)
-    public ModelAndView deleteQuestion(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+    public ModelAndView deleteQuestion(@PathVariable("id") int id,
+                                       @RequestParam(value = "type", defaultValue = "1") int type,
+                                       RedirectAttributes redirectAttributes) {
         Question question = questionService.getQuestionById(id);
 
         if (question != null) {
+            if (type == 2) {
+                ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics/" + question.getTopic().getId() + "/questions");
+                questionService.delete(question);
+                redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " deleted successfully");
+                return modelAndView;
+            }
+
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
             questionService.delete(question);
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " deleted successfully");
             return modelAndView;
         }
+
+
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
         redirectAttributes.addFlashAttribute("e_message", "Question: " + (question != null ? question.getId().toString() : null) + " deleted failed");
@@ -249,6 +269,21 @@ public class QuestionController {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
         redirectAttributes.addFlashAttribute("message", "Saved " + count + " questions successfully");
 
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/deleteTopic", method = RequestMethod.GET)
+    public ModelAndView deleteAllQuestionOfTopic(@RequestParam("topicId") int topicId,
+                                                 RedirectAttributes redirectAttributes) {
+        Topic topic = topicService.getTopicById(topicId);
+        if (topic == null) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
+            redirectAttributes.addFlashAttribute("e_message", "Topic does not exist");
+            return modelAndView;
+        }
+        questionService.deleteAllByTopic(topic);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/topics");
+        redirectAttributes.addFlashAttribute("message", "Deleted all questions of topic " + topic.getName() + " successfully");
         return modelAndView;
     }
 

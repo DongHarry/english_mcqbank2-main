@@ -125,4 +125,14 @@ public class QuestionService implements IQuestionService {
         }
         return count;
     }
+
+    @Override
+    public List<Question> getAllQuestionsByTopic(Topic topic) {
+        return questionRepository.findAllByTopic(topic);
+    }
+
+    @Override
+    public void deleteAllByTopic(Topic topic) {
+        questionRepository.deleteAllByTopic(topic);
+    }
 }

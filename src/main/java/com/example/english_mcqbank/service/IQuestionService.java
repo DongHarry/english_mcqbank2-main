@@ -37,4 +37,8 @@ public interface IQuestionService {
     boolean existByContent(String content);
 
     int saveAll(List<Question> questions);
+
+    List<Question> getAllQuestionsByTopic(Topic topic);
+
+    void deleteAllByTopic(Topic topic);
 }
