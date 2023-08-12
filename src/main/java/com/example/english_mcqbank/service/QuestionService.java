@@ -132,6 +132,7 @@ public class QuestionService implements IQuestionService {
     }
 
     @Override
+    @Transactional
     public void deleteAllByTopic(Topic topic) {
         questionRepository.deleteAllByTopic(topic);
     }
