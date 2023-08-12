@@ -47,7 +47,7 @@ public class LogsController {
         ModelAndView modelAndView = new ModelAndView("allLogs");
         UserEntity user = sessionService.getLoggedInUser();
         modelAndView.addObject("user", user);
-        modelAndView.addObject("loggedInUser", user);
+        //modelAndView.addObject("loggedInUser", user);
 
         List<Log> logs = logService.findAllLogs();
         modelAndView.addObject("logs", logs);

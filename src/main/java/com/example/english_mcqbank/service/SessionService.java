@@ -33,4 +33,9 @@ public class SessionService implements ISessionService {
         session.removeAttribute(name);
     }
 
+    @Override
+    public void setLoggedInUser(UserEntity userEntity) {
+        session.setAttribute("loggedInUser", userEntity);
+    }
+
 }

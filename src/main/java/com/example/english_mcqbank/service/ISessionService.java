@@ -8,4 +8,6 @@ public interface ISessionService {
     UserEntity getLoggedInUser();
 
     void removeAttribute(String name);
+
+    void setLoggedInUser(UserEntity userEntity);
 }

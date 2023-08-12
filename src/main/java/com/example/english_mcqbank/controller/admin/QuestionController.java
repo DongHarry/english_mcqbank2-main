@@ -53,7 +53,7 @@ public class QuestionController {
     public ModelAndView addQuestion() {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addQuestion");
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("topics", topics);
         return modelAndView;
     }
@@ -100,7 +100,7 @@ public class QuestionController {
         Question question = questionService.getQuestionById(id);
 
         ModelAndView modelAndView = new ModelAndView("editQuestion");
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("c_question", question);
         model.addAttribute("c_question", question);
         model.addAttribute("type", type);
@@ -176,7 +176,7 @@ public class QuestionController {
         // save to db
         // return
         ModelAndView modelAndView = new ModelAndView("uploadQuestion");
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 

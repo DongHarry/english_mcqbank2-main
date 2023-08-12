@@ -27,7 +27,7 @@ public class UserController {
     @RequestMapping("/user")
     public ModelAndView user() {
         ModelAndView userModelAndView = new ModelAndView("user");
-        userModelAndView.addObject("user", sessionService.getLoggedInUser());
+        //userModelAndView.addObject("user", sessionService.getLoggedInUser());
         return userModelAndView; // Trả về user.jsp
     }
 
@@ -40,7 +40,7 @@ public class UserController {
         UserEntity user = sessionService.getLoggedInUser();
         //UserEntity user = loggedInUserService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
-        userProfileModelAndView.addObject("loggedInUser", user);
+        //userProfileModelAndView.addObject("loggedInUser", user);
         userProfileModelAndView.addObject("type", 1);
 
         return userProfileModelAndView; // Trả về user.jsp
@@ -56,7 +56,8 @@ public class UserController {
             return new ModelAndView("redirect:/user/profile");
         }
         ModelAndView userLogsModelAndView = new ModelAndView("logs");
-        userLogsModelAndView.addObject("loggedInUser", user);
+
+        //userLogsModelAndView.addObject("loggedInUser", user);
         List<Log> logs = logService.getLogsByUser(user);
 
         userLogsModelAndView.addObject("logs", logs);
@@ -73,7 +74,6 @@ public class UserController {
                                    RedirectAttributes redirectAttributes) {
 
         UserEntity user = sessionService.getLoggedInUser();
-        //UserEntity user = loggedInUserService.getLoggedInUser();
 
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
@@ -90,7 +90,8 @@ public class UserController {
 
         ModelAndView userResultModelAndView = new ModelAndView("userResult");
         userResultModelAndView.addObject("results", results);
-        userResultModelAndView.addObject("loggedInUser", user);
+
+        //userResultModelAndView.addObject("loggedInUser", user);
         return userResultModelAndView; // Trả về user.jsp
     }
 }

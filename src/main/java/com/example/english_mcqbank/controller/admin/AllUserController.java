@@ -36,8 +36,8 @@ public class AllUserController {
         UserEntity user = userService.getUserByUserid(id);
         view.addObject("user", user);
 
-        UserEntity loggedInUser = sessionService.getLoggedInUser();
-        view.addObject("loggedInUser", loggedInUser);
+        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        //view.addObject("loggedInUser", loggedInUser);
         view.addObject("type", 2);
         return view; // Trả về admin.jsp
     }
@@ -59,8 +59,8 @@ public class AllUserController {
 
         }
 
-        UserEntity loggedInUser = sessionService.getLoggedInUser();
-        logsModelAndView.addObject("loggedInUser", loggedInUser);
+        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        //logsModelAndView.addObject("loggedInUser", loggedInUser);
 //        logsModelAndView.addObject("currentPage", page);
 //        assert logs != null;
 //        boolean hasNext = logs.size() >= size;
@@ -74,8 +74,8 @@ public class AllUserController {
         ModelAndView usersModelAndView = new ModelAndView("allUsers");
         //List<UserEntity> users = userService.getAllUsers(page, size);
         List<UserEntity> users = userService.getAllUsers();
-        UserEntity loggedInUser = sessionService.getLoggedInUser();
-        usersModelAndView.addObject("loggedInUser", loggedInUser);
+        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        //usersModelAndView.addObject("loggedInUser", loggedInUser);
         usersModelAndView.addObject("users", users);
         //usersModelAndView.addObject("currentPage", page);
         usersModelAndView.addObject("type", 2);
@@ -88,12 +88,11 @@ public class AllUserController {
 
     @RequestMapping(value = "/admin/users/new", method = RequestMethod.GET)
     public ModelAndView addUser(Model model) {
-        UserEntity loggedInUser = sessionService.getLoggedInUser();
-
         model.addAttribute("user", new UserEntity());
         ModelAndView modelAndView = new ModelAndView("addUser");
         modelAndView.addObject("type", 3);
-        modelAndView.addObject("loggedInUser", loggedInUser);
+        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        //modelAndView.addObject("loggedInUser", loggedInUser);
         return modelAndView;
     }
 
@@ -105,8 +104,8 @@ public class AllUserController {
         if (userService.isUserPresent(user.getUsername())
                 || userService.isEmailPresent(user.getEmail())
                 || userService.isPhonePresent(user.getPhone())) {
-            redirectAttributes.addFlashAttribute("message", "User already exists");
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/users/new");
+            redirectAttributes.addFlashAttribute("message", "User already exists");
             //modelAndView.addObject("message", "User already exists");
             return modelAndView;
         }
@@ -193,8 +192,8 @@ public class AllUserController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
-        UserEntity loggedInUser = sessionService.getLoggedInUser();
-        modelAndView.addObject("loggedInUser", loggedInUser);
+        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        //modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("type", 1);
         modelAndView.addObject("userId", user.getId());
 //        modelAndView.addObject("currentPage", page);

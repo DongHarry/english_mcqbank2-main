@@ -87,7 +87,7 @@
                                 <li><a class="page-scroll" href="#news">News</a></li>
                                 <li><a class="page-scroll" href="#contact">Contact</a></li>
                                 <li class="dropdown">
-                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">${user.fullName}<b class="caret"></b> </a>
+                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">${loggedInUser.fullName}<b class="caret"></b> </a>
                                     <ul class="dropdown-menu" >
                                         <li><a href="${pageContext.request.contextPath}/user/profile">User Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
@@ -816,26 +816,26 @@
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="name"
-                                                   placeholder="Họ và tên" value="${user.fullName}" required="required">
+                                                   placeholder="Họ và tên" value="${loggedInUser.fullName}" required="required">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
-                                                   placeholder="Địa chỉ email" required="required" value="${user.email}">
+                                                   placeholder="Địa chỉ email" required="required" value="${loggedInUser.email}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="phone" value="${user.phone}" class="form-control"
+                                            <input type="text" name="phone" value="${loggedInUser.phone}" class="form-control"
                                                    id="phone" placeholder="Số điện thoại">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="company" value="${user.address}" size="40"
+                                            <input type="text" name="company" value="${loggedInUser.address}" size="40"
                                                    class="form-control" id="company" placeholder="Địa chỉ">
                                         </div>
                                     </div>

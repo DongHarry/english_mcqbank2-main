@@ -29,7 +29,7 @@ public class EditProfileController {
     public ModelAndView editUserProfile(Model model) {
         ModelAndView editUserModelAndView = new ModelAndView("editUser");
         UserEntity user = sessionService.getLoggedInUser();
-        editUserModelAndView.addObject("loggedInUser", user);
+        //editUserModelAndView.addObject("loggedInUser", user);
         editUserModelAndView.addObject("type", 1);
         //UserEntity user = loggedInUserService.getLoggedInUser();
 
@@ -80,6 +80,7 @@ public class EditProfileController {
 
         try {
             userService.saveUser(userEntity);
+            sessionService.setLoggedInUser(userEntity);
             redirectAttributes.addFlashAttribute("successMessage2", "Update profile successfully!");
             ModelAndView view = new ModelAndView("redirect:/user/profile");
             //redirectAttributes.addFlashAttribute("user", userEntity);

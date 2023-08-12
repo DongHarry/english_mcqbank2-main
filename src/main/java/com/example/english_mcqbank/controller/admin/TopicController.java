@@ -45,7 +45,7 @@ public class TopicController {
     @RequestMapping(value = "/admin/topics/new", method = RequestMethod.GET)
     public ModelAndView addTopic() {
         ModelAndView modelAndView = new ModelAndView("addTopic");
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
@@ -98,7 +98,7 @@ public class TopicController {
         Topic topic = topicService.getTopicById(id);
         modelAndView.addObject("c_topic", topic);
         model.addAttribute("c_topic", topic);
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
@@ -138,7 +138,7 @@ public class TopicController {
         modelAndView.addObject("topic", topic);
         modelAndView.addObject("type", 2);
         modelAndView.addObject("questions", questionService.getAllQuestionsByTopic(topic));
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 }

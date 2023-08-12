@@ -34,7 +34,7 @@ public class ExamController {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("addExam");
         modelAndView.addObject("topics", topics);
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
@@ -76,7 +76,7 @@ public class ExamController {
                               @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
 
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 
         List<Exam> exams = examService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);
@@ -96,7 +96,7 @@ public class ExamController {
         model.addAttribute("c_exam", exam);
         List<Topic> topics = topicService.getAllTopics();
         modelAndView.addObject("topics", topics);
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 
         return modelAndView;
     }
@@ -165,7 +165,7 @@ public class ExamController {
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
         modelAndView.addObject("ranking", true);
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("type", 2);
         modelAndView.addObject("title", "All Users results for exam " + examId);
 //        modelAndView.addObject("currentPage", page);

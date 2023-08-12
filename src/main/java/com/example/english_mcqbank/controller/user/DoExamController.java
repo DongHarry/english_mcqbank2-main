@@ -55,6 +55,7 @@ public class DoExamController {
 
         ModelAndView userExamModelAndView = new ModelAndView("exam");
         userExamModelAndView.addObject("exam", exam);
+        userExamModelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return userExamModelAndView; // Trả về user.jsp
     }
 
