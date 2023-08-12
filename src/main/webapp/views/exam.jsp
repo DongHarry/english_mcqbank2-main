@@ -19,15 +19,14 @@
 </head>
 <body>
 <div class="br-pagetitle">
-    <i class="icon ion-ios-person-outline"></i>
     <div>
-        <h1>Exam</h1>
+        <h1>Tham gia bài thi</h1>
     </div>
 </div><!-- d-flex -->
 
 <div class="br-pagebody">
     <div class="br-section-wrapper">
-        <h3 class="br-section-label">Thông tin bài thi </h3>
+        <h2 class="br-section-label">Thông tin bài thi </h2>
 
         <p>Bài thi được thiết kế bởi đội ngũ Apelish</p>
         <div class="editable tx-16 bd pd-30 tx-inverse">
@@ -47,8 +46,10 @@
                     </c:forEach>
                 </ol>
             </li>
-            <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/do">Start</a> <br/>
-            <a href="${pageContext.request.contextPath}/user/exams">Back to Exam List</a> <br/>
+            <div class="form-layout-footer mg-t-30">
+                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/do" class="btn btn-info">Start</a>
+                <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-info">Back to Exam List</a>
+            </div>
         </div>
 
     </div><!-- br-section-wrapper -->

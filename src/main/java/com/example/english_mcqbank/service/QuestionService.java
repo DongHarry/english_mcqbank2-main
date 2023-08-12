@@ -113,4 +113,16 @@ public class QuestionService implements IQuestionService {
     public boolean existByContent(String content) {
         return questionRepository.existsByContent(content);
     }
+
+    @Override
+    public int saveAll(List<Question> questions) {
+        int count = 0;
+        for (Question question : questions) {
+            if (!questionRepository.existsByContent(question.getContent())) {
+                questionRepository.save(question);
+                count++;
+            }
+        }
+        return count;
+    }
 }

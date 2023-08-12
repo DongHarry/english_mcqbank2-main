@@ -15,8 +15,8 @@
 </head>
 <body>
 <h1>Upload File</h1>
-<c:if test="${not empty message}">
-    <h2>${message}</h2>
+<c:if test="${not empty e_message}">
+    <h2>${e_message}</h2>
 </c:if>
 
 <form:form method="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/questions/upload">

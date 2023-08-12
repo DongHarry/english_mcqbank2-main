@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -159,7 +160,7 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/admin/questions/upload", method = RequestMethod.POST)
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+    public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file, Model model, RedirectAttributes redirectAttributes) {
         List<Question> data = new ArrayList<>();
 
         if (file != null) {
@@ -170,24 +171,74 @@ public class QuestionController {
                     data = readFileService.readExcelData(file);
                 } else {
                     model.addAttribute("error", "Invalid file format. Please upload a CSV or Excel file.");
-                    return "result";
+                    ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
+                    redirectAttributes.addFlashAttribute("e_message", "Invalid file format. Please upload a CSV or Excel file.");
+                    return modelAndView;
                 }
 
                 model.addAttribute("data", data);
             } catch (IOException e) {
                 model.addAttribute("error", "Error reading file: " + e.getMessage());
             } catch (InvalidInputFileException e) {
-                System.out.println(e.getMessage());
+                ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
+                redirectAttributes.addFlashAttribute("e_message", "Invalid input file");
+                return modelAndView;
             }
         } else {
             model.addAttribute("error", "Please select a file to upload.");
         }
 
+//        for (Question question : data) {
+//            System.out.println(question);
+//        }
+        int i = 1;
+        Map<Integer, Question> map = new java.util.HashMap<>();
         for (Question question : data) {
-            System.out.println(question);
+            map.put(i++, question);
+        }
+        sessionService.setAttribute("questionMap", map);
+
+        ModelAndView modelAndView = new ModelAndView("addQuestions");
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        modelAndView.addObject("questions", data);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/upload/save", method = RequestMethod.POST)
+    public ModelAndView saveQuestions(@RequestParam("submitButton") String submitButton,
+                                      @RequestParam(name = "paramList", defaultValue = "") String[] paramList,
+                                      RedirectAttributes redirectAttributes) {
+        Map<Integer, Question> map = (Map<Integer, Question>) sessionService.getAttribute("questionMap");
+        ArrayList<Question> questions = null;
+        if (submitButton.equals("save")) {
+            Integer[] Ids = new Integer[paramList.length];
+            if (paramList == null || paramList.length==0 ) {
+                ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
+                redirectAttributes.addFlashAttribute("e_message", "Please select at least one question");
+                return modelAndView;
+            } else {
+                int n = paramList[0].length();
+                questions = new ArrayList<>();
+
+                for (int i = 0; i < paramList.length; i++) {
+                    Ids[i] = Integer.parseInt(paramList[i].charAt(n - 1) + "");
+                }
+                for (Integer id : Ids) {
+                    questions.add(map.get(id));
+                }
+            }
+        } else {
+            questions = new ArrayList<>(map.values());
         }
 
-        return "result";
+//        for (Question question : questions) {
+//            System.out.println(question);
+//        }
+        int count = questionService.saveAll(questions);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
+        redirectAttributes.addFlashAttribute("message", "Saved " + count + " questions successfully");
+
+        return modelAndView;
     }
 
     private List<String[]> readCsvData(MultipartFile file) throws IOException {
