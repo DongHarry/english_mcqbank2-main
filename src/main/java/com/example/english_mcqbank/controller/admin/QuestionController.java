@@ -10,9 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -141,4 +145,56 @@ public class QuestionController {
         redirectAttributes.addFlashAttribute("e_message", "Question: " + (question != null ? question.getId().toString() : null) + " deleted failed");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/admin/questions/upload", method = RequestMethod.GET)
+    public ModelAndView uploadQuestion(@RequestParam("file")MultipartFile file) {
+        // if csv
+        // read file
+        // save to db
+        // return
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/questions/upload", method = RequestMethod.POST)
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+        List<String[]> data = new ArrayList<>();
+
+        if (file != null) {
+            try {
+                if (file.getContentType().equals("text/csv")) {
+                    data = readCsvData(file);
+                } else if (file.getContentType().equals("application/vnd.ms-excel") || file.getContentType().equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+                    data = readExcelData(file);
+                } else {
+                    model.addAttribute("error", "Invalid file format. Please upload a CSV or Excel file.");
+                    return "result";
+                }
+
+                model.addAttribute("data", data);
+            } catch (IOException e) {
+                model.addAttribute("error", "Error reading file: " + e.getMessage());
+            }
+        } else {
+            model.addAttribute("error", "Please select a file to upload.");
+        }
+
+        return "result";
+    }
+
+    private List<String[]> readCsvData(MultipartFile file) throws IOException {
+        List<String[]> data = new ArrayList<>();
+        // Your code to read data from the CSV file
+        System.out.println("CSV file");
+        return data;
+    }
+
+    private List<String[]> readExcelData(MultipartFile file) throws IOException {
+        List<String[]> data = new ArrayList<>();
+        System.out.println("Excel file");
+        return data;
+    }
 }
+
+
+

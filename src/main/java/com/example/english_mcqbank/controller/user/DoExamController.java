@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,7 +40,6 @@ public class DoExamController {
 
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id, RedirectAttributes redirectAttributes) {
-
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
@@ -66,13 +62,6 @@ public class DoExamController {
     public ModelAndView doExam(@PathVariable int id) {
         ModelAndView userExamModelAndView = new ModelAndView("doExam");
         Exam exam = examService.getExamById(id);
-        /*
-        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
-            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
-            return modelAndView;
-        }
-        */
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
         }
@@ -101,6 +90,39 @@ public class DoExamController {
 //        for (Question question : questions) {
 //            questionMap.put(question.getId(), question);
 //        }
+        Collections.shuffle(questions);
+        userExamModelAndView.addObject("questions", questions);
+        userExamModelAndView.addObject("examId", exam.getId());
+        return userExamModelAndView; // Trả về user.jsp
+    }
+
+    @RequestMapping(value = "/user/exams/doExam", method = RequestMethod.POST)
+    public ModelAndView doExam2(@RequestParam("examId") int id) {
+        ModelAndView userExamModelAndView = new ModelAndView("doExam");
+        Exam exam = examService.getExamById(id);
+        if (exam == null) {
+            return new ModelAndView("redirect:/user/exams");
+        }
+
+        /*
+        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
+            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
+            return modelAndView;
+        }
+        */
+
+        int questionCount = exam.getQuestionNo();
+        List<ExamTopic> examTopics = exam.getExamTopicList();
+        int examType = exam.getType();
+        List<Question> questions = new ArrayList<>();
+        for (ExamTopic examTopic: examTopics) {
+            List<Question> questions1 =
+                    questionService.getRandom(examTopic.getTopic().getId(), 0,
+                            (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
+            questions.addAll(questions1);
+        }
+
         Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
         userExamModelAndView.addObject("examId", exam.getId());
