@@ -204,6 +204,10 @@ public class QuestionController {
                 ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
                 redirectAttributes.addFlashAttribute("e_message", "Invalid input file");
                 return modelAndView;
+            } catch (Exception e) {
+                ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
+                redirectAttributes.addFlashAttribute("e_message", "Error reading file: " + e.getMessage());
+                return modelAndView;
             }
         } else {
             model.addAttribute("error", "Please select a file to upload.");

@@ -206,13 +206,20 @@
                 <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">Các cột qu_answer,qu_type, tp_id, difficult_level là kiểu số nguyên, các cột còn lại là kiểu chuỗi</p>
                 </li>
-                <li style="list-style: none;">
+                <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">TP_ID phải trong danh sách đã có, thêm hoặc xem tại <a href="${pageContext.request.contextPath}/admin/topics">Topics</a></p>
+                </li>
+                <li style="list-style: none; margin-top: -40px">
+                    <p class="br-section-text" style="opacity: 0; user-select: none">TP_ID phải trong danh sách đã có, thêm hoặc xem tại </p>
                 </li>
             </ul>
             <c:if test="${not empty e_message}">
-                <div class="alert alert-danger" role="alert">
-                    ${e_message}
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="alert alert-danger" role="alert">
+                            ${e_message}
+                        </div>
+                    </div>
                 </div>
             </c:if>
             <form:form method="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/questions/upload">
