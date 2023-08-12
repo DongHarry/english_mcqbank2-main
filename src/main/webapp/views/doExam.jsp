@@ -12,14 +12,41 @@
 <html>
 <head>
     <title>Questions</title>
+    <script>
+        function countdown(duration) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+                console.log(timer);
+                if (--timer === 0) {
+
+                    alert("Hết giờ!")
+                    //$("#submitButton").click(); // Tự động click nút submit
+                    document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
+                    clearInterval(interval); // Dừng đồng hồ đếm ngược khi đạt 0
+                }
+            }, 1000);
+        }
+
+        // Thay thế 'yourJSPVariable' bằng biến duration từ EL
+        var durationFromEL = ${questions.size() * 30};
+        countdown(durationFromEL);
+    </script>
 </head>
 <body>
 <h1>Bài thi</h1>
 <div id="time">Thời gian còn lại: </div>
+<div id="countdown"> </div>
 <div id="question-count">Số câu hỏi: ${questions.size()}</div>
 <hr>
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
-<form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post">
+<form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" cssClass="my-form" id="myForm">
     <c:forEach var="question" items="${questions}">
         <div class="question-container">
             <h3>${question.content}</h3>
@@ -29,7 +56,7 @@
             </audio>
                 <br>
             </c:if>
-            <div>
+            <div class="question-options">
                 <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}" class="radio-option">
                 <label for="question_${question.id}_option1" class="label-option">${question.option1}</label><br>
                 <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}" class="radio-option">
@@ -45,37 +72,11 @@
         </div>
     </c:forEach>
     <input type="hidden" name="examId" value="${examId}">
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submitButton">
 </form:form>
 
 <!-- Add this script tag to include the JavaScript code -->
-<script>
-    function shuffleOptions(container) {
-        var divElement = container.querySelector(".question-options");
-        var elements = Array.from(divElement.getElementsByClassName("radio-option"));
 
-        elements.sort(function(a, b) {
-            return Math.random() - 0.5;
-        });
-
-        while (divElement.firstChild) {
-            divElement.removeChild(divElement.firstChild);
-        }
-
-        for (var i = 0; i < elements.length; i++) {
-            divElement.appendChild(elements[i]);
-            divElement.appendChild(document.createElement("br"));
-        }
-    }
-
-    // Call the shuffleOptions() function for each question container when the page is loaded
-    window.onload = function() {
-        var questionContainers = document.getElementsByClassName("question-container");
-        for (var i = 0; i < questionContainers.length; i++) {
-            shuffleOptions(questionContainers[i]);
-        }
-    };
-</script>
 
 <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
 <%--    <c:forEach var="question" items="${questions}">--%>
@@ -101,41 +102,6 @@
 
 
 
-  <script>
-      $(document).ready(function() {
-          // Số câu hỏi trong bài thi (lấy từ biểu thức EL)
-          var questionCount = <c:out value="${questions.size()}" />;
-          var timePerQuestion = 60; // Thời gian cho mỗi câu hỏi (tính theo giây)
-          var totalTime = questionCount * timePerQuestion; // Tổng thời gian cho bài thi (tính theo giây)
-          var maxTime = Math.floor(totalTime / 60); // Thời gian tối đa (tính theo phút)
 
-          // Biến để lưu thời gian kết thúc đếm ngược
-          var countDownDate;
-
-          // Hàm để cập nhật thời gian còn lại và kiểm tra nếu đã hết thời gian
-          function updateTimer() {
-              var now = new Date().getTime();
-              var distance = countDownDate - now;
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-              $("#time").text("Time remaining: " + minutes + ":" + seconds);
-              if (distance <= 0) {
-                  clearInterval(timerInterval);
-                  $('#submit-btn').click(); // Nếu hết thời gian, tự động nhấn nút Nộp bài
-              }
-          }
-
-          // Hàm được gọi khi bắt đầu bài thi
-          function startExam() {
-              countDownDate = new Date().getTime() + maxTime * 60 * 1000; // Thời gian kết thúc đếm ngược là ${maxTime} phút sau thời điểm hiện tại
-              timerInterval = setInterval(updateTimer, 1000); // Bắt đầu đếm ngược thời gian với mỗi giây cập nhật một lần
-              $("#start-btn").prop("disabled", true); // Ẩn nút "Bắt đầu bài thi" sau khi bấm
-          }
-
-          // Tự động bắt đầu đếm ngược khi trang tải xong
-          startExam();
-      });
-
-  </script>
 </body>
 </html>

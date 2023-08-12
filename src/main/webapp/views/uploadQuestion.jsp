@@ -206,7 +206,7 @@
                 <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">Các cột qu_answer,qu_type, tp_id, difficult_level là kiểu số nguyên, các cột còn lại là kiểu chuỗi</p>
                 </li>
-                <li style="list-style: none; margin-top: -40px">
+                <li style="list-style: none;">
                     <p class="br-section-text" style="color: red">TP_ID phải trong danh sách đã có, thêm hoặc xem tại <a href="${pageContext.request.contextPath}/admin/topics">Topics</a></p>
                 </li>
             </ul>

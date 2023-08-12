@@ -192,7 +192,7 @@
         <li class="br-menu-item">
             <a href="#" class="br-menu-link with-sub <c:if test="${ranking}">show-sub active</c:if>">
                 <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-                <span class="menu-item-label">Làm bài thi</span>
+                <span class="menu-item-label">Làm bài</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link <c:if test="${ranking}">show-sub active</c:if>">
@@ -377,9 +377,16 @@
 
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <div class="form-layout-footer mg-t-30">
-                        <a href="${pageContext.request.contextPath}/user" class="btn btn-secondary">Quay lại</a>
-                    </div>
+                    <c:if test="${ranking}">
+                        <div class="form-layout-footer mg-t-30">
+                            <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Quay lại</a>
+                        </div>
+                    </c:if>
+                    <c:if test="${!ranking}">
+                        <div class="form-layout-footer mg-t-30">
+                            <a href="${pageContext.request.contextPath}/user" class="btn btn-secondary">Quay lại</a>
+                        </div>
+                    </c:if>
                 </sec:authorize>
 
             </div><!-- table-wrapper -->

@@ -40,15 +40,18 @@
                 <ol>
                     <c:forEach var="examtopic" items="${exam.examTopicList}">
                         <li>
-                            Exam Topic ID: <c:out value="${examtopic.topic.name}"/>
-                            Exam Topic Name: <c:out value="(${examtopic.percent}%)"/>
+                            ${examtopic.topic.name} (${examtopic.percent}%)
                         </li>
                     </c:forEach>
                 </ol>
             </p>
             <div class="form-layout-footer mg-t-30">
-                <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/do" class="btn btn-primary">Start</a>
-                <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Back to Exam List</a>
+                <form:form action="${pageContext.request.contextPath}/user/exams/doExam" method="post">
+                    <input name="examId" value="${exam.id}" type="hidden">
+                    <button type="submit" class="btn btn-primary">Start</button>
+
+                    <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Back to Exam List</a>
+                </form:form>
             </div>
         </div>
 

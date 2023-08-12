@@ -160,7 +160,7 @@
             <li class="br-menu-item">
                 <a href="#" class="br-menu-link with-sub">
                     <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-                    <span class="menu-item-label">Làm bài thi</span>
+                    <span class="menu-item-label">Làm bài</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
                     <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link">
