@@ -192,21 +192,21 @@
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Thêm câu hỏi bằng file</h6>
             <p class="br-section-text" style="color: red">*Chú ý:</p>
-            <ul>
-                <li>
+            <ul style="margin: -70px 20px">
+                <li style="list-style: none">
                     <p class="br-section-text" style="color: red">Kích thước file tối đa 10MB</p>
                 </li>
-                <li>
+                <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">Định dạng chấp nhận là .csv, .xls hoặc .xlsx</p>
                 </li>
-                <li>
+                <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">File có header với định dạng là QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAIN,QU_TYPE,TP_ID,DIFFICULT_LEVEL
                     </p>
                 </li>
-                <li>
+                <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">Các cột qu_answer,qu_type, tp_id, difficult_level là kiểu số nguyên, các cột còn lại là kiểu chuỗi</p>
                 </li>
-                <li>
+                <li style="list-style: none; margin-top: -40px">
                     <p class="br-section-text" style="color: red">TP_ID phải trong danh sách đã có, thêm hoặc xem tại <a href="${pageContext.request.contextPath}/admin/topics">Topics</a></p>
                 </li>
             </ul>
