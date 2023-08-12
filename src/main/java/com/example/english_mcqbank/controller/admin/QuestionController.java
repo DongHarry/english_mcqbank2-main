@@ -176,6 +176,7 @@ public class QuestionController {
         // save to db
         // return
         ModelAndView modelAndView = new ModelAndView("uploadQuestion");
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return modelAndView;
     }
 
