@@ -37,16 +37,19 @@
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
                 console.log(timer);
                 if (--timer === -2) {
-                    alert("Hết giờ!")
+                    alert("Hết giờ!");
+                    document.getElementById("countdown").innerHTML = "00:00";
+                    // Dừng đồng hồ đếm ngược khi đạt 0
                     //$("#submitButton").click(); // Tự động click nút submit
                     document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
-                    clearInterval(interval); // Dừng đồng hồ đếm ngược khi đạt 0
+                    clearInterval(interval);
+
                 }
             }, 1000);
         }
 
         // Thay thế 'yourJSPVariable' bằng biến duration từ EL
-        var durationFromEL = ${questions.size() * 30};
+        var durationFromEL = ${questions.size() * 3};
         countdown(durationFromEL);
     </script>
 </head>
@@ -126,6 +129,14 @@
         font-size: 100px;
         color: #891823;
     }
+
+    .circle {
+        /* ... your existing styles ... */
+    }
+
+    .circle.selected {
+        background-color: green; /* Color for selected circles */
+    }
 </style>
 
 <body>
@@ -144,9 +155,10 @@
                     <span id="countdown">00:00</span>
                 </div>
                 <hr width="60%">
-
-                <c:forEach begin="1" end="${questions.size()}" varStatus="loop">
-                    <div class="numberCircle circle" id="answer${loop.index}">${loop.index}</div>
+                <c:set var="index" value="0"/>
+                <c:forEach var="question" items="${questions}">
+                    <c:set var="index" value="${index + 1}"/>
+                    <div class="numberCircle circle" id="circle-${question.id}">${index}</div>
                 </c:forEach>
                 <br> <br>
                 <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
@@ -163,7 +175,7 @@
             <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
             <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" id="myForm">
                 <c:forEach var="question" items="${questions}">
-                    <div class="question-container">
+                    <div class="question-container" id="question-container-${question.id}">
                         <h3>${question.content}</h3>
                         <c:if test="${question.type == 2}">
                             Audio:
@@ -175,20 +187,18 @@
                         </c:if>
                         <div class="-question-option">
                             <input type="radio" name="question_${question.id}" value="${question.option1}"
-                                   class="radio-option">
-                            <label for="question_${question.id}_option1"
-                                   class="label-option">${question.option1}</label><br>
-                            <input type="radio" name="question_${question.id}" value="${question.option2}"
-                                   class="radio-option">
+                                   class="radio-option" onclick="handleRadioClick(${question.id})" data-question-id="${question.id}">
+                            <label for="question_${question.id}_option1" class="label-option">${question.option1}</label><br>
+                            <input type="radio" name="question_${question.id}" value="${question.option2}" data-question-id="${question.id}" class="radio-option" onclick="handleRadioClick(${question.id})">
                             <label for="question_${question.id}_option2"
                                    class="label-option">${question.option2}</label><br>
-                            <input type="radio" name="question_${question.id}" value="${question.option3}"
-                                   class="radio-option">
+                            <input type="radio" name="question_${question.id}" value="${question.option3}" data-question-id="${question.id}"
+                                   class="radio-option" onclick="handleRadioClick(${question.id})">
                             <label for="question_${question.id}_option3"
                                    class="label-option">${question.option3}</label><br>
                             <c:if test="${question.type == 1}">
-                                <input type="radio" name="question_${question.id}" value="${question.option4}"
-                                       class="radio-option">
+                                <input type="radio" name="question_${question.id}" value="${question.option4}" data-question-id="${question.id}"
+                                       class="radio-option" onclick="handleRadioClick(${question.id})">
                                 <label for="question_${question.id}_option4"
                                        class="label-option">${question.option4}</label><br>
                             </c:if>
@@ -230,6 +240,12 @@
 
 </body>
 
-
+<script>
+    function handleRadioClick(questionId) {
+        var circle = document.getElementById("circle-" + questionId);
+        circle.style.backgroundColor = "green";
+    }
+</script>
+<script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 
 </html>
