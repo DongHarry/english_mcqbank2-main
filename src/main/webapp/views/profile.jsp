@@ -151,6 +151,7 @@
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
         </sec:authorize>
+
     </ul><!-- br-sideleft-menu -->
 
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>

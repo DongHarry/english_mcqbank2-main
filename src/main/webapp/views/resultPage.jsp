@@ -28,7 +28,7 @@
                 <span class="menu-item-label">Làm bài</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link active">
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link">
                     Tất cả bài thi</a></li>
 
             </ul>
@@ -103,4 +103,21 @@
     </div>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/moment/min/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/peity/jquery.peity.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.layout.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/bracket.js"></script>
+<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 </html>
