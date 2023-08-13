@@ -56,11 +56,11 @@ public class QuestionService implements IQuestionService {
     @Override
     public List<Question> getRandom(int topicId, int level, int number) {
         if (topicId <= 0) {
-            return questionRepository.findRandomQuestions(number,1);
+            return questionRepository.findRandomQuestions(number, 1);
         }
 
         if (level <= 0) {
-            return questionRepository.findRandomQuestions(topicId, number,1);
+            return questionRepository.findRandomQuestions(topicId, number, 1);
         }
 
         return questionRepository.findRandomQuestions(topicId, level, number, 1);
@@ -74,15 +74,15 @@ public class QuestionService implements IQuestionService {
 
     @Override
     public List<Question> getRandom(Integer topicId, int level, int number, int examType) {
-            if (topicId <= 0) {
-                return questionRepository.findRandomQuestions(number, examType);
-            }
+        if (topicId <= 0) {
+            return questionRepository.findRandomQuestions(number, examType);
+        }
 
-            if (level <= 0) {
-                return questionRepository.findRandomQuestions(topicId, number, examType);
-            }
+        if (level <= 0) {
+            return questionRepository.findRandomQuestions(topicId, number, examType);
+        }
 
-            return questionRepository.findRandomQuestions(topicId, level, number, examType);
+        return questionRepository.findRandomQuestions(topicId, level, number, examType);
 
     }
 

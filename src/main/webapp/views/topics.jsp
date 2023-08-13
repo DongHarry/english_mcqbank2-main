@@ -1,5 +1,3 @@
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -25,8 +23,10 @@
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css"
+          rel="stylesheet">
 
 
     <!-- Bracket CSS -->
@@ -36,7 +36,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -58,8 +59,10 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                    cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
+                                        class="sub-link">Thêm câu hỏi bằng file</a></li>
 
             </ul>
         </li><!-- br-menu-item -->
@@ -102,7 +105,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -110,12 +112,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -138,7 +141,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                </li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -190,33 +194,43 @@
                     </thead>
 
                     <tbody>
-                        <c:forEach var="topic" items="${topics}">
-                            <tr>
-                                <td>${topic.id}</td>
-                                <td>${topic.name}</td>
-                                <td>${topic.description}</td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
-                                        </li>
-                                        <li>
-                                            All questions: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}/questions" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Questions"><i class="fas fa-list"></i></a>
-                                        </li>
-                                        <li>
-                                            Delete: <a onclick="if (!confirm('Are you sure to delete this topic?')) return false" href="${pageContext.request.contextPath}/admin/topics/${topic.id}/delete" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                    <c:forEach var="topic" items="${topics}">
+                        <tr>
+                            <td>${topic.id}</td>
+                            <td>${topic.name}</td>
+                            <td>${topic.description}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        Edit: <a href="${pageContext.request.contextPath}/admin/topics/${topic.id}"
+                                                 class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i
+                                            class="fas fa-edit"></i></a>
+                                    </li>
+                                    <li>
+                                        All questions: <a
+                                            href="${pageContext.request.contextPath}/admin/topics/${topic.id}/questions"
+                                            class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Questions"><i
+                                            class="fas fa-list"></i></a>
+                                    </li>
+                                    <li>
+                                        Delete: <a
+                                            onclick="if (!confirm('Are you sure to delete this topic?')) return false"
+                                            href="${pageContext.request.contextPath}/admin/topics/${topic.id}/delete"
+                                            class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i
+                                            class="fas fa-trash"></i></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
-<%--                <a href="#">New Topic</a>--%>
-<%--                <a href="#">Edit Topic</a>--%>
-<%--                <a href="#">Delete Topic</a>--%>
+                <%--                <a href="#">New Topic</a>--%>
+                <%--                <a href="#">Edit Topic</a>--%>
+                <%--                <a href="#">Delete Topic</a>--%>
                 <div class="form-layout-footer mg-t-30">
-                    <button class="btn btn-info mg-r-5"><a href="${pageContext.request.contextPath}/admin/topics/new">New Topic</a></button>
+                    <button class="btn btn-info mg-r-5"><a href="${pageContext.request.contextPath}/admin/topics/new">New
+                        Topic</a></button>
 
                 </div>
 
@@ -237,7 +251,6 @@
 </div>
 
 <!-- ########## END: noidung ########## --->
-
 
 
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
@@ -264,26 +277,26 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -291,7 +304,7 @@
         }
     });
 
-    $(function(){
+    $(function () {
         'use strict';
 
         $('#datatable2').DataTable({
@@ -304,7 +317,7 @@
         });
 
         // Select2
-        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+        $('.dataTables_length select').select2({minimumResultsForSearch: Infinity});
 
     });
 </script>

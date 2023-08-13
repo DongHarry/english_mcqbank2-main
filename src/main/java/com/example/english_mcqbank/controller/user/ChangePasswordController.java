@@ -31,6 +31,7 @@ public class ChangePasswordController {
         changePasswordModelAndView.addObject("type", 1);
         return changePasswordModelAndView; // Trả về user.jsp
     }
+
     @RequestMapping(value = "/user/profile/change-password", method = RequestMethod.POST)
     public ModelAndView changePassword(@RequestParam("oldPassword") String oldPassword,
                                        @RequestParam("newPassword") String newPassword,

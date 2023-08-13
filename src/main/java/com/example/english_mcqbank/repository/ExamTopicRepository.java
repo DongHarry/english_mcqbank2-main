@@ -3,9 +3,7 @@ package com.example.english_mcqbank.repository;
 import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.ExamTopic;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.*;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.*;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

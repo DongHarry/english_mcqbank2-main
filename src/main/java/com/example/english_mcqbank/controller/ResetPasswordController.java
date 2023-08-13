@@ -24,6 +24,7 @@ public class ResetPasswordController {
     final PasswordEncoder passwordEncoder;
     final IEmailSender emailSender;
     final VerifyService verifyService;
+
     @RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
     public ModelAndView forgotPassword() {
         return new ModelAndView("forgot-password");
@@ -50,7 +51,7 @@ public class ResetPasswordController {
                 redirectAttributes.addFlashAttribute("message2", "Email not found!");
                 return modelAndView;
             }
-            emailSender.sendResetPasswordEmail(user,url);
+            emailSender.sendResetPasswordEmail(user, url);
         } else {
             UserEntity user = userService.getUserByUsername(name);
             if (user == null) {
@@ -59,7 +60,7 @@ public class ResetPasswordController {
                 redirectAttributes.addFlashAttribute("message2", "Username not found!");
                 return modelAndView;
             }
-            emailSender.sendResetPasswordEmail(user,url);
+            emailSender.sendResetPasswordEmail(user, url);
         }
 
         ModelAndView modelAndView = new ModelAndView("redirect:/login-page");

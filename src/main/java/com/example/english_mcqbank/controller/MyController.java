@@ -5,7 +5,10 @@ import com.example.english_mcqbank.service.IEmailSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -70,5 +73,5 @@ public class MyController {
     public void abc(@RequestParam("username") String username, @RequestParam("password") String password) {
         System.out.println("username: " + username);
         System.out.println("password: " + password);
-    } 
+    }
 }

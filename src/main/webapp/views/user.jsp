@@ -71,7 +71,8 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/home">
-                                <img src="../resource/img/logo_1_pixian.png" alt="logo" style="max-width: 150px; margin-top: -25px">
+                                <img src="../resource/img/logo_1_pixian.png" alt="logo"
+                                     style="max-width: 150px; margin-top: -25px">
                             </a>
                         </div>
 
@@ -85,9 +86,11 @@
                                 <li><a class="page-scroll" href="#news">News</a></li>
                                 <li><a class="page-scroll" href="#contact">Contact</a></li>
                                 <li class="dropdown">
-                                    <a class="page-scroll" href="#" class="drop" data-toggle="dropdown">${loggedInUser.fullName}<b class="caret"></b> </a>
-                                    <ul class="dropdown-menu" >
-                                        <li><a href="${pageContext.request.contextPath}/user/profile">User Information</a></li>
+                                    <a class="page-scroll" href="#" class="drop"
+                                       data-toggle="dropdown">${loggedInUser.fullName}<b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="${pageContext.request.contextPath}/user/profile">User
+                                            Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
                                         <li><a href="${pageContext.request.contextPath}/logout">Sign out</a></li>
                                     </ul>
@@ -125,12 +128,15 @@
                         <div class="hero-content-wrap">
                             <div class="hero-content">
                                 <h1>Apelish - Luyện thi Tiếng Anh</h1>
-                                <p>Cái tên Apelish gắn liền với ‘’hành trình’’ Startup Việt, với những dự án bảo trợ chuyên môn và đồng hành kiến thức học thuật cùng VnExpress, VTV7, VTV2.. </p>
+                                <p>Cái tên Apelish gắn liền với ‘’hành trình’’ Startup Việt, với những dự án bảo trợ
+                                    chuyên môn và đồng hành kiến thức học thuật cùng VnExpress, VTV7, VTV2.. </p>
                                 <div class="slider-action-btn">
-                                    <a href="${pageContext.request.contextPath}/user/exams" class="btn softo-solid-btn">Làm bài thi</a>
-                                    <a href="${pageContext.request.contextPath}/user/results" class="btn softo-solid-btn">Kết quả bài thi</a>
-<%--                                    <a href="#" class="btn btn-icon"><i class="fa fa-android"></i></a>--%>
-<%--                                    <a href="#" class="btn btn-icon"><i class="fa fa-windows"></i></a>--%>
+                                    <a href="${pageContext.request.contextPath}/user/exams" class="btn softo-solid-btn">Làm
+                                        bài thi</a>
+                                    <a href="${pageContext.request.contextPath}/user/results"
+                                       class="btn softo-solid-btn">Kết quả bài thi</a>
+                                    <%--                                    <a href="#" class="btn btn-icon"><i class="fa fa-android"></i></a>--%>
+                                    <%--                                    <a href="#" class="btn btn-icon"><i class="fa fa-windows"></i></a>--%>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +213,8 @@
                                 <div class="single-promo-content">
                                     <span class="ti-palette"></span>
                                     <h6>Gắn liền với những dự án bảo trợ và đồng hành kiến thức học thuật</h6>
-                                    <p>Kết nối với nhiều báo điện tử, trang thông tin uy tín như Dân Trí, kênh 14, Vietnamnet, VTV, VTC…</p>
+                                    <p>Kết nối với nhiều báo điện tử, trang thông tin uy tín như Dân Trí, kênh 14,
+                                        Vietnamnet, VTV, VTC…</p>
                                 </div>
                                 <div class="line"></div>
                             </div>
@@ -235,7 +242,8 @@
                     <div class="col-md-12">
                         <div class="section-heading text-center">
                             <h3>Apelish Features</h3>
-                            <p>Apelish - Luyện thi Tiếng Anh luôn hướng tới sự hoàn thiện và trải nghiệm tuyệt vời nhất đến người dùng.
+                            <p>Apelish - Luyện thi Tiếng Anh luôn hướng tới sự hoàn thiện và trải nghiệm tuyệt vời nhất
+                                đến người dùng.
                                 Luôn nắm bắt và cập nhật các xu hướng công nghệ mới nhất.</p>
                         </div>
                     </div>
@@ -251,7 +259,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Bài thi phong phú</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -264,7 +273,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Nhiều chủ đề lựa chọn</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -277,7 +287,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Hướng dẫn trực tiếp 24/7</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -297,7 +308,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Luôn update các bài thi mới nhất</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -310,7 +322,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Hình ảnh sống động, rõ nét</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -323,7 +336,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>Dễ dàng sử dụng</h5>
-                                <p class="mb-0">Modular and interchangable componente between layouts and even demos.</p>
+                                <p class="mb-0">Modular and interchangable componente between layouts and even
+                                    demos.</p>
                             </div>
                         </div>
                         <!--feature single end-->
@@ -430,7 +444,8 @@
                                                     <span class="main-price-info">Month</span>
                                                 </div>
                                                 <div class="center-block">
-                                                    <button type="button" class="btn softo-btn-outline">Mua ngay</button>
+                                                    <button type="button" class="btn softo-btn-outline">Mua ngay
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -465,10 +480,13 @@
                                     <div class="single-testimonial-item">
                                         <span class="blockquote-icon"><i class="fa fa-quote-left"></i></span>
                                         <div class="testimonial-content">
-                                            <p>Chọn làm giáo viên xuất phát từ một suy nghĩ trẻ con khi mình học cấp hai.
+                                            <p>Chọn làm giáo viên xuất phát từ một suy nghĩ trẻ con khi mình học cấp
+                                                hai.
                                                 Làm giáo viên tiếng Anh là một nghề khó, vì mỗi học sinh
-                                                lại có một tính cách khác nhau, tuy nhiên, nếu có thể làm các bạn yêu môn này được,
-                                                và tự tin khi giao tiếp, thì dù tiếng Anh của bạn tệ đến đâu thì bạn vẫn có thể khá
+                                                lại có một tính cách khác nhau, tuy nhiên, nếu có thể làm các bạn yêu
+                                                môn này được,
+                                                và tự tin khi giao tiếp, thì dù tiếng Anh của bạn tệ đến đâu thì bạn vẫn
+                                                có thể khá
                                                 hơn rất nhiều, vì các bạn tự tin mà phải không?</p>
                                         </div>
                                         <div class="testimonial-author">
@@ -484,10 +502,14 @@
                                     <div class="single-testimonial-item">
                                         <span class="blockquote-icon"><i class="fa fa-quote-left"></i></span>
                                         <div class="testimonial-content">
-                                            <p>Cô đã đến với tiếng Anh và yêu vẻ đẹp của ngôn ngữ này một cách hoàn toàn tình cờ.
-                                                Sau khi thử thách bản thân bằng việc nộp đơn vào vị trí giáo viên tiếng Anh,
-                                                cô chợt nhận ra tiếng Anh chính là định mệnh của bản thân và sứ mệnh của cô là
-                                                lan truyền niềm đam mê ấy cho học sinh của cô thông qua việc thúc đẩy và truyền
+                                            <p>Cô đã đến với tiếng Anh và yêu vẻ đẹp của ngôn ngữ này một cách hoàn toàn
+                                                tình cờ.
+                                                Sau khi thử thách bản thân bằng việc nộp đơn vào vị trí giáo viên tiếng
+                                                Anh,
+                                                cô chợt nhận ra tiếng Anh chính là định mệnh của bản thân và sứ mệnh của
+                                                cô là
+                                                lan truyền niềm đam mê ấy cho học sinh của cô thông qua việc thúc đẩy và
+                                                truyền
                                                 cảm hứng cho các bạn.</p>
                                         </div>
                                         <div class="testimonial-author">
@@ -503,9 +525,12 @@
                                     <div class="single-testimonial-item">
                                         <span class="blockquote-icon"><i class="fa fa-quote-left"></i></span>
                                         <div class="testimonial-content">
-                                            <p>Mình đã cố gắng hết sức để học tiếng Anh và đạt điểm IELTS tổng thể 8.0, bao gồm 9.0 Reading
-                                                và Listening mà mình thực sự tự hào. Lời cuối cùng, mình muốn nói rằng: Khoản đầu tư tốt
-                                                nhất bạn có thể làm là cho chính bản thân bạn, và với tất cả các học viên trẻ của mình ở đây,
+                                            <p>Mình đã cố gắng hết sức để học tiếng Anh và đạt điểm IELTS tổng thể 8.0,
+                                                bao gồm 9.0 Reading
+                                                và Listening mà mình thực sự tự hào. Lời cuối cùng, mình muốn nói rằng:
+                                                Khoản đầu tư tốt
+                                                nhất bạn có thể làm là cho chính bản thân bạn, và với tất cả các học
+                                                viên trẻ của mình ở đây,
                                                 hãy cho mình cơ hội làm bài kiểm tra IELTS sẽ là bước đầu tiên tốt nhất.
                                             </p>
                                         </div>
@@ -522,11 +547,15 @@
                                     <div class="single-testimonial-item">
                                         <span class="blockquote-icon"><i class="fa fa-quote-left"></i></span>
                                         <div class="testimonial-content">
-                                            <p>Đã nhiều năm kể từ ngày mình quyết định theo đuổi sự nghiệp giáo dục, đó là khoảng mười năm trước.
-                                                Lúc đó, mình rất háo hức trở thành một người có thể giúp truyền cảm hứng cho các bạn học viên,
-                                                khi mình hiểu những khó khăn mà họ có thể gặp phải khi họ muốn học ngoại ngữ từ kinh nghiệm
+                                            <p>Đã nhiều năm kể từ ngày mình quyết định theo đuổi sự nghiệp giáo dục, đó
+                                                là khoảng mười năm trước.
+                                                Lúc đó, mình rất háo hức trở thành một người có thể giúp truyền cảm hứng
+                                                cho các bạn học viên,
+                                                khi mình hiểu những khó khăn mà họ có thể gặp phải khi họ muốn học ngoại
+                                                ngữ từ kinh nghiệm
                                                 của bản thân. Đặc biệt là khi tiếng Anh đang ngày càng trở nên phổ biến,
-                                                học viên thực sự cần một cố vấn giỏi để giúp đỡ và tư vấn, hoặc có thể chỉ đơn giản
+                                                học viên thực sự cần một cố vấn giỏi để giúp đỡ và tư vấn, hoặc có thể
+                                                chỉ đơn giản
                                                 là cung cấp cho họ nguồn cảm hứng mới.</p>
                                         </div>
                                         <div class="testimonial-author">
@@ -555,27 +584,35 @@
                             <div class="section-heading">
                                 <h3>Faq's</h3>
                                 <p>Trước khi chúng ta có cơ hội gặp gỡ, cảm ơn bạn đã sẵn lòng tìm hiểu tại đây.
-                                    Đội ngũ Apelish rất vui được cùng bạn chia sẻ những câu chuyện đằng sau thương hiệu đáng tự hào.</p>
+                                    Đội ngũ Apelish rất vui được cùng bạn chia sẻ những câu chuyện đằng sau thương hiệu
+                                    đáng tự hào.</p>
                             </div>
                             <div class="panel-group" id="accordion">
                                 <!-- Start Single Item -->
                                 <div class="panel panel-default">
                                     <div class="panel-heading" id="headingOne">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                               class="collapsed">
                                                 Về Apelish - Luyện thi Tiếng Anh
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <p>★ Hành trình của những chiến binh không mệt mỏi để thắp nên những ngọn lửa đam mê với IELTS, từng bước chinh phục điểm số IELTS như mong muốn. </br>
+                                            <p>★ Hành trình của những chiến binh không mệt mỏi để thắp nên những ngọn
+                                                lửa đam mê với IELTS, từng bước chinh phục điểm số IELTS như mong
+                                                muốn. </br>
 
-                                                ★ Là khoảng thời gian từ con số 1 trở thành số 29 cơ sở trên toàn quốc đồng thời phát triển hệ thống học trực tuyến rộng khắp thế giới. </br>
+                                                ★ Là khoảng thời gian từ con số 1 trở thành số 29 cơ sở trên toàn quốc
+                                                đồng thời phát triển hệ thống học trực tuyến rộng khắp thế giới. </br>
 
-                                                ★ Là những năm Apelish miệt mài với mục tiêu Phổ cập IELTS cho người Việt và hoàn thành sứ mệnh Vì 1 triệu Người Việt đạt 6.5 IELTS. </br>
+                                                ★ Là những năm Apelish miệt mài với mục tiêu Phổ cập IELTS cho người
+                                                Việt và hoàn thành sứ mệnh Vì 1 triệu Người Việt đạt 6.5 IELTS. </br>
 
-                                                ★ Chặng đường cải tiến phương pháp đào tạo, là thay đổi hoàn thiện, cùng hàng nghìn học viên vươn lên đạt thành công với sự cố gắng giữ vững mức giá học phí rẻ nhất. </p>
+                                                ★ Chặng đường cải tiến phương pháp đào tạo, là thay đổi hoàn thiện, cùng
+                                                hàng nghìn học viên vươn lên đạt thành công với sự cố gắng giữ vững mức
+                                                giá học phí rẻ nhất. </p>
                                         </div>
                                     </div>
                                 </div>
@@ -584,17 +621,22 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseTwo">
                                                 Về Giáo viên
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <p>Đội ngũ giáo viên chuyên môn giỏi, xuất thân từ các các trường học uy tín hàng đầu quốc tế
-                                                hoặc trường ngoại ngữ có tiếng tại Việt Nam, đồng thời sở hữu chứng chỉ TESOL với phương
-                                                pháp và kỹ năng giảng dạy chuyên sâu. Bên cạnh đó giáo viên IELTS Fighter được tinh
-                                                tuyển, đào tạo khắt khe, áp dụng đồng bộ phương pháp RIPL trong giảng dạy, giúp học viên
+                                            <p>Đội ngũ giáo viên chuyên môn giỏi, xuất thân từ các các trường học uy tín
+                                                hàng đầu quốc tế
+                                                hoặc trường ngoại ngữ có tiếng tại Việt Nam, đồng thời sở hữu chứng chỉ
+                                                TESOL với phương
+                                                pháp và kỹ năng giảng dạy chuyên sâu. Bên cạnh đó giáo viên IELTS
+                                                Fighter được tinh
+                                                tuyển, đào tạo khắt khe, áp dụng đồng bộ phương pháp RIPL trong giảng
+                                                dạy, giúp học viên
                                                 cán đích thành công. </p>
                                         </div>
                                     </div>
@@ -604,17 +646,22 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" id="headingThree">
                                         <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseThree">
                                                 Về Phương pháp đào tạo
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <p>Học viên Apelish không chỉ đơn thuần được bồi dưỡng về mặt kiến thức logic,
-                                                chắt lọc mà còn được thúc đẩy cảm hứng học tập, đẩy mạnh tính thực hành và phát
-                                                triển khả năng tự khám phá kiến thức của bản thân. Chúng tôi đặt trọng tâm vào việc
-                                                xây dựng chân dung một học trò thành công, sở hữu những tính cách, kỹ năng không thể
+                                            <p>Học viên Apelish không chỉ đơn thuần được bồi dưỡng về mặt kiến thức
+                                                logic,
+                                                chắt lọc mà còn được thúc đẩy cảm hứng học tập, đẩy mạnh tính thực hành
+                                                và phát
+                                                triển khả năng tự khám phá kiến thức của bản thân. Chúng tôi đặt trọng
+                                                tâm vào việc
+                                                xây dựng chân dung một học trò thành công, sở hữu những tính cách, kỹ
+                                                năng không thể
                                                 thiếu trong thế kỷ 21. </p>
                                         </div>
                                     </div>
@@ -624,14 +671,16 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" id="headingFour">
                                         <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseFour">
                                                 Câu chuyện của Apelish
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseFour" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <p>Từ khát khao lan tỏa tình yêu IELTS tới hành trình 7 năm - 60 cơ sở - chắp
+                                            <p>Từ khát khao lan tỏa tình yêu IELTS tới hành trình 7 năm - 60 cơ sở -
+                                                chắp
                                                 cánh cho hàng triệu người chinh phục ước mơ... </p>
                                         </div>
                                     </div>
@@ -693,11 +742,15 @@
                         <div class="col-md-12">
                             <div class="section-heading text-center">
                                 <h3>Báo chí nói về Apelish</h3>
-                                <p>Cái tên Apelish gắn liền với ‘’hành trình kỳ lân’’ Startup Việt, với những dự án bảo trợ
-                                    chuyên môn và đồng hành kiến thức học thuật cùng VnExpress, VTV7, VTV2... Ngoài ra Apelish
-                                    còn kết nối với nhiều báo điện tử, trang thông tin uy tín như báo Giáo dục thời đại của
+                                <p>Cái tên Apelish gắn liền với ‘’hành trình kỳ lân’’ Startup Việt, với những dự án bảo
+                                    trợ
+                                    chuyên môn và đồng hành kiến thức học thuật cùng VnExpress, VTV7, VTV2... Ngoài ra
+                                    Apelish
+                                    còn kết nối với nhiều báo điện tử, trang thông tin uy tín như báo Giáo dục thời đại
+                                    của
                                     Bộ Giáo dục, Dân Trí, kênh 14, Vietnamnet, VTV, VTC… để phủ sóng rộng rãi thông tin,
-                                    kiến thức về IELTS, những kinh nghiệm học và thi IELTS mới nhất đến đông đảo độc giả.</p>
+                                    kiến thức về IELTS, những kinh nghiệm học và thi IELTS mới nhất đến đông đảo độc
+                                    giả.</p>
                             </div>
                         </div>
                     </div>
@@ -710,11 +763,15 @@
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
-                                    <h3><a href="blog-details.html" target="_blank">VnExpress - Apelish thuộc top 10 dịch vụ người Việt tin dùng</a></h3>
-                                    <p>Sự kiện thường niên Lễ trao giải Hàng Việt tốt được người Việt tin dùng 2022 đã xứng tên 10 dịch vụ được yêu
+                                    <h3><a href="blog-details.html" target="_blank">VnExpress - Apelish thuộc top 10
+                                        dịch vụ người Việt tin dùng</a></h3>
+                                    <p>Sự kiện thường niên Lễ trao giải Hàng Việt tốt được người Việt tin dùng 2022 đã
+                                        xứng tên 10 dịch vụ được yêu
                                         thích nhất trong năm, sau khi tiến hành khảo sát trên toàn quốc. </p>
                                     <div class="blog-footer-area">
-                                        <a class="readmore-btn" href="https://ielts-fighter.com/tin-tuc/vnexpress-ielts-fighter-top-10-dich-vu-2022_mt1641797458.html" target="_blank">Read
+                                        <a class="readmore-btn"
+                                           href="https://ielts-fighter.com/tin-tuc/vnexpress-ielts-fighter-top-10-dich-vu-2022_mt1641797458.html"
+                                           target="_blank">Read
                                             More <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
@@ -727,14 +784,19 @@
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
-                                    <h3><a href="blog-details.html" target="_blank">Kenh14 - ISTEP, kỳ thi đánh giá năng lực
+                                    <h3><a href="blog-details.html" target="_blank">Kenh14 - ISTEP, kỳ thi đánh giá năng
+                                        lực
                                         tiếng Anh cho học sinh Gen Z</a></h3>
                                     <p>ISTEP (IELTS Fighter Junior's Special
-                                        Test of English Proficiency) được thiết kế chuyên biệt, dành riêng cho học sinh Gen Z từ lớp
-                                        6 đến lớp 10. Bài thi được nghiên cứu và đồng tổ chức bởi đội ngũ IELTS Fighter Junior và
+                                        Test of English Proficiency) được thiết kế chuyên biệt, dành riêng cho học sinh
+                                        Gen Z từ lớp
+                                        6 đến lớp 10. Bài thi được nghiên cứu và đồng tổ chức bởi đội ngũ IELTS Fighter
+                                        Junior và
                                         IDP Education Việt Nam.</p>
                                     <div class="blog-footer-area">
-                                        <a class="readmore-btn" href="https://ielts-fighter.com/tin-tuc/kenh14---istep-ky-thi-danh-gia-nang-luc-tieng-anh-cho-hoc-sinh-gen-z_mt1641797140.html" target="_blank">Read
+                                        <a class="readmore-btn"
+                                           href="https://ielts-fighter.com/tin-tuc/kenh14---istep-ky-thi-danh-gia-nang-luc-tieng-anh-cho-hoc-sinh-gen-z_mt1641797140.html"
+                                           target="_blank">Read
                                             More <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
@@ -747,11 +809,16 @@
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
-                                    <h3><a href="blog-details.html" target="_blank">VNExpress - IELTS Fighter sáp nhập thêm Globalway tạo hệ sinh thái du học toàn diện</a></h3>
-                                    <p>VNExpress - Sáng ngày 28/08/2021 hệ thống đào tạo Anh ngữ IELTS Fighter và IMAP Việt Nam chính thức sáp nhập thương hiệu Du học - Định cư
-                                        - Đầu tư - Bất Động Sản hàng đầu Việt Nam - Globalway vào hệ sinh thái của doanh nghiệp. </p>
+                                    <h3><a href="blog-details.html" target="_blank">VNExpress - IELTS Fighter sáp nhập
+                                        thêm Globalway tạo hệ sinh thái du học toàn diện</a></h3>
+                                    <p>VNExpress - Sáng ngày 28/08/2021 hệ thống đào tạo Anh ngữ IELTS Fighter và IMAP
+                                        Việt Nam chính thức sáp nhập thương hiệu Du học - Định cư
+                                        - Đầu tư - Bất Động Sản hàng đầu Việt Nam - Globalway vào hệ sinh thái của doanh
+                                        nghiệp. </p>
                                     <div class="blog-footer-area">
-                                        <a class="readmore-btn" href="https://ielts-fighter.com/tin-tuc/vnexpress---ielts-fighter-sap-nhap-them-globalway-tao-he-sinh-thai-du-hoc-toan-dien_mt1641797136.html" target="_blank">Read
+                                        <a class="readmore-btn"
+                                           href="https://ielts-fighter.com/tin-tuc/vnexpress---ielts-fighter-sap-nhap-them-globalway-tao-he-sinh-thai-du-hoc-toan-dien_mt1641797136.html"
+                                           target="_blank">Read
                                             More <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
@@ -763,13 +830,18 @@
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
-                                    <h3><a href="blog-details.html" target="_blank">Vietnamnet - IELTS Fighter nâng cấp phương
+                                    <h3><a href="blog-details.html" target="_blank">Vietnamnet - IELTS Fighter nâng cấp
+                                        phương
                                         pháp đào tạo RIPL đề cao trải nghiệm học viên</a></h3>
-                                    <p>Phương pháp giảng dạy mới RIPL được tinh chọn dựa trên phản hồi khách quan của học viên và
-                                        được nghiên cứu bởi đội ngũ giáo viên xuất sắc, các chuyên gia đào tạo và Hội đồng Cố vấn
+                                    <p>Phương pháp giảng dạy mới RIPL được tinh chọn dựa trên phản hồi khách quan của
+                                        học viên và
+                                        được nghiên cứu bởi đội ngũ giáo viên xuất sắc, các chuyên gia đào tạo và Hội
+                                        đồng Cố vấn
                                         Chuyên môn IELTS Fighter và IMAP Việt Nam.</p>
                                     <div class="blog-footer-area">
-                                        <a class="readmore-btn" href="https://ielts-fighter.com/tin-tuc/vietnamnet---ielts-fighter-nang-cap-phuong-phap-dao-tao-ripl-de-cao-trai-nghiem-hoc-vien_mt1641797133.html" target="_blank">Read
+                                        <a class="readmore-btn"
+                                           href="https://ielts-fighter.com/tin-tuc/vietnamnet---ielts-fighter-nang-cap-phuong-phap-dao-tao-ripl-de-cao-trai-nghiem-hoc-vien_mt1641797133.html"
+                                           target="_blank">Read
                                             More <i class="fa fa-angle-right"></i></a>
                                     </div>
                                 </div>
@@ -792,7 +864,8 @@
                                 <h3>Apelish - Luyện thi Tiếng Anh</h3>
                                 <p>
                                     Với sứ mệnh Tiên phong Phổ cập IELTS cho người Việt, Apelish nỗ lực mỗi ngày
-                                    để cùng các bạn học IELTS dàng hơn, chinh phục được đỉnh cao IELTS, phục vụ các mục tiêu phía trước. </br>
+                                    để cùng các bạn học IELTS dàng hơn, chinh phục được đỉnh cao IELTS, phục vụ các mục
+                                    tiêu phía trước. </br>
                                     - Đối tác Bạch kim của IDP Việt Nam </br>
                                     - Đối tác uy tín lâu năm của VnExpress, Viettel, Panasonic...</p>
                             </div>
@@ -808,26 +881,30 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <form:form action="/sendContactMail" method="POST" id="contactForm1" class="contact-us-form" novalidate="novalidate">
+                            <form:form action="/sendContactMail" method="POST" id="contactForm1" class="contact-us-form"
+                                       novalidate="novalidate">
                                 <h6>Đừng bỏ lỡ cơ hội</h6>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="name"
-                                                   placeholder="Họ và tên" value="${loggedInUser.fullName}" required="required">
+                                                   placeholder="Họ và tên" value="${loggedInUser.fullName}"
+                                                   required="required">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
-                                                   placeholder="Địa chỉ email" required="required" value="${loggedInUser.email}">
+                                                   placeholder="Địa chỉ email" required="required"
+                                                   value="${loggedInUser.email}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="phone" value="${loggedInUser.phone}" class="form-control"
+                                            <input type="text" name="phone" value="${loggedInUser.phone}"
+                                                   class="form-control"
                                                    id="phone" placeholder="Số điện thoại">
                                         </div>
                                     </div>
@@ -842,7 +919,8 @@
                                     <div class="col-xs-12">
                                         <div class="form-group">
                                                     <textarea name="message" id="message" class="form-control" rows="7"
-                                                              cols="25" placeholder="Bạn cần hỗ trợ điều gì?"></textarea>
+                                                              cols="25"
+                                                              placeholder="Bạn cần hỗ trợ điều gì?"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -855,12 +933,12 @@
                                     </div>
                                 </div>
                             </form:form>
-<%--                            <p class="form-message"></p>--%>
-<%--                            <c:if test="${not empty message5}">--%>
-<%--                                <div class="alert alert-success">--%>
-<%--                                    <strong>${message5}</strong>--%>
-<%--                                </div>--%>
-<%--                            </c:if>--%>
+                            <%--                            <p class="form-message"></p>--%>
+                            <%--                            <c:if test="${not empty message5}">--%>
+                            <%--                                <div class="alert alert-success">--%>
+                            <%--                                    <strong>${message5}</strong>--%>
+                            <%--                                </div>--%>
+                            <%--                            </c:if>--%>
                         </div>
                     </div>
                 </div>

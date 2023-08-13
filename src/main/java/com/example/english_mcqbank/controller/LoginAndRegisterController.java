@@ -47,11 +47,10 @@ public class LoginAndRegisterController {
     }
 
 
-
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register( Model model) {
+    public String register(Model model) {
         model.addAttribute("user", new UserEntity());
-        model.addAttribute("confirmPassword", new String());
+        model.addAttribute("confirmPassword", "");
         return "register";
     }
 
@@ -105,8 +104,7 @@ public class LoginAndRegisterController {
                 e.printStackTrace();
             }
 
-        }
-        else {
+        } else {
             model.addAttribute("errorMessage", "Password and Confirm Password do not match!");
             return registerModelAndView;
         }

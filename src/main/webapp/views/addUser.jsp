@@ -31,7 +31,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -53,7 +54,8 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                    cả câu hỏi</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
                                         class="sub-link">Thêm câu hỏi bằng file</a></li>
 
@@ -69,7 +71,8 @@
             <ul class="br-menu-sub">
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
                     Tài khoản người dùng</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link active">
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new"
+                                        class="sub-link active">
                     Thêm tài khoản</a></li>
             </ul>
         </li><!-- br-menu-item -->
@@ -96,7 +99,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -104,12 +106,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -120,7 +123,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -132,7 +136,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                </li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -160,143 +165,149 @@
     </div><!-- d-flex -->
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-        <h6 class="br-section-label">Thêm tài khoản mới</h6>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <c:if test="${not empty message}">
-                    <div class="alert alert-danger">
-                        <strong>${message}</strong>
-                    </div>
-                </c:if>
-            </div>
-        </div>
-
-        <form:form action="/admin/addUser" method="post">
+            <h6 class="br-section-label">Thêm tài khoản mới</h6>
 
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
+                    <c:if test="${not empty message}">
+                        <div class="alert alert-danger">
+                            <strong>${message}</strong>
                         </div>
-                        <input type="text" id="username" pattern="[a-zA-Z0-9._]+" name="username" value="${user.username}" required
-                               class="form-control" placeholder="Username">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-
-
-            </div><!-- row -->
-
-            <div class="row pd-t-20">
-                    <%--            FullName--%>
-                <div class="col-lg-4">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-information-circled tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="text" id="fullName" name="fullName" value="${user.fullName}" required
-                               class="form-control" placeholder="FullName">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
+                    </c:if>
+                </div>
             </div>
 
-            <div class="row pd-t-20">
-                    <%--            Address--%>
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-location tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="text" id="address" name="address" value="${user.address}" required
-                               class="form-control" placeholder="Address">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-            </div>
+            <form:form action="/admin/addUser" method="post">
 
-            <div class="row pd-t-20">
-                    <%--            Phone--%>
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-ios-telephone tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="text" id="phone" name="phone" value="${user.phone}" required
-                               class="form-control" placeholder="Phone">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-            </div>
-
-            <div class="row pd-t-20">
-                    <%--            Email--%>
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-email tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="text" id="email" name="email" value="${user.email}" required
-                               class="form-control" placeholder="Email">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-            </div>
-
-            <div class="row pd-t-20">
-                    <%--            Password--%>
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="password" id="password" name="password" value="${user.password}" required
-                               class="form-control" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
-                               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-            </div>
-
-            <div class="row pd-t-20">
-                    <%--            Confirm password--%>
-                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
-                        </div>
-                        <input type="password" id="confirmPassword" name="confirmPassword" value="" required
-                               class="form-control" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
-                               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
-                    </div><!-- input-group -->
-                </div><!-- col-4 -->
-            </div>
-            <span id="mess"></span>
-            <div class="row pd-t-20">
-
-                <p style="margin-left: 15px">Role: </p>
-                <div class="col-lg-2">
-                    <label class="rdiobox">
-                        <input name="role" value="admin" type="radio">
-                        <span>Admin</span>
-                    </label>
-                </div><!-- col-3 -->
-                <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                    <label class="rdiobox">
-                        <input name="role" value="user" type="radio" checked>
-                        <span>User</span>
-                    </label>
-                </div><!-- col-3 -->
-
-            </div>
-
-            <%--        button addUser--%>
-            <div class="form-layout-footer mg-t-30">
-                <button type="submit" class="btn btn-info mg-r-5">Thêm</button>
-<%--                <button class="btn btn-secondary">Hủy</button>--%>
-            </div>
-
-        </form:form>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="text" id="username" pattern="[a-zA-Z0-9._]+" name="username"
+                                   value="${user.username}" required
+                                   class="form-control" placeholder="Username">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
 
 
+                </div>
+                <!-- row -->
+
+                <div class="row pd-t-20">
+                        <%--            FullName--%>
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i
+                                        class="icon ion-information-circled tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="text" id="fullName" name="fullName" value="${user.fullName}" required
+                                   class="form-control" placeholder="FullName">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+
+                <div class="row pd-t-20">
+                        <%--            Address--%>
+                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon ion-location tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="text" id="address" name="address" value="${user.address}" required
+                                   class="form-control" placeholder="Address">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+
+                <div class="row pd-t-20">
+                        <%--            Phone--%>
+                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i
+                                        class="icon ion-ios-telephone tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="text" id="phone" name="phone" value="${user.phone}" required
+                                   class="form-control" placeholder="Phone">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+
+                <div class="row pd-t-20">
+                        <%--            Email--%>
+                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon ion-email tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="text" id="email" name="email" value="${user.email}" required
+                                   class="form-control" placeholder="Email">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+
+                <div class="row pd-t-20">
+                        <%--            Password--%>
+                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="password" id="password" name="password" value="${user.password}" required
+                                   class="form-control" placeholder="Password"
+                                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                                   title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+
+                <div class="row pd-t-20">
+                        <%--            Confirm password--%>
+                    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon ion-locked tx-16 lh-0 op-6"></i></span>
+                            </div>
+                            <input type="password" id="confirmPassword" name="confirmPassword" value="" required
+                                   class="form-control" placeholder="Confirm Password"
+                                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                                   title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*).">
+                        </div><!-- input-group -->
+                    </div><!-- col-4 -->
+                </div>
+                <span id="mess"></span>
+                <div class="row pd-t-20">
+
+                    <p style="margin-left: 15px">Role: </p>
+                    <div class="col-lg-2">
+                        <label class="rdiobox">
+                            <input name="role" value="admin" type="radio">
+                            <span>Admin</span>
+                        </label>
+                    </div><!-- col-3 -->
+                    <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                        <label class="rdiobox">
+                            <input name="role" value="user" type="radio" checked>
+                            <span>User</span>
+                        </label>
+                    </div><!-- col-3 -->
+
+                </div>
+
+                <%--        button addUser--%>
+                <div class="form-layout-footer mg-t-30">
+                    <button type="submit" class="btn btn-info mg-r-5">Thêm</button>
+                        <%--                <button class="btn btn-secondary">Hủy</button>--%>
+                </div>
+
+            </form:form>
+
+
+        </div>
     </div>
-</div>
 
     <footer class="br-footer">
         <div class="footer-left">
@@ -313,7 +324,6 @@
 
 
 <!-- ########## END: noidung ########## --->
-
 
 
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
@@ -335,26 +345,26 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -362,11 +372,10 @@
         }
     });
 
-    $('#password,#confirmPassword').on('keyup', function() {
+    $('#password,#confirmPassword').on('keyup', function () {
         if ($('#password').val() == $('#confirmPassword').val()) {
             $('#mess').html('').css('color', 'green');
-        }
-        else {
+        } else {
             $('#mess').html('Password và confirmPassword không khớp').css('color', 'red');
         }
     });

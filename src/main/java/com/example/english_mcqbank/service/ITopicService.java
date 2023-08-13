@@ -1,10 +1,6 @@
 package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Topic;
-import com.example.english_mcqbank.repository.TopicRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -12,17 +8,17 @@ import java.util.List;
 public interface ITopicService {
 
 
-    public List<Topic> getAllTopics();
+    List<Topic> getAllTopics();
 
-    public Topic getTopicById(Integer topicId);
+    Topic getTopicById(Integer topicId);
 
-    public List<Topic> getAllTopics(int page, int size);
-
-    @Transactional
-    public void save(Topic topic);
+    List<Topic> getAllTopics(int page, int size);
 
     @Transactional
-    public void deleteTopic(Topic topic);
+    void save(Topic topic);
 
-    public boolean existsByName(String name);
+    @Transactional
+    void deleteTopic(Topic topic);
+
+    boolean existsByName(String name);
 }

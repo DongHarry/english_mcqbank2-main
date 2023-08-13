@@ -18,7 +18,8 @@
     <title>Result</title>
 </head>
 <body>
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -56,12 +57,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="">
@@ -72,7 +74,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -84,7 +87,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                </li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->

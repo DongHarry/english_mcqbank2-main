@@ -9,12 +9,12 @@
 <body>
 <h1>${user1.username}</h1>
 <h1>${user2.username}</h1>
-  <form:form action="${pageContext.request.contextPath}/admin/test2" method="post">
+<form:form action="${pageContext.request.contextPath}/admin/test2" method="post">
     <c:forEach items="${topics}" var="topic">
-      <p>${topic.name}</p>
+        <p>${topic.name}</p>
     </c:forEach>
-    <input type="hidden" name="topicWrapper.topics" value="${topics}" />
+    <input type="hidden" name="topicWrapper.topics" value="${topics}"/>
     <input type="submit" value="submit">
-  </form:form>
+</form:form>
 </body>
 </html>

@@ -23,7 +23,8 @@
     </div>
 </div><!-- d-flex -->
 
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -50,7 +51,7 @@
                 <span class="menu-item-label">Thông tin tài khoản</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
     </ul>
@@ -61,12 +62,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -89,7 +91,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                </li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -110,20 +113,21 @@
                 <p><b>Exam Duration:</b> ${exam.questionNo} minutes</p>
                 <p>
                     <b>Exam Topics:</b>
-                    <ol>
-                        <c:forEach var="examtopic" items="${exam.examTopicList}">
-                            <li>
+                <ol>
+                    <c:forEach var="examtopic" items="${exam.examTopicList}">
+                        <li>
                                 ${examtopic.topic.name} (${examtopic.percent}%)
-                            </li>
-                        </c:forEach>
-                    </ol>
+                        </li>
+                    </c:forEach>
+                </ol>
                 </p>
                 <div class="form-layout-footer mg-t-30">
                     <form:form action="${pageContext.request.contextPath}/user/exams/doExam" method="post">
                         <input name="examId" value="${exam.id}" type="hidden">
                         <button type="submit" class="btn btn-primary">Start</button>
 
-                        <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Back to Exam List</a>
+                        <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-secondary">Back to Exam
+                            List</a>
                     </form:form>
                 </div>
             </div>

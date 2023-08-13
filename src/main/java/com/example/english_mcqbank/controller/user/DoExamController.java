@@ -4,7 +4,6 @@ import com.example.english_mcqbank.model.*;
 import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -81,7 +80,7 @@ public class DoExamController {
         int examType = exam.getType();
         //List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
         List<Question> questions = new ArrayList<>();
-        for (ExamTopic examTopic: examTopics) {
+        for (ExamTopic examTopic : examTopics) {
             List<Question> questions1 =
                     questionService.getRandom(examTopic.getTopic().getId(), 0,
                             (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
@@ -117,7 +116,7 @@ public class DoExamController {
         List<ExamTopic> examTopics = exam.getExamTopicList();
         int examType = exam.getType();
         List<Question> questions = new ArrayList<>();
-        for (ExamTopic examTopic: examTopics) {
+        for (ExamTopic examTopic : examTopics) {
             List<Question> questions1 =
                     questionService.getRandom(examTopic.getTopic().getId(), 0,
                             (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
@@ -157,7 +156,6 @@ public class DoExamController {
         result.setExam(exam);
         user.addResult(result);
         userService.saveUser(user);
-
 
 
         redirectAttributes.addAttribute("score", score);

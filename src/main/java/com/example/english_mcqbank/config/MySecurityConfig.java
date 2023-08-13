@@ -1,17 +1,12 @@
 package com.example.english_mcqbank.config;
 
-import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -44,8 +39,8 @@ public class MySecurityConfig {
                 .antMatchers("/user/**").hasAnyRole("USER")
                 .antMatchers("/questions/**").hasRole("USER")
                 .antMatchers("/admin/**", "/api/**").hasRole("ADMIN")
-                .antMatchers("/", "/home", "/index","/login", "/register","/forgot-password","/reset-password","/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                .antMatchers("/test/upload","/css/**","/images/**","/font-awesome/**","/fonts/**","/js/**", "/abc", "/lib/**","/resource/**", "/sendContactMail/**", "/send-email").permitAll() // make user cant access to /css, /js by spring security but web app still can access
+                .antMatchers("/", "/home", "/index", "/login", "/register", "/forgot-password", "/reset-password", "/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers("/test/upload", "/css/**", "/images/**", "/font-awesome/**", "/fonts/**", "/js/**", "/abc", "/lib/**", "/resource/**", "/sendContactMail/**", "/send-email").permitAll() // make user cant access to /css, /js by spring security but web app still can access
                 .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
                 .and()
                 .formLogin() // Cho phép người dùng xác thực bằng form login
@@ -68,7 +63,6 @@ public class MySecurityConfig {
                 .httpBasic()
                 .authenticationEntryPoint(basicAuthenticationEntryPoint);
         // make user cant access to /css, /js by spring security but web app still can access
-
 
 
         return http.build();

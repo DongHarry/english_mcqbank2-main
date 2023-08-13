@@ -53,70 +53,82 @@
 
             <form:form action="${pageContext.request.contextPath}/register" method="post">
                 <div class="form-group">
-                    <input type="text" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your username" id="username"
-                    name="username" value="${user.username}" required>
+                    <input type="text" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your username"
+                           id="username"
+                           name="username" value="${user.username}" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your fullname" id="fullName"
-                    name="fullName" value="${user.fullName}" required>
+                           name="fullName" value="${user.fullName}" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your address" id="address"
-                    name="address" value="${user.address}">
+                           name="address" value="${user.address}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your phone" id="phone"
-                    name="phone" value="${user.phone}">
+                           name="phone" value="${user.phone}">
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Enter your email" id="email"
-                    name="email" required value="${user.email}">
-                </div><!-- form-group -->
+                           name="email" required value="${user.email}">
+                </div>
+                <!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Enter your password" id="password"
-                    name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
-                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required value="${user.password}">
-                </div><!-- form-group -->
+                           name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)."
+                           required value="${user.password}">
+                </div>
+                <!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Confirm your password" id="confirmPassword"
-                    name="confirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
-                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)." required value="${confirmPassword}">
+                           name="confirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
+                           title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)."
+                           required value="${confirmPassword}">
 
-                </div> <!-- form-group -->
+                </div>
+                <!-- form-group -->
                 <span id="mess"></span>
                 <div style="color: rgba(255,0,0,0.87)">
                     <c:if test="${not empty successMessage}">
-                        <div class="error"> <strong>${successMessage}</strong> </div>
+                        <div class="error"><strong>${successMessage}</strong></div>
                     </c:if>
                     <c:if test="${not empty errorMessage}">
-                        <div class="error"> <strong>${errorMessage}</strong> </div>
+                        <div class="error"><strong>${errorMessage}</strong></div>
                     </c:if>
                 </div>
 
                 <div class="form-group tx-12">
                     By clicking the Sign Up button below you agreed to our privacy policy and terms
-                    of use of our website.</div>
+                    of use of our website.
+                </div>
                 <button type="submit" class="btn btn-info btn-block">Sign Up</button>
             </form:form>
 
 
-
-            <div class="mg-t-60 tx-center">Already a member? <a href="${pageContext.request.contextPath}/login-page" class="tx-info">Sign In</a></div>
+            <div class="mg-t-60 tx-center">Already a member? <a href="${pageContext.request.contextPath}/login-page"
+                                                                class="tx-info">Sign In</a></div>
         </div><!-- login-wrapper -->
     </div><!-- col -->
     <div class="col-md-6 bg-br-primary d-flex align-items-center justify-content-center">
         <div class="wd-250 wd-xl-450 mg-y-30">
-            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> apelish <span class="tx-info">hus</span> <span class="tx-normal">]</span></div>
+            <div class="signin-logo tx-28 tx-bold tx-white"><span class="tx-normal">[</span> apelish <span
+                    class="tx-info">hus</span> <span class="tx-normal">]</span></div>
             <div class="tx-white-7 mg-b-60">Đào tạo uy tín - chất lượng</div>
 
             <h5 class="tx-white">Tại sao chọn Apelish?</h5>
             <p class="tx-white-6">Apelish là một trung tâm đào tạo tiếng Anh uy tín, nơi học viên được trải nghiệm môi
-                trường học tập thân thiện và chất lượng. Với đội ngũ giáo viên nhiệt tình, phương pháp giảng dạy hiện đại,
+                trường học tập thân thiện và chất lượng. Với đội ngũ giáo viên nhiệt tình, phương pháp giảng dạy hiện
+                đại,
                 Apelish cam kết mang đến cho học viên sự tiến bộ vượt bậc trong việc sử dụng tiếng Anh. Không chỉ tập
-                trung vào ngữ pháp và từ vựng, Apelish còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng tạo.</p>
-            <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ hội
+                trung vào ngữ pháp và từ vựng, Apelish còn khuyến khích phát triển kỹ năng giao tiếp tự tin và sáng
+                tạo.</p>
+            <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ
+                hội
                 mới trong tương lai.</p>
-            <a href="${pageContext.request.contextPath}/home" class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
+            <a href="${pageContext.request.contextPath}/home"
+               class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
         </div><!-- wd-500 -->
     </div>
 </div><!-- row -->
@@ -126,7 +138,7 @@
 <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
 <script>
-    $(function(){
+    $(function () {
         'use strict';
 
         $('.select2').select2({

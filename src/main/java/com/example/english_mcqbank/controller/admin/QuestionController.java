@@ -3,11 +3,8 @@ package com.example.english_mcqbank.controller.admin;
 import com.example.english_mcqbank.exception.InvalidInputFileException;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
-import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +92,7 @@ public class QuestionController {
 
     @RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.GET)
     public ModelAndView editQuestion(@PathVariable("id") int id, Model model,
-                                    @RequestParam(value = "type", defaultValue = "1") int type) {
+                                     @RequestParam(value = "type", defaultValue = "1") int type) {
         Question question = questionService.getQuestionById(id);
 
         ModelAndView modelAndView = new ModelAndView("editQuestion");
@@ -161,7 +157,6 @@ public class QuestionController {
             redirectAttributes.addFlashAttribute("message", "Question: " + question.getId().toString() + " deleted successfully");
             return modelAndView;
         }
-
 
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions");
@@ -237,7 +232,7 @@ public class QuestionController {
         ArrayList<Question> questions = null;
         if (submitButton.equals("save")) {
             Integer[] Ids = new Integer[paramList.length];
-            if (paramList == null || paramList.length==0 ) {
+            if (paramList == null || paramList.length == 0) {
                 ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
                 redirectAttributes.addFlashAttribute("e_message", "Please select at least one question");
                 return modelAndView;

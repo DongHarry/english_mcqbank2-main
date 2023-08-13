@@ -178,17 +178,23 @@
                         </c:if>
                         <div class="-question-option">
                             <input type="radio" name="question_${question.id}" value="${question.option1}"
-                                   class="radio-option" onclick="handleRadioClick(${question.id})" data-question-id="${question.id}">
-                            <label for="question_${question.id}_option1" class="label-option">${question.option1}</label><br>
-                            <input type="radio" name="question_${question.id}" value="${question.option2}" data-question-id="${question.id}" class="radio-option" onclick="handleRadioClick(${question.id})">
+                                   class="radio-option" onclick="handleRadioClick(${question.id})"
+                                   data-question-id="${question.id}">
+                            <label for="question_${question.id}_option1"
+                                   class="label-option">${question.option1}</label><br>
+                            <input type="radio" name="question_${question.id}" value="${question.option2}"
+                                   data-question-id="${question.id}" class="radio-option"
+                                   onclick="handleRadioClick(${question.id})">
                             <label for="question_${question.id}_option2"
                                    class="label-option">${question.option2}</label><br>
-                            <input type="radio" name="question_${question.id}" value="${question.option3}" data-question-id="${question.id}"
+                            <input type="radio" name="question_${question.id}" value="${question.option3}"
+                                   data-question-id="${question.id}"
                                    class="radio-option" onclick="handleRadioClick(${question.id})">
                             <label for="question_${question.id}_option3"
                                    class="label-option">${question.option3}</label><br>
                             <c:if test="${question.type == 1}">
-                                <input type="radio" name="question_${question.id}" value="${question.option4}" data-question-id="${question.id}"
+                                <input type="radio" name="question_${question.id}" value="${question.option4}"
+                                       data-question-id="${question.id}"
                                        class="radio-option" onclick="handleRadioClick(${question.id})">
                                 <label for="question_${question.id}_option4"
                                        class="label-option">${question.option4}</label><br>

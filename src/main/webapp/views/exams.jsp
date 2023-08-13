@@ -23,8 +23,10 @@
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css"
+          rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
@@ -33,98 +35,109 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
 
         <sec:authorize access="hasRole('ADMIN')">
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub active show-sub">
-                <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-                <span class="menu-item-label">Quản lý bài thi</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/exams" class="sub-link active">
-                    Tất cả bài thi</a></li>
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub active show-sub">
+                    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                    <span class="menu-item-label">Quản lý bài thi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/exams"
+                                            class="sub-link active">
+                        Tất cả bài thi</a></li>
 
-            </ul>
-        </li>
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
-                <span class="menu-item-label">Quản lý câu hỏi</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
-                                        class="sub-link">Thêm câu hỏi bằng file</a></li>
+                </ul>
+            </li>
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
+                    <span class="menu-item-label">Quản lý câu hỏi</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                        cả câu hỏi</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
+                                            class="sub-link">Thêm câu hỏi bằng file</a></li>
 
-            </ul>
-        </li><!-- br-menu-item -->
+                </ul>
+            </li>
+            <!-- br-menu-item -->
 
 
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý tài khoản</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
-                    Tài khoản người dùng</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                    Thêm tài khoản</a></li>
-            </ul>
-        </li><!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub">
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                    <span class="menu-item-label">Quản lý tài khoản</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
+                        Tài khoản người dùng</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
+                        Thêm tài khoản</a></li>
+                </ul>
+            </li>
+            <!-- br-menu-item -->
 
-        <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý topic</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
+                    <span class="menu-item-label">Quản lý topic</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
 
             <li class="br-menu-item">
                 <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý logs</span>
                 </a><!-- br-menu-link -->
-            </li><!-- br-menu-item -->
+            </li>
+            <!-- br-menu-item -->
 
-        <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
-                <span class="menu-item-label">Tài khoản admin</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
-    <!-- br-sideleft-menu -->
-    </sec:authorize>
-<sec:authorize access="hasRole('USER')">
-    <li class="br-menu-item">
-    <a href="#" class="br-menu-link with-sub active show-sub">
-    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-    <span class="menu-item-label">Làm bài</span>
-    </a><!-- br-menu-link -->
-    <ul class="br-menu-sub">
-    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link active">
-    Tất cả bài thi</a></li>
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Tài khoản admin</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
+            <!-- br-sideleft-menu -->
+        </sec:authorize>
+        <sec:authorize access="hasRole('USER')">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub active show-sub">
+                    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                    <span class="menu-item-label">Làm bài</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams"
+                                            class="sub-link active">
+                        Tất cả bài thi</a></li>
 
-    </ul>
-    </li>
-    <li class="br-menu-item">
-        <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
-            <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
-            <span class="menu-item-label">Kết quả</span>
-        </a><!-- br-menu-link -->
-    </li><!-- br-menu-item -->
-    <li class="br-menu-item">
-        <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
-            <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
-            <span class="menu-item-label">Thông tin tài khoản</span>
-        </a><!-- br-menu-link -->
-    </li><!-- br-menu-item -->
-</sec:authorize>
-    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+                </ul>
+            </li>
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                    <span class="menu-item-label">Kết quả</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Thông tin tài khoản</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
+        </sec:authorize>
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
     </ul>
 
 
@@ -135,12 +148,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -163,7 +177,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                </li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -176,13 +191,14 @@
 
 <div class="br-mainpanel">
     <sec:authorize access="hasRole('ADMIN')">
-    <div class="br-pageheader">
-        <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin">Admin</a>
-            <a class="breadcrumb-item" href="#">Quản lí bài thi</a>
-            <span class="breadcrumb-item active">Tất cả bài thi</span>
-        </nav>
-    </div><!-- br-pageheader -->
+        <div class="br-pageheader">
+            <nav class="breadcrumb pd-0 mg-0 tx-12">
+                <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin">Admin</a>
+                <a class="breadcrumb-item" href="#">Quản lí bài thi</a>
+                <span class="breadcrumb-item active">Tất cả bài thi</span>
+            </nav>
+        </div>
+        <!-- br-pageheader -->
     </sec:authorize>
     <div class="br-pagetitle">
         <i class="icon icon ion-ios-book-outline"></i>
@@ -217,7 +233,7 @@
                         <th class="wd-10p">Question No</th>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
 
-                        <th class="wd-15p">Số người đã làm bài</th>
+                            <th class="wd-15p">Số người đã làm bài</th>
                         </sec:authorize>
                         <th class="wd-25p">Created time</th>
                         <th class="wd-25p">Action</th>
@@ -225,60 +241,74 @@
                     </thead>
 
                     <tbody>
-                        <c:forEach var="exam" items="${exams}">
-                            <tr>
-                                <td>${exam.id}</td>
-                                <td>
-                                    <ul style="margin-left: -40px">
-                                        <c:forEach var="exam_topic" items="${exam.examTopicList}">
-                                            <c:if test="${not empty exam_topic}">
-                                                <li style="list-style: none">${exam_topic.topic.name} (${exam_topic.percent}%)</li>
-                                            </c:if>
-                                        </c:forEach>
-                                    </ul>
-                                </td>
-                                <td>${exam.name}</td>
-                                <td>
-                                    <c:if test="${exam.type == 1}">
-                                        <span class="badge badge-success" style="font-size: 14px"> Reading </span>
-                                    </c:if>
-                                    <c:if test="${exam.type == 2}">
-                                        <span class="badge badge-info" style="font-size: 14px">Listening</span>
-                                    </c:if>
-                                </td>
-                                <td>${exam.questionNo}</td>
-                                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <td>${exam.resultList.size()}</td>
-                                </sec:authorize>
-                                <td>${exam.time}</td>
+                    <c:forEach var="exam" items="${exams}">
+                        <tr>
+                            <td>${exam.id}</td>
+                            <td>
+                                <ul style="margin-left: -40px">
+                                    <c:forEach var="exam_topic" items="${exam.examTopicList}">
+                                        <c:if test="${not empty exam_topic}">
+                                            <li style="list-style: none">${exam_topic.topic.name} (${exam_topic.percent}%)</li>
+                                        </c:if>
+                                    </c:forEach>
+                                </ul>
+                            </td>
+                            <td>${exam.name}</td>
+                            <td>
+                                <c:if test="${exam.type == 1}">
+                                    <span class="badge badge-success" style="font-size: 14px"> Reading </span>
+                                </c:if>
+                                <c:if test="${exam.type == 2}">
+                                    <span class="badge badge-info" style="font-size: 14px">Listening</span>
+                                </c:if>
+                            </td>
+                            <td>${exam.questionNo}</td>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <td>${exam.resultList.size()}</td>
+                            </sec:authorize>
+                            <td>${exam.time}</td>
 
-                                <td>
-                                    <ul style="margin-left: -40px">
-                                        <sec:authorize access="hasRole('USER')">
-                                            <li style="list-style: none">
-                                               Take exam: <a href="${pageContext.request.contextPath}/user/exams/${exam.id}" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i class="fas fa-play"></i></a>
-                                            </li>
-                                            <li style="list-style: none">
-                                                Ranking: <a href="${pageContext.request.contextPath}/user/exams/${exam.id}/results" class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i class="fas fa-list"></i></a>
-                                            </li>
-                                        </sec:authorize>
-                                        <sec:authorize access="hasRole('ADMIN')">
-                                            <li style="list-style: none">
-                                                Edit: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
-                                            </li>
-                                            <li style="list-style: none">
-                                                Delete: <a onclick="if (!confirm('Are you sure to delete this exam?')) return false"
-                                                   href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
-                                            </li>
+                            <td>
+                                <ul style="margin-left: -40px">
+                                    <sec:authorize access="hasRole('USER')">
+                                        <li style="list-style: none">
+                                            Take exam: <a
+                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}"
+                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
+                                                class="fas fa-play"></i></a>
+                                        </li>
+                                        <li style="list-style: none">
+                                            Ranking: <a
+                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}/results"
+                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
+                                                class="fas fa-list"></i></a>
+                                        </li>
+                                    </sec:authorize>
+                                    <sec:authorize access="hasRole('ADMIN')">
+                                        <li style="list-style: none">
+                                            Edit: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}"
+                                                     class="btn btn-outline-success btn-icon mg-r-5 mg-b-10"
+                                                     title="Edit"><i class="fas fa-edit"></i></a>
+                                        </li>
+                                        <li style="list-style: none">
+                                            Delete: <a
+                                                onclick="if (!confirm('Are you sure to delete this exam?')) return false"
+                                                href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}"
+                                                class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i
+                                                class="fas fa-trash"></i></a>
+                                        </li>
 
-                                            <li style="list-style: none">
-                                                Ranking: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results" class="btn btn-outline-info btn-icon mg-r-5 mg-b-10" title="All results"><i class="fas fa-list"></i></a>
-                                            </li>
-                                        </sec:authorize>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                                        <li style="list-style: none">
+                                            Ranking: <a
+                                                href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results"
+                                                class="btn btn-outline-info btn-icon mg-r-5 mg-b-10"
+                                                title="All results"><i class="fas fa-list"></i></a>
+                                        </li>
+                                    </sec:authorize>
+                                </ul>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
 
@@ -287,7 +317,8 @@
             <sec:authorize access="hasRole('ADMIN')">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="${pageContext.request.contextPath}/admin/exams/new" class="btn btn-primary">Create Exam</a>
+                        <a href="${pageContext.request.contextPath}/admin/exams/new" class="btn btn-primary">Create
+                            Exam</a>
                     </div>
                 </div>
             </sec:authorize>
@@ -307,7 +338,6 @@
     </footer>
 </div>
 <!-- ########## END: noidung ########## --->
-
 
 
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
@@ -334,26 +364,26 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -361,7 +391,7 @@
         }
     });
 
-    $(function(){
+    $(function () {
         'use strict';
 
         $('#datatable2').DataTable({
@@ -374,7 +404,7 @@
         });
 
         // Select2
-        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+        $('.dataTables_length select').select2({minimumResultsForSearch: Infinity});
 
     });
 

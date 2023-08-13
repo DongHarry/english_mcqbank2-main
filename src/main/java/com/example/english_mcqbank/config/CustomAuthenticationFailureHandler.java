@@ -26,7 +26,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException, IOException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws ServletException, IOException {
         String username = request.getParameter("username");
         Log log = new Log();
 

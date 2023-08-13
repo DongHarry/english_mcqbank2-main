@@ -29,13 +29,13 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public void removeAttribute(String name) {
-        session.removeAttribute(name);
+    public void setLoggedInUser(UserEntity userEntity) {
+        session.setAttribute("loggedInUser", userEntity);
     }
 
     @Override
-    public void setLoggedInUser(UserEntity userEntity) {
-        session.setAttribute("loggedInUser", userEntity);
+    public void removeAttribute(String name) {
+        session.removeAttribute(name);
     }
 
 }

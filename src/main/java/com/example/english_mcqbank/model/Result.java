@@ -39,11 +39,11 @@ public class Result {
     @JoinColumn(name = "ex_id")
     private Exam exam;
 
-    public void setExamId(Integer examId) {
-        exam.setId(examId);
-    }
-
     public int getExamId() {
         return exam.getId();
+    }
+
+    public void setExamId(Integer examId) {
+        exam.setId(examId);
     }
 }

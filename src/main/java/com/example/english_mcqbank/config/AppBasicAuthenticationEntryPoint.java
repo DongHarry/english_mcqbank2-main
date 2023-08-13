@@ -17,7 +17,7 @@ public class AppBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPo
                          HttpServletResponse response,
                          AuthenticationException authEx) throws IOException {
 
-        response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName() + "");
+        response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName());
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         PrintWriter writer = response.getWriter();
         /*ErrorResponse errorResponse = new ErrorResponse();

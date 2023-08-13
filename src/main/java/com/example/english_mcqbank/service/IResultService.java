@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface IResultService {
     void save(Result result);
+
     List<Result> findAllByUser(UserEntity user);
+
     List<Result> findAllByUser(UserEntity user, int page, int size);
 
     void deleteResultByExam(Exam exam);

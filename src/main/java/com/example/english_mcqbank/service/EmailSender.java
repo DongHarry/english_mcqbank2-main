@@ -20,9 +20,8 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 @NoArgsConstructor
 public class EmailSender implements IEmailSender {
-    private Environment env;
     public static final String ADMIN_EMAIL_ADDRESS = "luongdinhduc0000@gmail.com";
-
+    private Environment env;
     @Autowired
     private JavaMailSender javaMailSender;
 
@@ -127,7 +126,7 @@ public class EmailSender implements IEmailSender {
         String subject = "Reset password";
         String content = "Hi " + user.getUsername() + "\n" +
                 "Please click the link below to reset your password: \n" +
-                url +"/reset-password?token=" + verifyService.generateVerifyCode(user) + "\n" +
+                url + "/reset-password?token=" + verifyService.generateVerifyCode(user) + "\n" +
                 "If you did not request to reset your password, please ignore this email. \n" +
                 "Thank you!";
 

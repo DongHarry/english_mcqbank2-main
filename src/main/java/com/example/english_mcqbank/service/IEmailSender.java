@@ -13,6 +13,7 @@ public interface IEmailSender {
     void sendEmail(String to, String cc, String subject, String content);
 
     CompletableFuture<Void> sendEmail2(String to, String subject, String body);
+
     CompletableFuture<Void> sendEmail2(String to, String cc, String subject, String body);
 
     void sendResetPasswordEmail(UserEntity user, String url);
