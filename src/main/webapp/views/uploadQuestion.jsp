@@ -198,13 +198,28 @@
             </c:if>
             <form:form method="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/questions/upload">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Chọn file</span>
-                        </div>
-                        <input type="file" name="file" class="form-control" accept=".csv,.xls,.xlsx" required>
-                    </div>
+                <div class="col">
+<%--                    <div class="input-group">--%>
+<%--                        <div class="input-group-prepend">--%>
+<%--                            <span class="input-group-text">Chọn file</span>--%>
+<%--                        </div>--%>
+    <div class="ht-250 bg-gray-200 mg-t-60 d-flex align-items-center justify-content-center">
+        <input type="file" name="file" id="file-3" class="inputfile" accept=".csv,.xls,.xlsx" required data-multiple-caption="{count} files selected">
+        <label for="file-3" class="if-style-1">
+              <custom-tag class="icon-wrapper">
+                <i class="icon ion-ios-upload-outline"></i>
+              </custom-tag><!-- icon-wrapper -->
+            <span>Chọn file</span>
+        </label>
+    </div><!-- ht-200 -->
+<%--                        <label for="file2" class="if-style-1">--%>
+<%--                                  <span class="icon-wrapper">--%>
+<%--                                    <i class="icon ion-ios-upload-outline"></i>--%>
+<%--                                  </span><!-- icon-wrapper -->--%>
+<%--                            <span>Choose a file</span>--%>
+<%--                        </label>--%>
+<%--                        <input id="file2" type="file" name="file" class="form-control" accept=".csv,.xls,.xlsx" required>--%>
+<%--                    </div>--%>
                 </div>
             </div>
 <%--                <div class="row">--%>
@@ -239,7 +254,8 @@
 
 <!-- ########## END: noidung ########## --->
 
-
+<script src="${pageContext.request.contextPath}/lib/moment/min/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/highlightjs/highlight.pack.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
@@ -285,6 +301,42 @@
                 $('.show-sub + .br-menu-sub').slideDown();
             }
         }
+    });
+</script>
+
+
+<script>
+    $(function(){
+
+        'use strict';
+
+        $( '.inputfile' ).each( function()
+        {
+            var $input	 = $( this ),
+                $label	 = $input.next( 'label' ),
+                labelVal = $label.html();
+
+            $input.on( 'change', function( e )
+            {
+                var fileName = '';
+
+                if( this.files && this.files.length > 1 )
+                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+                else if( e.target.value )
+                    fileName = e.target.value.split( '\\' ).pop();
+
+                if( fileName )
+                    $label.find( 'span' ).html( fileName );
+                else
+                    $label.html( labelVal );
+            });
+
+            // Firefox bug fix
+            $input
+                .on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+                .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+        });
+
     });
 </script>
 </body>
