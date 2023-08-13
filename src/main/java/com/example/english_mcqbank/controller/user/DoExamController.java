@@ -133,19 +133,15 @@ public class DoExamController {
     @PostMapping("/user/exams/submit")
     public ModelAndView submitAnswers(@RequestParam Map<String, String> params,
                                       Authentication authentication,
-                                      @RequestParam("examId") String examId) {
+                                      @RequestParam("examId") String examId,
+                                      RedirectAttributes redirectAttributes) {
         // Process the submitted form data
         Exam exam = examService.getExamById(Integer.parseInt(examId));
         int totalQuestions = exam.getQuestionNo();
         int score = examService.calculateScore(params);
         // Redirect or return a response as needed
-        ModelAndView modelAndView = new ModelAndView("resultPage");
-        modelAndView.addObject("score", score);
-        modelAndView.addObject("totalQuestions", totalQuestions);
-
 
         UserEntity user = userService.getUserByUsername(authentication.getName());
-
         Result result = new Result();
         result.setScore(score);
         result.setTime(new Date());
@@ -153,7 +149,20 @@ public class DoExamController {
         result.setExam(exam);
         user.addResult(result);
         userService.saveUser(user);
+
+
+
+        redirectAttributes.addAttribute("score", score);
+        redirectAttributes.addAttribute("totalQuestions", totalQuestions);
+        ModelAndView modelAndView = new ModelAndView("redirect:/user/result");
+        modelAndView.addObject("score", score);
+        modelAndView.addObject("totalQuestions", totalQuestions);
         return modelAndView;
+    }
+
+    @RequestMapping("/user/result")
+    public ModelAndView result() {
+        return new ModelAndView("resultPage");
     }
 
     @RequestMapping("/user/exams/{id}/results")

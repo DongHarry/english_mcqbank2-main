@@ -37,7 +37,6 @@
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
                 console.log(timer);
                 if (--timer === 0) {
-
                     alert("Hết giờ!")
                     //$("#submitButton").click(); // Tự động click nút submit
                     document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
@@ -122,6 +121,11 @@
         font-size: 15px;
         font-family: 'Arial';
     }
+
+    #countdown {
+        font-size: 100px;
+        color: #891823;
+    }
 </style>
 
 <body>
@@ -131,98 +135,101 @@
     </div>
 </div><!-- d-flex -->
 <div id="content" class="container-fluid fill">
-        <div class="row">
-            <div id="navigation" class="col-md-3">
+    <div class="row">
+        <div id="navigation" class="col-md-3">
 
-                <div class="fix-scrolling">
-                    <br>
-                    <div>
-                        <span id="countdown">05:00</span>
-                    </div>
-                    <hr width="60%">
-
-                    <c:forEach begin="1" end="${questions.size()}" varStatus="loop">
-                        <div class="numberCircle" id="answer${loop.index}">${loop.index}</div>
-                    </c:forEach>
-                    <br> <br>
-                    <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
-                    <hr width="60%">
+            <div class="fix-scrolling">
+                <br>
+                <div>
+                    <span id="countdown">00:00</span>
                 </div>
+                <hr width="60%">
 
-
+                <c:forEach begin="1" end="${questions.size()}" varStatus="loop">
+                    <div class="numberCircle circle" id="answer${loop.index}">${loop.index}</div>
+                </c:forEach>
+                <br> <br>
+                <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
+                <hr width="60%">
             </div>
 
-            <div class="col-md-3 ">
-                <!-- Placeholder - keep empty -->
-            </div>
-            <div id="main" class="col-md-8 web-font">
-                <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
-                <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" id="myForm">
-                    <c:forEach var="question" items="${questions}">
-                        <div class="question-container">
-                            <h3>${question.content}</h3>
-                            <c:if test="${question.type == 2}">
-                                Audio:
-                                <audio controls>
-                                    <source src="${pageContext.request.contextPath}/resource/audio/${question.option4}.mp3"
-                                            type="audio/mpeg">
-                                </audio>
-                                <br>
-                            </c:if>
-                            <div class="-question-option">
-                                <input type="radio" name="question_${question.id}" value="${question.option1}"
-                                       class="radio-option">
-                                <label for="question_${question.id}_option1"
-                                       class="label-option">${question.option1}</label><br>
-                                <input type="radio" name="question_${question.id}" value="${question.option2}"
-                                       class="radio-option">
-                                <label for="question_${question.id}_option2"
-                                       class="label-option">${question.option2}</label><br>
-                                <input type="radio" name="question_${question.id}" value="${question.option3}"
-                                       class="radio-option">
-                                <label for="question_${question.id}_option3"
-                                       class="label-option">${question.option3}</label><br>
-                                <c:if test="${question.type == 1}">
-                                    <input type="radio" name="question_${question.id}" value="${question.option4}"
-                                           class="radio-option">
-                                    <label for="question_${question.id}_option4"
-                                           class="label-option">${question.option4}</label><br>
-                                </c:if>
-                            </div>
-                            <br><br>
-                        </div>
-                    </c:forEach>
-                    <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
-                    <input type="submit" value="Submit" class="btn btn-info">
-                </form:form>
 
-            </div>
         </div>
 
-        <hr>
+        <div class="col-md-3 ">
+            <!-- Placeholder - keep empty -->
+        </div>
+        <div id="main" class="col-md-8 web-font">
+            <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
+            <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" id="myForm">
+                <c:forEach var="question" items="${questions}">
+                    <div class="question-container">
+                        <h3>${question.content}</h3>
+                        <c:if test="${question.type == 2}">
+                            Audio:
+                            <audio controls>
+                                <source src="${pageContext.request.contextPath}/resource/audio/${question.option4}.mp3"
+                                        type="audio/mpeg">
+                            </audio>
+                            <br>
+                        </c:if>
+                        <div class="-question-option">
+                            <input type="radio" name="question_${question.id}" value="${question.option1}"
+                                   class="radio-option">
+                            <label for="question_${question.id}_option1"
+                                   class="label-option">${question.option1}</label><br>
+                            <input type="radio" name="question_${question.id}" value="${question.option2}"
+                                   class="radio-option">
+                            <label for="question_${question.id}_option2"
+                                   class="label-option">${question.option2}</label><br>
+                            <input type="radio" name="question_${question.id}" value="${question.option3}"
+                                   class="radio-option">
+                            <label for="question_${question.id}_option3"
+                                   class="label-option">${question.option3}</label><br>
+                            <c:if test="${question.type == 1}">
+                                <input type="radio" name="question_${question.id}" value="${question.option4}"
+                                       class="radio-option">
+                                <label for="question_${question.id}_option4"
+                                       class="label-option">${question.option4}</label><br>
+                            </c:if>
+                        </div>
+                        <br><br>
+                    </div>
+                </c:forEach>
+                <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
+                <input type="submit" value="Submit" class="btn btn-info">
+            </form:form>
 
-        <!-- Add this script tag to include the JavaScript code -->
-        <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
-        <%--    <c:forEach var="question" items="${questions}">--%>
-        <%--        <div class="question-container">--%>
-        <%--            <h3>${question.content}</h3>--%>
-        <%--            <div>--%>
-        <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}">--%>
-        <%--                <label for="question_${question.id}_option1">${question.option1}</label><br>--%>
-        <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}">--%>
-        <%--                <label for="question_${question.id}_option2">${question.option2}</label><br>--%>
-        <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}">--%>
-        <%--                <label for="question_${question.id}_option3">${question.option3}</label><br>--%>
-        <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}">--%>
-        <%--                <label for="question_${question.id}_option4">${question.option4}</label><br>--%>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Add this script tag to include the JavaScript code -->
+    <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
+    <%--    <c:forEach var="question" items="${questions}">--%>
+    <%--        <div class="question-container">--%>
+    <%--            <h3>${question.content}</h3>--%>
+    <%--            <div>--%>
+    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}">--%>
+    <%--                <label for="question_${question.id}_option1">${question.option1}</label><br>--%>
+    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}">--%>
+    <%--                <label for="question_${question.id}_option2">${question.option2}</label><br>--%>
+    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}">--%>
+    <%--                <label for="question_${question.id}_option3">${question.option3}</label><br>--%>
+    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}">--%>
+    <%--                <label for="question_${question.id}_option4">${question.option4}</label><br>--%>
 
 
-        <%--            </div>--%>
-        <%--            <br><br>--%>
-        <%--        </div>--%>
-        <%--    </c:forEach>--%>
-        <%--    <input type="submit" value="Submit">--%>
-        <%--</form:form>--%>
+    <%--            </div>--%>
+    <%--            <br><br>--%>
+    <%--        </div>--%>
+    <%--    </c:forEach>--%>
+    <%--    <input type="submit" value="Submit">--%>
+    <%--</form:form>--%>
 
 </body>
+
+
+
 </html>

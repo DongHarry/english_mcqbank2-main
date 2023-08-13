@@ -1,18 +1,106 @@
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!--favicon icon-->
+<link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
+
+<!-- vendor css -->
+<link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
+
+<!-- Bracket CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
 <html>
 <head>
     <title>Result</title>
 </head>
 <body>
-<h1>Result</h1>
-<h2>Score: ${score}/${totalQuestions}</h2>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-sideleft sideleft-scrollbar">
+    <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
+    <ul class="br-sideleft-menu">
+        <li class="br-menu-item">
+            <a href="#" class="br-menu-link with-sub active show-sub">
+                <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                <span class="menu-item-label">Làm bài</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams" class="sub-link active">
+                    Tất cả bài thi</a></li>
 
-<hr>
-<a href="${pageContext.request.contextPath}/user/exams">Back</a>
-<br>
-<a href="${pageContext.request.contextPath}/user/results">Results</a>
-<br>
-<a href="${pageContext.request.contextPath}/user">Back to home</a>
+            </ul>
+        </li>
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                <span class="menu-item-label">Kết quả</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+        <li class="br-menu-item">
+            <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Thông tin tài khoản</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+
+
+    </ul>
+    <br>
+</div><!-- br-sideleft -->
+<!-- ########## END: LEFT PANEL ########## -->
+
+<!-- ########## START: HEAD PANEL ########## -->
+<div class="br-header">
+    <div class="br-header-left">
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+
+
+    </div><!-- br-header-left -->
+
+
+
+    <div class="">
+        <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
+            <img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <span class="square-10 bg-success"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-header wd-250">
+            <div class="tx-center">
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
+                <p>${loggedInUser.email}</p>
+            </div>
+            <hr>
+            <div class="tx-center">
+                <span class="profile-earning-label">Số người đăng kí</span>
+                <h3 class="profile-earning-amount">9,999,999 <i class="icon ion-ios-arrow-thin-up tx-success"></i></h3>
+                <span class="profile-earning-text">Đánh giá 9.5</span>
+            </div>
+            <hr>
+            <ul class="list-unstyled user-profile-nav">
+                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+            </ul>
+        </div> <!-- dropdown-menu -->
+    </div> <!-- dropdown -->
+
+</div><!-- br-header -->
+<div class="br-mainpanel">
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+            <h1 class="br-section-label">Kết quả bài thi </h1>
+            <h2>Score: ${param.score}/${param.totalQuestions}</h2>
+            <hr>
+
+            <a href="${pageContext.request.contextPath}/user/exams" class="btn btn-primary">Back</a>
+            <a href="${pageContext.request.contextPath}/user/results" class="btn btn-secondary">Results</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
