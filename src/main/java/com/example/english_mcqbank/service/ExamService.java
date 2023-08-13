@@ -88,6 +88,8 @@ public class ExamService implements IExamService {
                     score++;
                 }
                 //System.out.println("Question " + questionId + ": Selected Option: " + selectedOption);
+            } else {
+                System.out.println(paramName);
             }
 
         }

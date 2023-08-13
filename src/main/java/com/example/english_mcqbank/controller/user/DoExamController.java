@@ -126,15 +126,16 @@ public class DoExamController {
 
         Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
-        userExamModelAndView.addObject("examId", exam.getId());
+        userExamModelAndView.addObject("exam", exam);
         return userExamModelAndView; // Trả về user.jsp
     }
 
     @PostMapping("/user/exams/submit")
-    public ModelAndView submitAnswers(@RequestParam Map<String, String> params, Authentication authentication,
-                                      @RequestParam("examId") int examId) {
+    public ModelAndView submitAnswers(@RequestParam Map<String, String> params,
+                                      Authentication authentication,
+                                      @RequestParam("examId") String examId) {
         // Process the submitted form data
-        Exam exam = examService.getExamById(examId);
+        Exam exam = examService.getExamById(Integer.parseInt(examId));
         int totalQuestions = exam.getQuestionNo();
         int score = examService.calculateScore(params);
         // Redirect or return a response as needed
