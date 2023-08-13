@@ -804,7 +804,7 @@
                                 <ul>
                                     <li><i class="fa fa-phone"></i> <span>Phone: +84 337.812.611</span></li>
                                     <li><i class="fa fa-envelope-o"></i> <span>Email : <a
-                                            href="mailto:phamduongvietanh_t65@hus.edu.vn">phamduongvietanh_t65@hus.edu.vn</a></span>
+                                            href="#">apelish_t65@hus.edu.vn</a></span>
                                     </li>
                                 </ul>
                             </div>
@@ -888,7 +888,7 @@
                                     </ul>
                                 </div>
                                 <div class="copyright-text">
-                                    <p>&copy; copyright <a href="#">ApeTech</a> Software Template By <a
+                                    <p>&copy; copyright <a href="#">ApeLish</a> Software Template By <a
                                             href="" target="_blank">Team INTX</a>
                                     </p>
                                 </div>
