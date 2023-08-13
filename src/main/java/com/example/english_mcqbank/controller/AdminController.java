@@ -71,16 +71,4 @@ public class AdminController {
         //model.addAttribute("topics", topics);
         return view; // Trả về admin.jsp
     }
-
-    @RequestMapping(value = "/admin/test2", method = RequestMethod.POST)
-    public ModelAndView test2(HttpSession session) {
-        List<Topic> topics = (List<Topic>) session.getAttribute("topics");
-
-        for (Topic topic : topics) {
-            System.out.println(topic.getName());
-        }
-        ModelAndView view = new ModelAndView("test2");
-        view.addObject("name", session.getAttribute("username"));
-        return view; // Trả về admin.jsp
-    }
 }
