@@ -49,7 +49,7 @@
         }
 
         // Thay thế 'yourJSPVariable' bằng biến duration từ EL
-        var durationFromEL = ${questions.size() * 3};
+        var durationFromEL = ${questions.size() * 60};
         countdown(durationFromEL);
     </script>
 </head>
