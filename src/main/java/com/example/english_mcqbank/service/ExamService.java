@@ -89,7 +89,7 @@ public class ExamService implements IExamService {
                 }
                 //System.out.println("Question " + questionId + ": Selected Option: " + selectedOption);
             } else {
-                System.out.println(paramName);
+                //System.out.println(paramName);
             }
 
         }
