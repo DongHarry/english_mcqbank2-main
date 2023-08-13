@@ -36,7 +36,7 @@
 
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
                 console.log(timer);
-                if (--timer === 0) {
+                if (--timer === -2) {
                     alert("Hết giờ!")
                     //$("#submitButton").click(); // Tự động click nút submit
                     document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
