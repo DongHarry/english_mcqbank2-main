@@ -848,7 +848,7 @@
                   </div>
                 </div>
               </form:form>
-              <p class="form-message"></p>
+<%--              <p class="form-message"></p>--%>
               <c:if test="${not empty message5}">
                 <div class="alert alert-success">
                   <strong>${message5}</strong>

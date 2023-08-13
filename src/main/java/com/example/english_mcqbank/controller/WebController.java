@@ -26,6 +26,7 @@ public class WebController {
     final PasswordEncoder passwordEncoder;
     final IEmailSender IEmailSender;
     final VerifyService verifyService;
+    final ISessionService sessionService;
 
     @RequestMapping(value = {"/", "/home", "/index"})
     public ModelAndView homepage(Authentication authentication) {
@@ -67,20 +68,18 @@ public class WebController {
         //return new ModelAndView("redirect:/#");
         //ModelAndView view = new ModelAndView("redirect:/home");
         redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");
-        return new ModelAndView("test");
+        return new ModelAndView("redirect:/home#contact");
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
+            sessionService.removeAttribute("loggedInUser");
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login-page?logout"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
-
-
-
 
     /*public boolean isAdmin() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
