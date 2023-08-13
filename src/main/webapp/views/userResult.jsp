@@ -292,7 +292,7 @@
                                         <span class="badge badge-success">Reading</span>
                                     </c:if>
                                     <c:if test="${result.exam.type == 2}">
-                                        <span class="badge badge-success">Listening</span>
+                                        <span class="badge badge-info">Listening</span>
                                     </c:if>
 
                                 </td>
