@@ -1,11 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Upload CSV</title>
+    <title>Upload Form</title>
 </head>
 <body>
 <h1>Upload CSV File</h1>

@@ -1,29 +1,6 @@
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Forgot password</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Forgot password</h1>--%>
-<%--<c:if test="${not empty message2}">--%>
-<%--    <div class="error">${message2}</div>--%>
-<%--    <br>--%>
-<%--</c:if>--%>
-<%--<form:form action="${pageContext.request.contextPath}/forgot-password" method="post">--%>
-<%--    <input type="text" name="name" placeholder="Enter your email or username">--%>
-<%--    <input type="submit" value="Submit">--%>
-<%--</form:form>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <html lang="en">
 <head>

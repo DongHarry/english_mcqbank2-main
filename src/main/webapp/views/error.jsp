@@ -90,7 +90,7 @@
             </li>
             <!-- br-menu-item -->
         </sec:authorize>
-        <sec:authorize access="hasAnyRole(hasRole('USER'))">
+        <sec:authorize access="hasRole('USER')">
             <li class="br-menu-item">
                 <a href="#" class="br-menu-link with-sub active show-sub">
                     <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>

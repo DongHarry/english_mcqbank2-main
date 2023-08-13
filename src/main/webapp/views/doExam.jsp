@@ -1,16 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--favicon icon-->
 
-
-<%--
-  Created by IntelliJ IDEA.
-  User: Duc
-  Date: 23/07/2023
-  Time: 15:55
-  To change this template use File | Settings | File Templates.
---%>
 <html>
 <head>
     <title>Questions</title>
