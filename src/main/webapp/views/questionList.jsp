@@ -1,48 +1,3 @@
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Questions</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Questions</h1>--%>
-<%--    <table>--%>
-<%--        <tr>--%>
-<%--            <th>Question id</th>--%>
-<%--            <th>Question content</th>--%>
-<%--            <th>Topic</th>--%>
-<%--            <th>Correct answer</th>--%>
-<%--            <th>Answer</th>--%>
-<%--            <th>Level</th>--%>
-<%--            <th>Type</th>--%>
-
-<%--        </tr>--%>
-<%--        <c:forEach items="${questions}" var="question">--%>
-<%--            <tr>--%>
-<%--                <td>${question.id}</td>--%>
-<%--                <td>${question.content}</td>--%>
-<%--                <td>${question.topic.name}</td>--%>
-<%--                <td>${question.correctAnswer}</td>--%>
-<%--                <td>${question.answer}</td>--%>
-<%--                <td>${question.level}</td>--%>
-<%--                <td>${question.type}</td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
-<%--    </table>--%>
-<%--<c:if test="${currentPage > 0}">--%>
-<%--    <a href="?page=${currentPage - 1}">Prev</a>--%>
-<%--</c:if>--%>
-<%--<c:if test="${hasNext}">--%>
-<%--    <a href="?page=${currentPage + 1}">Next</a>--%>
-<%--</c:if>--%>
-<%--<hr>--%>
-<%--    <a href="#">Create new question</a> <br>--%>
-<%--    <a href="${pageContext.request.contextPath}/admin">Back to admin page</a>--%>
-<%--</body>--%>
-<%--</html>--%>
-
 
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -60,7 +15,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Trang admin</title>
+    <title>Question List</title>
 
     <!--favicon icon-->
     <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
