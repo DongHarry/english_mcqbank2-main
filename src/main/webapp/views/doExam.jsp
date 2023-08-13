@@ -35,7 +35,7 @@
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
-                console.log(timer);
+                //console.log(timer);
                 if (--timer === -2) {
                     alert("Hết giờ!");
                     document.getElementById("countdown").innerHTML = "00:00";
@@ -49,8 +49,7 @@
         }
 
         // Thay thế 'yourJSPVariable' bằng biến duration từ EL
-        var durationFromEL = ${questions.size() * 60};
-        countdown(durationFromEL);
+        countdown(${duration});
     </script>
 </head>
 <style>
@@ -87,6 +86,7 @@
         height: 30px;
         border-radius: 50%;
         font-size: 15px;
+        color: #0c0c0c;
         line-height: 25px;
         text-align: center;
         border: 2px solid #666;
@@ -152,7 +152,7 @@
             <div class="fix-scrolling">
                 <br>
                 <div>
-                    <span id="countdown">00:00</span>
+                    <span id="countdown">${o_duration}</span>
                 </div>
                 <hr width="60%">
                 <c:set var="index" value="0"/>

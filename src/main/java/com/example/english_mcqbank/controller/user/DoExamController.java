@@ -127,6 +127,14 @@ public class DoExamController {
         Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
         userExamModelAndView.addObject("exam", exam);
+        int duration = exam.getQuestionNo() * 60;
+        String minutes = duration / 60 + "";
+        String seconds = duration % 60 + "";
+        minutes = Integer.parseInt(minutes) < 10 ? "0" + minutes : minutes;
+        seconds = Integer.parseInt(seconds) < 10 ? "0" + seconds : seconds;
+        userExamModelAndView.addObject("o_duration", minutes + ":" + seconds);
+        userExamModelAndView.addObject("duration", duration);
+
         return userExamModelAndView; // Trả về user.jsp
     }
 
