@@ -16,7 +16,7 @@ public class QuestionRestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<Question>> list() {
-        List<Question> questions = IQuestionService.getAllQuestions().subList(120, 200);
+        List<Question> questions = IQuestionService.getAllQuestions();
         return ResponseEntity.ok(questions);
     }
 
