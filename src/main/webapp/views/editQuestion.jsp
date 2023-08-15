@@ -31,7 +31,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -53,7 +54,9 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link <c:if test="${type == 1}">show-sub active</c:if>">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions"
+                                        class="sub-link <c:if test="${type == 1}">show-sub active</c:if>">Tất cả câu
+                    hỏi</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
                                         class="sub-link">Thêm câu hỏi bằng file</a></li>
 
@@ -75,7 +78,8 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link <c:if test="${type == 2}">show-sub active</c:if>">
+            <a href="${pageContext.request.contextPath}/admin/topics"
+               class="br-menu-link <c:if test="${type == 2}">show-sub active</c:if>">
                 <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
@@ -99,7 +103,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -108,12 +111,13 @@
 <div class="br-header">
     <div class="br-header-left">
 
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -124,7 +128,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -136,7 +141,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -240,7 +245,7 @@
                                     <span class="input-group-text">Audio file name</span>
                                 </div>
                                 <input type="text" name="option4" id="option4"
-                                        class="form-control" value="${c_question.option4}" required>
+                                       class="form-control" value="${c_question.option4}" required>
                             </c:if>
                         </div>
                     </div>
@@ -281,7 +286,8 @@
                                                <c:if test="${c_question.answer == 4}">checked</c:if>>
                                         <span>4</span>
                                     </label>
-                                </div><!-- col-3 -->
+                                </div>
+                                <!-- col-3 -->
                             </c:if>
                         </div>
 
@@ -298,7 +304,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Question Explain</span>
                             </div>
-                            <input type="text" name="explain" id="explain" class="form-control" value="${c_question.explain}" required>
+                            <input type="text" name="explain" id="explain" class="form-control"
+                                   value="${c_question.explain}" required>
                         </div>
                     </div>
                 </div>
@@ -345,10 +352,12 @@
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Cập nhật</button>
                     <c:if test="${type == 1}">
-                        <a href="${pageContext.request.contextPath}/admin/questions" class="btn btn-secondary">Quay lại</a>
+                        <a href="${pageContext.request.contextPath}/admin/questions" class="btn btn-secondary">Quay
+                            lại</a>
                     </c:if>
                     <c:if test="${type == 2}">
-                        <a href="${pageContext.request.contextPath}/admin/topics/${c_question.topic.id}" class="btn btn-secondary">Quay lại</a>
+                        <a href="${pageContext.request.contextPath}/admin/topics/${c_question.topic.id}"
+                           class="btn btn-secondary">Quay lại</a>
                     </c:if>
                 </div>
 
@@ -373,7 +382,6 @@
 <!-- ########## END: noidung ########## --->
 
 
-
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -393,26 +401,26 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();

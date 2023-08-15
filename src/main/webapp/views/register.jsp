@@ -71,7 +71,9 @@
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Enter your email" id="email"
-                           name="email" required value="${user.email}" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập đúng định dạng địa chỉ email">
+                           name="email" required value="${user.email}"
+                           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                           title="Vui lòng nhập đúng định dạng địa chỉ email">
                 </div>
                 <!-- form-group -->
                 <div class="form-group">

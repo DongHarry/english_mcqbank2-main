@@ -5,6 +5,6 @@
 </head>
 <body>
 <h2>You don't have permission to access this page</h2>
-  <a href="${pageContext.request.contextPath}/welcome">Back to the homepage</a>
+<a href="${pageContext.request.contextPath}/welcome">Back to the homepage</a>
 </body>
 </html>

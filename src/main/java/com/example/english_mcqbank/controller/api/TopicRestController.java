@@ -1,7 +1,7 @@
 package com.example.english_mcqbank.controller.api;
 
 import com.example.english_mcqbank.model.Topic;
-import com.example.english_mcqbank.service.TopicService;
+import com.example.english_mcqbank.service.ITopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/topics")
 public class TopicRestController {
     @Autowired
-    private TopicService topicService;
+    private ITopicService topicService;
 
     @RequestMapping("/")
     public ResponseEntity<List<Topic>> list() {

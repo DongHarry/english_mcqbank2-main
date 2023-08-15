@@ -21,12 +21,13 @@
     <!-- vendor css -->
     <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-<%--    <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">--%>
+    <%--    <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">--%>
 
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css"
+          rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/spectrum-colorpicker/spectrum.css" rel="stylesheet">
 
     <!-- Bracket CSS -->
@@ -36,7 +37,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -58,7 +60,8 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link active">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions"
+                                        class="sub-link active">Tất cả câu hỏi</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
                                         class="sub-link">Thêm câu hỏi bằng file</a></li>
 
@@ -104,7 +107,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -113,12 +115,13 @@
 <div class="br-header">
     <div class="br-header-left">
 
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -129,7 +132,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -141,7 +145,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -289,12 +293,12 @@
                                 </label>
                             </div>
 
-                                <div class="col-lg-1 mg-t-20 mg-lg-t-0">
-                                    <label class="rdiobox">
-                                        <input name="answer" value="4" type="radio">
-                                        <span>4</span>
-                                    </label>
-                                </div><!-- col-3 -->
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="4" type="radio">
+                                    <span>4</span>
+                                </label>
+                            </div><!-- col-3 -->
                         </div>
 
 
@@ -321,23 +325,23 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Topic</span>
                             </div>
-<%--                            <c:forEach items="${topics}" var="topic">--%>
-<%--                                <div class="col-lg-2 mg-t-20 mg-lg-t-0">--%>
-<%--                                    <label class="rdiobox">--%>
-<%--                                        <input name="topicId" value="${topic.id}" type="radio" id="topic">--%>
-<%--                                        <span>${topic.name}</span>--%>
-<%--                                    </label>--%>
-<%--                                </div><!-- col-3 -->--%>
-<%--                            <div class="row mg-t-20">--%>
-                                <div class="col-lg-6 mg-t-20 mg-lg-t-0">
-                                    <select class="form-control select2" name="topicId" data-placeholder="Choose Topic">
-                                        <c:forEach items="${topics}" var="topic">
-                                            <option value="${topic.id}">${topic.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div><!-- col-4 -->
-<%--                            </div><!-- row -->--%>
-<%--                            </c:forEach>--%>
+                                <%--                            <c:forEach items="${topics}" var="topic">--%>
+                                <%--                                <div class="col-lg-2 mg-t-20 mg-lg-t-0">--%>
+                                <%--                                    <label class="rdiobox">--%>
+                                <%--                                        <input name="topicId" value="${topic.id}" type="radio" id="topic">--%>
+                                <%--                                        <span>${topic.name}</span>--%>
+                                <%--                                    </label>--%>
+                                <%--                                </div><!-- col-3 -->--%>
+                                <%--                            <div class="row mg-t-20">--%>
+                            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+                                <select class="form-control select2" name="topicId" data-placeholder="Choose Topic">
+                                    <c:forEach items="${topics}" var="topic">
+                                        <option value="${topic.id}">${topic.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div><!-- col-4 -->
+                                <%--                            </div><!-- row -->--%>
+                                <%--                            </c:forEach>--%>
 
                         </div>
                     </div>
@@ -405,7 +409,6 @@
 <jsp:include page="include/logout-modal.jsp"></jsp:include>
 
 
-
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -430,26 +433,26 @@
 <%--<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>--%>
 
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();

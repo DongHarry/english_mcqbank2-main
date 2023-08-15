@@ -31,7 +31,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -53,7 +54,8 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                    cả câu hỏi</a></li>
                 <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
                                         class="sub-link active">Thêm câu hỏi bằng file</a></li>
 
@@ -99,7 +101,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -107,12 +108,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -123,7 +125,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${user.email}</p>
             </div>
@@ -135,7 +138,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -173,62 +176,68 @@
                     <p class="br-section-text" style="color: red">Định dạng chấp nhận là .csv, .xls hoặc .xlsx</p>
                 </li>
                 <li style="list-style: none; margin-top: -40px">
-                    <p class="br-section-text" style="color: red">File có header với định dạng là QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAIN,QU_TYPE,TP_ID,DIFFICULT_LEVEL
+                    <p class="br-section-text" style="color: red">File có header với định dạng là
+                        QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAIN,QU_TYPE,TP_ID,DIFFICULT_LEVEL
                     </p>
                 </li>
                 <li style="list-style: none; margin-top: -40px">
-                    <p class="br-section-text" style="color: red">Các cột qu_answer,qu_type, tp_id, difficult_level là kiểu số nguyên, các cột còn lại là kiểu chuỗi</p>
+                    <p class="br-section-text" style="color: red">Các cột qu_answer,qu_type, tp_id, difficult_level là
+                        kiểu số nguyên, các cột còn lại là kiểu chuỗi</p>
                 </li>
                 <li style="list-style: none; margin-top: -40px">
-                    <p class="br-section-text" style="color: red">TP_ID phải trong danh sách đã có, thêm hoặc xem tại <a href="${pageContext.request.contextPath}/admin/topics">Topics</a></p>
+                    <p class="br-section-text" style="color: red">TP_ID phải trong danh sách đã có, thêm hoặc xem tại <a
+                            href="${pageContext.request.contextPath}/admin/topics">Topics</a></p>
                 </li>
                 <li style="list-style: none; margin-top: -40px">
-                    <p class="br-section-text" style="opacity: 0; user-select: none">TP_ID phải trong danh sách đã có, thêm hoặc xem tại </p>
+                    <p class="br-section-text" style="opacity: 0; user-select: none">TP_ID phải trong danh sách đã có,
+                        thêm hoặc xem tại </p>
                 </li>
             </ul>
             <c:if test="${not empty e_message}">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="alert alert-danger" role="alert">
-                            ${e_message}
+                                ${e_message}
                         </div>
                     </div>
                 </div>
             </c:if>
-            <form:form method="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/questions/upload">
-            <div class="row">
-                <div class="col">
-<%--                    <div class="input-group">--%>
-<%--                        <div class="input-group-prepend">--%>
-<%--                            <span class="input-group-text">Chọn file</span>--%>
-<%--                        </div>--%>
-    <div class="ht-250 bg-gray-200 mg-t-60 d-flex align-items-center justify-content-center">
-        <input type="file" name="file" id="file-3" class="inputfile" accept=".csv,.xls,.xlsx" required data-multiple-caption="{count} files selected">
-        <label for="file-3" class="if-style-1">
-              <custom-tag class="icon-wrapper">
-                <i class="icon ion-ios-upload-outline"></i>
-              </custom-tag><!-- icon-wrapper -->
-            <span>Chọn file</span>
-        </label>
-    </div><!-- ht-200 -->
-<%--                        <label for="file2" class="if-style-1">--%>
-<%--                                  <span class="icon-wrapper">--%>
-<%--                                    <i class="icon ion-ios-upload-outline"></i>--%>
-<%--                                  </span><!-- icon-wrapper -->--%>
-<%--                            <span>Choose a file</span>--%>
-<%--                        </label>--%>
-<%--                        <input id="file2" type="file" name="file" class="form-control" accept=".csv,.xls,.xlsx" required>--%>
-<%--                    </div>--%>
+            <form:form method="POST" enctype="multipart/form-data"
+                       action="${pageContext.request.contextPath}/admin/questions/upload">
+                <div class="row">
+                    <div class="col">
+                            <%--                    <div class="input-group">--%>
+                            <%--                        <div class="input-group-prepend">--%>
+                            <%--                            <span class="input-group-text">Chọn file</span>--%>
+                            <%--                        </div>--%>
+                        <div class="ht-250 bg-gray-200 mg-t-60 d-flex align-items-center justify-content-center">
+                            <input type="file" name="file" id="file-3" class="inputfile" accept=".csv,.xls,.xlsx"
+                                   required data-multiple-caption="{count} files selected">
+                            <label for="file-3" class="if-style-1">
+                                <custom-tag class="icon-wrapper">
+                                    <i class="icon ion-ios-upload-outline"></i>
+                                </custom-tag><!-- icon-wrapper -->
+                                <span>Chọn file</span>
+                            </label>
+                        </div><!-- ht-200 -->
+                            <%--                        <label for="file2" class="if-style-1">--%>
+                            <%--                                  <span class="icon-wrapper">--%>
+                            <%--                                    <i class="icon ion-ios-upload-outline"></i>--%>
+                            <%--                                  </span><!-- icon-wrapper -->--%>
+                            <%--                            <span>Choose a file</span>--%>
+                            <%--                        </label>--%>
+                            <%--                        <input id="file2" type="file" name="file" class="form-control" accept=".csv,.xls,.xlsx" required>--%>
+                            <%--                    </div>--%>
+                    </div>
                 </div>
-            </div>
-<%--                <div class="row">--%>
-<%--                    <div class="col-lg-4">--%>
-<%--                        <div class="custom-file">--%>
-<%--                            <input type="file" class="custom-file-input" name="file" accept=".csv,.xls,.xlsx" required>--%>
-<%--                            <label class="custom-file-label">Choose file</label>--%>
-<%--                        </div>--%>
-<%--                    </div><!-- col -->--%>
-<%--                </div><!-- row -->--%>
+                <%--                <div class="row">--%>
+                <%--                    <div class="col-lg-4">--%>
+                <%--                        <div class="custom-file">--%>
+                <%--                            <input type="file" class="custom-file-input" name="file" accept=".csv,.xls,.xlsx" required>--%>
+                <%--                            <label class="custom-file-label">Choose file</label>--%>
+                <%--                        </div>--%>
+                <%--                    </div><!-- col -->--%>
+                <%--                </div><!-- row -->--%>
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Upload</button>
 
@@ -276,26 +285,26 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <%--<script src="${pageContext.request.contextPath}/js/dashboard.js"></script>--%>
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -306,35 +315,37 @@
 
 
 <script>
-    $(function(){
+    $(function () {
 
         'use strict';
 
-        $( '.inputfile' ).each( function()
-        {
-            var $input	 = $( this ),
-                $label	 = $input.next( 'label' ),
+        $('.inputfile').each(function () {
+            var $input = $(this),
+                $label = $input.next('label'),
                 labelVal = $label.html();
 
-            $input.on( 'change', function( e )
-            {
+            $input.on('change', function (e) {
                 var fileName = '';
 
-                if( this.files && this.files.length > 1 )
-                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-                else if( e.target.value )
-                    fileName = e.target.value.split( '\\' ).pop();
+                if (this.files && this.files.length > 1)
+                    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                else if (e.target.value)
+                    fileName = e.target.value.split('\\').pop();
 
-                if( fileName )
-                    $label.find( 'span' ).html( fileName );
+                if (fileName)
+                    $label.find('span').html(fileName);
                 else
-                    $label.html( labelVal );
+                    $label.html(labelVal);
             });
 
             // Firefox bug fix
             $input
-                .on( 'focus', function(){ $input.addClass( 'has-focus' ); })
-                .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+                .on('focus', function () {
+                    $input.addClass('has-focus');
+                })
+                .on('blur', function () {
+                    $input.removeClass('has-focus');
+                });
         });
 
     });

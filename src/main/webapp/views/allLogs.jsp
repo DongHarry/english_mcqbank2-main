@@ -218,7 +218,8 @@
                                     <li style="list-style: none">
                                         Delete: <a
                                             href="#"
-                                            class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-row-id="${log.id}" title="Delete"><i
+                                            class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
+                                            data-row-id="${log.id}" title="Delete"><i
                                             class="fas fa-trash"></i></a>
                                     </li>
                                 </ul>
@@ -260,17 +261,20 @@
                 <p class="mg-b-5">Are you sure to delete this log?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
+                <a href="" type="button"
+                   class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
+                        data-dismiss="modal">Cancel
+                </button>
             </div>
         </div>
     </div><!-- modal-dialog -->
 </div><!-- modal -->
 <script>
-    $(function(){
+    $(function () {
 
         // showing modal with effect
-        $('.modal-effect1').on('click', function(e){
+        $('.modal-effect1').on('click', function (e) {
             e.preventDefault();
             var effect = $(this).attr('data-effect');
             $('#modaldemo8').addClass(effect);
@@ -279,7 +283,7 @@
             var rowId = $(this).data("row-id");
             console.log(rowId)
             // Tạo chuỗi đường dẫn mới kết hợp với tham số
-            var newHref = "${pageContext.request.contextPath}/admin/logs/"+rowId+"/delete"
+            var newHref = "${pageContext.request.contextPath}/admin/logs/" + rowId + "/delete"
 
             // Sửa thuộc tính href của thẻ a
             $(".save-changes-btn").attr("href", newHref);
@@ -287,8 +291,8 @@
 
         // hide modal with effect
         $('#modaldemo8').on('hidden.bs.modal', function (e) {
-            $(this).removeClass (function (index, className) {
-                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });
         });
     });

@@ -23,8 +23,10 @@
     <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-dt/css/jquery.dataTables.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css"
+          rel="stylesheet">
 
 
     <!-- Bracket CSS -->
@@ -59,7 +61,8 @@
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish <i>hus</i><span>]</span></a></div>
+<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
@@ -82,11 +85,14 @@
                     <span class="menu-item-label">Quản lý câu hỏi</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link active">Tất cả câu hỏi</a></li>
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions"
+                                            class="sub-link active">Tất cả câu hỏi</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
+                                            class="sub-link">Thêm câu hỏi bằng file</a></li>
 
                 </ul>
-            </li><!-- br-menu-item -->
+            </li>
+            <!-- br-menu-item -->
         </c:if>
         <c:if test="${type == 2}">
             <li class="br-menu-item">
@@ -95,11 +101,14 @@
                     <span class="menu-item-label">Quản lý câu hỏi</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất cả câu hỏi</a></li>
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload" class="sub-link">Thêm câu hỏi bằng file</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                        cả câu hỏi</a></li>
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
+                                            class="sub-link">Thêm câu hỏi bằng file</a></li>
 
                 </ul>
-            </li><!-- br-menu-item -->
+            </li>
+            <!-- br-menu-item -->
         </c:if>
 
 
@@ -123,7 +132,8 @@
                     <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý topic</span>
                 </a><!-- br-menu-link -->
-            </li><!-- br-menu-item -->
+            </li>
+            <!-- br-menu-item -->
         </c:if>
         <c:if test="${type == 2}">
             <li class="br-menu-item">
@@ -131,7 +141,8 @@
                     <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý topic</span>
                 </a><!-- br-menu-link -->
-            </li><!-- br-menu-item -->
+            </li>
+            <!-- br-menu-item -->
         </c:if>
 
         <li class="br-menu-item">
@@ -152,7 +163,6 @@
     <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
 
-
     <br>
 </div><!-- br-sideleft -->
 <!-- ########## END: LEFT PANEL ########## -->
@@ -160,12 +170,13 @@
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header">
     <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
 
 
     </div><!-- br-header-left -->
-
 
 
     <div class="dropdown">
@@ -176,7 +187,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
                 <p>${loggedInUser.email}</p>
             </div>
@@ -188,8 +200,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
-<%--                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>--%>
+                <li><a href="" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <%--                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>--%>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -237,16 +249,16 @@
                         <th class="wd-15p" style="width: auto">Question Content</th>
 
                         <th class="wd-15p" style="width: auto">Correct Answer</th>
-<%--                        <th class="wd-15p">Answer</th>--%>
+                        <%--                        <th class="wd-15p">Answer</th>--%>
                         <th class="wd-15p" style="width: auto">Type</th>
                         <th class="wd-15p">Topic</th>
-<%--                        <th class="wd-15p">Level</th>--%>
+                        <%--                        <th class="wd-15p">Level</th>--%>
                         <th class="wd-15p">Action</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                        <c:forEach items="${questions}" var="question">
+                    <c:forEach items="${questions}" var="question">
                         <tr>
                             <td>${question.id}</td>
                             <td>
@@ -257,42 +269,49 @@
                             </td>
 
                             <td>${question.correctAnswer}</td>
-<%--                            <td>${question.answer}</td>--%>
+                                <%--                            <td>${question.answer}</td>--%>
 
                             <td>
-                                    <c:if test="${question.type == 1}">
-                                        <span class="badge badge-success" style="font-size: 14px"> Reading </span>
-                                    </c:if>
-                                    <c:if test="${question.type == 2}">
-                                        <span class="badge badge-info" style="font-size: 14px">Listening</span>
-                                    </c:if>
+                                <c:if test="${question.type == 1}">
+                                    <span class="badge badge-success" style="font-size: 14px"> Reading </span>
+                                </c:if>
+                                <c:if test="${question.type == 2}">
+                                    <span class="badge badge-info" style="font-size: 14px">Listening</span>
+                                </c:if>
                             </td>
                             <td>${question.topic.name}</td>
-<%--                            <td>${question.level}</td>--%>
+                                <%--                            <td>${question.level}</td>--%>
                             <td>
                                 <ul style="margin-left: -40px">
                                     <li style="list-style: none">
-                                        Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
+                                        Edit: <a
+                                            href="${pageContext.request.contextPath}/admin/questions/${question.id}<c:if test="${type==2}">?type=2</c:if>"
+                                            class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i
+                                            class="fas fa-edit"></i></a>
                                     </li>
 
-<%--                                    <li>--%>
-<%--                                        Delete: <a onclick="if (!confirm('Are you sure to delete this question?')) return false" href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>--%>
-<%--                                    </li>--%>
+                                        <%--                                    <li>--%>
+                                        <%--                                        Delete: <a onclick="if (!confirm('Are you sure to delete this question?')) return false" href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>--%>
+                                        <%--                                    </li>--%>
                                     <li style="list-style: none">
-                                        Delete: <a href="#" class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${question.id}"><i class="fas fa-trash"></i></a>
+                                        Delete: <a href="#"
+                                                   class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
+                                                   data-effect="effect-scale" title="Delete"
+                                                   data-row-id="${question.id}"><i class="fas fa-trash"></i></a>
                                     </li>
                                 </ul>
                             </td>
                         </tr>
-                        </c:forEach>
+                    </c:forEach>
                     </tbody>
 
                 </table>
                 <c:if test="${type == 1}">
-                    <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/admin/questions/new">Create New Question</a>
+                    <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/admin/questions/new">Create
+                        New Question</a>
                     <br>
-<%--                    <c:set var="myVar" value="${999}"/>--%>
-<%--                    Delete: <a href="#" class="modal-effect btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${myVar}"><i class="fas fa-trash"></i></a>--%>
+                    <%--                    <c:set var="myVar" value="${999}"/>--%>
+                    <%--                    Delete: <a href="#" class="modal-effect btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${myVar}"><i class="fas fa-trash"></i></a>--%>
 
                 </c:if>
                 <c:if test="${type == 2}">
@@ -329,11 +348,16 @@
             </div>
             <div class="modal-body pd-25">
                 <h4 class="lh-3 mg-b-20 tx-inverse">Are you sure to delete all question of this topic?</h4>
-                <p class="mg-b-5">This action will delete ${questions.size()} questions of topic: ${topic.name}, are you sure ?</p>
+                <p class="mg-b-5">This action will delete ${questions.size()} questions of topic: ${topic.name}, are you
+                    sure ?</p>
             </div>
             <div class="modal-footer">
-                <a href="${pageContext.request.contextPath}/admin/questions/deleteTopic?topicId=${topic.id}" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
+                <a href="${pageContext.request.contextPath}/admin/questions/deleteTopic?topicId=${topic.id}"
+                   type="button"
+                   class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
+                        data-dismiss="modal">Cancel
+                </button>
             </div>
         </div>
     </div><!-- modal-dialog -->
@@ -353,8 +377,11 @@
                 <p class="mg-b-5">Are you sure to delete this question?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
+                <a href="" type="button"
+                   class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
+                        data-dismiss="modal">Cancel
+                </button>
             </div>
         </div>
     </div><!-- modal-dialog -->
@@ -388,10 +415,10 @@
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <script src="${pageContext.request.contextPath}/lib/highlightjs/highlight.pack.min.js"></script>
 <script>
-    $(function(){
+    $(function () {
 
         // showing modal with effect
-        $('.modal-effect1').on('click', function(e){
+        $('.modal-effect1').on('click', function (e) {
             e.preventDefault();
             var effect = $(this).attr('data-effect');
             $('#modaldemo8').addClass(effect);
@@ -400,7 +427,7 @@
             var rowId = $(this).data("row-id");
             console.log(rowId)
             // Tạo chuỗi đường dẫn mới kết hợp với tham số
-            var newHref = "${pageContext.request.contextPath}/admin/questions/"+rowId+"/delete<c:if test="${type==2}">?type=2</c:if>"
+            var newHref = "${pageContext.request.contextPath}/admin/questions/" + rowId + "/delete<c:if test="${type==2}">?type=2</c:if>"
 
             // Sửa thuộc tính href của thẻ a
             $(".save-changes-btn").attr("href", newHref);
@@ -408,8 +435,8 @@
 
         // hide modal with effect
         $('#modaldemo8').on('hidden.bs.modal', function (e) {
-            $(this).removeClass (function (index, className) {
-                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });
         });
     });
@@ -417,10 +444,10 @@
 
 
 <script>
-    $(function(){
+    $(function () {
 
         // showing modal with effect
-        $('.modal-effect3').on('click', function(e){
+        $('.modal-effect3').on('click', function (e) {
             e.preventDefault();
             var effect = $(this).attr('data-effect');
             $('#modaldemo2').addClass(effect);
@@ -429,33 +456,33 @@
 
         // hide modal with effect
         $('#modaldemo2').on('hidden.bs.modal', function (e) {
-            $(this).removeClass (function (index, className) {
-                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });
         });
     });
 </script>
 <script>
-    $(function(){
+    $(function () {
         'use strict'
 
         // FOR DEMO ONLY
         // menu collapsed by default during first page load or refresh with screen
         // having a size between 992px and 1299px. This is intended on this page only
         // for better viewing of widgets demo.
-        $(window).resize(function(){
+        $(window).resize(function () {
             minimizeMenu();
         });
 
         minimizeMenu();
 
         function minimizeMenu() {
-            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
                 // show only the icons and hide left menu label by default
                 $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
-            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -463,7 +490,7 @@
         }
     });
 
-    $(function(){
+    $(function () {
         'use strict';
 
         $('#datatable2').DataTable({
@@ -476,7 +503,7 @@
         });
 
         // Select2
-        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+        $('.dataTables_length select').select2({minimumResultsForSearch: Infinity});
 
     });
 

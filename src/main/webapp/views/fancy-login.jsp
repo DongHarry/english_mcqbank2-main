@@ -55,7 +55,7 @@
                             </c:if>
                             <c:if test="${successMessage != null}">
                                 <div class="alert alert-success col-xs-offset-1 col-xs-10">
-                                    ${successMessage}
+                                        ${successMessage}
                                 </div>
                             </c:if>
                         </div>

@@ -14,19 +14,24 @@
                 <p class="mg-b-5">Bạn có muốn đăng xuất không?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="${pageContext.request.contextPath}/logout" type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log out</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
+                <a href="${pageContext.request.contextPath}/logout" type="button"
+                   class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log
+                    out</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
+                        data-dismiss="modal">Cancel
+                </button>
             </div>
         </div>
     </div><!-- modal-dialog -->
-</div><!-- modal -->
+</div>
+<!-- modal -->
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 
 <script>
-    $(function(){
+    $(function () {
 
         // showing modal with effect
-        $('.modal-effect2').on('click', function(e){
+        $('.modal-effect2').on('click', function (e) {
             e.preventDefault();
             var effect = $(this).attr('data-effect');
             $('#modaldemo9').addClass(effect);
@@ -35,8 +40,8 @@
 
         // hide modal with effect
         $('#modaldemo9').on('hidden.bs.modal', function (e) {
-            $(this).removeClass (function (index, className) {
-                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });
         });
     });
