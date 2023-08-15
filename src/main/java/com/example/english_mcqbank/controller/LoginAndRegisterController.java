@@ -57,7 +57,7 @@ public class LoginAndRegisterController {
     @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
     public ModelAndView registerProcess(@ModelAttribute("user") UserEntity user, @ModelAttribute("confirmPassword") String confirmPassword,
                                         Model model, RedirectAttributes redirectAttributes) {
-        ModelAndView registerModelAndView = new ModelAndView("register");
+        //ModelAndView registerModelAndView = new ModelAndView("register");
         //System.out.println(user);
         String errorMessage = "";
         if (userService.isUserPresent(user.getUsername())) {
@@ -79,13 +79,16 @@ public class LoginAndRegisterController {
         }
 
         if (!errorMessage.equals("")) {
-            model.addAttribute("errorMessage", errorMessage);
+            //model.addAttribute("errorMessage", errorMessage);
             Log log = new Log();
             log.setName("User " + user.getUsername() + " register failed");
             log.setDatetime(new Date());
             log.setStatus(0);
             logService.saveLog(log);
-            return registerModelAndView;
+            //return registerModelAndView;
+            ModelAndView modelAndView = new ModelAndView("redirect:/register");
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+            return modelAndView;
         }
 
         if (user.getPassword().equals(confirmPassword)) {
@@ -105,12 +108,15 @@ public class LoginAndRegisterController {
             }
 
         } else {
-            model.addAttribute("errorMessage", "Password and Confirm Password do not match!");
-            return registerModelAndView;
+            //model.addAttribute("errorMessage", "Password and Confirm Password do not match!");
+            ModelAndView modelAndView = new ModelAndView("redirect:/register");
+            redirectAttributes.addFlashAttribute("errorMessage", "Password and Confirm Password do not match!");
+            return modelAndView;
         }
-        redirectAttributes.addFlashAttribute("successMessage", "User registered successfully!");
-        ModelAndView modelAndView = new ModelAndView("login-page");
-        modelAndView.addObject("successMessage2", "User registered successfully!");
+        ModelAndView modelAndView = new ModelAndView("redirect:/login-page");
+        redirectAttributes.addFlashAttribute("successMessage2", "User registered successfully!");
+
+        //modelAndView.addObject("successMessage2", "User registered successfully!");
         return modelAndView;
     }
 }
