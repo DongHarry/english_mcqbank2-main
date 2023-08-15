@@ -92,7 +92,7 @@
                                         <li><a href="${pageContext.request.contextPath}/user/profile">User
                                             Information</a></li>
                                         <li><a href="${pageContext.request.contextPath}/user/results">Result</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/logout">Sign out</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
                                     </ul>
                                 </li>
 

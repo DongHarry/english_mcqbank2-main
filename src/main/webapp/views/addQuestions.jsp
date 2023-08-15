@@ -162,7 +162,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li> <a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -308,6 +308,7 @@
         </div>
     </footer>
 </div><!-- br-mainpanel -->
+<jsp:include page="include/logout-modal.jsp"></jsp:include>
 
 
 <!-- ########## END: noidung ########## --->

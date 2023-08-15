@@ -177,7 +177,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li><a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a>
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a>
                 </li>
             </ul>
         </div> <!-- dropdown-menu -->
@@ -292,9 +292,8 @@
                                         </li>
                                         <li style="list-style: none">
                                             Delete: <a
-                                                onclick="if (!confirm('Are you sure to delete this exam?')) return false"
-                                                href="${pageContext.request.contextPath}/admin/deleteExam?examId=${exam.id}"
-                                                class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i
+                                                href="#" data-row-id="${exam.id}"
+                                                class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i
                                                 class="fas fa-trash"></i></a>
                                         </li>
 
@@ -337,6 +336,51 @@
         </div>
     </footer>
 </div>
+<jsp:include page="include/logout-modal.jsp"></jsp:include>
+<div id="modaldemo8" class="modal fade">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content bd-0 tx-14">
+            <div class="modal-header pd-x-20">
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Notice</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pd-20">
+                <p class="mg-b-5">Are you sure to delete this exam?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a href="" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+<script>
+    $(function(){
+
+        // showing modal with effect
+        $('.modal-effect1').on('click', function(e){
+            e.preventDefault();
+            var effect = $(this).attr('data-effect');
+            $('#modaldemo8').addClass(effect);
+            $('#modaldemo8').modal('show');
+
+            var rowId = $(this).data("row-id");
+            // Tạo chuỗi đường dẫn mới kết hợp với tham số
+            var newHref = "${pageContext.request.contextPath}/admin/deleteExam?examId=" + rowId;
+            // Sửa thuộc tính href của thẻ a
+            $(".save-changes-btn").attr("href", newHref);
+        });
+
+        // hide modal with effect
+        $('#modaldemo8').on('hidden.bs.modal', function (e) {
+            $(this).removeClass (function (index, className) {
+                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
+    });
+</script>
 <!-- ########## END: noidung ########## --->
 
 
@@ -355,7 +399,7 @@
 <script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>

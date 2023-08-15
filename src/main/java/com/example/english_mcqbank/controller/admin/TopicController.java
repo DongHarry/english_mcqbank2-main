@@ -23,6 +23,7 @@ public class TopicController {
     final IQuestionService questionService;
     final IExamService examService;
     final IResultService resultService;
+    final IExamTopicService examTopicService;
     final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
@@ -80,6 +81,11 @@ public class TopicController {
 
         if (questionService.countAllByTopic(topic) > 0) {
             redirectAttributes.addFlashAttribute("e_message", "Topic has questions");
+            return new ModelAndView("redirect:/admin/topics");
+        }
+
+        if (examTopicService.existsByTopic(topic)) {
+            redirectAttributes.addFlashAttribute("e_message", "Topic has exams");
             return new ModelAndView("redirect:/admin/topics");
         }
 

@@ -26,7 +26,7 @@ public class EditProfileController {
 
     @RequestMapping(value = "/user/profile/edit", method = RequestMethod.GET)
     public ModelAndView editUserProfile(Model model) {
-        ModelAndView editUserModelAndView = new ModelAndView("editUser");
+        ModelAndView editUserModelAndView = new ModelAndView("editProfile");
         UserEntity user = sessionService.getLoggedInUser();
         //editUserModelAndView.addObject("loggedInUser", user);
         editUserModelAndView.addObject("type", 1);

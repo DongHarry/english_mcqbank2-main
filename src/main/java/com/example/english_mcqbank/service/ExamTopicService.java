@@ -2,6 +2,7 @@ package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.ExamTopic;
+import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.ExamTopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,15 @@ public class ExamTopicService implements IExamTopicService {
     @Transactional
     public void deleteAllByExam(Exam exam) {
         examTopicRepository.deleteAllByExam(exam);
+    }
+
+    @Override
+    public int countAllByTopic(Topic topic) {
+        return examTopicRepository.countAllByTopic(topic);
+    }
+
+    @Override
+    public boolean existsByTopic(Topic topic) {
+        return examTopicRepository.existsByTopic(topic);
     }
 }

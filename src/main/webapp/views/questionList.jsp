@@ -188,7 +188,8 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>
+                <li> <a href="" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+<%--                <li> <a href="${pageContext.request.contextPath}/logout"><i class="icon ion-power"></i> Đăng xuất </a></li>--%>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -234,13 +235,13 @@
                     <tr>
                         <th class="wd-15p">Question ID</th>
                         <th class="wd-15p" style="width: auto">Question Content</th>
-                        <th class="wd-15p" style="width: auto">Topic</th>
+
                         <th class="wd-15p" style="width: auto">Correct Answer</th>
 <%--                        <th class="wd-15p">Answer</th>--%>
-                        <th class="wd-15p">Type</th>
+                        <th class="wd-15p" style="width: auto">Type</th>
+                        <th class="wd-15p">Topic</th>
 <%--                        <th class="wd-15p">Level</th>--%>
                         <th class="wd-15p">Action</th>
-
                     </tr>
                     </thead>
 
@@ -254,7 +255,7 @@
                                 </p>
 
                             </td>
-                            <td>${question.topic.name}</td>
+
                             <td>${question.correctAnswer}</td>
 <%--                            <td>${question.answer}</td>--%>
 
@@ -266,18 +267,19 @@
                                         <span class="badge badge-info" style="font-size: 14px">Listening</span>
                                     </c:if>
                             </td>
+                            <td>${question.topic.name}</td>
 <%--                            <td>${question.level}</td>--%>
                             <td>
-                                <ul>
-                                    <li>
+                                <ul style="margin-left: -40px">
+                                    <li style="list-style: none">
                                         Edit: <a href="${pageContext.request.contextPath}/admin/questions/${question.id}<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i class="fas fa-edit"></i></a>
                                     </li>
 
-                                    <li>
-                                        Delete1: <a onclick="if (!confirm('Are you sure to delete this question?')) return false" href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        Delete2: <a href="#" class="modal-effect btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${question.id}"><i class="fas fa-trash"></i></a>
+<%--                                    <li>--%>
+<%--                                        Delete: <a onclick="if (!confirm('Are you sure to delete this question?')) return false" href="${pageContext.request.contextPath}/admin/questions/${question.id}/delete<c:if test="${type==2}">?type=2</c:if>" class="btn btn-outline-danger btn-icon mg-r-5 mg-b-10" title="Delete"><i class="fas fa-trash"></i></a>--%>
+<%--                                    </li>--%>
+                                    <li style="list-style: none">
+                                        Delete: <a href="#" class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${question.id}"><i class="fas fa-trash"></i></a>
                                     </li>
                                 </ul>
                             </td>
@@ -289,11 +291,12 @@
                 <c:if test="${type == 1}">
                     <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/admin/questions/new">Create New Question</a>
                     <br>
-                    Delete: <a href="#" class="modal-effect btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="999"><i class="fas fa-trash"></i></a>
+<%--                    <c:set var="myVar" value="${999}"/>--%>
+<%--                    Delete: <a href="#" class="modal-effect btn btn-outline-danger btn-icon mg-r-5 mg-b-10" data-effect="effect-scale" title="Delete" data-row-id="${myVar}"><i class="fas fa-trash"></i></a>--%>
 
                 </c:if>
                 <c:if test="${type == 2}">
-                    <a class="btn btn-danger" onclick="if (!confirm('Are you sure to delete all question of this topic?')) return false" href="${pageContext.request.contextPath}/admin/questions/deleteTopic?topicId=${topic.id}">Delete All Question of topic ${topic.name}</a>
+                    <a class="btn btn-danger modal-effect3" href="#">Delete All Question of topic ${topic.name}</a>
                 </c:if>
             </div><!-- table-wrapper -->
         </div><!-- br-section-wrapper -->
@@ -319,18 +322,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bd-0 tx-14">
             <div class="modal-header pd-y-20 pd-x-25">
-                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Message Preview</h6>
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Message</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body pd-25">
-                <h4 class="lh-3 mg-b-20 tx-inverse">Why We Use Electoral College, Not Popular Vote</h4>
-                <p class="mg-b-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+                <h4 class="lh-3 mg-b-20 tx-inverse">Are you sure to delete all question of this topic?</h4>
+                <p class="mg-b-5">This action will delete ${questions.size()} questions of topic: ${topic.name}, are you sure ?</p>
             </div>
             <div class="modal-footer">
-                <a href="" type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Save changes</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Close</button>
+                <a href="${pageContext.request.contextPath}/admin/questions/deleteTopic?topicId=${topic.id}" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div><!-- modal-dialog -->
@@ -347,17 +350,18 @@
                 </button>
             </div>
             <div class="modal-body pd-20">
-                <p class="mg-b-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                <p class="mg-b-5">Are you sure to delete this question?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <a href="" type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Save changes</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Close</button>
+                <a href="" type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
+                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div><!-- modal-dialog -->
 </div><!-- modal -->
-<!-- ########## END: noidung ########## --->
 
+<!-- ########## END: noidung ########## --->
+<jsp:include page="include/logout-modal.jsp"></jsp:include>
 
 
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
@@ -375,7 +379,7 @@
 <script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
@@ -387,9 +391,8 @@
     $(function(){
 
         // showing modal with effect
-        $('.modal-effect').on('click', function(e){
+        $('.modal-effect1').on('click', function(e){
             e.preventDefault();
-
             var effect = $(this).attr('data-effect');
             $('#modaldemo8').addClass(effect);
             $('#modaldemo8').modal('show');
@@ -405,6 +408,27 @@
 
         // hide modal with effect
         $('#modaldemo8').on('hidden.bs.modal', function (e) {
+            $(this).removeClass (function (index, className) {
+                return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
+    });
+</script>
+
+
+<script>
+    $(function(){
+
+        // showing modal with effect
+        $('.modal-effect3').on('click', function(e){
+            e.preventDefault();
+            var effect = $(this).attr('data-effect');
+            $('#modaldemo2').addClass(effect);
+            $('#modaldemo2').modal('show');
+        });
+
+        // hide modal with effect
+        $('#modaldemo2').on('hidden.bs.modal', function (e) {
             $(this).removeClass (function (index, className) {
                 return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
             });
