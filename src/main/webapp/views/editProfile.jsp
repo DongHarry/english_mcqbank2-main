@@ -315,7 +315,7 @@
                                                 class="icon ion-ios-telephone tx-16 lh-0 op-6"></i></span>
                                     </div>
                                     <input type="text" id="phone" name="phone" value="${currentUser.phone}" required
-                                           class="form-control" placeholder="Phone">
+                                           class="form-control" placeholder="Phone" pattern="\d{10}" title="Vui lòng nhập đúng 10 chữ số">
                                 </div><!-- input-group -->
                             </div><!-- col-4 -->
                         </div>
@@ -329,7 +329,7 @@
                                                 class="icon ion-email tx-16 lh-0 op-6"></i></span>
                                     </div>
                                     <input type="text" id="email" name="email" value="${currentUser.email}" required
-                                           class="form-control" placeholder="Email">
+                                           class="form-control" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Vui lòng nhập đúng định dạng địa chỉ email">
                                 </div><!-- input-group -->
                             </div><!-- col-4 -->
                         </div>
