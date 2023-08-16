@@ -32,7 +32,7 @@ public class AllUserController {
         ModelAndView view = new ModelAndView("profile");
         UserEntity user = userService.getUserByUserid(id);
         view.addObject("user", user);
-
+        sessionService.setAttribute("type3", 2);
         //UserEntity loggedInUser = sessionService.getLoggedInUser();
         //view.addObject("loggedInUser", loggedInUser);
         view.addObject("type", 2);
@@ -47,6 +47,7 @@ public class AllUserController {
         ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
         List<Log> logs = logService.getLogsByUser(user);
+        sessionService.setAttribute("type3", 2);
         logsModelAndView.addObject("logs", logs);
 
         if (logs == null || logs.isEmpty()) {
@@ -68,6 +69,7 @@ public class AllUserController {
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
     public ModelAndView users(@RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "10") int size) {
+        sessionService.setAttribute("type3", 2);
         ModelAndView usersModelAndView = new ModelAndView("allUsers");
         //List<UserEntity> users = userService.getAllUsers(page, size);
         List<UserEntity> users = userService.getAllUsers();

@@ -70,13 +70,13 @@
 
 
             <li class="br-menu-item">
-                <a href="#" class="br-menu-link with-sub active show-sub">
+                <a href="#" class="br-menu-link with-sub <c:if test="${type3 == 2}">show-sub active</c:if>">
                     <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý tài khoản</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
                     <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users"
-                                            class="sub-link active">
+                                            class="sub-link <c:if test="${type3 == 2}">active</c:if>">
                         Tài khoản người dùng</a></li>
                     <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
                         Thêm tài khoản</a></li>
@@ -100,7 +100,7 @@
             <!-- br-menu-item -->
 
             <li class="br-menu-item">
-                <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+                <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link <c:if test="${type3 == 1}">show-sub active</c:if>">
                     <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                     <span class="menu-item-label">Tài khoản admin</span>
                 </a><!-- br-menu-link -->
@@ -275,8 +275,16 @@
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="${pageContext.request.contextPath}/admin/users/${logs.get(0).user.id}"
-                               class="btn btn-info">Back</a>
+                            <c:if test="${type3 == 1}">
+                                <a href="${pageContext.request.contextPath}/admin/profile"
+                                   class="btn btn-info">Back</a>
+                            </c:if>
+                            <c:if test="${type3 == 2}">
+                                <a href="${pageContext.request.contextPath}/admin/users/${logs.get(0).user.id}"
+                                   class="btn btn-info">Back</a>
+                            </c:if>
+
+
                         </div>
                     </div>
                 </sec:authorize>

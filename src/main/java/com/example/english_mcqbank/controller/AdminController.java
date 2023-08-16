@@ -39,6 +39,7 @@ public class AdminController {
         UserEntity user = sessionService.getLoggedInUser();
         adminModelAndView.addObject("user", user);
         adminModelAndView.addObject("type", 1);
+        sessionService.setAttribute("type3", 1);
         return adminModelAndView; // Trả về admin.jsp
     }
 
@@ -46,7 +47,7 @@ public class AdminController {
     public ModelAndView adminProfile() {
         ModelAndView view = new ModelAndView("profile");
         UserEntity user = sessionService.getLoggedInUser();
-
+        sessionService.setAttribute("type3", 1);
         view.addObject("user", user);
         //view.addObject("loggedInUser", user);
         view.addObject("successMessage", null);
