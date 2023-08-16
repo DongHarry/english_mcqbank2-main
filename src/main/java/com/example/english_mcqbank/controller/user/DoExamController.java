@@ -22,22 +22,30 @@ public class DoExamController {
     final ISessionService sessionService;
 
     @RequestMapping("/user/exams")
-    public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "20") int size,
+    public ModelAndView userExams(@RequestParam(defaultValue = "1") int page,
+                                  @RequestParam(defaultValue = "5") int size,
                                   Authentication authentication) {
         if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin/exams");
         }
 
-        List<Exam> exams = examService.getAllExams();
-        ModelAndView userExamsModelAndView = new ModelAndView("exams");
-        UserEntity user = userService.getUserByUsername(authentication.getName());
-        userExamsModelAndView.addObject("loggedInUser", user);
+        List<Exam> exams = examService.getAllExams(page, size);
+        ModelAndView userExamsModelAndView = new ModelAndView("examList");
+        //UserEntity user = userService.getUserByUsername(authentication.getName());
+        //userExamsModelAndView.addObject("loggedInUser", user);
         userExamsModelAndView.addObject("exams", exams);
-//        userExamsModelAndView.addObject("currentPage", page);
-//        assert exams != null;
-//        boolean hasNext = exams.size() >= size;
-//        userExamsModelAndView.addObject("hasNext", hasNext);
+        userExamsModelAndView.addObject("currentPage", page);
+        assert exams != null;
+        boolean hasNext = exams.size() >= size;
+        userExamsModelAndView.addObject("hasNext", hasNext);
+        //nếu chia hết totalPage = totalQuestion / size
+        //nếu không chia hết totalPage = totalQuestion / size + 1
+        int totalPages = examService.countAllExams() / size;
+        if (examService.countAllExams() % size != 0) {
+            totalPages++;
+        }
+
+        userExamsModelAndView.addObject("totalPages", totalPages);
         return userExamsModelAndView; // Trả về user.jsp
     }
 

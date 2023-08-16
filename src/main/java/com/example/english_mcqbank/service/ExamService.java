@@ -7,6 +7,8 @@ import com.example.english_mcqbank.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -136,5 +138,16 @@ public class ExamService implements IExamService {
 //        for (ExamTopic examTopic : examTopics) {
 //            System.out.println("examTopic: " + examTopic);
 //        }
+    }
+
+    @Override
+    public List<Exam> getAllExams(int page, int size) {
+        Pageable pageable = PageRequest.of(page-1, size);
+        return examRepository.findAll(pageable).getContent();
+    }
+
+    @Override
+    public int countAllExams() {
+        return (int) examRepository.count();
     }
 }

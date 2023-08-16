@@ -30,6 +30,14 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
+    <style>
+        .nonClickableLink {
+            color: blue; /* Set the color to mimic a link */
+            text-decoration: underline; /* Underline to mimic a link */
+            cursor: default; /* Change cursor to default (not clickable) */
+            pointer-events: none; /* Disable click events */
+        }
+    </style>
 </head>
 
 <body>
@@ -40,74 +48,32 @@
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
-
             <li class="br-menu-item">
                 <a href="#" class="br-menu-link with-sub active show-sub">
                     <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-                    <span class="menu-item-label">Quản lý bài thi</span>
+                    <span class="menu-item-label">Làm bài</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/exams"
+                    <li class="sub-item"><a href="${pageContext.request.contextPath}/user/exams"
                                             class="sub-link active">
                         Tất cả bài thi</a></li>
 
                 </ul>
             </li>
             <li class="br-menu-item">
-                <a href="#" class="br-menu-link with-sub">
-                    <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
-                    <span class="menu-item-label">Quản lý câu hỏi</span>
-                </a><!-- br-menu-link -->
-                <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
-                        cả câu hỏi</a></li>
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
-                                            class="sub-link">Thêm câu hỏi bằng file</a></li>
-
-                </ul>
-            </li>
-            <!-- br-menu-item -->
-
-
-            <li class="br-menu-item">
-                <a href="#" class="br-menu-link with-sub">
+                <a href="${pageContext.request.contextPath}/user/results" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
-                    <span class="menu-item-label">Quản lý tài khoản</span>
-                </a><!-- br-menu-link -->
-                <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
-                        Tài khoản người dùng</a></li>
-                    <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
-                        Thêm tài khoản</a></li>
-                </ul>
-            </li>
-            <!-- br-menu-item -->
-
-            <li class="br-menu-item">
-                <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
-                    <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
-                    <span class="menu-item-label">Quản lý topic</span>
+                    <span class="menu-item-label">Kết quả</span>
                 </a><!-- br-menu-link -->
             </li>
             <!-- br-menu-item -->
-
             <li class="br-menu-item">
-                <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
-                    <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
-                    <span class="menu-item-label">Quản lý logs</span>
-                </a><!-- br-menu-link -->
-            </li>
-            <!-- br-menu-item -->
-
-            <li class="br-menu-item">
-                <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+                <a href="${pageContext.request.contextPath}/user/profile" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
-                    <span class="menu-item-label">Tài khoản admin</span>
+                    <span class="menu-item-label">Thông tin tài khoản</span>
                 </a><!-- br-menu-link -->
             </li>
             <!-- br-menu-item -->
-            <!-- br-sideleft-menu -->
-
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
     </ul>
 
@@ -161,14 +127,6 @@
 <!-- ########## START: noidung ########## -->
 
 <div class="br-mainpanel">
-        <div class="br-pageheader">
-            <nav class="breadcrumb pd-0 mg-0 tx-12">
-                <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin">Admin</a>
-                <a class="breadcrumb-item" href="#">Quản lí bài thi</a>
-                <span class="breadcrumb-item active">Tất cả bài thi</span>
-            </nav>
-        </div>
-        <!-- br-pageheader -->
     <div class="br-pagetitle">
         <i class="icon icon ion-ios-book-outline"></i>
         <div>
@@ -200,7 +158,6 @@
                         <th class="wd-15p">Exam name</th>
                         <th class="wd-15p">Exam type</th>
                         <th class="wd-10p">Question No</th>
-                        <th class="wd-15p">Số người đã làm bài</th>
                         <th class="wd-25p">Created time</th>
                         <th class="wd-25p">Action</th>
                     </tr>
@@ -229,30 +186,21 @@
                                 </c:if>
                             </td>
                             <td>${exam.questionNo}</td>
-                                <td>${exam.resultList.size()}</td>
                             <td>${exam.time}</td>
 
                             <td>
                                 <ul style="margin-left: -40px">
-
                                         <li style="list-style: none">
-                                            Edit: <a href="${pageContext.request.contextPath}/admin/exams/${exam.id}"
-                                                     class="btn btn-outline-success btn-icon mg-r-5 mg-b-10"
-                                                     title="Edit"><i class="fas fa-edit"></i></a>
+                                            Take exam: <a
+                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}"
+                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
+                                                class="fas fa-play"></i></a>
                                         </li>
-                                        <li style="list-style: none">
-                                            Delete: <a
-                                                href="#" data-row-id="${exam.id}"
-                                                class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
-                                                title="Delete"><i
-                                                class="fas fa-trash"></i></a>
-                                        </li>
-
                                         <li style="list-style: none">
                                             Ranking: <a
-                                                href="${pageContext.request.contextPath}/admin/exams/${exam.id}/results"
-                                                class="btn btn-outline-info btn-icon mg-r-5 mg-b-10"
-                                                title="All results"><i class="fas fa-list"></i></a>
+                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}/results"
+                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
+                                                class="fas fa-list"></i></a>
                                         </li>
                                 </ul>
                             </td>
@@ -262,15 +210,28 @@
                 </table>
 
             </div><!-- table-wrapper -->
-
-            <sec:authorize access="hasRole('ADMIN')">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="${pageContext.request.contextPath}/admin/exams/new" class="btn btn-primary">Create
-                            Exam</a>
-                    </div>
-                </div>
-            </sec:authorize>
+        <c:if test="${currentPage > 1}">
+            <a href="?page=${currentPage - 1}">Prev</a>
+        </c:if>
+        <c:if test="${currentPage <= 1}">
+            <a href="#" class="nonClickableLink">Prev</a>
+        </c:if>
+        <c:forEach var="i" begin="1" end="${totalPages}">
+            <c:choose>
+                <c:when test="${currentPage eq i}">
+                    <a href="?page=${i}"><b>${i}</b></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="?page=${i}">${i}</a>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${hasNext}">
+            <a href="?page=${currentPage + 1}">Next</a>
+        </c:if>
+        <c:if test="${!hasNext}">
+            <a href="#" class="nonClickableLink">Next</a>
+        </c:if>
 
         </div>
     </div><!-- br-pagebody -->
@@ -334,6 +295,7 @@
         });
     });
 </script>
+
 <!-- ########## END: noidung ########## --->
 
 
@@ -350,13 +312,11 @@
 <script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
 <script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-<sec:authorize access="hasRole('USER')">
-    <script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-</sec:authorize>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net/js/jquery.dataTables.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>--%>
-<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
 

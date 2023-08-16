@@ -26,4 +26,8 @@ public interface IExamService {
     int getTotalPercentage(Map<Long, Integer> examTopicPercentageMap);
 
     void updateExamTopic(Exam exam, Map<Long, Integer> examTopicPercentageMap);
+
+    List<Exam> getAllExams(int page, int size);
+
+    int countAllExams();
 }
