@@ -25,6 +25,10 @@ public class DoExamController {
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   Authentication authentication) {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin/exams");
+        }
+
         List<Exam> exams = examService.getAllExams();
         ModelAndView userExamsModelAndView = new ModelAndView("exams");
         UserEntity user = userService.getUserByUsername(authentication.getName());
@@ -39,6 +43,10 @@ public class DoExamController {
 
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin/exams");
+        }
+
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");
@@ -58,46 +66,9 @@ public class DoExamController {
         return userExamModelAndView; // Trả về user.jsp
     }
 
-    @RequestMapping("/user/exams/{id}/do")
-    public ModelAndView doExam(@PathVariable int id) {
-        ModelAndView userExamModelAndView = new ModelAndView("doExam");
-        Exam exam = examService.getExamById(id);
-        if (exam == null) {
-            return new ModelAndView("redirect:/user/exams");
-        }
-
-        /*
-        if (resultService.existsByExamAndUser(exam, sessionService.getLoggedInUser())) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/user/exams");
-            redirectAttributes.addFlashAttribute("errorMessage", "You have already done this exam");
-            return modelAndView;
-        }
-        */
-
-        //int topicId = exam.getTopicId();
-        int questionCount = exam.getQuestionNo();
-        List<ExamTopic> examTopics = exam.getExamTopicList();
-        int examType = exam.getType();
-        //List<Question> questions = questionService.getRandom(topicId, 0, questionCount);
-        List<Question> questions = new ArrayList<>();
-        for (ExamTopic examTopic : examTopics) {
-            List<Question> questions1 =
-                    questionService.getRandom(examTopic.getTopic().getId(), 0,
-                            (int) Math.round(questionCount * examTopic.getPercent() / 100.0), examType);
-            questions.addAll(questions1);
-        }
-//        questionMap = new HashMap<>();
-//        for (Question question : questions) {
-//            questionMap.put(question.getId(), question);
-//        }
-        Collections.shuffle(questions);
-        userExamModelAndView.addObject("questions", questions);
-        userExamModelAndView.addObject("examId", exam.getId());
-        return userExamModelAndView; // Trả về user.jsp
-    }
 
     @RequestMapping(value = "/user/exams/doExam", method = RequestMethod.POST)
-    public ModelAndView doExam2(@RequestParam("examId") int id) {
+    public ModelAndView doExam(@RequestParam("examId") int id) {
         ModelAndView userExamModelAndView = new ModelAndView("doExam");
         Exam exam = examService.getExamById(id);
         if (exam == null) {
@@ -168,11 +139,19 @@ public class DoExamController {
 
     @RequestMapping("/user/result")
     public ModelAndView result() {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin");
+        }
+
         return new ModelAndView("resultPage");
     }
 
     @RequestMapping("/user/exams/{id}/results")
     public ModelAndView userExamResult(@PathVariable int id, Authentication authentication) {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin/exams/{id}/results");
+        }
+
         Exam exam = examService.getExamById(id);
         if (exam == null) {
             return new ModelAndView("redirect:/user/exams");

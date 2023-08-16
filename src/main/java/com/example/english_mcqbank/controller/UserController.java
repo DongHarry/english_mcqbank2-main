@@ -28,6 +28,10 @@ public class UserController {
 
     @RequestMapping("/user")
     public ModelAndView user() {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin");
+        }
+
         ModelAndView userModelAndView = new ModelAndView("user");
         //userModelAndView.addObject("user", sessionService.getLoggedInUser());
         return userModelAndView; // Trả về user.jsp
@@ -35,6 +39,10 @@ public class UserController {
 
     @RequestMapping("/user/profile")
     public ModelAndView userProfile() {
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin/profile");
+        }
+
         ModelAndView userProfileModelAndView = new ModelAndView("profile");
         userProfileModelAndView.addObject("successMessage", null);
         userProfileModelAndView.addObject("errorMessage", null);
@@ -76,6 +84,9 @@ public class UserController {
                                    RedirectAttributes redirectAttributes) {
 
         UserEntity user = sessionService.getLoggedInUser();
+        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+            return new ModelAndView("redirect:/admin");
+        }
 
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
