@@ -178,6 +178,9 @@
                 <c:if test="${not empty message}">
                     <div class="alert alert-success" id="message1">${message}</div>
                 </c:if>
+                <c:if test="${not empty errorMessage}">
+                    <div class="alert alert-danger" id="message1">${errorMessage}</div>
+                </c:if>
                 <c:if test="${param.message}">
                     <div class="alert alert-success" id="message2">${param.message}</div>
                 </c:if>

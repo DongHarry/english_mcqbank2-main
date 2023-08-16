@@ -44,8 +44,14 @@ public class AllUserController {
                                      @RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "20") int size,
                                      RedirectAttributes redirectAttributes) {
-        ModelAndView logsModelAndView = new ModelAndView("logs");
         UserEntity user = userService.getUserByUserid(id);
+        if (user == null) {
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/users");
+            redirectAttributes.addFlashAttribute("errorMessage", "User does not exist");
+            return modelAndView;
+        }
+
+        ModelAndView logsModelAndView = new ModelAndView("logs");
         List<Log> logs = logService.getLogsByUser(user);
         sessionService.setAttribute("type3", 2);
         logsModelAndView.addObject("logs", logs);
@@ -148,13 +154,13 @@ public class AllUserController {
         try {
             UserEntity user = userService.getUserByUsername(username);
             if (user == null) {
-                redirectAttributes.addFlashAttribute("message", "User does not exist");
+                redirectAttributes.addFlashAttribute("errorMessage", "User does not exist");
 //                return new ModelAndView("allUsers");
 //                modelAndView.addObject("message", "User does not exist");
                 return modelAndView;
             }
             if (user.getGroupId() == 0) {
-                redirectAttributes.addFlashAttribute("message", "Cannot delete admin");
+                redirectAttributes.addFlashAttribute("errorMessage", "Cannot delete admin");
 //                return new ModelAndView("allUsers");
 //                modelAndView.addObject("message", "Cannot delete admin");
                 return modelAndView;
@@ -168,7 +174,7 @@ public class AllUserController {
             redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "Error deleting user");
+            redirectAttributes.addFlashAttribute("errorMessage", "Error deleting user");
         }
 
         return modelAndView;
