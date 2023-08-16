@@ -196,8 +196,8 @@
                     <thead>
                     <tr>
                         <th class="wd-15p">Exam Id</th>
-                        <th class="wd-20p">Topics</th>
                         <th class="wd-15p">Exam name</th>
+                        <th class="wd-20p">Topics</th>
                         <th class="wd-15p">Exam type</th>
                         <th class="wd-10p">Question No</th>
                         <th class="wd-15p">Số người đã làm bài</th>
@@ -210,6 +210,7 @@
                     <c:forEach var="exam" items="${exams}">
                         <tr>
                             <td>${exam.id}</td>
+                            <td>${exam.name}</td>
                             <td>
                                 <ul style="margin-left: -40px">
                                     <c:forEach var="exam_topic" items="${exam.examTopicList}">
@@ -219,7 +220,7 @@
                                     </c:forEach>
                                 </ul>
                             </td>
-                            <td>${exam.name}</td>
+
                             <td>
                                 <c:if test="${exam.type == 1}">
                                     <span class="badge badge-success" style="font-size: 14px"> Reading </span>
