@@ -38,9 +38,19 @@ public class UserController {
     }
 
     @RequestMapping("/user/profile")
-    public ModelAndView userProfile() {
+    public ModelAndView userProfile(RedirectAttributes redirectAttributes) {
         if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
-            return new ModelAndView("redirect:/admin/profile");
+            ModelAndView adminModelAndView = new ModelAndView("redirect:/admin/profile");
+            if (sessionService.getAttribute("editProfile") != null) {
+                sessionService.removeAttribute("editProfile");
+                redirectAttributes.addFlashAttribute("successMessage2", "Update profile successfully!");
+            }
+            if (sessionService.getAttribute("editPassword") != null) {
+                sessionService.removeAttribute("editPassword");
+                redirectAttributes.addFlashAttribute("successMessage2", "Update password successfully!");
+            }
+
+            return adminModelAndView;
         }
 
         ModelAndView userProfileModelAndView = new ModelAndView("profile");

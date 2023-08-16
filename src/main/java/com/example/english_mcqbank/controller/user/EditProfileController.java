@@ -46,6 +46,9 @@ public class EditProfileController {
                                         RedirectAttributes redirectAttributes) {
 
         UserEntity userEntity = sessionService.getLoggedInUser();
+        if (userEntity.getRoles()[0].equals("ROLE_ADMIN")) {
+            sessionService.setAttribute("editProfile", "admin");
+        }
 
         //UserEntity userEntity = loggedInUserService.getLoggedInUser();
         if (userEntity == null) {

@@ -53,6 +53,10 @@ public class ChangePasswordController {
         if (newPassword.equals(confirmNewPassword)) {
             user.setPassword(passwordEncoder.encode(newPassword));
             userService.saveUser(user);
+            if (user.getRoles()[0].equals("ROLE_ADMIN")) {
+                sessionService.setAttribute("editPassword", "admin");
+            }
+
             //redirectAttributes.addFlashAttribute("successMessage", "Update Password successfully!");
             ModelAndView view = new ModelAndView("redirect:/user/profile");
             redirectAttributes.addFlashAttribute("successMessage", "Update Password successfully!");
