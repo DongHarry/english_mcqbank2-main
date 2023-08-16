@@ -24,7 +24,6 @@ public class UserController {
     final IResultService resultService;
     final ISessionService sessionService;
     final PasswordEncoder passwordEncoder;
-    //final LoggedInUserService loggedInUserService;
 
     @RequestMapping("/user")
     public ModelAndView user() {
@@ -71,7 +70,6 @@ public class UserController {
                                  @RequestParam(defaultValue = "20") int size) {
 
         UserEntity user = sessionService.getLoggedInUser();
-        //UserEntity user = loggedInUserService.getLoggedInUser();
         if (user == null) {
             return new ModelAndView("redirect:/user/profile");
         }
