@@ -200,7 +200,7 @@
                         <th class="wd-20p">Topics</th>
                         <th class="wd-15p">Exam type</th>
                         <th class="wd-10p">Question No</th>
-                        <th class="wd-15p">Số người đã làm bài</th>
+                        <th class="wd-15p">Số lần thi</th>
                         <th class="wd-25p">Created time</th>
                         <th class="wd-25p">Action</th>
                     </tr>
