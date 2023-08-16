@@ -36,7 +36,7 @@ public class MySecurityConfig {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/user/**").hasAnyRole("USER")
+                .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
                 .antMatchers("/questions/**").hasRole("USER")
                 .antMatchers("/admin/**", "/api/**").hasRole("ADMIN")
                 .antMatchers("/", "/home", "/index", "/login", "/register", "/forgot-password", "/reset-password", "/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
