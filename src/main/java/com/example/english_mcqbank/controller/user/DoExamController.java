@@ -25,7 +25,7 @@ public class DoExamController {
     public ModelAndView userExams(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   Authentication authentication) {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin/exams");
         }
 
@@ -43,7 +43,7 @@ public class DoExamController {
 
     @RequestMapping("/user/exams/{id}")
     public ModelAndView userExam(@PathVariable int id, RedirectAttributes redirectAttributes) {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin/exams");
         }
 
@@ -108,7 +108,7 @@ public class DoExamController {
         return userExamModelAndView; // Trả về user.jsp
     }
 
-    @PostMapping("/user/exams/submit")
+    @RequestMapping(value = "/user/exams/submit", method = RequestMethod.POST)
     public ModelAndView submitAnswers(@RequestParam Map<String, String> params,
                                       Authentication authentication,
                                       @RequestParam("examId") String examId,
@@ -139,7 +139,7 @@ public class DoExamController {
 
     @RequestMapping("/user/result")
     public ModelAndView result() {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin");
         }
 
@@ -148,7 +148,7 @@ public class DoExamController {
 
     @RequestMapping("/user/exams/{id}/results")
     public ModelAndView userExamResult(@PathVariable int id, Authentication authentication) {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin/exams/{id}/results");
         }
 
@@ -160,7 +160,7 @@ public class DoExamController {
         ModelAndView userExamModelAndView = new ModelAndView("userResult");
         userExamModelAndView.addObject("exam", exam);
         UserEntity user = userService.getUserByUsername(authentication.getName());
-        userExamModelAndView.addObject("loggedInUser", user);
+        //userExamModelAndView.addObject("loggedInUser", user);
         List<Result> results = resultService.findAllByExamAndOrderByScore(exam);
         userExamModelAndView.addObject("results", results);
         userExamModelAndView.addObject("ranking", true);

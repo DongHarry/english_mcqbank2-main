@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping("/user")
     public ModelAndView user() {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin");
         }
 
@@ -39,7 +39,7 @@ public class UserController {
 
     @RequestMapping("/user/profile")
     public ModelAndView userProfile() {
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin/profile");
         }
 
@@ -84,7 +84,7 @@ public class UserController {
                                    RedirectAttributes redirectAttributes) {
 
         UserEntity user = sessionService.getLoggedInUser();
-        if (sessionService.getLoggedInUser().getRole().equals("ROLE_ADMIN")) {
+        if (sessionService.getLoggedInUser().getRoles()[0].equals("ROLE_ADMIN")) {
             return new ModelAndView("redirect:/admin");
         }
 
