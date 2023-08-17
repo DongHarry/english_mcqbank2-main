@@ -258,16 +258,16 @@
                         </p>
                         <p style="max-width: 100%; font-size: 15px">Question No: ${exam.questionNo}</p>
                         Start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
-                            style="width: 40px;height: 25px;font-size: 20px">
+                        <a class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
+                            style="width: 40px;height: 25px;font-size: 20px" href="${pageContext.request.contextPath}/user/exams/${exam.id}">
                             <i class="fas fa-play"></i>
-                        </button>
+                        </a>
                         <br>
                         Ranking:
-                        <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Ranking"
-                                style="width: 40px;height: 25px;font-size: 20px"><i
+                        <a class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Ranking"
+                                style="width: 40px;height: 25px;font-size: 20px" href="${pageContext.request.contextPath}/user/exams/${exam.id}/results"><i
                                 class="fas fa-list"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                     <hr>
