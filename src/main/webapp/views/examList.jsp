@@ -220,13 +220,15 @@
 <%--                    </c:forEach>--%>
 <%--                    </tbody>--%>
 <%--                </table>--%>
+                <c:forEach items="${exams}" var="exam">
+
 
                 <div class="row">
                     <div class="col-lg-4">
                         <img src="https://i.imgur.com/1QZqj1M.png" alt="Image" style="width: 100%">
                     </div>
                     <div class="col-lg-8">
-                        <p style="max-width: 100%; font-size: 30px">Practice mini test</p>
+                        <p style="max-width: 100%; font-size: 30px">${exam.name}</p>
 
                         <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
                             style="width: 80px;height: 40px;font-size: 25px">
@@ -238,13 +240,14 @@
                         </button>
                     </div>
                 </div>
+                </c:forEach>
 
             </div><!-- table-wrapper -->
         <c:if test="${currentPage > 1}">
             <a href="?page=${currentPage - 1}">Prev</a>
         </c:if>
         <c:if test="${currentPage <= 1}">
-            <a href="#" class="nonClickableLink" style="color: white">Prev</a>
+            <a href="#" class="nonClickableLink">Prev</a>
         </c:if>
         <c:forEach var="i" begin="1" end="${totalPages}">
             <c:choose>
@@ -260,7 +263,7 @@
             <a href="?page=${currentPage + 1}">Next</a>
         </c:if>
         <c:if test="${!hasNext}">
-            <a href="#" class="nonClickableLink" style="color: white">Next</a>
+            <a href="#" class="nonClickableLink">Next</a>
         </c:if>
 
         </div>
