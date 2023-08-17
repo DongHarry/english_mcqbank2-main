@@ -72,7 +72,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/home">
-                                <img src="../resource/img/logo_1_pixian.png" alt="logo"
+                                <img src="${pageContext.request.contextPath}/resource/img/logo_1_pixian.png" alt="logo"
                                      style="max-width: 150px; margin-top: -25px">
                             </a>
                         </div>
@@ -134,21 +134,21 @@
                     <div class="col-md-4">
                         <div class="mobile-slider-area">
                             <div class="phone">
-                                <img src="../resource/img/iphone-x-frame.png" alt="Phone" class="img-responsive">
+                                <img src="${pageContext.request.contextPath}/resource/img/iphone-x-frame.png" alt="Phone" class="img-responsive">
                                 <div class="mobile-slider owl-carousel owl-theme">
-                                    <div class="item"><img src="../resource/img/top-screen-1.png" alt="Screen 1"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-1.png" alt="Screen 1"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-5.png" alt="Screen 1"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-5.png" alt="Screen 1"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-2.png" alt="Screen 2"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-2.png" alt="Screen 2"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-6.png" alt="Screen 2"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-6.png" alt="Screen 2"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-3.png" alt="Screen 3"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-3.png" alt="Screen 3"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-7.png" alt="Screen 3"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-7.png" alt="Screen 3"
                                                            class="img-responsive"></div>
-                                    <div class="item"><img src="../resource/img/top-screen-8.png" alt="Screen 3"
+                                    <div class="item"><img src="${pageContext.request.contextPath}/resource/img/top-screen-8.png" alt="Screen 3"
                                                            class="img-responsive"></div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="section-shape">
-                <img src="../resource/img/waves-shape.svg" alt="shape image">
+                <img src="${pageContext.request.contextPath}/resource/img/waves-shape.svg" alt="shape image">
             </div>
         </section>
         <!--end hero section-->
@@ -285,7 +285,7 @@
                     </div>
                     <div class="col-md-4 hidden-sm hidden-xs">
                         <div class="feature-image">
-                            <img src="../resource/img/feature-image.png" class="pos-hcenter img-responsive" alt="">
+                            <img src="<c:url value="${pageContext.request.contextPath}/resource/img/feature-image.png"/>" class="pos-hcenter img-responsive" alt="">
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -355,7 +355,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="../resource/img/bg-wave-sym.png" alt="shape image" class="img-responsive">
+                <img src="${pageContext.request.contextPath}/resource/img/bg-wave-sym.png"/>" alt="shape image" class="img-responsive">
             </div><!-- end overlay -->
         </div>
         <!--end app video section-->
@@ -480,7 +480,7 @@
                                                 hơn rất nhiều, vì các bạn tự tin mà phải không?</p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <img src="../resource/img/testimonial-4.png" alt="">
+                                            <img src="${pageContext.request.contextPath}/resource/img/testimonial-4.png" alt="">
                                             <div class="testimonial-author-info">
                                                 <h6>Ms Trang Chuối</h6>
                                                 <span>Dynamic Fighter</span>
@@ -503,7 +503,7 @@
                                                 cảm hứng cho các bạn.</p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <img src="../resource/img/testimonial-4.png" alt="">
+                                            <img src="${pageContext.request.contextPath}/resource/img/testimonial-4.png" alt="">
                                             <div class="testimonial-author-info">
                                                 <h6>Ms.Phương Hoa</h6>
                                                 <span>Resilient Fighter</span>
@@ -525,7 +525,7 @@
                                             </p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <img src="../resource/img/testimonial-4.png" alt="">
+                                            <img src="${pageContext.request.contextPath}/resource/img/testimonial-4.png" alt="">
                                             <div class="testimonial-author-info">
                                                 <h6>Mr Nam Dương</h6>
                                                 <span>Muscular Fighter</span>
@@ -549,7 +549,7 @@
                                                 là cung cấp cho họ nguồn cảm hứng mới.</p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <img src="../resource/img/testimonial-4.png" alt="">
+                                            <img src="${pageContext.request.contextPath}/resource/img/testimonial-4.png" alt="">
                                             <div class="testimonial-author-info">
                                                 <h6>Mr. Huy Thạch</h6>
                                                 <span>Gregarious Fighter</span>
@@ -680,7 +680,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="faq-img">
-                                <img src="../resource/img/faq-right.png" class="img-responsive" alt="faq image">
+                                <img src="${pageContext.request.contextPath}/resource/img/faq-right.png" class="img-responsive" alt="faq image">
                             </div>
                         </div>
                     </div>
@@ -749,7 +749,7 @@
                             <div class="single-blog-article">
                                 <div class="blog-post-img-thumb">
                                     <a href="blog-details.html" target="_blank">
-                                        <img src="../resource/img/blog-img1.jpg" alt="">
+                                        <img src="${pageContext.request.contextPath}/resource/img/blog-img1.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
@@ -770,7 +770,7 @@
                             <div class="single-blog-article">
                                 <div class="blog-post-img-thumb">
                                     <a href="blog-details.html" target="_blank">
-                                        <img src="../resource/img/blog-img2.jpg" alt="">
+                                        <img src="${pageContext.request.contextPath}/resource/img/blog-img2.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
@@ -795,7 +795,7 @@
                             <div class="single-blog-article">
                                 <div class="blog-post-img-thumb">
                                     <a href="blog-details.html" target="_blank">
-                                        <img src="../resource/img/blog-img3.jpg" alt="">
+                                        <img src="${pageContext.request.contextPath}/resource/img/blog-img3.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
@@ -816,7 +816,7 @@
                             <div class="single-blog-article">
                                 <div class="blog-post-img-thumb">
                                     <a href="blog-details.html" target="_blank">
-                                        <img src="../resource/img/blog-img4.jpg" alt="">
+                                        <img src="${pageContext.request.contextPath}/resource/img/blog-img4.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-post-content-area">
@@ -940,7 +940,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="footer-single-col text-center">
-                                <img src="../resource/img/logo-color.png" alt="footer logo">
+                                <img src="${pageContext.request.contextPath}/resource/img/logo-color.png" alt="footer logo">
                                 <div class="footer-social-list">
                                     <ul class="list-inline">
                                         <li><a href="#"> <i class="fa fa-facebook"></i></a></li>

@@ -45,12 +45,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             log.setStatus(1);
             log.setName("ADMIN: " + user.getUsername() + " logged in");
             ILogService.saveLog(log);
-            response.sendRedirect("/admin");
+            response.sendRedirect(request.getContextPath() + "/admin");
         } else if (roles.contains("ROLE_USER")) {
             log.setStatus(1);
             log.setName("USER: " + user.getUsername() + " logged in");
             ILogService.saveLog(log);
-            response.sendRedirect("/user");
+            response.sendRedirect(request.getContextPath() + "/user");
         } else {
             log.setStatus(0);
             log.setName("UNAUTHORIZED: " + authentication.getName() + " tried to log in");
