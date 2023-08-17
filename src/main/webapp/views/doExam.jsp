@@ -207,8 +207,14 @@
                     </div>
                 </c:forEach>
                 <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
-                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" onclick="confirmSubmission();" style="display: none">
-                <a href="#" class="modal-effect2 btn btn-info" onclick="confirmSubmission();">Nộp bài</a>
+<%--                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" style="display: none">--%>
+<%--                <a href="#" class="modal-effect2 btn btn-info">Nộp bài</a>--%>
+                <a href="#"
+                   class="modal-effect2 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
+                   data-effect="effect-scale" data-toggle="modal" data-target="#modaldemo9"
+                   data-row-id="${exam.id}">
+                    <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2">
+                </a>
             </form:form>
 
         </div>
@@ -262,28 +268,32 @@
         </div><!-- modal-dialog -->
     </div>
     <!-- modal -->
-    <script>
-        $(function () {
 
-            // showing modal with effect
-            $('.modal-effect2').on('click', function (e) {
-                e.preventDefault();
-                var effect = $(this).attr('data-effect');
-                $('#modaldemo9').addClass(effect);
-                $('#modaldemo9').modal('show');
-            });
-
-            // hide modal with effect
-            $('#modaldemo9').on('hidden.bs.modal', function (e) {
-                $(this).removeClass(function (index, className) {
-                    return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-                });
-            });
-        });
-    </script>
 
 </div>
-</body>
+<script>
+    $(function () {
+
+        // showing modal with effect
+        $('.modal-effect2').on('click', function (e) {
+            e.preventDefault();
+            var effect = $(this).attr('data-effect');
+            $('#modaldemo9').addClass(effect);
+            $('#modaldemo9').modal('show');
+        });
+
+        // hide modal with effect
+        $('#modaldemo9').on('hidden.bs.modal', function (e) {
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
+    });
+
+
+
+
+</script>
 <script>
     function submitForm() {
         document.getElementById('myForm').submit();
@@ -295,15 +305,15 @@
         circle.style.backgroundColor = "green";
     }
 </script>
-<script>
-    function confirmSubmission() {
-        if (confirm("Bạn có chắc chắn muốn nộp bài?")) {
-            // Thực hiện hành động nộp bài ở đây
-            // Ví dụ: Gửi dữ liệu form đi hoặc thực hiện các tác vụ cần thiết
-            document.getElementById('myForm').submit();
-        }
-    }
-</script>
+<%--<script>--%>
+<%--    function confirmSubmission() {--%>
+<%--        if (confirm("Bạn có chắc chắn muốn nộp bài?")) {--%>
+<%--            // Thực hiện hành động nộp bài ở đây--%>
+<%--            // Ví dụ: Gửi dữ liệu form đi hoặc thực hiện các tác vụ cần thiết--%>
+<%--            document.getElementById('myForm').submit();--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -323,4 +333,6 @@
 <script src="${pageContext.request.contextPath}/js/bracket.js"></script>
 <script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
 <script src="${pageContext.request.contextPath}/lib/highlightjs/highlight.pack.min.js"></script>
+
+</body>
 </html>
