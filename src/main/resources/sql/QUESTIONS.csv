@@ -1,7 +1,7 @@
 QU_ID,QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAIN,QU_TYPE,TP_ID,DIFFICULT_LEVEL
 1,"After the flash flood, all the drains were overflowing _____ storm water.",from,with,for,by,2,explain,1,1,2
 2,The ideas ______ in this essay are not particularly original.,are discussed,discussing,discussed,which are discussing,3,explain,1,1,2
-4,What is the capital of England?,London,Paris,Berlin,Madrid,1,London is the capital of England.,1,3,1
+4,What is the capital of England?,London,Paris,Berlin,Madrid,1,London is the capital of England,1,3,1
 5,Which of the following is the longest river in the world?,Nile,Amazon,Yangtze,Mississippi,1,The Nile is the longest river in the world.,1,3,2
 6,What is the chemical symbol for water?,H2O,CO2,O2,NaCl,1,The chemical symbol for water is H2O.,1,2,3
 7,Which planet is known as the Red Planet?,Mars,Venus,Jupiter,Saturn,1,Mars is known as the Red Planet.,1,3,4
@@ -106,7 +106,7 @@ QU_ID,QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAI
 121,Where is the conference room?,It's on the second floor,Let's meet in a short while,We have plenty of room,1.num11,1,giải thích,2,7,1
 122,Who asked for a copy of the report?,"Yes, I will ask him",Fifteen pages,Mr. Johnson did,1.num12,3,giải thích,2,6,1
 123,Would you like anything to drink?,"Yes, I liked it very much",Some tea would be nice,"No, I didn't get anything",1.num13,2,giải thích,2,7,1
-124,Where does the bus for Toronto leave?,From gate,"Yes, let's go",In ten minutes,1.num14,1,giải thích,2,7,1
+124,Where does the bus for Toronto leave?,From gate,"Yes, let's go",In ten minutes,1.num14,1,giải thích,2,6,1
 125,Weren't you at the regional conference?,Let's meet there,"No, I couldn't go",I am originally from there,2.num4,2,giải thích,2,7,1
 126,How about going over the report together this afternoon?,"Sure, let's meet at 2 o'clock","Yes, let's go over there together",This evening at 8 o'clock,2.num5,1,giải thích,2,6,1
 127,Would you like some meal or cream with your coffee?,Either would be great,"Sorry, we're out of milk now",I need some copies as well,2.num6,1,giải thích,2,6,1
@@ -115,11 +115,11 @@ QU_ID,QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAI
 130,How long is the drive to the branch office?,John is going to drive there,Three of us will be going there,At least an hour in this traffic,2.num9,3,giải thích,2,7,1
 131,Would you like to receive a sample of our new product?,"No, I'll just take it with me","Sorry, I am not interested",I'll send it at the post office,2.num10,2,giải thích,2,6,1
 132,What do I have to bring to the interview?,The view is quite nice from there,I'll take you to the interview today,Just your resume and a cover letter,2.num11,3,giải thích,2,7,1
-133,Will the new store open this month or next?,Probably next month,"No, it's not open yet",We store everything there,2.num12,1,giải thích,2,7,1
+133,Will the new store open this month or next?,Probably next month,"No, it's not open yet",We store everything there,2.num12,1,giải thích,2,6,1
 134,Which apartment do you want to see first?,How about the one by the beach?,Probably at the Sales Department,"Actually, I saw it earlier",2.num13,1,giải thích,2,6,1
 135,I got these free tickets to the show tonight. Do you want to check it out?,"They only accept cash, not checks","Thanks, but I've got plans this evening",I'll check it over again tonight,2.num14,2,giải thích,2,6,1
 136,"You want to adopt a new inventory control system, don't you?",Most of us do,I usually use this system,Our inventory is so slow this month,3.num4,1,giải thích,2,7,1
-137,Aren't you delivering an opening speech next week?,"Yes, but I feel pretty well prepared for it","Yes, he was very surprised with the party","No, it was delivered on time",3.num5,1,giải thích,2,7,1
+137,Aren't you delivering an opening speech next week?,"Yes, but I feel pretty well prepared for it","Yes, he was very surprised with the party","No, it was delivered on time",3.num5,1,giải thích,2,6,1
 138,What's the timeline for the bid?,He left last month,I've been busy for the past few weeks,It hasn't been discussed yet,3.num6,3,giải thích,2,7,1
 139,When is the best time to meet you?,"No, this is my first time",Have a good time,Between 10 and 11 a.m,3.num7,3,giải thích,2,6,1
 140,Who's in charge of controlling the product quality?,It's available at no extra charge,Out production department,Choose the course you like,3.num8,2,giải thích,2,6,1
@@ -129,3 +129,6 @@ QU_ID,QU_CONTENT,QU_OPTION1,QU_OPTION2,QU_OPTION3,QU_OPTION4,QU_ANSWER,QU_EXPLAI
 144,Should we meet for brunch today?,"Sure, I'd love to","Yes, we meet regularly",That's too many,3.num12,1,giải thích,2,7,1
 145,Why do you need to cancel your appointment?,Something came up unexpectedly,I was just disappointed,On Monday morning,3.num13,1,giải thích,2,6,1
 146,We really have to go now,I really enjoyed the play,We have another few minutes,"Yes, she went to the doctor",3.num14,2,giải thích,2,7,1
+160,Who is the founder of Apple Inc. ?,Elon Musk,Bill Gates,Steve Job,Larry Page,3,Explain,1,1,2
+165,sadf,f,We havss,"Yes, she went to the doctor",3.num14,2,giải thích,1,7,1
+166,sadfq,f,We havss,"Yes, she went to the doctor",3.num14,2,giải thích,1,7,1

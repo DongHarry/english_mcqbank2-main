@@ -23,6 +23,8 @@ create table exam_topic
     EX_ID      int not null,
     TP_ID      int not null,
     ET_PERCENT int null,
+    constraint exam_topic_EX_ID_TP_ID_uindex
+        unique (EX_ID, TP_ID),
     constraint exam_topic_exams_EX_ID_fk
         foreign key (EX_ID) references exams (ex_id),
     constraint exam_topic_topics_TP_ID_fk
@@ -95,3 +97,4 @@ create table results
     constraint results_users_US_ID_fk
         foreign key (US_ID) references users (us_id)
 );
+
