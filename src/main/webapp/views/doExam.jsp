@@ -131,7 +131,7 @@
     }
 </style>
 
-<body>
+<body class="collapsed-menu">
 <div class="br-pagetitle">
     <div>
         <h1>Tham gia bài thi</h1>
