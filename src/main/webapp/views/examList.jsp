@@ -225,21 +225,52 @@
 
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="https://i.imgur.com/1QZqj1M.png" alt="Image" style="width: 100%">
+                        <c:set var="imgSource" value="https://i.imgur.com/1QZqj1M.png"/>
+                        <c:choose>
+                            <c:when test="${exam.id % 5 == 0}">
+                                <c:set var="imgSource" value="${pageContext.request.contextPath}/images/exam/1.mini-test.png"/>
+                            </c:when>
+                            <c:when test="${exam.id % 5 == 1}">
+                                <c:set var="imgSource" value="${pageContext.request.contextPath}/images/exam/2.exam-test.jpeg"/>
+                            </c:when>
+                            <c:when test="${exam.id % 5 == 2}">
+                                <c:set var="imgSource" value="${pageContext.request.contextPath}/images/exam/3.mini-test.png"/>
+                            </c:when>
+                            <c:when test="${exam.id % 5 == 3}">
+                                <c:set var="imgSource" value="${pageContext.request.contextPath}/images/exam/4.exam-test.jpeg"/>
+                            </c:when>
+                            <c:when test="${exam.id % 5 == 4}">
+                                <c:set var="imgSource" value="${pageContext.request.contextPath}/images/exam/5.exam-test.jpeg"/>
+                            </c:when>
+                        </c:choose>
+                        <img src="${imgSource}" alt="Image" style="width: 100%">
                     </div>
                     <div class="col-lg-8">
-                        <p style="max-width: 100%; font-size: 30px">${exam.name}</p>
-
+                        <p style="max-width: 100%; font-size: 30px"><b>${exam.name}</b></p>
+                        <p style="max-width: 100%; font-size: 15px">
+                            Exam type:
+                            <c:if test="${exam.type == 1}">
+                            <span class="badge badge-success" style="font-size: 14px"> Reading </span>
+                            </c:if>
+                            <c:if test="${exam.type == 2}">
+                                <span class="badge badge-info" style="font-size: 14px">Listening</span>
+                            </c:if>
+                        </p>
+                        <p style="max-width: 100%; font-size: 15px">Question No: ${exam.questionNo}</p>
+                        Start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
-                            style="width: 80px;height: 40px;font-size: 25px">
+                            style="width: 40px;height: 25px;font-size: 20px">
                             <i class="fas fa-play"></i>
                         </button>
+                        <br>
+                        Ranking:
                         <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Ranking"
-                                style="width: 80px;height: 40px;font-size: 25px"><i
+                                style="width: 40px;height: 25px;font-size: 20px"><i
                                 class="fas fa-list"></i>
                         </button>
                     </div>
                 </div>
+                    <hr>
                 </c:forEach>
 
             </div><!-- table-wrapper -->
