@@ -207,8 +207,8 @@
                     </div>
                 </c:forEach>
                 <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
-                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" <%--style="display: none"--%>>
-<%--                <a href="#" class="modal-effect2 btn btn-info">Nộp bài</a>--%>
+                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" onclick="confirmSubmission();" style="display: none">
+                <a href="#" class="modal-effect2 btn btn-info" onclick="confirmSubmission();">Nộp bài</a>
             </form:form>
 
         </div>
@@ -293,6 +293,14 @@
     function handleRadioClick(questionId) {
         var circle = document.getElementById("circle-" + questionId);
         circle.style.backgroundColor = "green";
+    }
+</script>
+<script>
+    function confirmSubmission() {
+        if (confirm("Bạn có chắc chắn muốn nộp bài?")) {
+            // Thực hiện hành động nộp bài ở đây
+            // Ví dụ: Gửi dữ liệu form đi hoặc thực hiện các tác vụ cần thiết
+        }
     }
 </script>
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
