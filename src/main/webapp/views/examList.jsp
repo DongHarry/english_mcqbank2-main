@@ -37,6 +37,19 @@
             cursor: default; /* Change cursor to default (not clickable) */
             pointer-events: none; /* Disable click events */
         }
+        .btn.reverse-hover {
+            /* Hiệu ứng mặc định (không hover) */
+            background-color: #007bff; /* Màu nền trong trạng thái bình thường */
+            color: white; /* Màu chữ trong trạng thái bình thường */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển đổi */
+
+        /* Hiệu ứng khi hover */
+        &:hover {
+             background-color: transparent; /* Màu nền khi hover */
+             color: #007bff; /* Màu chữ khi hover */
+         }
+        }
+
     </style>
 </head>
 
@@ -150,69 +163,88 @@
                         <strong>${e_message}</strong>
                     </div>
                 </c:if>
-                <table id="datatable2" class="table display responsive nowrap">
-                    <thead>
-                    <tr>
-                        <th class="wd-15p">Exam Name</th>
-                        <th class="wd-20p">Topics</th>
-                        <th class="wd-15p">Exam type</th>
-                        <th class="wd-10p">Question No</th>
-                        <th class="wd-25p">Created time</th>
-                        <th class="wd-25p">Action</th>
-                    </tr>
-                    </thead>
 
-                    <tbody>
-                    <c:forEach var="exam" items="${exams}">
-                        <tr>
-                            <td>${exam.name}</td>
-                            <td>
-                                <ul style="margin-left: -40px">
-                                    <c:forEach var="exam_topic" items="${exam.examTopicList}">
-                                        <c:if test="${not empty exam_topic}">
-                                            <li style="list-style: none">${exam_topic.topic.name} (${exam_topic.percent}%)</li>
-                                        </c:if>
-                                    </c:forEach>
-                                </ul>
-                            </td>
-                            <td>
-                                <c:if test="${exam.type == 1}">
-                                    <span class="badge badge-success" style="font-size: 14px"> Reading </span>
-                                </c:if>
-                                <c:if test="${exam.type == 2}">
-                                    <span class="badge badge-info" style="font-size: 14px">Listening</span>
-                                </c:if>
-                            </td>
-                            <td>${exam.questionNo}</td>
-                            <td>${exam.time}</td>
+<%--                <table id="datatable2" class="table display responsive nowrap">--%>
+<%--                    <thead>--%>
+<%--                    <tr>--%>
+<%--                        <th class="wd-15p">Exam Name</th>--%>
+<%--                        <th class="wd-20p">Topics</th>--%>
+<%--                        <th class="wd-15p">Exam type</th>--%>
+<%--                        <th class="wd-10p">Question No</th>--%>
+<%--                        <th class="wd-25p">Created time</th>--%>
+<%--                        <th class="wd-25p">Action</th>--%>
+<%--                    </tr>--%>
+<%--                    </thead>--%>
 
-                            <td>
-                                <ul style="margin-left: -40px">
-                                        <li style="list-style: none">
-                                            Take exam: <a
-                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}"
-                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
-                                                class="fas fa-play"></i></a>
-                                        </li>
-                                        <li style="list-style: none">
-                                            Ranking: <a
-                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}/results"
-                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i
-                                                class="fas fa-list"></i></a>
-                                        </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+<%--                    <tbody>--%>
+<%--                    <c:forEach var="exam" items="${exams}">--%>
+<%--                        <tr>--%>
+<%--                            <td>${exam.name}</td>--%>
+<%--                            <td>--%>
+<%--                                <ul style="margin-left: -40px">--%>
+<%--                                    <c:forEach var="exam_topic" items="${exam.examTopicList}">--%>
+<%--                                        <c:if test="${not empty exam_topic}">--%>
+<%--                                            <li style="list-style: none">${exam_topic.topic.name} (${exam_topic.percent}%)</li>--%>
+<%--                                        </c:if>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </ul>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <c:if test="${exam.type == 1}">--%>
+<%--                                    <span class="badge badge-success" style="font-size: 14px"> Reading </span>--%>
+<%--                                </c:if>--%>
+<%--                                <c:if test="${exam.type == 2}">--%>
+<%--                                    <span class="badge badge-info" style="font-size: 14px">Listening</span>--%>
+<%--                                </c:if>--%>
+<%--                            </td>--%>
+<%--                            <td>${exam.questionNo}</td>--%>
+<%--                            <td>${exam.time}</td>--%>
+
+<%--                            <td>--%>
+<%--                                <ul style="margin-left: -40px">--%>
+<%--                                        <li style="list-style: none">--%>
+<%--                                            Take exam: <a--%>
+<%--                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}"--%>
+<%--                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i--%>
+<%--                                                class="fas fa-play"></i></a>--%>
+<%--                                        </li>--%>
+<%--                                        <li style="list-style: none">--%>
+<%--                                            Ranking: <a--%>
+<%--                                                href="${pageContext.request.contextPath}/user/exams/${exam.id}/results"--%>
+<%--                                                class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="Start"><i--%>
+<%--                                                class="fas fa-list"></i></a>--%>
+<%--                                        </li>--%>
+<%--                                </ul>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                    </c:forEach>--%>
+<%--                    </tbody>--%>
+<%--                </table>--%>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img src="https://i.imgur.com/1QZqj1M.png" alt="Image" style="width: 100%">
+                    </div>
+                    <div class="col-lg-8">
+                        <p style="max-width: 100%; font-size: 30px">Practice mini test</p>
+
+                        <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
+                            style="width: 80px;height: 40px;font-size: 25px">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Ranking"
+                                style="width: 80px;height: 40px;font-size: 25px"><i
+                                class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
 
             </div><!-- table-wrapper -->
         <c:if test="${currentPage > 1}">
             <a href="?page=${currentPage - 1}">Prev</a>
         </c:if>
         <c:if test="${currentPage <= 1}">
-            <a href="#" class="nonClickableLink">Prev</a>
+            <a href="#" class="nonClickableLink" style="color: white">Prev</a>
         </c:if>
         <c:forEach var="i" begin="1" end="${totalPages}">
             <c:choose>
@@ -228,7 +260,7 @@
             <a href="?page=${currentPage + 1}">Next</a>
         </c:if>
         <c:if test="${!hasNext}">
-            <a href="#" class="nonClickableLink">Next</a>
+            <a href="#" class="nonClickableLink" style="color: white">Next</a>
         </c:if>
 
         </div>
