@@ -164,11 +164,13 @@
 
         </div>
         <div id="main" class="col-md-8 web-font">
+            <c:set var="index" value="0"/>
             <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
             <form:form action="${pageContext.request.contextPath}/user/exams/submit" method="post" id="myForm">
                 <c:forEach var="question" items="${questions}">
                     <div class="question-container" id="question-container-${question.id}">
-                        <h3>${question.content}</h3>
+                        <c:set var="index" value="${index + 1}"/>
+                        <h3>${index}. ${question.content}</h3>
                         <c:if test="${question.type == 2}">
                             Audio:
                             <audio controls>
