@@ -221,7 +221,7 @@
 <%--                    </tbody>--%>
 <%--                </table>--%>
                 <c:forEach items="${exams}" var="exam">
-
+                <br>
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -270,6 +270,7 @@
                         </a>
                     </div>
                 </div>
+                    <br>
                     <hr>
                 </c:forEach>
 
@@ -283,7 +284,7 @@
         <c:forEach var="i" begin="1" end="${totalPages}">
             <c:choose>
                 <c:when test="${currentPage eq i}">
-                    <a href="?page=${i}"><b>${i}</b></a>
+                    <a href="?page=${i}" class="nonClickableLink"><b>${i}</b></a>
                 </c:when>
                 <c:otherwise>
                     <a href="?page=${i}">${i}</a>

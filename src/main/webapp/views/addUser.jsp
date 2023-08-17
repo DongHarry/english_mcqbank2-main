@@ -287,13 +287,13 @@
                     <p style="margin-left: 15px">Role: </p>
                     <div class="col-lg-2">
                         <label class="rdiobox">
-                            <input name="role" value="admin" type="radio">
+                            <input name="role" value="admin" type="radio" required>
                             <span>Admin</span>
                         </label>
                     </div><!-- col-3 -->
                     <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                         <label class="rdiobox">
-                            <input name="role" value="user" type="radio" checked>
+                            <input name="role" value="user" type="radio" checked required>
                             <span>User</span>
                         </label>
                     </div><!-- col-3 -->

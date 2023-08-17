@@ -195,31 +195,31 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="10" type="radio">
+                                    <input name="questionNo" value="10" type="radio" required>
                                     <span>10</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="20" type="radio">
+                                    <input name="questionNo" value="20" type="radio" required>
                                     <span>20</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="30" type="radio">
+                                    <input name="questionNo" value="30" type="radio" required>
                                     <span>30</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="40" type="radio">
+                                    <input name="questionNo" value="40" type="radio" required>
                                     <span>40</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="50" type="radio">
+                                    <input name="questionNo" value="50" type="radio" required>
                                     <span>50</span>
                                 </label>
                             </div>
@@ -236,13 +236,13 @@
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="examType" value="1" type="radio">
+                                    <input name="examType" value="1" type="radio" required>
                                     <span>Reading</span>
                                 </label>
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="examType" value="2" type="radio">
+                                    <input name="examType" value="2" type="radio" required>
                                     <span>Listening</span>
                                 </label>
                             </div>

@@ -276,26 +276,26 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="1" type="radio">
+                                    <input name="answer" value="1" type="radio" required>
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="2" type="radio">
+                                    <input name="answer" value="2" type="radio" required>
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="3" type="radio">
+                                    <input name="answer" value="3" type="radio" required>
                                     <span>3</span>
                                 </label>
                             </div>
 
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="answer" value="4" type="radio">
+                                    <input name="answer" value="4" type="radio" required>
                                     <span>4</span>
                                 </label>
                             </div><!-- col-3 -->
@@ -355,25 +355,25 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="1" type="radio">
+                                    <input name="level" value="1" type="radio" required>
                                     <span>1</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="2" type="radio">
+                                    <input name="level" value="2" type="radio" required>
                                     <span>2</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="3" type="radio">
+                                    <input name="level" value="3" type="radio" required>
                                     <span>3</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="level" value="4" type="radio">
+                                    <input name="level" value="4" type="radio" required>
                                     <span>4</span>
                                 </label>
                             </div>
