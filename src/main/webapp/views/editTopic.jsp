@@ -156,13 +156,13 @@
         <nav class="breadcrumb pd-0 mg-0 tx-12">
             <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin">Admin</a>
             <a class="breadcrumb-item" href="${pageContext.request.contextPath}/admin/topics">Quản lý topic</a>
-            <span class="breadcrumb-item active">Chỉnh sửa chủ đề</span>
+            <span class="breadcrumb-item active">Thêm chủ đề</span>
         </nav>
     </div><!-- br-pageheader -->
     <div class="br-pagetitle">
         <i class="icon ion-ios-briefcase-outline"></i>
         <div>
-            <h4>Edit Topic</h4>
+            <h4>Add Topic</h4>
 
         </div>
     </div><!-- d-flex -->
