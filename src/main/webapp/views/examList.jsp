@@ -33,7 +33,6 @@
     <style>
         .nonClickableLink {
             color: blue; /* Set the color to mimic a link */
-            text-decoration: underline; /* Underline to mimic a link */
             cursor: default; /* Change cursor to default (not clickable) */
             pointer-events: none; /* Disable click events */
         }
@@ -276,26 +275,26 @@
 
             </div><!-- table-wrapper -->
         <c:if test="${currentPage > 1}">
-            <a href="?page=${currentPage - 1}">Prev</a>
+            <a href="?page=${currentPage - 1}" class="btn btn-success">Prev</a>
         </c:if>
         <c:if test="${currentPage <= 1}">
-            <a href="#" class="nonClickableLink">Prev</a>
+            <a href="#" class="nonClickableLink btn btn-light">Prev</a>
         </c:if>
         <c:forEach var="i" begin="1" end="${totalPages}">
             <c:choose>
                 <c:when test="${currentPage eq i}">
-                    <a href="?page=${i}" class="nonClickableLink"><b>${i}</b></a>
+                    <a href="?page=${i}" class="nonClickableLink btn btn-primary" style="color: #0b0b0b; text-decoration: underline"><b>${i}</b></a>
                 </c:when>
                 <c:otherwise>
-                    <a href="?page=${i}">${i}</a>
+                    <a href="?page=${i}" class="btn btn-light" style="background: gray">${i}</a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
         <c:if test="${hasNext}">
-            <a href="?page=${currentPage + 1}">Next</a>
+            <a href="?page=${currentPage + 1}" class="btn btn-success">Next</a>
         </c:if>
         <c:if test="${!hasNext}">
-            <a href="#" class="nonClickableLink">Next</a>
+            <a href="#" class="nonClickableLink btn btn-light">Next</a>
         </c:if>
 
         </div>
