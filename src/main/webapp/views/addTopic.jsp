@@ -167,7 +167,7 @@
     </div><!-- d-flex -->
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-            <h6 class="br-section-label">Chỉnh sửa chủ đề</h6>
+            <h6 class="br-section-label">Thêm chủ đề</h6>
 
             <form:form action="/admin/addTopic" method="post">
                 <div class="row">
