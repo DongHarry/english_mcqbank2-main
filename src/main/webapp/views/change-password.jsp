@@ -162,7 +162,7 @@
 
     <br>
 </div><!-- br-sideleft -->
-<%--<jsp:include page="include/left-panel.jsp"></jsp:include>--%>
+<%--<jsp:include page="include/submit-modal.jsp"></jsp:include>--%>
 <%--<!-- ########## END: LEFT PANEL ########## -->--%>
 
 

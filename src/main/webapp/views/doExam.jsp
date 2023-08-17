@@ -30,6 +30,7 @@
                 if (--timer === -2) {
                     alert("Hết giờ!");
                     document.getElementById("countdown").innerHTML = "00:00";
+                    document.getElementById("countdown").remove();
                     // Dừng đồng hồ đếm ngược khi đạt 0
                     //$("#submitButton").click(); // Tự động click nút submit
                     document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
@@ -160,7 +161,7 @@
         </div>
 
         <div class="col-md-3 ">
-            <!-- Placeholder - keep empty -->
+
         </div>
         <div id="main" class="col-md-8 web-font">
             <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
@@ -204,7 +205,8 @@
                     </div>
                 </c:forEach>
                 <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
-                <input type="submit" value="Submit" class="btn btn-info">
+                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" <%--style="display: none"--%>>
+<%--                <a href="#" class="modal-effect2 btn btn-info">Nộp bài</a>--%>
             </form:form>
 
         </div>
@@ -234,9 +236,57 @@
     <%--    </c:forEach>--%>
     <%--    <input type="submit" value="Submit">--%>
     <%--</form:form>--%>
+    <!-- SMALL MODAL -->
+    <div id="modaldemo9" class="modal fade">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content bd-0 tx-14">
+                <div class="modal-header pd-x-20">
+                    <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Notice</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pd-20">
+                    <p class="mg-b-5">Xác nhận nộp bài</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="#" type="button" onclick="document.getElementById('myForm').submit();"
+                       class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Submit</a>
+                    <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
+                            data-dismiss="modal">Cancel
+                    </button>
+                </div>
+            </div>
+        </div><!-- modal-dialog -->
+    </div>
+    <!-- modal -->
+    <script>
+        $(function () {
 
+            // showing modal with effect
+            $('.modal-effect2').on('click', function (e) {
+                e.preventDefault();
+                var effect = $(this).attr('data-effect');
+                $('#modaldemo9').addClass(effect);
+                $('#modaldemo9').modal('show');
+            });
+
+            // hide modal with effect
+            $('#modaldemo9').on('hidden.bs.modal', function (e) {
+                $(this).removeClass(function (index, className) {
+                    return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+                });
+            });
+        });
+    </script>
+
+</div>
 </body>
-
+<script>
+    function submitForm() {
+        document.getElementById('myForm').submit();
+    }
+</script>
 <script>
     function handleRadioClick(questionId) {
         var circle = document.getElementById("circle-" + questionId);
@@ -244,5 +294,22 @@
     }
 </script>
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/moment/min/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/peity/jquery.peity.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.layout.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/js/bracket.js"></script>
+<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
+<script src="${pageContext.request.contextPath}/lib/highlightjs/highlight.pack.min.js"></script>
 </html>

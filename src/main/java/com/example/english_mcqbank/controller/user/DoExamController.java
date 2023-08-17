@@ -105,7 +105,7 @@ public class DoExamController {
         Collections.shuffle(questions);
         userExamModelAndView.addObject("questions", questions);
         userExamModelAndView.addObject("exam", exam);
-        int duration = exam.getQuestionNo() * 60;
+        int duration = exam.getQuestionNo() * 3;
         String minutes = duration / 60 + "";
         String seconds = duration % 60 + "";
         minutes = Integer.parseInt(minutes) < 10 ? "0" + minutes : minutes;
