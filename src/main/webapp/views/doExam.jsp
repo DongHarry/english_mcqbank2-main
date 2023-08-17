@@ -209,7 +209,7 @@
                 <input type="hidden" name="examId" value="${exam.id}" class="btn btn-info">
 <%--                <input type="submit" value="Nộp bài" class="btn btn-info modal-effect2" style="display: none">--%>
 <%--                <a href="#" class="modal-effect2 btn btn-info">Nộp bài</a>--%>
-                <a href="#"
+                <a href=""
                    class="modal-effect2 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
                    data-effect="effect-scale" data-toggle="modal" data-target="#modaldemo9"
                    data-row-id="${exam.id}">
