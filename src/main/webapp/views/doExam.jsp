@@ -300,6 +300,7 @@
         if (confirm("Bạn có chắc chắn muốn nộp bài?")) {
             // Thực hiện hành động nộp bài ở đây
             // Ví dụ: Gửi dữ liệu form đi hoặc thực hiện các tác vụ cần thiết
+            document.getElementById('myForm').submit();
         }
     }
 </script>
