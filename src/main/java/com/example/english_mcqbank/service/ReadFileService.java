@@ -48,7 +48,8 @@ public class ReadFileService implements IReadFileService {
 
                 Topic topic = topicService.getTopicById(Integer.parseInt(d[8]));
                 if (topic == null) {
-                    throw new InvalidInputFileException("Invalid input file");
+//                    throw new InvalidInputFileException("Invalid input file");
+                    continue;
                 }
                 question.setTopic(topic);
                 question.setLevel(Integer.parseInt(d[9]));
@@ -68,7 +69,8 @@ public class ReadFileService implements IReadFileService {
                 question.setType(Integer.parseInt(d[8]));
                 Topic topic = topicService.getTopicById(Integer.parseInt(d[9]));
                 if (topic == null) {
-                    throw new InvalidInputFileException("Invalid input file");
+//                    throw new InvalidInputFileException("Invalid input file");
+                    continue;
                 }
                 question.setTopic(topic);
                 question.setLevel(Integer.parseInt(d[10]));
@@ -92,30 +94,31 @@ public class ReadFileService implements IReadFileService {
 
                 int cellCount = row.getLastCellNum();
                 if (cellCount != 10 && cellCount != 11) {
-                    throw new InvalidInputFileException("Invalid input file");
+                    continue;
                 }
                 Question excelData = new Question();
-
-                excelData.setId(cellCount == 11 ? (int) row.getCell(0).getNumericCellValue() : null);
-                excelData.setContent(row.getCell(cellCount == 11 ? 1 : 0).getStringCellValue());
-                excelData.setOption1(row.getCell(cellCount == 11 ? 2 : 1).getStringCellValue());
-                excelData.setOption2(row.getCell(cellCount == 11 ? 3 : 2).getStringCellValue());
-                excelData.setOption3(row.getCell(cellCount == 11 ? 4 : 3).getStringCellValue());
-                excelData.setOption4(row.getCell(cellCount == 11 ? 5 : 4).getStringCellValue());
-                excelData.setAnswer((int) row.getCell(cellCount == 11 ? 6 : 5).getNumericCellValue());
-                excelData.setExplain(row.getCell(cellCount == 11 ? 7 : 6).getStringCellValue());
-                excelData.setType((int) row.getCell(cellCount == 11 ? 8 : 7).getNumericCellValue());
-                Topic topic = topicService.getTopicById((int) row.getCell(cellCount == 11 ? 9 : 8).getNumericCellValue());
-                if (topic == null) {
+                try {
+                    excelData.setId(cellCount == 11 ? (int) row.getCell(0).getNumericCellValue() : null);
+                    excelData.setContent(row.getCell(cellCount == 11 ? 1 : 0).getStringCellValue());
+                    excelData.setOption1(row.getCell(cellCount == 11 ? 2 : 1).getStringCellValue());
+                    excelData.setOption2(row.getCell(cellCount == 11 ? 3 : 2).getStringCellValue());
+                    excelData.setOption3(row.getCell(cellCount == 11 ? 4 : 3).getStringCellValue());
+                    excelData.setOption4(row.getCell(cellCount == 11 ? 5 : 4).getStringCellValue());
+                    excelData.setAnswer((int) row.getCell(cellCount == 11 ? 6 : 5).getNumericCellValue());
+                    excelData.setExplain(row.getCell(cellCount == 11 ? 7 : 6).getStringCellValue());
+                    excelData.setType((int) row.getCell(cellCount == 11 ? 8 : 7).getNumericCellValue());
+                    Topic topic = topicService.getTopicById((int) row.getCell(cellCount == 11 ? 9 : 8).getNumericCellValue());
+                    if (topic == null) {
+//                    throw new InvalidInputFileException("Invalid input file");
+                        continue;
+                    }
+                    excelData.setTopic(topic);
+                    excelData.setLevel((int) row.getCell(cellCount == 11 ? 10 : 9).getNumericCellValue());
+                } catch (Exception e) {
                     throw new InvalidInputFileException("Invalid input file");
                 }
-                excelData.setTopic(topic);
-                excelData.setLevel((int) row.getCell(cellCount == 11 ? 10 : 9).getNumericCellValue());
-
                 data.add(excelData);
             }
-        } catch (InvalidInputFileException e) {
-
         } catch (Exception e) {
             throw new InvalidInputFileException("Invalid input file");
         }
