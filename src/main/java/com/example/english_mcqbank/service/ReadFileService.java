@@ -96,6 +96,7 @@ public class ReadFileService implements IReadFileService {
                 if (cellCount != 10 && cellCount != 11) {
                     continue;
                 }
+
                 Question excelData = new Question();
                 try {
                     excelData.setId(cellCount == 11 ? (int) row.getCell(0).getNumericCellValue() : null);

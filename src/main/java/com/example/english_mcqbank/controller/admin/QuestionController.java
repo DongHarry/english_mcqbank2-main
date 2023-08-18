@@ -252,9 +252,9 @@ public class QuestionController {
         }
         sessionService.removeAttribute("questionMap");
 
-        for (Question question : questions) {
-            System.out.println(question);
-        }
+//        for (Question question : questions) {
+//            System.out.println(question);
+//        }
         int count = questionService.saveAll(questions);
         if (count == 0) {
             ModelAndView modelAndView = new ModelAndView("redirect:/admin/questions/upload");
