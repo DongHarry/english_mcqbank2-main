@@ -1,9 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,16 +10,14 @@
 
     <title>Đăng ký tài khoản</title>
 
-    <!--favicon icon-->
-    <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="icon" th:href="@{/resource/img/favicon.png}" type="image/png" sizes="16x16">
 
     <!-- vendor css -->
-    <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
-
+    <link th:href="@{/lib/@fortawesome/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/ionicons/css/ionicons.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet">
     <!-- Bracket CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
+    <link rel="stylesheet" th:href="@{/css/bracket.css}">
     <script>
         function validatePassword() {
             var password = document.getElementById("password").value;
@@ -51,27 +44,27 @@
             <p class="tx-center mg-b-60">Create your own account.</p>
 
 
-            <form:form action="${pageContext.request.contextPath}/register" method="post">
+            <form th:action="@{/register}" method="post">
                 <div class="form-group">
                     <input type="text" pattern="[a-zA-Z0-9._]+" class="form-control" placeholder="Enter your username"
                            id="username"
-                           name="username" value="${user.username}" required>
+                           name="username" th:value="${user.username}" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your fullname" id="fullName"
-                           name="fullName" value="${user.fullName}" required>
+                           name="fullName" th:value="${user.fullName}" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your address" id="address"
-                           name="address" value="${user.address}">
+                           name="address" th:value="${user.address}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your phone" id="phone"
-                           name="phone" value="${user.phone}" pattern="\d{10}" title="Vui lòng nhập đúng 10 chữ số">
+                           name="phone" th:value="${user.phone}" pattern="\d{10}" title="Vui lòng nhập đúng 10 chữ số">
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Enter your email" id="email"
-                           name="email" required value="${user.email}"
+                           name="email" required th:value="${user.email}"
                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                            title="Vui lòng nhập đúng định dạng địa chỉ email">
                 </div>
@@ -80,25 +73,25 @@
                     <input type="password" class="form-control" placeholder="Enter your password" id="password"
                            name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
                            title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)."
-                           required value="${user.password}">
+                           required th:value="${user.password}">
                 </div>
                 <!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Confirm your password" id="confirmPassword"
                            name="confirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"
                            title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm một chữ hoa, một chữ thường, một chữ số và một ký tự đặc biệt (!@#$%^&*)."
-                           required value="${confirmPassword}">
+                           required th:value="${confirmPassword}">
 
                 </div>
                 <!-- form-group -->
                 <span id="mess"></span>
                 <div style="color: rgba(255,0,0,0.87)">
-                    <c:if test="${not empty successMessage}">
+                    <div th:if="${successMessage != null}">
                         <div class="error"><strong>${successMessage}</strong></div>
-                    </c:if>
-                    <c:if test="${not empty errorMessage}">
+                    </div>
+                    <div th:if="${errorMessage != null}">
                         <div class="error"><strong>${errorMessage}</strong></div>
-                    </c:if>
+                    </div>
                 </div>
 
                 <div class="form-group tx-12">
@@ -106,7 +99,7 @@
                     of use of our website.
                 </div>
                 <button type="submit" class="btn btn-info btn-block">Sign Up</button>
-            </form:form>
+            </form>
 
 
             <div class="mg-t-60 tx-center">Already a member? <a href="${pageContext.request.contextPath}/login-page"
@@ -135,10 +128,10 @@
     </div>
 </div><!-- row -->
 
-<script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
-<script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/select2/js/select2.min.js"></script>
+<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/lib/jquery-ui/ui/widgets/datepicker.js}"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/lib/select2/js/select2.min.js}"></script>
 <script>
     $(function () {
         'use strict';

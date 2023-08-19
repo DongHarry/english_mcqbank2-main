@@ -13,13 +13,13 @@
                     <p class="mg-b-5">Bạn có muốn đăng xuất không?</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <form th:action="@{/logout}" method="post">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                        <button type="submit" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log out</button>
-                    </form>
-<!--                    <a href="@{/logout}" type="button"-->
-<!--                       class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log-->
-<!--                        out</a>-->
+<!--                    <form th:action="@{/logout}" method="post">-->
+<!--                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+<!--                        <button type="submit" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log out</button>-->
+<!--                    </form>-->
+                    <a th:href="@{/logout}" type="button"
+                       class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Log
+                        out</a>
                     <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
                             data-dismiss="modal">Cancel
                     </button>

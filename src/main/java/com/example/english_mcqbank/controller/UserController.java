@@ -74,7 +74,7 @@ public class UserController {
         }
         ModelAndView userLogsModelAndView = new ModelAndView("logs");
 
-        //userLogsModelAndView.addObject("loggedInUser", user);
+        userLogsModelAndView.addObject("loggedInUser", user);
         List<Log> logs = logService.getLogsByUser(user);
 
         userLogsModelAndView.addObject("logs", logs);
