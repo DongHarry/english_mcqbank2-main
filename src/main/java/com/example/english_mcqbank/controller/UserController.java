@@ -58,7 +58,7 @@ public class UserController {
 
         UserEntity user = sessionService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
-        userProfileModelAndView.addObject("loggedInUser", user);
+        //userProfileModelAndView.addObject("loggedInUser", user);
         userProfileModelAndView.addObject("type", 1);
 
         return userProfileModelAndView; // Trả về user.jsp
@@ -74,7 +74,7 @@ public class UserController {
         }
         ModelAndView userLogsModelAndView = new ModelAndView("logs");
 
-        userLogsModelAndView.addObject("loggedInUser", user);
+        //userLogsModelAndView.addObject("loggedInUser", user);
         List<Log> logs = logService.getLogsByUser(user);
 
         userLogsModelAndView.addObject("logs", logs);

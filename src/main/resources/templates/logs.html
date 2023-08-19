@@ -233,9 +233,7 @@
                         <th class="wd-15p">Log Name</th>
                         <th class="wd-15p">Log Status</th>
                         <th class="wd-15p">Log Date</th>
-                        <div sec:authorize="hasRole('ROLE_ADMIN')">
-                            <th class="wd-15p">Action</th>
-                        </div>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')" class="wd-15p">Action</th>
                     </tr>
                     </thead>
                     <tbody>

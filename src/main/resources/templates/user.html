@@ -82,7 +82,7 @@
                                 <li><a class="page-scroll" href="#news">News</a></li>
                                 <li><a class="page-scroll" href="#contact">Contact</a></li>
                                 <li class="dropdown">
-                                    <a class="drop page-scroll" href="#" data-toggle="dropdown"><span th:text="${loggedInUser.fullName}"></span><b class="caret"></b> </a>
+                                    <a class="drop page-scroll" href="#" data-toggle="dropdown"><span th:text="${session.loggedInUser.fullName}"></span><b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
                                         <li><a th:href="@{/user/profile}">User
                                             Information</a></li>
@@ -882,7 +882,7 @@
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="name"
-                                                   placeholder="Họ và tên" th:value="${loggedInUser.fullName}"
+                                                   placeholder="Họ và tên" th:value="${session.loggedInUser.fullName}"
                                                    required="required">
                                         </div>
                                     </div>
@@ -890,21 +890,21 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
                                                    placeholder="Địa chỉ email" required="required"
-                                                   th:value="${loggedInUser.email}">
+                                                   th:value="${session.loggedInUser.email}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="phone" th:value="${loggedInUser.phone}"
+                                            <input type="text" name="phone" th:value="${session.loggedInUser.phone}"
                                                    class="form-control"
                                                    id="phone" placeholder="Số điện thoại">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" name="company" th:value="${loggedInUser.address}" size="40"
+                                            <input type="text" name="company" th:value="${session.loggedInUser.address}" size="40"
                                                    class="form-control" id="company" placeholder="Địa chỉ">
                                         </div>
                                     </div>
