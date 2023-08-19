@@ -252,10 +252,10 @@
                     <p th:if="${type == 1}"><b>User logs: </b><a th:href="@{/user/profile/logs}">Logs</a></p>
                 <div th:if="${type == 2}">
                     <p><b>User logs: </b> <a
-                            th:href="@{/admin/users/${user.id}/logs}">Logs</a></p>
+                            th:href="@{/admin/users/{id}/logs(id=${user.id})}">Logs</a></p>
                     <div th:if="${user.groupId == 1}">
                         <p><b>Kết quả thi: </b><a
-                                th:href="@{/admin/users/${user.id}/results}">Results</a></p>
+                                th:href="@{/admin/users/{id}/results(id=${user.id})}">Results</a></p>
                     </div>
                 </div>
 
@@ -267,8 +267,6 @@
                     <a th:href="@{/user/profile/edit}" class="btn btn-info">Chỉnh sửa</a>
                     <a th:href="@{/user/profile/change-password}" class="btn btn-info">Đổi
                         mật khẩu</a>
-<!--                        <%--                </div>&lt;!&ndash; form-layout-footer &ndash;&gt;--%>-->
-<!--                        <%--                <div class="form-layout-footer mg-t-30">--%>-->
 
                 </div>
                 <!-- form-layout-footer -->

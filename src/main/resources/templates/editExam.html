@@ -1,9 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,22 +12,22 @@
     <title>Edit Exam</title>
 
     <!--favicon icon-->
-    <link rel="icon" href="${pageContext.request.contextPath}/resource/img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="icon" th:href="@{/resource/img/favicon.png}" type="image/png" sizes="16x16">
 
     <!-- vendor css -->
-    <link href="${pageContext.request.contextPath}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link th:href="@{/lib/@fortawesome/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/ionicons/css/ionicons.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/rickshaw/rickshaw.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet">
 
     <!-- Bracket CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bracket.css">
+    <link rel="stylesheet" th:href="@{/css/bracket.css}">
 </head>
 
 <body>
 
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="${pageContext.request.contextPath}/index"><span>[</span>apelish
+<div class="br-logo"><a th:href="@{/index}"><span>[</span>apelish
     <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
@@ -43,7 +39,7 @@
                 <span class="menu-item-label">Quản lý bài thi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/exams" class="sub-link active">
+                <li class="sub-item"><a th:href="@{/admin/exams}" class="sub-link active">
                     Tất cả bài thi</a></li>
 
             </ul>
@@ -54,9 +50,9 @@
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions" class="sub-link">Tất
+                <li class="sub-item"><a th:href="@{/admin/questions}" class="sub-link">Tất
                     cả câu hỏi</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/questions/upload"
+                <li class="sub-item"><a th:href="@{/admin/questions/upload}"
                                         class="sub-link">Thêm câu hỏi bằng file</a></li>
 
             </ul>
@@ -69,29 +65,29 @@
                 <span class="menu-item-label">Quản lý tài khoản</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users" class="sub-link">
+                <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link">
                     Tài khoản người dùng</a></li>
-                <li class="sub-item"><a href="${pageContext.request.contextPath}/admin/users/new" class="sub-link">
+                <li class="sub-item"><a th:href="@{/admin/users/new}" class="sub-link">
                     Thêm tài khoản</a></li>
             </ul>
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/topics" class="br-menu-link">
+            <a th:href="@{/admin/topics}" class="br-menu-link">
                 <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý topic</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/logs" class="br-menu-link">
+            <a th:href="@{/admin/logs}" class="br-menu-link">
                 <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý logs</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="${pageContext.request.contextPath}/admin/profile" class="br-menu-link">
+            <a th:href="@{/admin/profile}" class="br-menu-link">
                 <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                 <span class="menu-item-label">Tài khoản admin</span>
             </a><!-- br-menu-link -->
@@ -120,16 +116,16 @@
 
     <div class="dropdown">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
-            <img src="${pageContext.request.contextPath}/resource/img/favicon.png" class="wd-32 rounded-circle" alt="">
+            <span class="logged-name hidden-md-down" th:text="${session.loggedInUser.fullName}"></span>
+            <img th:src="@{/resource/img/favicon.png}" class="wd-32 rounded-circle" alt="">
             <span class="square-10 bg-success"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
+                <a href=""><img th:src="@{/resource/img/favicon.png}"
                                 class="wd-80 rounded-circle" alt=""></a>
-                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
-                <p>${loggedInUser.email}</p>
+                <h6 class="logged-fullname" th:text="${session.loggedInUser.fullName}"></h6>
+                <p th:text="${session.loggedInUser.email}"></p>
             </div>
             <hr>
             <div class="tx-center">
@@ -170,7 +166,7 @@
         <div class="br-section-wrapper">
             <h6 class="br-section-label">Chỉnh sửa bài thi</h6>
 
-            <form:form action="${pageContext.request.contextPath}/admin/exams/${c_exam.id}/edit" method="post">
+            <form th:action="@{/admin/exams/{id}/edit(id=${c_exam.id})}" method="post">
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -178,7 +174,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Exam Name</span>
                             </div>
-                            <input type="text" name="name" id="name" class="form-control" value="${c_exam.name}">
+                            <input type="text" name="name" id="name" class="form-control" th:value="${c_exam.name}">
                         </div>
                     </div>
                 </div>
@@ -191,36 +187,36 @@
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="10" type="radio"
-                                           <c:if test="${c_exam.questionNo == 10}">checked</c:if>>
+                                    <input name="questionNo" value="10" type="radio" th:if="${c_exam.questionNo == 10}" checked>
+                                    <input name="questionNo" value="10" type="radio" th:if="${c_exam.questionNo != 10}">
                                     <span>10</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="20" type="radio"
-                                           <c:if test="${c_exam.questionNo == 20}">checked</c:if>>
+                                    <input name="questionNo" value="20" type="radio" th:if="${c_exam.questionNo == 20}" checked>
+                                    <input name="questionNo" value="20" type="radio" th:if="${c_exam.questionNo != 20}">
                                     <span>20</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="30" type="radio"
-                                           <c:if test="${c_exam.questionNo == 30}">checked</c:if>>
+                                    <input name="questionNo" value="30" type="radio" th:if="${c_exam.questionNo == 30}" checked>
+                                    <input name="questionNo" value="30" type="radio" th:if="${c_exam.questionNo != 30}">
                                     <span>30</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="40" type="radio"
-                                           <c:if test="${c_exam.questionNo == 40}">checked</c:if>>
+                                    <input name="questionNo" value="40" type="radio" th:if="${c_exam.questionNo == 40}" checked>
+                                    <input name="questionNo" value="40" type="radio" th:if="${c_exam.questionNo != 40}">
                                     <span>40</span>
                                 </label>
                             </div>
                             <div class="col-lg-1 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="questionNo" value="50" type="radio"
-                                           <c:if test="${c_exam.questionNo == 50}">checked</c:if>>
+                                    <input name="questionNo" value="50" type="radio" th:if="${c_exam.questionNo == 50}" checked>
+                                    <input name="questionNo" value="50" type="radio" th:if="${c_exam.questionNo != 50}">
                                     <span>50</span>
                                 </label>
                             </div>
@@ -237,15 +233,16 @@
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="type" value="1" type="radio"
-                                           <c:if test="${c_exam.type == 1}">checked</c:if> required>
+                                    <input name="type" value="1" type="radio" th:if="${c_exam.type == 1}" checked>
+                                    <input name="type" value="1" type="radio" th:if="${c_exam.type != 1}">
+
                                     <span>Reading</span>
                                 </label>
                             </div>
                             <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                 <label class="rdiobox">
-                                    <input name="type" value="2" type="radio"
-                                           <c:if test="${c_exam.type == 2}">checked</c:if> required>
+                                    <input name="type" value="2" type="radio" th:if="${c_exam.type == 2}" checked>
+                                    <input name="type" value="2" type="radio" th:if="${c_exam.type != 2}">
                                     <span>Listening</span>
                                 </label>
                             </div>
@@ -253,7 +250,8 @@
                         </div>
                     </div>
                 </div>
-                <c:if test="${not empty topics}">
+
+                <div th:if="${topics != null && !topics.isEmpty()}">
 
                     <div class="row mg-t-20">
                         <div class="col-lg-7">
@@ -262,56 +260,65 @@
                                     <span class="input-group-text">Topic</span>
                                 </div>
                             </div>
-                            <c:forEach items="${topics}" var="topic">
+                            <div th:each="topic : ${topics}">
                                 <div class="row mg-t-20 mg-lg-t-0" style="margin: 10px 30px">
                                     <div class="col-lg-3">
                                         <label class="ckbox">
-                                            <input type="checkbox" name="topic${topic.id}" value="${topic.id}"
-                                                   id="topic"
-                                                   <c:if test="${c_exam.containsTopic(topic.id)}">checked</c:if>>
-                                            <span>${topic.name}</span>
+                                            <input type="checkbox" th:name="'topic'+${topic.id}" th:value="${topic.id}"
+                                                    th:if="${c_exam.containsTopic(topic.id)}" checked>
+                                            <input type="checkbox" th:name="'topic'+${topic.id}" th:value="${topic.id} "
+                                                    th:if="${!c_exam.containsTopic(topic.id)}">
+                                            <span th:text="${topic.name}"></span>
                                         </label>
                                     </div>
                                     <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                         <label class="rdiobox">
-                                            <input name="numQu.OfTopic${topic.id}" type="radio" value="20"
-                                                   <c:if test="${c_exam.getTopicPercent(topic.id) == 20}">checked</c:if> >
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="20"
+                                                   th:if="${c_exam.getTopicPercent(topic.id) == 20}" checked>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="20"
+                                                   th:if="${c_exam.getTopicPercent(topic.id) != 20}">
                                             <span>20 %</span>
                                         </label>
                                     </div>
                                     <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                         <label class="rdiobox">
-                                            <input name="numQu.OfTopic${topic.id}" type="radio" value="30"
-                                                   <c:if test="${c_exam.getTopicPercent(topic.id) == 30}">checked</c:if>>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="30"
+                                                   th:if="${c_exam.getTopicPercent(topic.id) == 30}" checked>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="30"
+                                                    th:if="${c_exam.getTopicPercent(topic.id) != 30}">
                                             <span>30 %</span>
                                         </label>
                                     </div>
                                     <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                         <label class="rdiobox">
-                                            <input name="numQu.OfTopic${topic.id}" type="radio" value="50"
-                                                   <c:if test="${c_exam.getTopicPercent(topic.id) == 50}">checked</c:if>>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="50"
+                                                   th:if="${c_exam.getTopicPercent(topic.id) == 50}" checked>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="50"
+                                                    th:if="${c_exam.getTopicPercent(topic.id) != 50}">
                                             <span>50 %</span>
                                         </label>
                                     </div>
                                     <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                         <label class="rdiobox">
-                                            <input name="numQu.OfTopic${topic.id}" type="radio" value="100"
-                                                   <c:if test="${c_exam.getTopicPercent(topic.id) == 100}">checked</c:if>>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="100"
+                                                   th:if="${c_exam.getTopicPercent(topic.id) == 100}" checked>
+                                            <input th:name="'numQu.OfTopic'+${topic.id}" type="radio" value="100"
+                                                    th:if="${c_exam.getTopicPercent(topic.id) != 100}">
                                             <span>100 %</span>
                                         </label>
                                     </div>
                                 </div>
-                            </c:forEach>
+                            </div>
                         </div>
                     </div>
-                </c:if>
+                </div>
 
                 <div class="form-layout-footer mg-t-30">
                     <button type="submit" class="btn btn-info mg-r-5">Cập nhật</button>
 
-                    <a href="${pageContext.request.contextPath}/admin/exams" class="btn btn-secondary">Quay lại</a>
+                    <a th:href="@{/admin/exams}" class="btn btn-secondary">Quay lại</a>
                 </div>
-            </form:form>
+            </form>
 
 
         </div>
@@ -328,28 +335,28 @@
         </div>
     </footer>
 </div>
-<jsp:include page="include/logout-modal.jsp"></jsp:include>
+<div th:replace="~{include/logout-modal :: modalFragment}"></div>
 
 <!-- ########## END: noidung ########## --->
 
 
-<script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
-<script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/moment/min/moment.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/peity/jquery.peity.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/vendor/d3.layout.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/rickshaw/rickshaw.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery.flot/jquery.flot.resize.js"></script>
-<script src="${pageContext.request.contextPath}/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/select2/js/select2.full.min.js"></script>
+<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/lib/jquery-ui/ui/widgets/datepicker.js}"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/lib/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/lib/moment/min/moment.min.js}"></script>
+<script th:src="@{/lib/peity/jquery.peity.min.js}"></script>
+<script th:src="@{/lib/rickshaw/vendor/d3.min.js}"></script>
+<script th:src="@{/lib/rickshaw/vendor/d3.layout.min.js}"></script>
+<script th:src="@{/lib/rickshaw/rickshaw.min.js}"></script>
+<script th:src="@{/lib/jquery.flot/jquery.flot.js}"></script>
+<script th:src="@{/lib/jquery.flot/jquery.flot.resize.js}"></script>
+<script th:src="@{/lib/flot-spline/js/jquery.flot.spline.min.js}"></script>
+<script th:src="@{/lib/jquery-sparkline/jquery.sparkline.min.js}"></script>
+<script th:src="@{/lib/select2/js/select2.full.min.js}"></script>
 
-<script src="${pageContext.request.contextPath}/js/bracket.js"></script>
-<script src="${pageContext.request.contextPath}/js/ResizeSensor.js"></script>
+<script th:src="@{/js/bracket.js}"></script>
+<script th:src="@{/js/ResizeSensor.js}"></script>
 
 <script>
     $(function () {
