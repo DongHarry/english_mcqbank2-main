@@ -32,7 +32,7 @@ public class DoExamController {
         List<Exam> exams = examService.getAllExams(page, size);
         ModelAndView userExamsModelAndView = new ModelAndView("examList");
         //UserEntity user = userService.getUserByUsername(authentication.getName());
-        //userExamsModelAndView.addObject("loggedInUser", user);
+        //userExamsModelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         userExamsModelAndView.addObject("exams", exams);
         userExamsModelAndView.addObject("currentPage", page);
         assert exams != null;

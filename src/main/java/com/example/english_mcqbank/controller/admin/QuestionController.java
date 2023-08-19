@@ -35,7 +35,7 @@ public class QuestionController {
         List<Question> questions = questionService.getAllQuestions();
         ModelAndView modelAndView = new ModelAndView("questionList");
 
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("questions", questions);
         modelAndView.addObject("type", 1);
 //        modelAndView.addObject("currentPage", page);
@@ -219,7 +219,7 @@ public class QuestionController {
         sessionService.setAttribute("questionMap", map);
 
         ModelAndView modelAndView = new ModelAndView("addQuestions");
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("questions", data);
         return modelAndView;
     }

@@ -32,7 +32,7 @@ public class TopicController {
         List<Topic> topics = topicService.getAllTopics();
         ModelAndView modelAndView = new ModelAndView("topics");
         modelAndView.addObject("topics", topics);
-        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 //        modelAndView.addObject("currentPage", page);
 //        assert topics != null;
 //        boolean hasNext = topics.size() >= size;

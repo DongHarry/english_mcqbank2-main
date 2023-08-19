@@ -49,7 +49,7 @@ public class AdminController {
         UserEntity user = sessionService.getLoggedInUser();
         sessionService.setAttribute("type3", 1);
         view.addObject("user", user);
-        view.addObject("loggedInUser", user);
+        //view.addObject("loggedInUser", user);
         view.addObject("successMessage", null);
         view.addObject("errorMessage", null);
         view.addObject("type", 1);

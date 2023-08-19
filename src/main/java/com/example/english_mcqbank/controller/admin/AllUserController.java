@@ -96,7 +96,7 @@ public class AllUserController {
         model.addAttribute("user", new UserEntity());
         ModelAndView modelAndView = new ModelAndView("addUser");
         modelAndView.addObject("type", 3);
-        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
         //modelAndView.addObject("loggedInUser", loggedInUser);
         return modelAndView;
     }
@@ -197,7 +197,7 @@ public class AllUserController {
 
         ModelAndView modelAndView = new ModelAndView("userResult");
         modelAndView.addObject("results", results);
-        //UserEntity loggedInUser = sessionService.getLoggedInUser();
+        UserEntity loggedInUser = sessionService.getLoggedInUser();
         //modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("type", 1);
         modelAndView.addObject("userId", user.getId());

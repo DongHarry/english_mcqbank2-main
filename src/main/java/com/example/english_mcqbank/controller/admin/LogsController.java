@@ -31,6 +31,7 @@ public class LogsController {
         ModelAndView modelAndView = new ModelAndView("allLogs");
         List<Log> logs = logService.findAllLogs();
         modelAndView.addObject("logs", logs);
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 //        modelAndView.addObject("currentPage", page);
 //        assert logs != null;
 //        boolean hasNext = logs.size() >= size;
@@ -44,8 +45,8 @@ public class LogsController {
                              @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("allLogs");
         UserEntity user = sessionService.getLoggedInUser();
-        modelAndView.addObject("user", user);
-        //modelAndView.addObject("loggedInUser", user);
+        //modelAndView.addObject("user", user);
+        modelAndView.addObject("loggedInUser", user);
 
         List<Log> logs = logService.findAllLogs();
         modelAndView.addObject("logs", logs);

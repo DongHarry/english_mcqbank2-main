@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Topics</title>
+    <title>Tất cả bài thi</title>
 
     <!--favicon icon-->
     <link rel="icon" th:href="@{/resource/img/favicon.png}" type="image/png" sizes="16x16">
@@ -26,6 +25,27 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" th:href="@{/css/bracket.css}">
+    
+    <style>
+        .nonClickableLink {
+            color: blue; /* Set the color to mimic a link */
+            cursor: default; /* Change cursor to default (not clickable) */
+            pointer-events: none; /* Disable click events */
+        }
+        .btn.reverse-hover {
+            /* Hiệu ứng mặc định (không hover) */
+            background-color: #007bff; /* Màu nền trong trạng thái bình thường */
+            color: white; /* Màu chữ trong trạng thái bình thường */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển đổi */
+
+        /* Hiệu ứng khi hover */
+        &:hover {
+             background-color: transparent; /* Màu nền khi hover */
+             color: #007bff; /* Màu chữ khi hover */
+         }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -36,68 +56,34 @@
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
     <ul class="br-sideleft-menu">
+            <li class="br-menu-item">
+                <a href="#" class="br-menu-link with-sub active show-sub">
+                    <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                    <span class="menu-item-label">Làm bài</span>
+                </a><!-- br-menu-link -->
+                <ul class="br-menu-sub">
+                    <li class="sub-item"><a th:href="@{/user/exams}"
+                                            class="sub-link active">
+                        Tất cả bài thi</a></li>
 
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
-                <span class="menu-item-label">Quản lý bài thi</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a th:href="@{/admin/exams}" class="sub-link">
-                    Tất cả bài thi</a></li>
-
-            </ul>
-        </li>
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
-                <span class="menu-item-label">Quản lý câu hỏi</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a th:href="@{/admin/questions}" class="sub-link">Tất
-                    cả câu hỏi</a></li>
-                <li class="sub-item"><a th:href="@{/admin/questions/upload}"
-                                        class="sub-link">Thêm câu hỏi bằng file</a></li>
-
-            </ul>
-        </li><!-- br-menu-item -->
-
-
-        <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý tài khoản</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-                <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link">
-                    Tài khoản người dùng</a></li>
-                <li class="sub-item"><a th:href="@{/admin/users/new}" class="sub-link">
-                    Thêm tài khoản</a></li>
-            </ul>
-        </li><!-- br-menu-item -->
-
-        <li class="br-menu-item">
-            <a th:href="@{/admin/topics}" class="br-menu-link active">
-                <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý topic</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
-
-        <li class="br-menu-item">
-            <a th:href="@{/admin/logs}" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
-                <span class="menu-item-label">Quản lý logs</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
-        <li class="br-menu-item">
-            <a th:href="@{/admin/profile}" class="br-menu-link">
-                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
-                <span class="menu-item-label">Tài khoản admin</span>
-            </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
-    </ul><!-- br-sideleft-menu -->
-
-    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+                </ul>
+            </li>
+            <li class="br-menu-item">
+                <a th:href="@{/user/results}" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                    <span class="menu-item-label">Kết quả</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
+            <li class="br-menu-item">
+                <a th:href="@{/user/profile}" class="br-menu-link">
+                    <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                    <span class="menu-item-label">Thông tin tài khoản</span>
+                </a><!-- br-menu-link -->
+            </li>
+            <!-- br-menu-item -->
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+    </ul>
 
 
     <br>
@@ -149,85 +135,101 @@
 <!-- ########## START: noidung ########## -->
 
 <div class="br-mainpanel">
-    <div class="br-pageheader">
-        <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" th:href="@{/admin}">Admin</a>
-            <span class="breadcrumb-item active">Quản lý topic</span>
-        </nav>
-    </div><!-- br-pageheader -->
     <div class="br-pagetitle">
-        <i class="icon icon ion-ios-list-outline"></i>
+        <i class="icon icon ion-ios-book-outline"></i>
         <div>
-            <h4>Topic</h4>
+            <h4>Tất cả bài thi</h4>
         </div>
     </div><!-- d-flex -->
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
 
-            <h6 class="br-section-label">Danh sách topic</h6>
-            <div th:if="${message != null}">
-                <div class="alert alert-success">
-                    <strong th:text="${message}"></strong>
-                </div>
-            </div>
-            <div th:if="${e_message != null}">
-                <div class="alert alert-danger">
-                    <strong th:text="${e_message}"></strong>
-                </div>
-            </div>
+            <h6 class="br-section-label">Danh sách các bài thi</h6>
+
             <div class="table-wrapper">
+                <div th:if="${message != null}">
+                    <div class="alert alert-success">
+                        <strong>${message}</strong>
+                    </div>
+                </div>
+                <div th:if="${e_message != null}">
+                    <div class="alert alert-danger">
+                        <strong>${e_message}</strong>
+                    </div>
+                </div>
+                
+                <div th:each="exam : ${exams}">
+                <br>
 
-                <table id="datatable2" class="table display responsive nowrap">
-                    <thead>
-                    <tr>
-                        <th class="wd-15p">Topic Id</th>
-                        <th class="wd-15p">Topic Name</th>
-                        <th class="wd-15p">Topic Description</th>
-                        <th class="wd-15p">Action</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr th:each="topic : ${topics}">
-                            <td th:text="${topic.id}"></td>
-                            <td th:text="${topic.name}"></td>
-                            <td th:text="${topic.description}"></td>
-                            <td>
-                                <ul style="margin-left: -40px">
-                                    <li style="list-style: none">
-                                        Edit: <a th:href="@{/admin/topics/{id}(id=${topic.id})}"
-                                                 class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Edit"><i
-                                            class="fas fa-edit"></i></a>
-                                    </li>
-                                    <li style="list-style: none">
-                                        All questions: <a
-                                            th:href="@{/admin/topics/{id}/questions(id=${topic.id})}"
-                                            class="btn btn-outline-success btn-icon mg-r-5 mg-b-10" title="Questions"><i
-                                            class="fas fa-list"></i></a>
-                                    </li>
-                                    <li style="list-style: none">
-                                        Delete: <a
-                                            href="#" th:data-row-id="${topic.id}"
-                                            class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
-                                            title="Delete"><i
-                                            class="fas fa-trash"></i></a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="form-layout-footer mg-t-30">
-                    <button class="btn btn-info mg-r-5"><a th:href="@{/admin/topics/new}">New
-                        Topic</a></button>
-
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div th:with="imgSource='https://i.imgur.com/1QZqj1M.png'">
+                            <div th:switch="${exam.id % 5}">
+                                <p th:case="0" th:with="imgSource=@{/images/exam/1.mini-test.png}"><img th:src="${imgSource}" alt="Image" style="width: 100%"></p>
+                                <p th:case="1" th:with="imgSource=@{/images/exam/2.exam-test.jpeg}"><img th:src="${imgSource}" alt="Image" style="width: 100%"></p>
+                                <p th:case="2" th:with="imgSource=@{/images/exam/3.mini-test.png}"><img th:src="${imgSource}" alt="Image" style="width: 100%"></p>
+                                <p th:case="3" th:with="imgSource=@{/images/exam/4.exam-test.jpeg}"><img th:src="${imgSource}" alt="Image" style="width: 100%"></p>
+                                <p th:case="4" th:with="imgSource=@{/images/exam/5.exam-test.jpeg}"><img th:src="${imgSource}" alt="Image" style="width: 100%"></p>
+                                <img th:if="${!imgSource.equals('https://i.imgur.com/1QZqj1M.png')}" th:src="${imgSource}" alt="Image" style="width: 100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <p style="max-width: 100%; font-size: 30px"><b th:text="${exam.name}"></b></p>
+                        <p style="max-width: 100%; font-size: 15px">
+                            Exam type:
+                            <span th:if="${exam.type == 1}" class="badge badge-success" style="font-size: 14px"> Reading </span>
+                            <span th:if="${exam.type == 2}" class="badge badge-info" style="font-size: 14px">Listening</span>
+                        </p>
+                        <p style="max-width: 100%; font-size: 15px" th:text="'Question No: ' +${exam.questionNo}"></p>
+                        Start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Start"
+                            style="width: 40px;height: 25px;font-size: 20px" th:href="@{/user/exams/{id}(id=${exam.id})}">
+                            <i class="fas fa-play"></i>
+                        </a>
+                        <br>
+                        Ranking:
+                        <a class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10 reverse-hover" title="Ranking"
+                                style="width: 40px;height: 25px;font-size: 20px" th:href="@{/user/exams/{id}/results(id=${exam.id})}"><i
+                                class="fas fa-list"></i>
+                        </a>
+                    </div>
+                </div>
+                    <br>
+                    <hr>
                 </div>
 
+            </div><!-- table-wrapper -->
+<!--        <div th:if="${currentPage > 1}" style="display: inline-block">-->
+            <a th:if="${currentPage > 1}" th:href="@{'?page=' + ${currentPage - 1}}" class="btn btn-success">Prev</a>
+<!--        </div>-->
+<!--        <div th:if="${currentPage <= 1}" style="display: inline-block">-->
+            <a href="#" th:if="${currentPage <= 1}" class="nonClickableLink btn btn-light">Prev</a>
+<!--        </div>-->
+<!--        <c:forEach var="i" begin="1" end="${totalPages}">-->
+<!--            <c:choose>-->
+<!--                <c:when test="${currentPage eq i}">-->
+<!--                    <a href="?page=${i}" class="nonClickableLink btn btn-primary" style="color: #0b0b0b; text-decoration: underline"><b>${i}</b></a>-->
+<!--                </c:when>-->
+<!--                <c:otherwise>-->
+<!--                    <a href="?page=${i}" class="btn btn-light" style="background: gray">${i}</a>-->
+<!--                </c:otherwise>-->
+<!--            </c:choose>-->
+<!--        </c:forEach>-->
+            <div th:each="i : ${#numbers.sequence(1, totalPages)}" style="display: inline-block">
+                <a th:href="@{'?page='+${i}}" th:if="${i == currentPage}" class="nonClickableLink btn btn-primary" style="color: #0b0b0b; text-decoration: underline"><b th:text="${i}"></b></a>
+                <a th:href="@{'?page='+${i}}" th:if="${i != currentPage}" class="btn btn-light" style="background: gray" th:text="${i}"></a>
             </div>
+<!--        <div th:if="${hasNext}" style="display: inline-block">-->
+            <a th:if="${hasNext}" th:href="@{'?page=' + ${currentPage + 1}}" class="btn btn-success">Next</a>
+<!--        </div>-->
+<!--        <div th:if="${!hasNext}" style="display: inline-block">-->
+            <a th:if="${!hasNext}" href="#" class="nonClickableLink btn btn-light">Next</a>
+<!--        </div>-->
+
         </div>
-    </div>
+    </div><!-- br-pagebody -->
     <footer class="br-footer">
         <div class="footer-left">
             <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
@@ -243,7 +245,6 @@
 
 <div th:replace="~{include/logout-modal :: modalFragment}"></div>
 
-
 <div id="modaldemo8" class="modal fade">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content bd-0 tx-14">
@@ -254,7 +255,7 @@
                 </button>
             </div>
             <div class="modal-body pd-20">
-                <p class="mg-b-5">Are you sure to delete this topic?</p>
+                <p class="mg-b-5">Are you sure to delete this exam?</p>
             </div>
             <div class="modal-footer justify-content-center">
                 <a href="" type="button"
@@ -278,7 +279,7 @@
 
             var rowId = $(this).data("row-id");
             // Tạo chuỗi đường dẫn mới kết hợp với tham số
-            var newHref = "/admin/topics/" + rowId + "/delete";
+            var newHref = "${pageContext.request.contextPath}/admin/deleteExam?examId=" + rowId;
             // Sửa thuộc tính href của thẻ a
             $(".save-changes-btn").attr("href", newHref);
         });
@@ -291,6 +292,7 @@
         });
     });
 </script>
+
 <!-- ########## END: noidung ########## --->
 
 
@@ -363,6 +365,7 @@
         $('.dataTables_length select').select2({minimumResultsForSearch: Infinity});
 
     });
+
 </script>
 </body>
 </html>
