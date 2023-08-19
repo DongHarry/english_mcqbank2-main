@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>All User</title>
+    <title>Add Question</title>
 
     <!--favicon icon-->
     <link rel="icon" th:href="@{/resource/img/favicon.png}" type="image/png" sizes="16x16">
@@ -24,8 +24,34 @@
     <link th:href="@{/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css}"
           rel="stylesheet">
 
+
     <!-- Bracket CSS -->
     <link rel="stylesheet" th:href="@{/css/bracket.css}">
+    <style>
+        .table22 {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table22 td {
+            border: 1px solid #ccc;
+            padding: 3px;
+        }
+
+        /*chỉnh sửa độ rộng của cột question content*/
+        .table22 td:nth-child(2) {
+            width: 50%;
+        }
+
+        .table22 td:nth-child(4) {
+            width: 5%;
+        }
+
+        .table22 p.abcd {
+            white-space: pre-line;
+            max-width: 500px; /* Số ký tự tối đa trước khi tự động xuống dòng */
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +75,7 @@
             </ul>
         </li>
         <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
+            <a href="#" class="br-menu-link with-sub active show-sub">
                 <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
                 <span class="menu-item-label">Quản lý câu hỏi</span>
             </a><!-- br-menu-link -->
@@ -57,19 +83,19 @@
                 <li class="sub-item"><a th:href="@{/admin/questions}" class="sub-link">Tất
                     cả câu hỏi</a></li>
                 <li class="sub-item"><a th:href="@{/admin/questions/upload}"
-                                        class="sub-link">Thêm câu hỏi bằng file</a></li>
+                                        class="sub-link active">Thêm câu hỏi bằng file</a></li>
 
             </ul>
         </li><!-- br-menu-item -->
 
 
         <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub active show-sub">
+            <a href="#" class="br-menu-link with-sub">
                 <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý tài khoản</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link active">
+                <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link">
                     Tài khoản người dùng</a></li>
                 <li class="sub-item"><a th:href="@{/admin/users/new}" class="sub-link">
                     Thêm tài khoản</a></li>
@@ -103,7 +129,6 @@
 
     <br>
 </div><!-- br-sideleft -->
-
 <!-- ########## END: LEFT PANEL ########## -->
 
 <!-- ########## START: HEAD PANEL ########## -->
@@ -126,7 +151,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-250">
             <div class="tx-center">
-                <a href=""><img th:src="@{/resource/img/favicon.png}" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img th:src="@{/resource/img/favicon.png}"
+                                class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname" th:text="${session.loggedInUser.fullName}"></h6>
                 <p th:text="${session.loggedInUser.email}"></p>
             </div>
@@ -138,8 +164,7 @@
             </div>
             <hr>
             <ul class="list-unstyled user-profile-nav">
-                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a>
-                </li>
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
             </ul>
         </div> <!-- dropdown-menu -->
     </div> <!-- dropdown -->
@@ -154,96 +179,80 @@
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
             <a class="breadcrumb-item" th:href="@{/admin}">Admin</a>
-            <a class="breadcrumb-item" href="#">Quản lý tài khoản</a>
-            <span class="breadcrumb-item active">Tài khoản người dùng</span>
+            <a class="breadcrumb-item" href="#">Quản lý câu hỏi</a>
+            <span class="breadcrumb-item active">Tất cả câu hỏi</span>
         </nav>
     </div><!-- br-pageheader -->
     <div class="br-pagetitle">
-        <i class="icon icon ion-ios-list-outline"></i>
+        <i class="icon icon ion-ios-briefcase-outline"></i>
         <div>
-            <h4>Tài khoản người dùng</h4>
+            <h4> Tất cả câu hỏi </h4>
         </div>
     </div><!-- d-flex -->
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
 
-            <h6 class="br-section-label">Danh sách tài khoản</h6>
-            <p class="br-section-text">Danh sách tài khoản người dùng và người quản lý</p>
+            <h6 class="br-section-label">Danh sách câu hỏi</h6>
             <div class="table-wrapper">
-                <div th:if="${message != null}">
-                    <div class="alert alert-success" id="message1"><span th:text="${message}"></span></div>
-                </div>
-                <div th:if="${errorMessage != null}">
-                    <div class="alert alert-danger" id="message2"><span th:text="${errorMessage}"></span></div>
-                </div>
-                <div th:if="${param.message}">
-                    <div class="alert alert-success" id="message3"><span th:text="${param.message}"></span></div>
-                </div>
-                <table id="datatable2" class="table display responsive nowrap">
-                    <thead>
-                    <tr>
-                        <th class="wd-15p">User ID</th>
-                        <th class="wd-15p">Username</th>
+                    <div th:if="${message != null}" class="alert alert-success">
+                        <strong th:text="${message}"></strong>
+                    </div>
 
-                        <th class="wd-15p">FullName</th>
-                        <th class="wd-15p">Address</th>
-                        <th class="wd-15p">Phone</th>
-                        <th class="wd-15p">Email</th>
-
-                        <th class="wd-15p">Enable</th>
-                        <th class="wd-20p">Role</th>
-                        <th class="wd-15p">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-
-                        <tr th:each="user : ${users}">
-                            <td th:text="${user.id}"></td>
-                            <td th:text="${user.username}"></td>
-
-                            <td th:text="${user.fullName}"></td>
-                            <td th:text="${user.address}"></td>
-                            <td th:text="${user.phone}"></td>
-                            <td th:text="${user.email}"></td>
-
-                            <td th:text="${user.enabled}"></td>
-                            <td>
-                                <ul>
-                                        <li th:each="role : ${user.roles}" th:text="${role}" style="list-style: none; margin-left: -40px;"></li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li style="list-style: none; margin-left: -40px;">
-                                        View: <a th:href="@{/admin/users/{id}(id=${user.id})}"
-                                                 class="btn btn-outline-primary btn-icon mg-r-5 mg-b-10" title="View"><i
-                                            class="fas fa-eye"></i></a>
-                                    </li>
-                                    <li style="list-style: none; margin-left: -40px;">
-                                        <div th:if="${user.groupId == 1}">
-                                            Delete: <a
-                                                href="#" th:data-row-id="${user.username}"
-                                                class="modal-effect1 btn btn-outline-danger btn-icon mg-r-5 mg-b-10"
-                                                title="Delete"><i
-                                                class="fas fa-trash"></i></a>
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-                            </td>
+                    <div th:if="${e_message != null}" class="alert alert-danger">
+                        <strong th:text="${e_message}"></strong>
+                    </div>
+<!--                <c:set var="count" value="1"/>-->
+                <form th:action="@{/admin/questions/upload/save}" method="post">
+                    <table id="datatable2" class="table display responsive nowrap table22">
+                        <thead>
+                        <tr>
+                            <th class="wd-15p" style="width: auto">STT</th>
+                            <th class="wd-15p" style="width: auto">Question Content</th>
+                            <th class="wd-15p" style="width: auto">Correct Answer</th>
+                            <th class="wd-15p" style="width: auto">Topic</th>
+                            <th class="wd-15p">Type</th>
+                            <th class="wd-15p">Level</th>
 
                         </tr>
-                    </tbody>
-                </table>
+                        </thead>
 
-
-                <a th:href="@{/admin/users/new}">Create new user</a>
+                        <tbody>
+                        <th:block th:with="count=${1}">
+                            <tr th:each="question : ${questions}">
+                                <th:block th:with="count=${count + 1}"></th:block>
+                                <td>
+                                        <span th:text="${count}"></span>
+                                    <input type="checkbox" name="paramList" value="question.${count}">
+                                </td>
+                                <td>
+                                    <p class="abcd" th:text="${question.content}"></p>
+                                </td>
+                                <td th:text="${question.correctAnswer}"></td>
+                                <td th:text="${question.topic.name}"></td>
+                                <td>
+                                        <span th:if="${question.type == 1}" class="badge badge-success" style="font-size: 14px"> Reading </span>
+                                        <span th:if="${question.type == 2}" class="badge badge-info" style="font-size: 14px">Listening</span>
+                                </td>
+                                <td th:text="${question.level}"></td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                    <button type="submit" name="submitButton" value="save" class="btn btn-primary">Lưu những mục đã
+                        chọn
+                    </button>
+                    hoặc
+                    <button type="submit" name="submitButton" value="saveAll" class="btn btn-outline-primary">Lưu tất
+                        cả
+                    </button>
+                </form>
+                <div class="form-layout-footer mg-t-30">
+                    <a th:href="@{/admin/questions/upload}" class="btn btn-secondary">Quay
+                        lại</a>
+                </div>
 
             </div><!-- table-wrapper -->
-
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->
     <footer class="br-footer">
@@ -258,57 +267,10 @@
         </div>
     </footer>
 </div><!-- br-mainpanel -->
-
 <div th:replace="~{include/logout-modal :: modalFragment}"></div>
 
-<div id="modaldemo8" class="modal fade">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content bd-0 tx-14">
-            <div class="modal-header pd-x-20">
-                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Notice</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body pd-20">
-                <p id="modal-message" class="mg-b-5">Are you sure to delete this user?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <a href="" type="button"
-                   class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Delete</a>
-                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium"
-                        data-dismiss="modal">Cancel
-                </button>
-            </div>
-        </div>
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-<script>
-    $(function () {
 
-        // showing modal with effect
-        $('.modal-effect1').on('click', function (e) {
-            e.preventDefault();
-            var effect = $(this).attr('data-effect');
-            $('#modaldemo8').addClass(effect);
-            $('#modaldemo8').modal('show');
 
-            var rowId = $(this).data("row-id");
-            // Tạo chuỗi đường dẫn mới kết hợp với tham số
-            var newHref = "/admin/delete?username=" + rowId;
-            // Sửa thuộc tính href của thẻ a
-            $(".save-changes-btn").attr("href", newHref);
-            $("#modal-message").text("Are you sure to delete user: " + rowId + "?");
-        });
-
-        // hide modal with effect
-        $('#modaldemo8').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-            });
-        });
-    });
-</script>
 <!-- ########## END: noidung ########## --->
 
 
@@ -327,22 +289,14 @@
 <script th:src="@{/lib/jquery-sparkline/jquery.sparkline.min.js}"></script>
 <script th:src="@{/lib/datatables.net/js/jquery.dataTables.min.js}"></script>
 <script th:src="@{/lib/datatables.net-dt/js/dataTables.dataTables.min.js}"></script>
-
-<!--<script th:src="@{/lib/datatables.net-responsive/js/dataTables.responsive.min.js}"></script>-->
+<script th:src="@{/lib/datatables.net-responsive/js/dataTables.responsive.min.js}"></script>
 <script th:src="@{/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js}"></script>
 <script th:src="@{/lib/select2/js/select2.full.min.js}"></script>
 <script th:src="@{/lib/select2/js/select2.min.js}"></script>
 
 <script th:src="@{/js/bracket.js}"></script>
 <script th:src="@{/js/ResizeSensor.js}"></script>
-<script>
-    $(document).ready(function () {
-        var errorMessage = $("#message2").text().trim();
-        if (errorMessage !== '') {
-            alert(errorMessage);
-        }
-    });
-</script>
+
 <script>
     $(function () {
         'use strict'
@@ -387,6 +341,7 @@
         $('.dataTables_length select').select2({minimumResultsForSearch: Infinity});
 
     });
+
 </script>
 </body>
 </html>

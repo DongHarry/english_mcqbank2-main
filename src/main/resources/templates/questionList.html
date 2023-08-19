@@ -229,12 +229,12 @@
             <div class="table-wrapper">
                 <div th:if="${message != null}">
                     <div class="alert alert-success">
-                        <strong>${message}</strong>
+                        <strong th:text="${message}"></strong>
                     </div>
                 </div>
                 <div th:if="${e_message != null}">
                     <div class="alert alert-danger">
-                        <strong>${e_message}</strong>
+                        <strong th:text="${e_message}"></strong>
                     </div>
                 </div>
                 <table id="datatable2" class="table display responsive nowrap table22">

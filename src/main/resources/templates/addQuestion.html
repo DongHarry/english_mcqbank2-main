@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <title>Add Question</title>
+
+    <!--favicon icon-->
+    <link rel="icon" th:href="@{/resource/img/favicon.png}" type="image/png" sizes="16x16">
+
+    <!-- vendor css -->
+    <link th:href="@{/lib/@fortawesome/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/ionicons/css/ionicons.min.css}" rel="stylesheet">
+    <%--    <link th:href="@{/lib/rickshaw/rickshaw.min.css}" rel="stylesheet">--%>
+
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/bootstrap-tagsinput/bootstrap-tagsinput.css}" rel="stylesheet">
+    <link th:href="@{/lib/ion-rangeslider/css/ion.rangeSlider.css}" rel="stylesheet">
+    <link th:href="@{/lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css}"
+          rel="stylesheet">
+    <link th:href="@{/lib/spectrum-colorpicker/spectrum.css}" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" th:href="@{/css/bracket.css}">
+</head>
+
+<body>
+
+<!-- ########## START: LEFT PANEL ########## -->
+<div class="br-logo"><a th:href="@{/index}"><span>[</span>apelish
+    <i>hus</i><span>]</span></a></div>
+<div class="br-sideleft sideleft-scrollbar">
+    <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
+    <ul class="br-sideleft-menu">
+
+        <li class="br-menu-item">
+            <a href="#" class="br-menu-link with-sub">
+                <i class="menu-item-icon icon ion-ios-book-outline tx-20"></i>
+                <span class="menu-item-label">Quản lý bài thi</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+                <li class="sub-item"><a th:href="@{/admin/exams}" class="sub-link">
+                    Tất cả bài thi</a></li>
+
+            </ul>
+        </li>
+        <li class="br-menu-item">
+            <a href="#" class="br-menu-link with-sub active show-sub">
+                <i class="menu-item-icon icon ion-ios-briefcase-outline tx-24"></i>
+                <span class="menu-item-label">Quản lý câu hỏi</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+                <li class="sub-item"><a th:href="@{/admin/questions}"
+                                        class="sub-link active">Tất cả câu hỏi</a></li>
+                <li class="sub-item"><a th:href="@{/admin/questions/upload}"
+                                        class="sub-link">Thêm câu hỏi bằng file</a></li>
+
+            </ul>
+        </li><!-- br-menu-item -->
+
+
+        <li class="br-menu-item">
+            <a href="#" class="br-menu-link with-sub">
+                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý tài khoản</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+                <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link">
+                    Tài khoản người dùng</a></li>
+                <li class="sub-item"><a th:href="@{/admin/users/new}" class="sub-link">
+                    Thêm tài khoản</a></li>
+            </ul>
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+            <a th:href="@{/admin/topics}" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý topic</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+            <a th:href="@{/admin/logs}" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
+                <span class="menu-item-label">Quản lý logs</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+            <a th:href="@{/admin/profile}" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
+                <span class="menu-item-label">Tài khoản admin</span>
+            </a><!-- br-menu-link -->
+        </li><!-- br-menu-item -->
+    </ul><!-- br-sideleft-menu -->
+
+    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
+
+
+    <br>
+</div><!-- br-sideleft -->
+<!-- ########## END: LEFT PANEL ########## -->
+
+<!-- ########## START: HEAD PANEL ########## -->
+<div class="br-header">
+    <div class="br-header-left">
+
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a>
+        </div>
+
+
+    </div><!-- br-header-left -->
+
+
+    <div class="dropdown">
+        <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+            <span class="logged-name hidden-md-down">${loggedInUser.fullName}</span>
+            <img th:src="@{/resource/img/favicon.png}" class="wd-32 rounded-circle" alt="">
+            <span class="square-10 bg-success"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-header wd-250">
+            <div class="tx-center">
+                <a href=""><img th:src="@{/resource/img/favicon.png}"
+                                class="wd-80 rounded-circle" alt=""></a>
+                <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
+                <p>${loggedInUser.email}</p>
+            </div>
+            <hr>
+            <div class="tx-center">
+                <span class="profile-earning-label">Số người đăng kí</span>
+                <h3 class="profile-earning-amount">9,999,999 <i class="icon ion-ios-arrow-thin-up tx-success"></i></h3>
+                <span class="profile-earning-text">Đánh giá 9.5</span>
+            </div>
+            <hr>
+            <ul class="list-unstyled user-profile-nav">
+                <li><a href="#" class="modal-effect2"><i class="icon ion-power"></i> Đăng xuất </a></li>
+            </ul>
+        </div> <!-- dropdown-menu -->
+    </div> <!-- dropdown -->
+
+</div><!-- br-header -->
+<!-- ########## END: HEAD PANEL ########## -->
+
+<!-- ########## START: RIGHT PANEL ########## -->
+<div class="br-sideright">
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane pos-absolute a-0 mg-t-60 contact-scrollbar active" id="contacts" role="tabpanel">
+
+
+        </div><!-- #contacts -->
+
+
+        <div class="tab-pane pos-absolute a-0 mg-t-60 attachment-scrollbar" id="attachments" role="tabpanel">
+
+
+        </div><!-- #history -->
+
+        <div class="tab-pane pos-absolute a-0 mg-t-60 schedule-scrollbar" id="calendar" role="tabpanel">
+
+        </div>
+        <div class="tab-pane pos-absolute a-0 mg-t-60 settings-scrollbar" id="settings" role="tabpanel">
+
+
+        </div>
+    </div><!-- tab-content -->
+
+</div><!-- br-sideright -->
+<!-- ########## END: RIGHT PANEL ########## --->
+
+<!-- ########## START: noidung ########## -->
+
+<div class="br-mainpanel">
+    <div class="br-pageheader">
+        <nav class="breadcrumb pd-0 mg-0 tx-12">
+            <a class="breadcrumb-item" th:href="@{/admin}">Admin</a>
+            <a class="breadcrumb-item" th:href="@{/admin/questions}">Quản lí câu hỏi</a>
+            <span class="breadcrumb-item active">Tất cả câu hỏi</span>
+        </nav>
+    </div><!-- br-pageheader -->
+    <div class="br-pagetitle">
+        <i class="icon ion-ios-briefcase-outline"></i>
+        <div>
+            <h4>Add Question</h4>
+
+        </div>
+    </div><!-- d-flex -->
+    <div class="br-pagebody">
+        <div class="br-section-wrapper">
+                <div th:if="${message != null}" class="alert alert-danger">
+                    <strong th:text="${message}"></strong>
+                </div>
+
+            <h6 class="br-section-label">Thêm câu hỏi</h6>
+
+            <form th:action="@{/admin/addQuestion}" method="post">
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Question content</span>
+                            </div>
+                            <input type="text" name="content" id="content" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Option 1</span>
+                            </div>
+                            <input type="text" name="option1" id="option1"
+                                   class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Option 2</span>
+                            </div>
+                            <input type="text" name="option2" id="option2"
+                                   class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Option 3</span>
+                            </div>
+                            <input type="text" name="option3" id="option3"
+                                   class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Option 4</span>
+                            </div>
+                            <input type="text" name="option4" id="option4"
+                                   class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pd-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Answer</span>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="1" type="radio" required>
+                                    <span>1</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="2" type="radio" required>
+                                    <span>2</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="3" type="radio" required>
+                                    <span>3</span>
+                                </label>
+                            </div>
+
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="answer" value="4" type="radio" required>
+                                    <span>4</span>
+                                </label>
+                            </div><!-- col-3 -->
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Question explain</span>
+                            </div>
+                            <input type="text" name="explain" id="explain" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Topic</span>
+                            </div>
+
+                            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+                                <select class="form-control select2" name="topicId" data-placeholder="Choose Topic">
+                                        <option th:each="topic : ${topics}" th:value="${topic.id}" th:text="${topic.name}"></option>
+                                </select>
+                            </div><!-- col-4 -->
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mg-t-20">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Level</span>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="1" type="radio" required>
+                                    <span>1</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="2" type="radio" required>
+                                    <span>2</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="3" type="radio" required>
+                                    <span>3</span>
+                                </label>
+                            </div>
+                            <div class="col-lg-1 mg-t-20 mg-lg-t-0">
+                                <label class="rdiobox">
+                                    <input name="level" value="4" type="radio" required>
+                                    <span>4</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-layout-footer mg-t-30">
+                    <button type="submit" class="btn btn-info mg-r-5">Lưu</button>
+
+                    <a th:href="@{/admin/questions}" class="btn btn-secondary">Quay lại</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div><!-- br-pagebody -->
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div class="mg-b-2">Copyright &copy; 2020-2024. Apelish. All Rights Reserved.</div>
+            <div>HA NOI UNIVERSITY OF SCIENCE</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+            <span class="tx-uppercase mg-r-10">Share:</span>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
+            <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+    </footer>
+</div>
+
+<!-- ########## END: noidung ########## --->
+<!-- ########## END: MAIN PANEL ########## -->
+<div th:replace="~{include/logout-modal :: modalFragment}"></div>
+
+
+<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/lib/jquery-ui/ui/widgets/datepicker.js}"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/lib/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/lib/moment/min/moment.min.js}"></script>
+<script th:src="@{/lib/peity/jquery.peity.min.js}"></script>
+<%--<script th:src="@{/lib/rickshaw/vendor/d3.min.js}"></script>--%>
+<%--<script th:src="@{/lib/rickshaw/vendor/d3.layout.min.js}"></script>--%>
+<%--<script th:src="@{/lib/rickshaw/rickshaw.min.js}"></script>--%>
+<%--<script th:src="@{/lib/jquery.flot/jquery.flot.js}"></script>--%>
+<%--<script th:src="@{/lib/jquery.flot/jquery.flot.resize.js}"></script>--%>
+<%--<script th:src="@{/lib/flot-spline/js/jquery.flot.spline.min.js}"></script>--%>
+<script th:src="@{/lib/jquery-sparkline/jquery.sparkline.min.js}"></script>
+<script th:src="@{/lib/select2/js/select2.min.js}"></script>
+<script th:src="@{/lib/highlightjs/highlight.pack.min.js}"></script>
+<script th:src="@{/lib/jquery.maskedinput/jquery.maskedinput.js}"></script>
+<script th:src="@{/lib/bootstrap-tagsinput/bootstrap-tagsinput.min.js}"></script>
+<script th:src="@{/lib/ion-rangeslider/js/ion.rangeSlider.min.js}"></script>
+<script th:src="@{/lib/spectrum-colorpicker/spectrum.js}"></script>
+
+<script th:src="@{/js/bracket.js}"></script>
+<%--<script th:src="@{/js/ResizeSensor.js}"></script>--%>
+
+<script>
+    $(function () {
+        'use strict'
+
+        // FOR DEMO ONLY
+        // menu collapsed by default during first page load or refresh with screen
+        // having a size between 992px and 1299px. This is intended on this page only
+        // for better viewing of widgets demo.
+        $(window).resize(function () {
+            minimizeMenu();
+        });
+
+        minimizeMenu();
+
+        function minimizeMenu() {
+            if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+                // show only the icons and hide left menu label by default
+                $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
+                $('body').addClass('collapsed-menu');
+                $('.show-sub + .br-menu-sub').slideUp();
+            } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+                $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
+                $('body').removeClass('collapsed-menu');
+                $('.show-sub + .br-menu-sub').slideDown();
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>
+
+
+
