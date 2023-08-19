@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -35,33 +36,59 @@ public class MySecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/questions/**").hasRole("USER")
-                .antMatchers("/admin/**", "/api/**").hasRole("ADMIN")
-                .antMatchers("/", "/home", "/index", "/login", "/register", "/forgot-password", "/reset-password", "/test/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                .antMatchers("/test/upload", "/css/**", "/images/**", "/font-awesome/**", "/fonts/**", "/js/**", "/abc", "/lib/**", "/resource/**", "/sendContactMail/**", "/send-email").permitAll() // make user cant access to /css, /js by spring security but web app still can access
-                .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
-                .and()
-                .formLogin() // Cho phép người dùng xác thực bằng form login
-                .loginPage("/login-page")
-                .loginProcessingUrl("/login-processing")
-                .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler)
-                //.defaultSuccessUrl("/main")
-                .permitAll() // Tất cả đều được truy cập vào địa chỉ này
-                .and()
-                .logout() // Cho phép logout
-                //.logoutSuccessHandler(logoutSuccessHandler)
-                //.logoutSuccessUrl("/login-page")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/access-denied")
-                .and()
-                .httpBasic()
-                .authenticationEntryPoint(basicAuthenticationEntryPoint);
+                .authorizeRequests(
+                        (auth) -> auth
+                                .requestMatchers(new AntPathRequestMatcher("/user/**")).hasAnyRole("USER","ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/questions/**")).hasRole("USER")
+                                .requestMatchers(new AntPathRequestMatcher("/admin/**"), new AntPathRequestMatcher("/api/**")).hasRole("ADMIN")
+                                //.requestMatchers("/", "/home", "/index", "/login", "/register", "/forgot-password", "/reset-password", "/test/**").permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/home")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/index")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/register")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/forgot-password")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/reset-password")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/test/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/test1")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/test2")).permitAll()
+                                //.requestMatchers("/test/upload", "/css/**", "/images/**", "/font-awesome/**", "/fonts/**", "/js/**", "/abc", "/lib/**", "/resource/**", "/sendContactMail/**", "/send-email").permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/test/upload")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/css/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/images/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/font-awesome/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/fonts/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/js/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/abc")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/lib/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/resource/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/sendContactMail")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/send-email")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/test/upload")).permitAll()
+                        //.anyRequest().authenticated()
+                        //.requestMatchers("/awsa").authenticated()
+                )
+                .formLogin(
+                        (formLogin) -> formLogin
+                                .loginPage("/login-page")
+                                .loginProcessingUrl("/login-processing")
+                                .successHandler(authenticationSuccessHandler)
+                                .failureHandler(authenticationFailureHandler)
+                                //.defaultSuccessUrl("/main")
+                                .permitAll()
+                )
+                // Cho phép người dùng xác thực bằng form login/ Tất cả đều được truy cập vào địa chỉ này
+                .logout(
+                        (logout) -> logout
+                                .logoutUrl("/logout")
+                                .invalidateHttpSession(true)
+                                .deleteCookies("JSESSIONID")
+                ) // Cho phép logout
+                .httpBasic(
+                        (httpBasic) -> httpBasic
+                                //.realmName("my-basic-realm")
+                                .authenticationEntryPoint(basicAuthenticationEntryPoint)
+                );
         // make user cant access to /css, /js by spring security but web app still can access
 
 
