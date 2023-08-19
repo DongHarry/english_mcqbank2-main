@@ -41,7 +41,11 @@ public class ResetPasswordController {
             return modelAndView;
         }
 
-        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        String url = request.getScheme() + "://" + request.getServerName();
+        int port = request.getServerPort();
+        if (port != 80) {
+            url += ":" + port;
+        }
 
         if (name.contains("@")) {
             UserEntity user = userService.getUserByEmail(name);
