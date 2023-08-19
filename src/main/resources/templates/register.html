@@ -102,7 +102,7 @@
             </form>
 
 
-            <div class="mg-t-60 tx-center">Already a member? <a href="${pageContext.request.contextPath}/login-page"
+            <div class="mg-t-60 tx-center">Already a member? <a th:href="@{/login-page}"
                                                                 class="tx-info">Sign In</a></div>
         </div><!-- login-wrapper -->
     </div><!-- col -->
@@ -122,7 +122,7 @@
             <p class="tx-white-6 mg-b-60">Đây thực sự là nơi lí tưởng để nâng cao khả năng tiếng Anh và mở ra những cơ
                 hội
                 mới trong tương lai.</p>
-            <a href="${pageContext.request.contextPath}/home"
+            <a th:href="@{/home}"
                class="btn btn-outline-light bd bd-white bd-2 tx-white pd-x-25 tx-uppercase tx-12 tx-spacing-2 tx-medium">Home</a>
         </div><!-- wd-500 -->
     </div>

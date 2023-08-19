@@ -201,6 +201,7 @@ public class AllUserController {
         //modelAndView.addObject("loggedInUser", loggedInUser);
         modelAndView.addObject("type", 1);
         modelAndView.addObject("userId", user.getId());
+        modelAndView.addObject("ranking", false);
 //        modelAndView.addObject("currentPage", page);
 //        assert results != null;
 //        boolean hasNext = results.size() >= size;

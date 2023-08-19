@@ -221,6 +221,7 @@ public class QuestionController {
         ModelAndView modelAndView = new ModelAndView("addQuestions");
         //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         modelAndView.addObject("questions", data);
+        //modelAndView.addObject("count", 0);
         return modelAndView;
     }
 

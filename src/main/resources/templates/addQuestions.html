@@ -218,12 +218,10 @@
                         </thead>
 
                         <tbody>
-                        <th:block th:with="count=${1}">
-                            <tr th:each="question : ${questions}">
-                                <th:block th:with="count=${count + 1}"></th:block>
+                            <tr th:each="question, count : ${questions}">
                                 <td>
-                                        <span th:text="${count}"></span>
-                                    <input type="checkbox" name="paramList" value="question.${count}">
+                                        <span th:text="${count.index+1}"></span>
+                                    <input type="checkbox" name="paramList" th:value="'question.'+${count.index+1}">
                                 </td>
                                 <td>
                                     <p class="abcd" th:text="${question.content}"></p>
@@ -236,7 +234,6 @@
                                 </td>
                                 <td th:text="${question.level}"></td>
                             </tr>
-                        </th:block>
                         </tbody>
                     </table>
                     <button type="submit" name="submitButton" value="save" class="btn btn-primary">Lưu những mục đã

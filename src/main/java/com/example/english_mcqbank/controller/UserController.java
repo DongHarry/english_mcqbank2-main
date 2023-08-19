@@ -110,6 +110,7 @@ public class UserController {
 
         ModelAndView userResultModelAndView = new ModelAndView("userResult");
         userResultModelAndView.addObject("results", results);
+        userResultModelAndView.addObject("ranking", false);
 
         //userResultModelAndView.addObject("loggedInUser", user);
         return userResultModelAndView; // Trả về user.jsp
