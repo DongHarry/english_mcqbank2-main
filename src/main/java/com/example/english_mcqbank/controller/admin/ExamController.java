@@ -73,7 +73,7 @@ public class ExamController {
                               @RequestParam(defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("exams");
 
-        //modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
+        modelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
 
         List<Exam> exams = examService.getAllExams();
 //        List<Exam> exams = examService.getAllExams(page, size);

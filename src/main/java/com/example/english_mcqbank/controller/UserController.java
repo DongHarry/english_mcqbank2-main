@@ -32,7 +32,7 @@ public class UserController {
         }
 
         ModelAndView userModelAndView = new ModelAndView("user");
-        //userModelAndView.addObject("user", sessionService.getLoggedInUser());
+        userModelAndView.addObject("loggedInUser", sessionService.getLoggedInUser());
         return userModelAndView; // Trả về user.jsp
     }
 
@@ -57,9 +57,8 @@ public class UserController {
         userProfileModelAndView.addObject("errorMessage", null);
 
         UserEntity user = sessionService.getLoggedInUser();
-        //UserEntity user = loggedInUserService.getLoggedInUser();
         userProfileModelAndView.addObject("user", user);
-        //userProfileModelAndView.addObject("loggedInUser", user);
+        userProfileModelAndView.addObject("loggedInUser", user);
         userProfileModelAndView.addObject("type", 1);
 
         return userProfileModelAndView; // Trả về user.jsp
