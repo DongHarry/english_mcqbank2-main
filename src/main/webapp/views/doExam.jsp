@@ -221,30 +221,6 @@
     </div>
 
     <hr>
-
-    <!-- Add this script tag to include the JavaScript code -->
-    <%--<form:form action="${pageContext.request.contextPath}/questions/submit" method="post">--%>
-    <%--    <c:forEach var="question" items="${questions}">--%>
-    <%--        <div class="question-container">--%>
-    <%--            <h3>${question.content}</h3>--%>
-    <%--            <div>--%>
-    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option1" value="${question.option1}">--%>
-    <%--                <label for="question_${question.id}_option1">${question.option1}</label><br>--%>
-    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option2" value="${question.option2}">--%>
-    <%--                <label for="question_${question.id}_option2">${question.option2}</label><br>--%>
-    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option3" value="${question.option3}">--%>
-    <%--                <label for="question_${question.id}_option3">${question.option3}</label><br>--%>
-    <%--                <input type="radio" name="question_${question.id}" id="question_${question.id}_option4" value="${question.option4}">--%>
-    <%--                <label for="question_${question.id}_option4">${question.option4}</label><br>--%>
-
-
-    <%--            </div>--%>
-    <%--            <br><br>--%>
-    <%--        </div>--%>
-    <%--    </c:forEach>--%>
-    <%--    <input type="submit" value="Submit">--%>
-    <%--</form:form>--%>
-    <!-- SMALL MODAL -->
     <div id="modaldemo9" class="modal fade">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content bd-0 tx-14">
@@ -268,9 +244,33 @@
         </div><!-- modal-dialog -->
     </div>
     <!-- modal -->
+    <div id="modaldemo8" class="modal fade">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content bd-0 tx-14">
+                <div class="modal-header pd-x-20">
+                    <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Notice</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pd-20">
+                    <p class="mg-b-5">Hết giở</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="#" type="button" onclick="document.getElementById('myForm').submit();"
+                       class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium save-changes-btn">Nộp bài</a>
 
+                    </button>
+                </div>
+            </div>
+        </div><!-- modal-dialog -->
+    </div>
+    <!-- modal -->
 
 </div>
+
+
+
 <script>
     $(function () {
 
@@ -305,15 +305,7 @@
         circle.style.backgroundColor = "green";
     }
 </script>
-<%--<script>--%>
-<%--    function confirmSubmission() {--%>
-<%--        if (confirm("Bạn có chắc chắn muốn nộp bài?")) {--%>
-<%--            // Thực hiện hành động nộp bài ở đây--%>
-<%--            // Ví dụ: Gửi dữ liệu form đi hoặc thực hiện các tác vụ cần thiết--%>
-<%--            document.getElementById('myForm').submit();--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
+
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
