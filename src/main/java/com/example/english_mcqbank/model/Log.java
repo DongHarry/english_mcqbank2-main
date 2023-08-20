@@ -29,8 +29,8 @@ public class Log {
     @Column(name = "lg_datetime")
     private Date datetime;
 
-//    @Column(name = "us_id")
-//    private String userid;
+    @Column(name = "lg_ip")
+    private String ip;
 
     @ManyToOne
     @JoinColumn(name = "us_id")
