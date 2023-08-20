@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.config;
 
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +14,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class MySecurityConfig {
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-    @Autowired
-    private AppBasicAuthenticationEntryPoint basicAuthenticationEntryPoint;
-    @Autowired
-    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
-    @Autowired
-    private CustomAuthenticationFailureHandler authenticationFailureHandler;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final AppBasicAuthenticationEntryPoint basicAuthenticationEntryPoint;
+    private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final CustomAuthenticationFailureHandler authenticationFailureHandler;
+    private final CustomLogoutSuccessHandler logoutSuccessHandler;
     //@Autowired
     //private CustomLogoutSuccessHandler logoutSuccessHandler;
 
@@ -80,6 +79,7 @@ public class MySecurityConfig {
                 // Cho phép người dùng xác thực bằng form login/ Tất cả đều được truy cập vào địa chỉ này
                 .logout(
                         (logout) -> logout
+                                .logoutSuccessHandler(logoutSuccessHandler)
                                 .logoutUrl("/logout")
                                 .invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")
