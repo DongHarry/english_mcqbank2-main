@@ -78,7 +78,7 @@ public class WebController {
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
-            sessionService.removeAttribute("loggedInUser");
+            //sessionService.removeAttribute("loggedInUser");
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login-page?logout"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
