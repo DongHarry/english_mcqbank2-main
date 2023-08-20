@@ -18,6 +18,7 @@
     <script>
         function countdown(duration) {
             var timer = duration, minutes, seconds;
+
             setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
@@ -28,9 +29,17 @@
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
                 //console.log(timer);
                 if (--timer === -2) {
-                    alert("Hết giờ!");
+                    // alert("Hết giờ!");
+
+
+                    $('#modaldemo8').addClass('effect-scale');
+                    $('#modaldemo8').modal('show');
+
+
                     document.getElementById("countdown").innerHTML = "00:00";
                     document.getElementById("countdown").remove();
+
+
                     // Dừng đồng hồ đếm ngược khi đạt 0
                     //$("#submitButton").click(); // Tự động click nút submit
                     document.getElementById("myForm").submit(); // Tự động gửi biểu mẫu
