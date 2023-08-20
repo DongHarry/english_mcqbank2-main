@@ -32,8 +32,14 @@
                     // alert("Hết giờ!");
 
 
-                    $('#modaldemo8').addClass('effect-scale');
-                    $('#modaldemo8').modal('show');
+                    // $('#modaldemo8').addClass('effect-scale');
+                    // $('#modaldemo8').modal('show');
+
+                    setTimeout(function () {
+                        $('#modaldemo8').modal('show');
+                    }, 5000);
+
+
 
 
                     document.getElementById("countdown").innerHTML = "00:00";
