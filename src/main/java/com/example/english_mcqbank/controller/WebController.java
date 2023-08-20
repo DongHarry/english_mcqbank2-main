@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
 @Controller
@@ -86,6 +87,7 @@ public class WebController {
             log.setStatus(1);
             log.setIp(request.getRemoteAddr());
             log.setName(user.getUsername() + " logged out");
+            log.setDatetime(new Date());
             logService.saveLog(log);
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }

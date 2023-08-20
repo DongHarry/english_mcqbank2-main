@@ -17,7 +17,7 @@
 
 <body>
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href="@{/index"><span>[</span>apelish
+<div class="br-logo"><a th:href="@{/index}"><span>[</span>apelish
     <i>hus</i><span>]</span></a></div>
 <div class="br-sideleft sideleft-scrollbar">
     <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navigation</label>
@@ -30,7 +30,7 @@
                     <span class="menu-item-label">Quản lý bài thi</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="@{/admin/exams" class="sub-link">
+                    <li class="sub-item"><a th:href="@{/admin/exams}" class="sub-link">
                         Tất cả bài thi</a></li>
 
                 </ul>
@@ -41,9 +41,9 @@
                     <span class="menu-item-label">Quản lý câu hỏi</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="@{/admin/questions" class="sub-link">Tất
+                    <li class="sub-item"><a th:href="@{/admin/questions}" class="sub-link">Tất
                         cả câu hỏi</a></li>
-                    <li class="sub-item"><a href="@{/admin/questions/upload"
+                    <li class="sub-item"><a th:href="@{/admin/questions/upload}"
                                             class="sub-link">Thêm câu hỏi bằng file</a></li>
 
                 </ul>
@@ -57,16 +57,16 @@
                     <span class="menu-item-label">Quản lý tài khoản</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="@{/admin/users" class="sub-link">
+                    <li class="sub-item"><a th:href="@{/admin/users}" class="sub-link">
                         Tài khoản người dùng</a></li>
-                    <li class="sub-item"><a href="@{/admin/users/new" class="sub-link">
+                    <li class="sub-item"><a th:href="@{/admin/users/new}" class="sub-link">
                         Thêm tài khoản</a></li>
                 </ul>
             </li>
             <!-- br-menu-item -->
 
             <li class="br-menu-item">
-                <a href="@{/admin/topics" class="br-menu-link">
+                <a th:href="@{/admin/topics}" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý topic</span>
                 </a><!-- br-menu-link -->
@@ -74,7 +74,7 @@
             <!-- br-menu-item -->
 
             <li class="br-menu-item">
-                <a href="@{/admin/logs" class="br-menu-link">
+                <a th:href="@{/admin/logs}" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-22"></i>
                     <span class="menu-item-label">Quản lý logs</span>
                 </a><!-- br-menu-link -->
@@ -82,7 +82,7 @@
             <!-- br-menu-item -->
 
             <li class="br-menu-item">
-                <a href="@{/admin/profile" class="br-menu-link">
+                <a th:href="@{/admin/profile}" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                     <span class="menu-item-label">Tài khoản admin</span>
                 </a><!-- br-menu-link -->
@@ -96,20 +96,20 @@
                     <span class="menu-item-label">Làm bài</span>
                 </a><!-- br-menu-link -->
                 <ul class="br-menu-sub">
-                    <li class="sub-item"><a href="@{/user/exams" class="sub-link">
+                    <li class="sub-item"><a th:href="@{/user/exams}" class="sub-link">
                         Tất cả bài thi</a></li>
 
                 </ul>
             </li>
             <li class="br-menu-item">
-                <a href="@{/user/results" class="br-menu-link">
+                <a th:href="@{/user/results}" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
                     <span class="menu-item-label">Kết quả</span>
                 </a><!-- br-menu-link -->
             </li>
             <!-- br-menu-item -->
             <li class="br-menu-item">
-                <a href="@{/user/profile" class="br-menu-link">
+                <a th:href="@{/user/profile}" class="br-menu-link">
                     <i class="menu-item-icon icon ion-ios-person-outline tx-22"></i>
                     <span class="menu-item-label">Thông tin tài khoản</span>
                 </a><!-- br-menu-link -->

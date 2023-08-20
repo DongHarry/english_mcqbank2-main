@@ -232,6 +232,7 @@
                         <th class="wd-15p">User</th>
                         <th class="wd-15p">Log Name</th>
                         <th class="wd-15p">Log Status</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')" class="wd-15p">IP</th>
                         <th class="wd-15p">Log Date</th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')" class="wd-15p">Action</th>
                     </tr>
@@ -251,9 +252,9 @@
                                     Fail
                                 </div>
                             </td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${log.ip}"></td>
                             <td th:text="${log.datetime}"></td>
-                            <div sec:authorize="hasRole('ROLE_ADMIN')">
-                                <td>
+                                <td sec:authorize="hasRole('ROLE_ADMIN')">
                                     <ul style="margin-left: -40px">
                                         <li style="list-style: none">
 
@@ -266,7 +267,6 @@
                                         </li>
                                     </ul>
                                 </td>
-                            </div>
                         </tr>
                     </tbody>
                 </table>
