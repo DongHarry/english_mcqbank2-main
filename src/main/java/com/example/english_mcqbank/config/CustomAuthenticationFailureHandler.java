@@ -32,6 +32,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
         log.setDatetime(new java.util.Date());
         log.setStatus(0);
+        log.setIp(request.getRemoteAddr());
         UserEntity user = userDetailsService.getUserByUsername(username);
 
         if (user != null) {

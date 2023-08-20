@@ -228,6 +228,9 @@
                         <th class="wd-15p">User</th>
                         <th class="wd-15p">Log Name</th>
                         <th class="wd-15p">Log Status</th>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <th class="wd-15p">IP</th>
+                        </sec:authorize>
                         <th class="wd-15p">Log Date</th>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <th class="wd-15p">Action</th>
@@ -250,6 +253,9 @@
                                     Fail
                                 </c:if>
                             </td>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <td>${log.ip}</td>
+                            </sec:authorize>
                             <td>${log.datetime}</td>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <td>

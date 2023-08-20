@@ -33,15 +33,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        session.setAttribute("loggedInUser", userDetailsService.getUserByUsername(authentication.getName()));
+        UserEntity user = userDetailsService.getUserByUsername(authentication.getName());
+        session.setAttribute("loggedInUser", user);
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         Log log = new Log();
-        UserEntity user = userDetailsService.getUserByUsername(authentication.getName());
         //loggedInUserService.setLoggedInUser(user);
         log.setUser(user);
         log.setDatetime(new Date());
-
+        log.setIp(request.getRemoteAddr());
 
         if (roles.contains("ROLE_ADMIN")) {
             log.setStatus(1);
@@ -69,15 +69,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        session.setAttribute("loggedInUser", userDetailsService.getUserByUsername(authentication.getName()));
+        UserEntity user = userDetailsService.getUserByUsername(authentication.getName());
+        session.setAttribute("loggedInUser", user);
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         Log log = new Log();
-        UserEntity user = userDetailsService.getUserByUsername(authentication.getName());
         //loggedInUserService.setLoggedInUser(user);
         log.setUser(user);
         log.setDatetime(new Date());
-
+        log.setIp(request.getRemoteAddr());
 
         if (roles.contains("ROLE_ADMIN")) {
             log.setStatus(1);

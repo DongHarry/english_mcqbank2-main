@@ -192,7 +192,7 @@
                         <th class="wd-15p">Log Name</th>
                         <th class="wd-15p">Log Status</th>
                         <th class="wd-15p">Log Date</th>
-
+                        <th class="wd-15p">Log IP</th>
                         <th class="wd-15p">Action</th>
                     </tr>
                     </thead>
@@ -213,6 +213,7 @@
                                 </c:if>
                             </td>
                             <td>${log.datetime}</td>
+                            <td>${log.ip}</td>
                             <td>
                                 <ul style="margin-left: -40px">
                                     <li style="list-style: none">

@@ -29,15 +29,15 @@
                 document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
                 //console.log(timer);
                 if (--timer === -2) {
-                    // alert("Hết giờ!");
+                    alert("Hết giờ!");
 
 
                     // $('#modaldemo8').addClass('effect-scale');
                     // $('#modaldemo8').modal('show');
 
-                    setTimeout(function () {
-                        $('#modaldemo8').modal('show');
-                    }, 5000);
+                    // setTimeout(function () {
+                    //     $('#modaldemo8').modal('show');
+                    // }, 5000);
 
 
 

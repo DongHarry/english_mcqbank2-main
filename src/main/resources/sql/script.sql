@@ -80,6 +80,7 @@ create table logs
     LG_STATUS   int(1)       null,
     LG_DATETIME datetime     null,
     US_ID       int          null,
+    LG_IP       varchar(30)  null,
     constraint logs_users_US_ID_fk
         foreign key (US_ID) references users (us_id)
 );

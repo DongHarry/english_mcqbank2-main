@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.controller;
 
 
+import com.example.english_mcqbank.model.Log;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.service.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,18 +19,20 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
 @Controller
 @RequiredArgsConstructor
 public class WebController {
     final UserDetailsServiceImpl userService;
-    final ILogService ILogService;
-    final IExamService IExamService;
+    final ILogService logService;
+    final IExamService examService;
     final PasswordEncoder passwordEncoder;
-    final IEmailSender IEmailSender;
+    final IEmailSender emailSender;
     final VerifyService verifyService;
     final ISessionService sessionService;
+
 
     @RequestMapping(value = {"/", "/home", "/index"})
     public ModelAndView homepage(Authentication authentication) {
@@ -67,7 +70,7 @@ public class WebController {
                 "Company: " + company + "\n" +
                 "Message: " + message + "\n";
 
-        CompletableFuture<Void> completableFuture = IEmailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
+        CompletableFuture<Void> completableFuture = emailSender.sendEmail2(EmailSender.ADMIN_EMAIL_ADDRESS, email, subject, content);
         //return new ModelAndView("redirect:/#");
         //ModelAndView view = new ModelAndView("redirect:/home");
         redirectAttributes.addFlashAttribute("message5", "Your email has been sent!");
@@ -78,9 +81,18 @@ public class WebController {
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
+            Log log = new Log();
+            UserEntity user = sessionService.getLoggedInUser();
+            log.setUser(user);
+            log.setStatus(1);
+            log.setName(user.getUsername() + " logged out");
+            log.setIp(request.getRemoteAddr());
+            log.setDatetime(new Date());
+            logService.saveLog(log);
             sessionService.removeAttribute("loggedInUser");
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+
         return "redirect:/login-page?logout"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 

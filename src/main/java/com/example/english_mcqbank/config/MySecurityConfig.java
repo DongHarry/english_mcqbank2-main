@@ -1,6 +1,7 @@
 package com.example.english_mcqbank.config;
 
 import com.example.english_mcqbank.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,17 +14,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class MySecurityConfig {
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-    @Autowired
-    private AppBasicAuthenticationEntryPoint basicAuthenticationEntryPoint;
-    @Autowired
-    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
-    @Autowired
-    private CustomAuthenticationFailureHandler authenticationFailureHandler;
-    //@Autowired
-    //private CustomLogoutSuccessHandler logoutSuccessHandler;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final AppBasicAuthenticationEntryPoint basicAuthenticationEntryPoint;
+    private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final CustomAuthenticationFailureHandler authenticationFailureHandler;
+    private final CustomLogoutSuccessHandler logoutSuccessHandler;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -83,6 +80,7 @@ public class MySecurityConfig {
                                 .logoutUrl("/logout")
                                 .invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")
+                                .logoutSuccessHandler(logoutSuccessHandler)
                 ) // Cho phép logout
                 .httpBasic(
                         (httpBasic) -> httpBasic
