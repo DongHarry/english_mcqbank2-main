@@ -128,7 +128,7 @@
                 <a href=""><img src="${pageContext.request.contextPath}/resource/img/favicon.png"
                                 class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">${loggedInUser.fullName}</h6>
-                <p>${user.email}</p>
+                <p>${loggedInUser.email}</p>
             </div>
             <hr>
             <div class="tx-center">
