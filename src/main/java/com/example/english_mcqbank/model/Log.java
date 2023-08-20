@@ -26,7 +26,7 @@ public class Log {
     @Column(name = "lg_status")
     private int status;
 
-    @Column(name = "lg_datetime")
+    @Column(name = "lg_datetime", columnDefinition = "DATETIME")
     private Date datetime;
 
     @Column(name = "lg_ip")

@@ -1,5 +1,5 @@
 US_ID,US_USERNAME,US_PASSWORD,US_FULLNAME,US_ADDRESS,US_MOBILE_NUMBER,US_EMAIL,US_CREATED_DATE,US_STATUS,US_GROUP
-1,root,$2a$10$WzogS4D8E/KcH9BeiQSPCu/HYOo5Kgy1r8fGSWxaGXyiZZ2.ZuUEi,My Admin,MyAddress (editted),0123456789,myemail@gmail.com,2023-08-03 00:00:00,1,0
+1,root,$2a$10$WzogS4D8E/KcH9BeiQSPCu/HYOo5Kgy1r8fGSWxaGXyiZZ2.ZuUEi,My Admin,MyAddress,0123456789,myemail@gmail.com,2023-08-03 00:00:00,1,0
 2,user1,$2a$10$NnanBOpfhvvub1B7sr4oxewK9hL00oC3SNvKU65KlSz9cnq4OKDLK,My User,my address,123456798,luongdinhduc0001@gmail.com,2023-07-16 00:00:00,1,1
 29,admin,$2a$10$kkka2zr/jQ5Zp9B5qZNLweEiyAhLPwDFbtrSRQxxISbNQ9iTDYDUm,Luong Dinh Duc,Ha noi,392469680,Luongdinhduc1607@gmail.com,2023-07-17 00:00:00,1,0
 31,user3,$2a$10$7B0IY0iibqJqgp2yNMvFX.vXDr5e0za5id4YkHjoQHimEC.8YvCfi,Luong Dinh Duc,Ha noi,559543386,luongdinhduc00000@gmail.com,2023-07-18 00:00:00,1,0
@@ -19,3 +19,4 @@ US_ID,US_USERNAME,US_PASSWORD,US_FULLNAME,US_ADDRESS,US_MOBILE_NUMBER,US_EMAIL,U
 64,user11121111,$2a$10$U4Rdrew2uIhdiv9r6GpBD.qAcwBH4.2tvFtKc4Ftm2EFrWkG3c2ym,Luong Dinh Duc,Ha noi,5595433813,luongdinhdyvhubjkluc0000@gmail.com,2023-08-15 20:47:22,1,1
 65,user11124112,$2a$10$5mwDB81kbBHQTVD898nRteRCcqP3ObLPrG4.efqRFRgJ/QSTzSOwW,Luong Dinh Duc,Ha noi,5595433228,luongdinhducrew0000@gmail.com,2023-08-15 20:48:32,1,1
 66,user111211112,$2a$10$LbFpU7GVUjYJlNSJRoNgtesXfibLCTj1ABczvIltsN3QVNxClfNOu,Luong Dinh Duc,Ha noi,5595433812,luongdinhduc0332000@gmail.com,2023-08-16 06:46:30,1,1
+68,root123,$2a$10$BaISPZGWo3nWrZ.CHf38XOb0OTFYKIGFIBuSIZmG8a9Re4b5Xlp22,Luong Dinh Duc,Ha noi,0855954338,luongdinhduc0002320@gmail.com,2023-08-19 17:15:45,1,0
