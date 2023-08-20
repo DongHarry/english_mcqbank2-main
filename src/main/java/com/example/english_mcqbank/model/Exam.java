@@ -31,7 +31,7 @@ public class Exam {
     @Column(name = "ex_question_no")
     private Integer questionNo;
 
-    @Column(name = "ex_time")
+    @Column(name = "ex_time", columnDefinition = "DATETIME")
     private Date time;
 
     @Column(name = "ex_type")

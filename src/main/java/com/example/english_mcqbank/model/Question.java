@@ -19,7 +19,7 @@ public class Question {
     @Column(name = "qu_id")
     private Integer id;
 
-    @Column(name = "qu_content")
+    @Column(name = "qu_content", length = 500)
     private String content;
 
     @Column(name = "qu_option1")

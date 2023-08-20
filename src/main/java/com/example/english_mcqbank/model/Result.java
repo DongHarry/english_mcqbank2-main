@@ -24,7 +24,7 @@ public class Result {
     @Column(name = "rs_score")
     private Integer score;
 
-    @Column(name = "rs_time")
+    @Column(name = "rs_time", columnDefinition = "DATETIME")
     private Date time;
 
     @ManyToOne(fetch = FetchType.LAZY)

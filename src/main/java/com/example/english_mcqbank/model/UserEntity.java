@@ -37,7 +37,7 @@ public class UserEntity {
     @Column(name = "us_address")
     private String address;
 
-    @Column(name = "us_created_date")
+    @Column(name = "us_created_date", columnDefinition = "DATETIME")
     private Date createdDate;
 
     @Column(name = "us_mobile_number")
