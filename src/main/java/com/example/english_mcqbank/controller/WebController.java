@@ -25,13 +25,13 @@ import java.util.concurrent.CompletableFuture;
 @Controller
 @RequiredArgsConstructor
 public class WebController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final IExamService examService;
-    final PasswordEncoder passwordEncoder;
-    final IEmailSender emailSender;
-    final VerifyService verifyService;
-    final ISessionService sessionService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final IExamService examService;
+    private final PasswordEncoder passwordEncoder;
+    private final IEmailSender emailSender;
+    private final VerifyService verifyService;
+    private final ISessionService sessionService;
 
 
     @RequestMapping(value = {"/", "/home", "/index"})

@@ -18,14 +18,14 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final ITopicService topicService;
-    final IQuestionService questionService;
-    final PasswordEncoder passwordEncoder;
-    final IExamService examService;
-    final IResultService resultService;
-    final ISessionService sessionService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final ITopicService topicService;
+    private final IQuestionService questionService;
+    private final PasswordEncoder passwordEncoder;
+    private final IExamService examService;
+    private final IResultService resultService;
+    private final ISessionService sessionService;
 
     @Autowired
     HttpSession session;

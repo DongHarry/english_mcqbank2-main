@@ -23,7 +23,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ReadFileService implements IReadFileService {
-    final ITopicService topicService;
+    private final ITopicService topicService;
 
     @Override
     public List<Question> readCsvData(MultipartFile file) throws IOException, InvalidInputFileException {

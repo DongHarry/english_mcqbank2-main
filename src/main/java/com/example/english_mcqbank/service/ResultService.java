@@ -4,6 +4,7 @@ import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.Result;
 import com.example.english_mcqbank.model.UserEntity;
 import com.example.english_mcqbank.repository.ResultRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
@@ -13,9 +14,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ResultService implements IResultService {
-    @Autowired
-    private ResultRepository resultRepository;
+    private final ResultRepository resultRepository;
 
     @Override
     public void save(Result result) {

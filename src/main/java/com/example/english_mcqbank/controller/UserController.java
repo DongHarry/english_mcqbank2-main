@@ -17,13 +17,13 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final IExamService examService;
-    final IQuestionService questionService;
-    final IResultService resultService;
-    final ISessionService sessionService;
-    final PasswordEncoder passwordEncoder;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final IExamService examService;
+    private final IQuestionService questionService;
+    private final IResultService resultService;
+    private final ISessionService sessionService;
+    private final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/user")
     public ModelAndView user() {

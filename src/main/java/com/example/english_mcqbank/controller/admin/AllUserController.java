@@ -18,14 +18,14 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AllUserController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final ITopicService topicService;
-    final IQuestionService questionService;
-    final IExamService examService;
-    final IResultService resultService;
-    final ISessionService sessionService;
-    final PasswordEncoder passwordEncoder;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final ITopicService topicService;
+    private final IQuestionService questionService;
+    private final IExamService examService;
+    private final IResultService resultService;
+    private final ISessionService sessionService;
+    private final PasswordEncoder passwordEncoder;
 
     @RequestMapping("/admin/users/{id}")
     public ModelAndView viewUser(@PathVariable Integer id) {

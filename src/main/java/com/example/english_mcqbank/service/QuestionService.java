@@ -3,6 +3,7 @@ package com.example.english_mcqbank.service;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.QuestionRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -15,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class QuestionService implements IQuestionService {
-    @Autowired
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
 
     @Override
     public List<Question> listAll() {

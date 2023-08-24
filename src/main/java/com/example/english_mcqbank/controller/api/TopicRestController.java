@@ -2,6 +2,7 @@ package com.example.english_mcqbank.controller.api;
 
 import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.service.ITopicService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/topics")
 public class TopicRestController {
-    @Autowired
-    private ITopicService topicService;
+    private final ITopicService topicService;
 
     @RequestMapping("/")
     public ResponseEntity<List<Topic>> list() {

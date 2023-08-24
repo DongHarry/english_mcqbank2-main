@@ -20,14 +20,14 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class QuestionController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final ITopicService topicService;
-    final IQuestionService questionService;
-    final IExamService examService;
-    final IResultService resultService;
-    final ISessionService sessionService;
-    final IReadFileService readFileService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final ITopicService topicService;
+    private final IQuestionService questionService;
+    private final IExamService examService;
+    private final IResultService resultService;
+    private final ISessionService sessionService;
+    private final IReadFileService readFileService;
 
     @RequestMapping(value = "/admin/questions", method = RequestMethod.GET)
     public ModelAndView questionList(@RequestParam(defaultValue = "0") int page,

@@ -18,12 +18,12 @@ import java.util.Date;
 @Controller
 @RequiredArgsConstructor
 public class ResetPasswordController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final IExamService examService;
-    final PasswordEncoder passwordEncoder;
-    final IEmailSender emailSender;
-    final VerifyService verifyService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final IExamService examService;
+    private final PasswordEncoder passwordEncoder;
+    private final IEmailSender emailSender;
+    private final VerifyService verifyService;
 
     @RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
     public ModelAndView forgotPassword() {

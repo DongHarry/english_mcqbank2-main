@@ -4,6 +4,7 @@ import com.example.english_mcqbank.model.Exam;
 import com.example.english_mcqbank.model.ExamTopic;
 import com.example.english_mcqbank.model.Question;
 import com.example.english_mcqbank.repository.ExamRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,18 +18,13 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class ExamService implements IExamService {
-    @Autowired
-    private IResultService resultService;
-    @Autowired
-    private IQuestionService questionService;
-    @Autowired
-    private ITopicService topicService;
-    @Autowired
-    private IExamTopicService examTopicService;
-
-    @Autowired
-    private ExamRepository examRepository;
+    private final IResultService resultService;
+    private final IQuestionService questionService;
+    private final ITopicService topicService;
+    private final IExamTopicService examTopicService;
+    private final ExamRepository examRepository;
 
     @Override
     @Transactional

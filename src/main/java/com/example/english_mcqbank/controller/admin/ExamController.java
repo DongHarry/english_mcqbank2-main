@@ -18,13 +18,13 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class ExamController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final ITopicService topicService;
-    final IQuestionService questionService;
-    final IExamService examService;
-    final IResultService resultService;
-    final SessionService sessionService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final ITopicService topicService;
+    private final IQuestionService questionService;
+    private final IExamService examService;
+    private final IResultService resultService;
+    private final SessionService sessionService;
 
     @RequestMapping(value = "/admin/exams/new", method = RequestMethod.GET)
     public ModelAndView addExam() {

@@ -14,8 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class LogService implements ILogService {
-    final
-    LogRepository logRepository;
+    private final LogRepository logRepository;
 
     @Override
     public void saveLog(Log log) {

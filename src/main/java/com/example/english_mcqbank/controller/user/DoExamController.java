@@ -14,12 +14,12 @@ import java.util.*;
 @Controller
 @RequiredArgsConstructor
 public class DoExamController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final IExamService examService;
-    final IQuestionService questionService;
-    final IResultService resultService;
-    final ISessionService sessionService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final IExamService examService;
+    private final IQuestionService questionService;
+    private final IResultService resultService;
+    private final ISessionService sessionService;
 
     @RequestMapping("/user/exams")
     public ModelAndView userExams(@RequestParam(defaultValue = "1") int page,

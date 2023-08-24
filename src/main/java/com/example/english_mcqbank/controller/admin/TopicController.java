@@ -17,14 +17,14 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class TopicController {
-    final UserDetailsServiceImpl userService;
-    final ILogService logService;
-    final ITopicService topicService;
-    final IQuestionService questionService;
-    final IExamService examService;
-    final IResultService resultService;
-    final IExamTopicService examTopicService;
-    final ISessionService sessionService;
+    private final UserDetailsServiceImpl userService;
+    private final ILogService logService;
+    private final ITopicService topicService;
+    private final IQuestionService questionService;
+    private final IExamService examService;
+    private final IResultService resultService;
+    private final IExamTopicService examTopicService;
+    private final ISessionService sessionService;
 
     @RequestMapping(value = "/admin/topics", method = RequestMethod.GET)
     public ModelAndView topicList(@RequestParam(defaultValue = "0") int page,

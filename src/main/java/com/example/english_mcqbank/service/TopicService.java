@@ -2,6 +2,7 @@ package com.example.english_mcqbank.service;
 
 import com.example.english_mcqbank.model.Topic;
 import com.example.english_mcqbank.repository.TopicRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -14,9 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TopicService implements ITopicService {
-    @Autowired
-    private TopicRepository topicRepository;
+    private final TopicRepository topicRepository;
 
     @Cacheable(value = "topicCache")
     public List<Topic> getAllTopics() {
